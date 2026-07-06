@@ -16,7 +16,7 @@
         <div class="row d-flex align-items-center">
             <div class="col-md-6 col-lg-6 col-12 order-lg-1 order-2">
                 <div class="hero-7-img d-flex justify-content-center align-items-start mb-md-0 mb-15">
-                    <img src="{{ asset('front/images/hero-img.png') }}" alt="kreditsathi" class="img-fluid p-0">
+                    <img src="{{ asset('front/images/hero-1-img.png') }}" alt="kreditsathi" class="img-fluid p-0 w-75">
                 </div>
             </div>
             <div class="col-md-6 col-lg-6 col-12 order-lg-2 order-1">
@@ -129,8 +129,8 @@
                 </div>
 
             </div>
-            <div class="col-lg-5 col-md-6 col-12">
-                <img src="{{ asset('front/images/about-img.png') }}" alt="kreditsathi" class="img-fluid p-0">
+            <div class="col-lg-5 col-md-6 col-12 text-center ">
+                <img src="{{ asset('front/images/Compny-page-1.png') }}" alt="kreditsathi" class="img-fluid p-0">
             </div>
         </div>
     </div>

@@ -7,6 +7,7 @@ use App\Models\Careers;
 use App\Models\InfoPages;
 use Illuminate\Http\Request;
 use App\Models\ContactEnquiry;
+use App\Models\Product;
 use Illuminate\Validation\Rule;
 use Illuminate\Support\Facades\Log;
 use Illuminate\Support\Facades\DB;
@@ -19,7 +20,8 @@ class HomeController extends Controller
     public function home(){
         $meta = homeMeta();
         $msg = InfoPages::where('slug','welcome-message')->select('content','status')->first();
-        return view('front.home',compact('meta','msg'));
+        $products = Product::whereIn('productslug', ['self-apply','hire-loan-agent'])->get()->keyBy('productslug');
+        return view('front.home',compact('meta','msg', 'products'));
     }
 
     public function creditScore(){

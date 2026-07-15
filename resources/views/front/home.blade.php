@@ -163,20 +163,14 @@
         </div>
     </div>
 </section>
-<!-- Our Partners section end  -->
 
-
-
-
-
-<!-- why kreditsathi section starts -->
 <section id="features-6" class="py-80 features-section division">
     <div class="container">
         <div class="row justify-content-center">
             <div class="col-md-10 col-lg-9">
                 <div class="section-title mb-40">
-                    <h2 class="s-28 mb-5">Why <span class="color--green-500">Choose Us</span></h2>
-                    <p class="s-16 color--grey mt-0">Our Customer-First Approach Makes Us Your Preferred Choice.</p>
+                    <h2 class="s-28 mb-5">Why <span class="color--green-500">KreditSathi?</span></h2>
+                    <p class="s-16 color--grey mt-0">Reliable Support at Every Step</p>
                 </div>
             </div>
         </div>
@@ -185,8 +179,8 @@
                 <div class="col mb-lg-0 mb-2">
                     <div class="fbox-8 fb-1 r-12 border-success h-100">
                         <div class="fbox-txt text-start mb-3 pb-md-0 pb-5">
-                            <h4 class="s-18 w-700">Easy Access to Top NBFCs</h4>
-                            <p>Get access to several industry-leading NBFCs – All from the comfort of your home.</p>
+                            <h4 class="s-18 w-700">Enriching Collaboration</h4>
+                            <p>Explore a wide range of financial services powered by our trusted network of leading NBFC partners.</p>
                         </div>
                         <div class="fbox-ico ico-50 text-end mb-0">
                             <div class="shape-ico color--theme">
@@ -200,7 +194,7 @@
                     <div class="fbox-8 fb-2 r-12 border-success h-100">
                         <div class="fbox-txt text-start mb-3 pb-md-0 pb-5">
                             <h4 class="s-18 w-700">100% Online Process</h4>
-                            <p>Experience premium financial services through an easy, streamlined online portal.</p>
+                            <p>Experience seamless digital financial solutions from the comfort of your home.</p>
                         </div>
                         <div class="fbox-ico ico-50 text-end mb-0">
                             <div class="shape-ico color--theme">
@@ -213,9 +207,8 @@
                 <div class="col mb-lg-0 mb-2">
                     <div class="fbox-8 fb-2 r-12 border-success h-100">
                         <div class="fbox-txt text-start mb-3 pb-md-0 pb-5">
-                            <h4 class="s-18 w-700">Expert Financial Consultation</h4>
-                            <p>Make your financial journey easier with the guidance of our experienced professionals.
-                            </p>
+                            <h4 class="s-18 w-700">Self-Apply Feature</h4>
+                            <p>Take control of your finances with solutions designed to help you succeed.</p>
                         </div>
                         <div class="fbox-ico ico-50 text-end mb-0">
                             <div class="shape-ico color--theme">
@@ -229,8 +222,8 @@
                 <div class="col mb-lg-0 mb-2">
                     <div class="fbox-8 fb-3 r-12 border-success h-100">
                         <div class="fbox-txt text-start mb-3 pb-md-0 pb-5">
-                            <h4 class="s-18 w-700">Your Way, Your Choice </h4>
-                            <p>Apply yourself or hire a loan agent – Move forward in a way that suits you best.</p>
+                            <h4 class="s-18 w-700">Hire Loan Agent</h4>
+                            <p>Increase your chances of loan approval with expert guidance and personalized support.</p>
                         </div>
                         <div class="fbox-ico ico-50 text-end mb-0">
                             <div class="shape-ico color--theme">
@@ -244,51 +237,7 @@
         </div>
     </div>
 </section>
-<!-- why kreditsathi section ends -->
 
-<!-- <section class="simple-process-section py-80">
-    <div class="container">
-        <div class="row justify-content-center">
-            <div class="col-md-12 col-lg-12">
-                <div class="section-title mb-40">
-                    <h2 class="s-28 mb-5">Let’s <span class="color--green-500">Connect</span></h2>
-                    <p class="description mt-0 s-16 color--grey">Send us a message, and our team will contact you
-                        shortly.</p>
-                </div>
-            </div>
-        </div>
-
-        <div class="process-wrapper">
-            <div class="process-step">
-                <div class="step-circle">01</div>
-                <h4 class="color--green-500">Loan Details</h4>
-                <p class="color--grey">Choose your loan amount and requirements.</p>
-            </div>
-            <div class="process-step active">
-                <div class="step-circle">02</div>
-                <h4 class="color--green-500">Personal Info</h4>
-                <p class="color--grey">Fill in your secure personal information.</p>
-            </div>
-            <div class="process-step">
-                <div class="step-circle">03</div>
-                <h4 class="color--green-500">Unlock Offers</h4>
-                <p class=" color--grey">Get the best loan offers instantly.</p>
-            </div>
-            <div class="process-step active">
-                <div class="step-circle">04</div>
-                <h4 class="color--green-500">Choose Plan</h4>
-                <p class="color--grey">Select a repayment option that suits you.</p>
-            </div>
-            <div class="process-step">
-                <div class="step-circle">05</div>
-                <h4 class="color--green-500">Get Approved</h4>
-                <p class="color--grey">Receive approval and funds quickly.</p>
-            </div>
-        </div>
-    </div>
-</section> -->
-
-<!-- eligibility calculator starts -->
 <section id="features-21" class="pt-0 pb-80 features-section division">
     <div class="container">
         <div class="row justify-content-center">
@@ -554,10 +503,9 @@
         <div class="row justify-content-center">
             <div class="col-md-10 col-lg-10">
                 <div class="section-title mb-40">
-                    <h2 class="s-28 mb-5">Move Towards Your <span class="color--green-500">Financial Goals
-                            Smartly</span>
+                    <h2 class="s-28 mb-5">Smart Financial Solutions for <span class="color--green-500">Every Need</span>
                     </h2>
-                    <p class="s-16 color--grey mt-0">Choose The Option That Suits Your Needs</p>
+                    <p class="s-16 color--grey mt-0">Choose the financial solution that best aligns with your goals and needs.</p>
                 </div>
             </div>
         </div>
@@ -584,10 +532,16 @@
                                     Quick Self-Apply </h3>
                             </div>
                             <p class="mb-2">
-                                Get quick access to a seamless online process, simple login links, and customized offers
-                                from our reliable NBFC partners.
+                                Let our experienced loan specialists handle every step of your loan application, providing expert support from start to finish.
                             </p>
-                            <h3 class="mb-0"><span class="color--green-500">₹199/-</span></h3>
+                            <h3 class="mb-0">
+                                @if(isset($products['self-apply']))
+                                <del>₹{{ $products['self-apply']->amount }}</del>
+                                <span class="color--green-500">
+                                    ₹{{ $products['self-apply']->offeramount }}/- Only
+                                </span>
+                                @endif
+                            </h3>
                             <a href="{{ route('self.apply.main') }}" class="btn r-04 btn--theme hover--tra-black">
                                 Apply Now
                             </a>
@@ -606,10 +560,16 @@
                             </div>
 
                             <p class="mb-2">
-                                Allow our experienced professionals to handle the process for you, so you can move
-                                forward with ease and without hassle.
+                                Receive dedicated assistance from an experienced loan agent who can guide you throughout the process and help you understand the required steps.
                             </p>
-                            <h3 class="mb-0"><span class="color--green-500">₹499/-</span></h3>
+                            <h3 class="mb-0">
+                                @if(isset($products['hire-loan-agent']))
+                                <del>₹{{ $products['hire-loan-agent']->amount }}</del>
+                                <span class="color--green-500">
+                                    ₹{{ $products['hire-loan-agent']->offeramount }}/- Only
+                                </span>
+                                @endif
+                            </h3>
                             <a href="{{ route('loan.agent.main') }}" class="btn r-04 btn--theme hover--tra-black">
                                 Apply Now
                             </a>
@@ -629,8 +589,8 @@
         <div class="row justify-content-center">
             <div class="col-md-10 col-lg-9">
                 <div class="section-title mb-40">
-                    <h2 class="s-28 mb-5">How it <span class="color--green-500">works!</span></h2>
-                    <p class="s-16 color--grey mt-0">6 Simple Steps To Get Started </p>
+                    <h2 class="s-28 mb-5">How it <span class="color--green-500">KreditSathi Works</span></h2>
+                    <p class="s-16 color--grey mt-0">Get Started in Six Simple Steps</p>
                 </div>
             </div>
         </div>
@@ -646,8 +606,7 @@
                             </div>
                         </div>
                         <div class="fbox-txt">
-                            <p class="mt-0">Begin your process by entering your registered mobile number, full name, and
-                                other required information.</p>
+                            <p class="mt-0">Enter your name, registered mobile number, and other necessary information.</p>
                         </div>
                     </div>
                 </div>
@@ -660,8 +619,7 @@
                             </div>
                         </div>
                         <div class="fbox-txt">
-                            <p class="mt-0">Our system will determine your eligibility and display pre-approved
-                                offer(s). This is not a final offer. </p>
+                            <p class="mt-0">Complete the remaining details to check your eligibility and view your pre-qualified loan offer(s). This is not the final offer.</p>
                         </div>
                     </div>
                 </div>
@@ -674,8 +632,7 @@
                             </div>
                         </div>
                         <div class="fbox-txt">
-                            <p class="mt-0">Purchase the plan that best fits your requirements to access the displayed
-                                pre-approved offer(s) </p>
+                            <p class="mt-0">Choose a subscription plan to view and access your available pre-qualified loan offers.</p>
                         </div>
                     </div>
                 </div>
@@ -688,8 +645,7 @@
                             </div>
                         </div>
                         <div class="fbox-txt">
-                            <p class="mt-0">Our team will contact you within 24-48 hours for verification and guide you
-                                through the next steps.</p>
+                            <p class="mt-0">Our verification team will contact you within 24–48 hours to verify your details and guide you through the document submission process.</p>
                         </div>
                     </div>
                 </div>
@@ -702,8 +658,7 @@
                             </div>
                         </div>
                         <div class="fbox-txt">
-                            <p class="mt-0">The NBFC will review your profile and documents in accordance with their
-                                policies and guidelines.</p>
+                            <p class="mt-0">Your documents and profile will be verified by the NBFC in accordance with its eligibility criteria and terms & conditions.</p>
                         </div>
                     </div>
                 </div>
@@ -716,8 +671,7 @@
                             </div>
                         </div>
                         <div class="fbox-txt">
-                            <p class="mt-0">The NBFC will process the final approval, sanction, and disbursement in
-                                accordance with their terms. </p>
+                            <p class="mt-0">The NBFC will review your application and make the final decision on loan approval and disbursement based on its eligibility criteria and policies.</p>
                         </div>
                     </div>
                 </div>
@@ -735,8 +689,8 @@
         <div class="row justify-content-center">
             <div class="col-md-12 col-lg-12">
                 <div class="section-title mb-40">
-                    <h2 class="s-28 mb-5">What Our <span class="color--green-500">Customers Say</span></h2>
-                    <p class="s-16 color--grey mt-0"> Hear it straight from the experiences.</p>
+                    <h2 class="s-28 mb-5">See what our <span class="color--green-500">customers have to say</span></h2>
+                    <p class="s-16 color--grey mt-0"> Expert guidance at every step</p>
                 </div>
             </div>
         </div>
@@ -757,9 +711,8 @@
         <div class="row justify-content-center">
             <div class="col-md-12 col-lg-12">
                 <div class="section-title mb-40">
-                    <h2 class="s-28 mb-5">Let’s <span class="color--green-500">Connect</span></h2>
-                    <p class="description mt-0 s-16 color--grey">Send us a message, and our team will contact you
-                        shortly.</p>
+                    <h2 class="s-28 mb-5">Get in <span class="color--green-500">Touch</span></h2>
+                    <p class="description mt-0 s-16 color--grey">Fill in your details, and we'll contact you as soon as possible.</p>
                 </div>
             </div>
         </div>
@@ -910,115 +863,115 @@
 <script src="{{ asset('front/js/home.js') }}" type="text/javascript"></script>
 @if($msg->status == 1)
 <script>
-$(document).ready(function() {
-    setTimeout(function() {
-        $(".myModal:not(.auto-off)").modal("show");
-    }, 3600);
-})
+    $(document).ready(function() {
+        setTimeout(function() {
+            $(".myModal:not(.auto-off)").modal("show");
+        }, 3600);
+    })
 </script>
 @endif
 
 <script>
-const routes = {
-    'selfapply': "{{ route('self.apply.send.otp') }}",
-    'loan-agent': "{{ route('loan.agent.send.otp') }}"
-};
+    const routes = {
+        'selfapply': "{{ route('self.apply.send.otp') }}",
+        'loan-agent': "{{ route('loan.agent.send.otp') }}"
+    };
 
-document.addEventListener('DOMContentLoaded', () => {
-    const faqs = document.querySelectorAll('#faq-container li');
-    const loadMoreButton = document.getElementById('load-more-faq');
-    const viewLessButton = document.getElementById('view-less-faq');
-    let visibleCount = 5; // Number of FAQs initially shown
-    const batchSize = 5; // Number of FAQs to show on each click
+    document.addEventListener('DOMContentLoaded', () => {
+        const faqs = document.querySelectorAll('#faq-container li');
+        const loadMoreButton = document.getElementById('load-more-faq');
+        const viewLessButton = document.getElementById('view-less-faq');
+        let visibleCount = 5; // Number of FAQs initially shown
+        const batchSize = 5; // Number of FAQs to show on each click
 
-    // Initial setup: Show the first 7 FAQs
-    faqs.forEach((faq, index) => {
-        if (index >= visibleCount) {
-            faq.style.display = 'none';
-        }
-    });
-
-    // Event listener for Load More button
-    loadMoreButton.addEventListener('click', () => {
-        const hiddenFaqs = Array.from(faqs).filter(faq => faq.style.display === 'none');
-        for (let i = 0; i < batchSize && i < hiddenFaqs.length; i++) {
-            hiddenFaqs[i].style.display = 'list-item';
-        }
-
-        // Show the "View Less" button once more items are displayed
-        if (hiddenFaqs.length > 0) {
-            viewLessButton.style.display = 'inline-block';
-        }
-
-        // Hide the "Load More" button if no more FAQs to show
-        if (hiddenFaqs.length <= batchSize) {
-            loadMoreButton.style.display = 'none';
-        }
-    });
-
-    // Event listener for View Less button
-    viewLessButton.addEventListener('click', () => {
+        // Initial setup: Show the first 7 FAQs
         faqs.forEach((faq, index) => {
             if (index >= visibleCount) {
                 faq.style.display = 'none';
             }
         });
 
-        // Reset button visibility
-        loadMoreButton.style.display = 'inline-block';
-        viewLessButton.style.display = 'none';
-    });
-});
+        // Event listener for Load More button
+        loadMoreButton.addEventListener('click', () => {
+            const hiddenFaqs = Array.from(faqs).filter(faq => faq.style.display === 'none');
+            for (let i = 0; i < batchSize && i < hiddenFaqs.length; i++) {
+                hiddenFaqs[i].style.display = 'list-item';
+            }
 
-$(document).ready(function() {
-    $(".contact-form").submit(function(e) {
-        let status = document.activeElement.innerHTML;
-        e.preventDefault();
-        if (status) {
-            $('.ajax-error').html('');
-            let data = new FormData(this);
-            $.ajax({
-                url: $(this).attr("action"),
-                headers: {
-                    'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
-                },
-                type: 'POST',
-                data: data,
-                processData: false,
-                contentType: false,
-                beforeSend: function() {
-                    $("#submit-btn").html(
-                        '<span class="spinner-border spinner-border-sm"></span> Submit Request '
-                    )
-                    $("#submit-btn").attr('disabled', true);
-                },
-                success: function(result) {
-                    $(this).attr("disabled", false);
-                    if (result.type === 'SUCCESS') {
-                        toastr.success(result.message);
-                        setTimeout(function() {
-                            location.reload();
-                        }, 3000);
-                    } else {
-                        toastr.error(result.message);
+            // Show the "View Less" button once more items are displayed
+            if (hiddenFaqs.length > 0) {
+                viewLessButton.style.display = 'inline-block';
+            }
+
+            // Hide the "Load More" button if no more FAQs to show
+            if (hiddenFaqs.length <= batchSize) {
+                loadMoreButton.style.display = 'none';
+            }
+        });
+
+        // Event listener for View Less button
+        viewLessButton.addEventListener('click', () => {
+            faqs.forEach((faq, index) => {
+                if (index >= visibleCount) {
+                    faq.style.display = 'none';
+                }
+            });
+
+            // Reset button visibility
+            loadMoreButton.style.display = 'inline-block';
+            viewLessButton.style.display = 'none';
+        });
+    });
+
+    $(document).ready(function() {
+        $(".contact-form").submit(function(e) {
+            let status = document.activeElement.innerHTML;
+            e.preventDefault();
+            if (status) {
+                $('.ajax-error').html('');
+                let data = new FormData(this);
+                $.ajax({
+                    url: $(this).attr("action"),
+                    headers: {
+                        'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+                    },
+                    type: 'POST',
+                    data: data,
+                    processData: false,
+                    contentType: false,
+                    beforeSend: function() {
+                        $("#submit-btn").html(
+                            '<span class="spinner-border spinner-border-sm"></span> Submit Request '
+                        )
+                        $("#submit-btn").attr('disabled', true);
+                    },
+                    success: function(result) {
+                        $(this).attr("disabled", false);
+                        if (result.type === 'SUCCESS') {
+                            toastr.success(result.message);
+                            setTimeout(function() {
+                                location.reload();
+                            }, 3000);
+                        } else {
+                            toastr.error(result.message);
+                            $('#submit-btn').html('Submit Request');
+                            $('#submit-btn').attr('disabled', false);
+                        }
+                    },
+                    error: function(error) {
+                        $(this).attr("disabled", false);
+                        let errors = error.responseJSON.errors,
+                            errorsHtml = '';
+                        $.each(errors, function(key, value) {
+                            errorsHtml = '<strong>' + value[0] + '</strong>';
+                            $('.' + key).html(errorsHtml);
+                        });
                         $('#submit-btn').html('Submit Request');
                         $('#submit-btn').attr('disabled', false);
                     }
-                },
-                error: function(error) {
-                    $(this).attr("disabled", false);
-                    let errors = error.responseJSON.errors,
-                        errorsHtml = '';
-                    $.each(errors, function(key, value) {
-                        errorsHtml = '<strong>' + value[0] + '</strong>';
-                        $('.' + key).html(errorsHtml);
-                    });
-                    $('#submit-btn').html('Submit Request');
-                    $('#submit-btn').attr('disabled', false);
-                }
-            });
-        }
+                });
+            }
+        });
     });
-});
 </script>
 @endpush

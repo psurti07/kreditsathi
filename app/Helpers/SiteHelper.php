@@ -135,26 +135,26 @@ if (!function_exists('raiseRequestFaqs')) {
             <ul class="accordion">
                 <li class="accordion-item mb-0">
                     <div class="accordion-thumb">
-                        <h6 class="s-16 w-500 mb-0">I paid, but my account has not yet been created. What do I do? </h6>
+                        <h6 class="s-16 w-500 mb-0">I paid, but the account is still not created. What do I do? </h6>
                     </div>
                     <div class="accordion-panel">
                         <div class="accordion-panel-item">
                             <div class="faqs-2-answer">
                                 <p>
-                                This could occur if the payment gateway holds your funds but has yet to credit the company account. Do not worry; once the funds have been credited to the company account, your account will be created and you will be notified via email. Otherwise, the payment gateway will refund your funds according to its policies.</p>
+                                This could happen if the payment gateway holds your funds and has yet to credit the company account. Do not worry; as soon as the funds are credited to the company account, your account will be created and you will be notified via email. Otherwise, the payment gateway will refund your funds in accordance with its policies.</p>
                             </div>
                         </div>
                     </div>
                 </li>
                 <li class="accordion-item mb-0">
                     <div class="accordion-thumb">
-                        <h6 class="s-16 w-500 mb-0">Despite the fact that it has been so many days, I still have not received my refund. What do I do? </h6>
+                        <h6 class="s-16 w-500 mb-0">I have yet to receive my refund, even after so many days. What do I do?</h6>
                     </div>
                     <div class="accordion-panel">
                         <div class="accordion-panel-item">
                             <div class="faqs-2-answer">
                                 <p>
-                                    This could happen if your funds are held by the bank/payment gateway. It will be refunded in accordance with the bank/payment gateway terms and conditions.
+                                   This could happen if your money is held by the bank/payment gateway. It will be refunded in accordance with the bank/payment gateway rules and regulations.
                                 </p>
                             </div>
                         </div>
@@ -162,13 +162,13 @@ if (!function_exists('raiseRequestFaqs')) {
                 </li>
                 <li class="accordion-item mb-0">
                     <div class="accordion-thumb">
-                        <h6 class="s-16 w-500 mb-0">I misunderstood the company service and/or paid by mistake. Can I receive a refund?</h6>
+                        <h6 class="s-16 w-500 mb-0">I misunderstood the company service and/or made a payment by mistake. Can I get a refund?</h6>
                     </div>
                     <div class="accordion-panel">
                         <div class="accordion-panel-item">
                             <div class="faqs-2-answer">
                                 <p>
-                                    The subscription plan payment is only refundable under the company cancellation and refund policy. 
+                                    The subscription plan payment is only refundable under the company cancellation and refund policy. Click here to know more.
                                 </p>
                             </div>
                         </div>
@@ -176,13 +176,13 @@ if (!function_exists('raiseRequestFaqs')) {
                 </li>
                 <li class="accordion-item mb-0">
                     <div class="accordion-thumb">
-                        <h6 class="s-16 w-500 mb-0">Despite being shown pre-approved loan offers based on my eligibility, I did not get one.Why? </h6>
+                        <h6 class="s-16 w-500 mb-0">Despite being shown pre-approved loan offers based on my eligibility, I did not receive a loan. Why?</h6>
                     </div>
                     <div class="accordion-panel">
                         <div class="accordion-panel-item">
                             <div class="faqs-2-answer">
                                 <p>
-                                   Please read the company’s terms and conditions to get a clear understanding of what a pre-approval loan offer is.
+                                  Please read the terms and conditions to get a clear understanding of what a pre-approval loan offer is.
                                 </p>
                             </div>
                         </div>
@@ -190,13 +190,13 @@ if (!function_exists('raiseRequestFaqs')) {
                 </li>
                 <li class="accordion-item mb-0">
                     <div class="accordion-thumb">
-                        <h6 class="s-16 w-500 mb-0">Who qualifies for a GST return?</h6>
+                        <h6 class="s-16 w-500 mb-0">Who can get a GST return?</h6>
                     </div>
                     <div class="accordion-panel">
                         <div class="accordion-panel-item">
                             <div class="faqs-2-answer">
                                 <p>
-                                    Anyone who updates their GST information through the portal will receive a GST return.
+                                    Anyone who updates their GST information in the portal will receive a GST return.
                                 </p>
                             </div>
                         </div>
@@ -204,7 +204,7 @@ if (!function_exists('raiseRequestFaqs')) {
                 </li>
                 <li class="accordion-item mb-0">
                     <div class="accordion-thumb">
-                        <h6 class="s-16 w-500 mb-0">I have changed my mind and no longer wish to use the company services. Can I get a refund?</h6>
+                        <h6 class="s-16 w-500 mb-0">I changed my mind and no longer want to use the company services. Can I get my refund? </h6>
                     </div>
                     <div class="accordion-panel">
                         <div class="accordion-panel-item">
@@ -218,7 +218,7 @@ if (!function_exists('raiseRequestFaqs')) {
                 </li>
                 <li class="accordion-item mb-0">
                     <div class="accordion-thumb">
-                        <h6 class="s-16 w-500 mb-0">I am not happy with the company service. What do I do?</h6>
+                        <h6 class="s-16 w-500 mb-0">I am not satisfied with the company service. What do I do?</h6>
                     </div>
                     <div class="accordion-panel">
                         <div class="accordion-panel-item">
@@ -232,13 +232,13 @@ if (!function_exists('raiseRequestFaqs')) {
                 </li>
                 <li class="accordion-item mb-0">
                     <div class="accordion-thumb">
-                        <h6 class="s-16 w-500 mb-0">What happens if I accidentally make multiple payments? Do I qualify for a refund? </h6>
+                        <h6 class="s-16 w-500 mb-0">What happens if I make multiple payments by mistake? Do I qualify for a refund?  </h6>
                     </div>
                     <div class="accordion-panel">
                         <div class="accordion-panel-item">
                             <div class="faqs-2-answer">
                                 <p>
-                                    If you accidentally make multiple payments, you are entitled to a refund. You can request a refund within 48 hours of making the payment via the website Raising A Request section or by calling the company registered contact number.
+                                   If a customer makes multiple payments, they are eligible for a refund. You can request a refund within 48 hours of making the payment via the website Raising A Request section or by calling the company registered contact number.
                                 </p>
                             </div>
                         </div>

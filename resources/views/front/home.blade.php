@@ -21,10 +21,8 @@
             </div>
             <div class="col-md-6 col-lg-6 col-12 order-lg-2 order-1">
                 <div class="hero-7-txt">
-                    <h1 class="s-40 w-700">Expert-Led Guidance For <span class="color--green-500">Smarter Financial
-                            Decisions</span></h1>
-                    <p class="mb-20">We help you move closer to your dreams with premier financial consultation and
-                        services from some of the industry’s brilliant minds. </p>
+                    <h1 class="s-40 w-700">Your Trusted Sathi for a <span class="color--green-500">Simpler Financial Journey</span></h1>
+                    <p class="mb-20">Take the next step toward your financial goals with guidance from experienced financial experts.</p>
                     <a href="{{ route('self.apply.main') }}" class="btn r-04 btn--theme hover--tra-black last-link">Self
                         Apply</a>
                     <a href="{{ route('loan.agent.main') }}" class="btn r-04 btn--theme hover--tra-black last-link">Hire
@@ -60,7 +58,7 @@
                         <div class="statistic-block">
                             <div class="statistic-digit">
                                 <h2 class="s-30 w-700 mb-10 text-white">
-                                    <span class="count-element">5</span>Cr+
+                                    <span class="count-element">1.5</span>Cr+
                                 </h2>
                             </div>
                             <div class="statistic-txt">
@@ -103,34 +101,35 @@
 </section>
 <!-- Trust Badges Section ends -->
 
-<section class="py-80 ct-02 content-section division" id="company">
+<section class="py-80 ct-02 content-section division bg--green-100" id="company">
     <div class="container">
         <div class="row justify-content-center">
             <div class="col-md-10 col-lg-9">
                 <div class="section-title mb-40">
-                    <h2 class="s-28 mb-5">About <span class="color--green-500">kreditsathi</span></h2>
-                    <p class="s-16 color--grey mt-0">Making Your Financial Journey Simpler With Reliable Support.</p>
+                    <h2 class="s-28 mb-5">About <span class="color--green-500">Us!</span></h2>
+                    <p class="s-16 color--grey mt-0">Financial Guidance That Puts You First</p>
                 </div>
             </div>
-        </div>
-        <div class="row align-items-center justify-content-center">
-            <div class="col-lg-7 col-md-6 col-12">
-                <div class="txt-block">
-                    <p class="">Kreditsathi is designed for those who value time and clarity. We offer trusted financial
-                        solutions that make it easy for you to move forward without unnecessary delay. With our network
-                        of reputable NBFC partners, you'll always have access to a diverse range of financial services.
-                    </p>
-                    <p class="">We keep things simple so you can focus on what matters. From understanding your
-                        requirements to helping you move forward, the process is smooth and straightforward. You get the
-                        support you need without the usual back and forth or confusion.</p>
-                    <p class="">At Kreditsathi, it is about making financial decisions feel easier and more in control.
-                        Whether it is something planned or urgent, you can rely on a faster, more comfortable way to
-                        access the right solutions and move ahead with confidence.</p>
-                </div>
 
+            <div class="col-lg-6 col-md-6 col-12">
+                <div class="txt-block right-column bg-white p-4 r-12">
+                    <p class="">KreditSathi is a financial consultation and service platform created to simplify the loan application journey. Through our digital platform and network of lending partners, we help customers explore suitable financial options based on their requirements and eligibility profile.
+                    </p>
+                    <p class="">We understand that applying for financial support can sometimes feel confusing. That is why we focus on providing clear information, step-by-step assistance, and a smooth online experience. </p>
+                </div>
             </div>
-            <div class="col-lg-5 col-md-6 col-12 text-center ">
-                <img src="{{ asset('front/images/Compny-page-1.png') }}" alt="kreditsathi" class="img-fluid p-0">
+            <div class="col-lg-6 col-md-6 col-12">
+                <div class="txt-block right-column bg--green-400 p-4 r-12 text-white h-100">
+                    <p class="w-700">Your Financial Success Is Our Purpose!</p>
+                    <ul class="simple-list">
+                        <li class="list-item">
+                            <p>We believe every financial journey is unique. That’s why we take the time to understand your goals and provide solutions tailored to your needs.</p>
+                        </li>
+                        <li class="list-item">
+                            <p class="mb-0">Your goals inspire our commitment, and we're here to help you move forward with trusted guidance and complete peace of mind.</p>
+                        </li>
+                    </ul>
+                </div>
             </div>
         </div>
     </div>
@@ -143,8 +142,8 @@
             <div class="row justify-content-center">
                 <div class="col-md-10 col-lg-10">
                     <div class="section-title mb-40">
-                        <h2 class="s-28 mb-5">Our <span class="color--green-500">NBFC Partners </span></h2>
-                        <p class="s-16 color--grey mt-0">We work with the best to bring you the best.</p>
+                        <h2 class="s-28 mb-5">Trusted by <span class="color--green-500">NBFC Partners </span></h2>
+                        <p class="s-16 color--grey mt-0">Working with leading NBFCs to deliver reliable financial solutions for our customers.</p>
                     </div>
                 </div>
             </div>
@@ -588,6 +587,7 @@
                                 Get quick access to a seamless online process, simple login links, and customized offers
                                 from our reliable NBFC partners.
                             </p>
+                            <h3 class="mb-0"><span class="color--green-500">₹199/-</span></h3>
                             <a href="{{ route('self.apply.main') }}" class="btn r-04 btn--theme hover--tra-black">
                                 Apply Now
                             </a>
@@ -609,6 +609,7 @@
                                 Allow our experienced professionals to handle the process for you, so you can move
                                 forward with ease and without hassle.
                             </p>
+                            <h3 class="mb-0"><span class="color--green-500">₹499/-</span></h3>
                             <a href="{{ route('loan.agent.main') }}" class="btn r-04 btn--theme hover--tra-black">
                                 Apply Now
                             </a>

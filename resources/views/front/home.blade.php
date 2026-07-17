@@ -10,32 +10,32 @@
 @endpush
 @section('content')
 <!-- main section starts -->
-<section id="hero-7" class="hero-section bg--green-100 bg--scroll">
-    <!-- <div class="hero-overlay"> -->
-    <div class="container">
-        <div class="row d-flex align-items-center">
-            <div class="col-md-6 col-lg-6 col-12 order-lg-1 order-2">
-                <div class="hero-7-img d-flex justify-content-center align-items-start mb-md-0 mb-15">
-                    <img src="{{ asset('front/images/hero-1-img.png') }}" alt="kreditsathi" class="img-fluid p-0 w-75">
-                </div>
-            </div>
-            <div class="col-md-6 col-lg-6 col-12 order-lg-2 order-1">
-                <div class="hero-7-txt">
-                    <h1 class="s-40 w-700">Your Trusted Sathi for a <span class="color--green-500">Simpler Financial Journey</span></h1>
-                    <p class="mb-20">Take the next step toward your financial goals with guidance from experienced financial experts.</p>
-                    <a href="{{ route('self.apply.main') }}" class="btn r-04 btn--theme hover--tra-black last-link">Self
-                        Apply</a>
-                    <a href="{{ route('loan.agent.main') }}" class="btn r-04 btn--theme hover--tra-black last-link">Hire
-                        an Agent</a>
+<section id="hero-7" class="hero-section position-relative pb-0">
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col p-0">
+                <div class="owl-carousel owl-theme reviews-1-wrapper-new">
+                    <div class="slide-box">
+                        <img src="{{ asset('front/images/homepage-1.png') }}" class="img-fluid w-100">
+                    </div>
+                    <div class="slide-box">
+                        <img src="{{ asset('front/images/homepage-2.png') }}" class="img-fluid w-100">
+                    </div>
+                    <div class="slide-box">
+                        <img src="{{ asset('front/images/homepage-3.jpeg') }}" class="img-fluid w-100">
+                    </div>
+                    <div class="slide-box">
+                        <img src="{{ asset('front/images/homepage-4.png') }}" class="img-fluid w-100">
+                    </div>
                 </div>
             </div>
         </div>
     </div>
-    <!-- </div> -->
+
 </section>
 <!-- main section ends -->
 <!-- Trust Badges Section starts -->
-<section id="statistic-1" class=" ct-03 py-0 statistic-section division">
+<!-- <section id="statistic-1" class=" ct-03 py-0 statistic-section division">
     <div class="container">
         <div class="statistic-5-wrapper r-12">
             <div class="row row-cols-2 row-cols-md-4">
@@ -98,10 +98,11 @@
             </div>
         </div>
     </div>
-</section>
+</section> -->
 <!-- Trust Badges Section ends -->
 
-<section class="py-80 ct-02 content-section division bg--green-100" id="company">
+
+<section class="py-80 ct-02 content-section division" id="company">
     <div class="container">
         <div class="row justify-content-center">
             <div class="col-md-10 col-lg-9">
@@ -110,16 +111,14 @@
                     <p class="s-16 color--grey mt-0">Financial Guidance That Puts You First</p>
                 </div>
             </div>
-
-            <div class="col-lg-6 col-md-6 col-12">
-                <div class="txt-block right-column bg-white p-4 r-12">
+        </div>
+        <div class="row align-items-center justify-content-center">
+            <div class="col-lg-7 col-md-6 col-12">
+                <div class="txt-block">
                     <p class="">KreditSathi is a financial consultation and service platform created to simplify the loan application journey. Through our digital platform and network of lending partners, we help customers explore suitable financial options based on their requirements and eligibility profile.
                     </p>
                     <p class="">We understand that applying for financial support can sometimes feel confusing. That is why we focus on providing clear information, step-by-step assistance, and a smooth online experience. </p>
-                </div>
-            </div>
-            <div class="col-lg-6 col-md-6 col-12">
-                <div class="txt-block right-column bg--green-400 p-4 r-12 text-white h-100">
+
                     <p class="w-700">Your Financial Success Is Our Purpose!</p>
                     <ul class="simple-list">
                         <li class="list-item">
@@ -130,6 +129,10 @@
                         </li>
                     </ul>
                 </div>
+
+            </div>
+            <div class="col-lg-5 col-md-6 col-12 text-center ">
+                <img src="{{ asset('front/images/about-img.png') }}" alt="kreditsathi" class="img-fluid p-0">
             </div>
         </div>
     </div>
@@ -973,5 +976,33 @@
             }
         });
     });
+
+    var owl = $('.reviews-1-wrapper-new');
+			owl.owlCarousel({
+				items: 1,
+				loop:true,
+				autoplay:true,
+				navBy: 1,
+				autoplayTimeout: 4500,
+				autoplayHoverPause: true,
+				smartSpeed: 1500,
+				responsive:{
+					0:{
+						items:1
+					},
+					767:{
+						items:1
+					},
+					768:{
+						items:1
+					},
+					991:{
+						items:1
+					},
+					1000:{
+						items:1
+					}
+				}
+		});
 </script>
 @endpush

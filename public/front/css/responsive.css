@@ -360,7 +360,7 @@
   .hero-6-txt p.p-lg { margin-bottom: 22px; }
 
   /* HERO-7 */
-  #hero-7 { padding-top: 140px; padding-bottom: 120px; }
+  #hero-7 { padding-top: 100px; padding-bottom: 120px; }
   #hero-7 .quick-form { margin-right: 3%; }
   .hero-7-txt .quick-form.form-half.mt-35 { margin-top: 25px; }
   .hero-7-img { padding-left: 15px; }
@@ -1722,7 +1722,7 @@
   .hero-6-txt p.p-lg { margin-bottom: 18px; }
 
   /* HERO-7 */
-  #hero-7 { padding-top: 30px; padding-bottom: 120px; }
+  #hero-7 { padding-top: 0px; padding-bottom: 120px; }
   .hero-7-txt p.p-lg { margin-bottom: 15px; }
   #hero-7 .quick-form { margin-right: 2%; }
   .hero-7-img { padding-left: 5px; }
@@ -3112,7 +3112,7 @@
   .hero-6-img { margin-top: 40px; }
 
   /* HERO-7 */
-  #hero-7 { padding-top: 50px; text-align: center; padding-bottom: 100px;}
+  #hero-7 { padding-top: 0px; text-align: center; padding-bottom: 100px;}
   #hero-7 .quick-form { margin-right: 0; }
   .hero-7-img { padding-left: 0; margin-top: 40px; }
 
@@ -4808,7 +4808,7 @@
   .hero-6-img { margin: 35px 1% 0; }
 
   /* HERO-7 */
-  #hero-7 { padding-top: 40px; padding-bottom: 100px; }
+  #hero-7 { padding-top: 0px; padding-bottom: 100px; }
   .hero-7-txt h2 { padding: 0 6%; }
   #hero-7 .quick-form { margin-left: 3%; margin-right: 3%; }
   .hero-7-img { margin-top: 35px; }
@@ -7175,7 +7175,7 @@
   .hero-6-img { margin: 35px 1% 0; }
 
   /* HERO-7 */
-  #hero-7 { padding-top: 50px; padding-bottom: 100px; }
+  #hero-7 { padding-top: 0px; padding-bottom: 100px; }
   .hero-7-txt h2 { padding: 0 4%; }
   #hero-7 .quick-form { margin-left: 3%; margin-right: 3%; }
   .hero-7-img { margin-top: 35px; }

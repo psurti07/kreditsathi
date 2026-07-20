@@ -16,7 +16,7 @@
             <div class="col p-0">
                 <div class="owl-carousel owl-theme reviews-1-wrapper-new">
                     <div class="slide-box">
-                        <img src="{{ asset('front/images/Homepage-1.jpg') }}" class="img-fluid w-100">
+                        <img src="{{ asset('front/images/Home-main-1.jpg') }}" class="img-fluid w-100">
                     </div>
                     <div class="slide-box">
                         <img src="{{ asset('front/images/Homepage-2.jpg') }}" class="img-fluid w-100">

@@ -16,16 +16,16 @@
             <div class="col p-0">
                 <div class="owl-carousel owl-theme reviews-1-wrapper-new">
                     <div class="slide-box">
-                        <img src="{{ asset('front/images/homepage-1.png') }}" class="img-fluid w-100">
+                        <img src="{{ asset('front/images/homepage-1.jpg') }}" class="img-fluid w-100">
                     </div>
                     <div class="slide-box">
-                        <img src="{{ asset('front/images/homepage-2.png') }}" class="img-fluid w-100">
+                        <img src="{{ asset('front/images/homepage-2.jpg') }}" class="img-fluid w-100">
                     </div>
                     <div class="slide-box">
-                        <img src="{{ asset('front/images/homepage-3.jpeg') }}" class="img-fluid w-100">
+                        <img src="{{ asset('front/images/homepage-3.jpg') }}" class="img-fluid w-100">
                     </div>
                     <div class="slide-box">
-                        <img src="{{ asset('front/images/homepage-4.png') }}" class="img-fluid w-100">
+                        <img src="{{ asset('front/images/homepage-4.jpg') }}" class="img-fluid w-100">
                     </div>
                 </div>
             </div>

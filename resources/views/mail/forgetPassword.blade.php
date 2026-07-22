@@ -214,7 +214,7 @@
                                                                     &nbsp; | &nbsp;
                                                                     <a target="_blank"
                                                                        style="-webkit-text-size-adjust: none; -ms-text-size-adjust: none; mso-line-height-rule: exactly; text-decoration: none; color: #000f26; font-size: 14px;"
-                                                                       href="https://kreditsathi.com/uat">
+                                                                       href="https://kreditsathi.com">
                                                                         Visit Website
                                                                     </a>
                                                                 </p>

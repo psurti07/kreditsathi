@@ -168,7 +168,7 @@ if (!function_exists('raiseRequestFaqs')) {
                         <div class="accordion-panel-item">
                             <div class="faqs-2-answer">
                                 <p>
-                                    The subscription plan payment is only refundable under the company cancellation and refund policy. Click here to know more.
+                                    The subscription plan payment is only refundable under the company cancellation and refund policy.
                                 </p>
                             </div>
                         </div>

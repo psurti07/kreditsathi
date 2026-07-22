@@ -316,12 +316,12 @@
                             and the total repayment amount would be approximately ₹1,38,059, resulting in an APR of
                             approximately 14.41% including applicable charges. *T&C Apply. All these numbers are
                             tentative/indicative, the final loan specifics may vary depending upon the customer profile
-                            and NBFCs’ criteria, rules & regulations, and terms & conditions. Kredit Sathi Private Limited
+                            and NBFCs’ criteria, rules & regulations, and terms & conditions. KreditSathi Private Limited
                             does not guarantee loan approval or disbursal. Terms & Conditions apply.
                         </p>
 
                         <p class="s-14">
-                            <strong>Disclaimer : </strong>Kredit Sathi Private Limited is not a lender or financial
+                            <strong>Disclaimer : </strong>KreditSathi Private Limited is not a lender or financial
                             institution. We do not provide loans or make credit decisions. All loan approvals, interest
                             rates, fees, and disbursal are handled by third-party lenders such as banks and NBFCs. We do
                             not guarantee loan approval, disbursal, or specific loan terms. Users are advised to verify

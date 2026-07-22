@@ -33,6 +33,7 @@
     </div>
 
 </section>
+@if(false)
 <!-- main section ends -->
 <!-- Trust Badges Section starts -->
 <!-- <section id="statistic-1" class=" ct-03 py-0 statistic-section division">
@@ -100,7 +101,7 @@
     </div>
 </section> -->
 <!-- Trust Badges Section ends -->
-
+@endif
 
 <section class="py-80 ct-02 content-section division" id="company">
     <div class="container">

@@ -200,8 +200,7 @@
                                     </div>
                                 </div>
                             @else
-                                <div class="card" data-bs-theme="light" style="    background: linear-gradient(112.14deg, #689b99 0%, #689b99 100%);;
-">
+                                <div class="card" data-bs-theme="light" style="    background: linear-gradient(112.14deg, #689b99 0%, #689b99 100%);">
                                     <div class="card-body">
                                         <div class="row align-items-center h-100">
                                             <div class="col-12">

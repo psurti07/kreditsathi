@@ -44,7 +44,7 @@
               display: flex;
               flex-direction: column;
               font-size: 14px;
-              color: #1ebc62;
+              color: #0055da;
             }
             
             .info-block strong {
@@ -167,7 +167,7 @@
                                             <tbody>
                                                 <tr>
                                                     <td align="left" style="padding: 0; margin: 0; padding-top: 10px; padding-bottom: 10px;">
-                                                        <table cellpadding="0" cellspacing="0" class="es-left" align="left" style="mso-table-lspace: 0;mso-table-rspace: 0;border-collapse: collapse;border-spacing: 0;float: left;background-color: #E9F2FB;border: 1px solid #1ebc62;  border-radius: 12px; display: block;">
+                                                        <table cellpadding="0" cellspacing="0" class="es-left" align="left" style="mso-table-lspace: 0;mso-table-rspace: 0;border-collapse: collapse;border-spacing: 0;float: left;background-color: #E9F2FB;border: 1px solid #0055da;  border-radius: 12px; display: block;">
                                                             <tbody>
                                                                 <tr>
                                                                     <td class="es-m-p20b" align="left" style="padding: 0; margin: 0; width: 600px;">
@@ -217,7 +217,7 @@
                         </table>
                         <!-- order details section ends -->
                         <!-- customer credentials section starts -->
-                        <table class="es-content-body" cellspacing="0" cellpadding="0" align="center" style="mso-table-lspace: 0; mso-table-rspace: 0; background-color: transparent; width: 600px; border: 2px solid #1ebc62; border-radius: 12px;margin-bottom: 8px">
+                        <table class="es-content-body" cellspacing="0" cellpadding="0" align="center" style="mso-table-lspace: 0; mso-table-rspace: 0; background-color: transparent; width: 600px; border: 2px solid #0055da; border-radius: 12px;margin-bottom: 8px">
                             <tbody>
                                 <tr>
                                     <td class="es-m-p20b" align="left" style="padding: 0; margin: 0; width: 600px;">
@@ -225,7 +225,7 @@
                                             <tbody>
                                                 <tr>
                                                     <td align="left" style="font-family: Poppins, sans-serif; margin: 0; line-height: 1.5rem; border-radius: 12px; color: #000; font-size: 16px; width: 33.33%; text-align: center;">
-                                                        <p style="color: #1ebc62; font-size: 14px; margin: 0;">
+                                                        <p style="color: #0055da; font-size: 14px; margin: 0;">
                                                             Pre-Approved Amount
                                                             <br />
                                                             <strong style="color: #1f2f33; font-size: 18px; display: block; padding-top: 5px;">₹ {{ formatePriceIndia($offers[0]->loanAmount) }}</strong>
@@ -233,14 +233,14 @@
                                                     </td>
 
                                                     <td align="left" style="font-family: Poppins, sans-serif; margin: 0; line-height: 1.5rem; border-radius: 12px; color: #000; font-size: 16px; width: 33.33%; text-align: center;">
-                                                        <p style="color: #1ebc62; font-size: 14px; margin: 0;">
+                                                        <p style="color: #0055da; font-size: 14px; margin: 0;">
                                                             Monthly Income*
                                                             <br />
                                                             <strong style="color: #353f4f; display: block; font-size: 18px; padding-top: 5px;">₹ {{ formatePriceIndia($loanData->monthly_income) }}</strong>
                                                         </p>
                                                     </td>
                                                     <td align="left" style="font-family: Poppins, sans-serif; margin: 0; line-height: 1.5rem; border-radius: 12px; color: #000; font-size: 16px; width: 33.33%; text-align: center;">
-                                                        <p style="color: #1ebc62; font-size: 14px; margin: 0;">
+                                                        <p style="color: #0055da; font-size: 14px; margin: 0;">
                                                             Current EMI*
                                                             <br />
                                                             <strong style="color: #353f4f; display: block; font-size: 18px; padding-top: 5px;">₹ {{ formatePriceIndia($loanData->currentemi) }}</strong>
@@ -293,7 +293,7 @@
                         </table>
                         <!-- offers starts -->
                         @foreach($offers as $offer)
-                        <table class="es-content-body" cellspacing="0" cellpadding="0" align="center" style="mso-table-lspace: 0; mso-table-rspace: 0; background-color: transparent; width: 600px; border: 1px solid #1ebc62; border-radius: 12px;margin-bottom: 8px">
+                        <table class="es-content-body" cellspacing="0" cellpadding="0" align="center" style="mso-table-lspace: 0; mso-table-rspace: 0; background-color: transparent; width: 600px; border: 1px solid #0055da; border-radius: 12px;margin-bottom: 8px">
                             <tbody>
                                 <tr>
                                     <td class="es-m-p20b" align="left" style="padding: 0; margin: 0; width: 100%;">
@@ -361,7 +361,7 @@
                                                                                                 display: block;
                                                                                             ">
                                                                                         <a href="{{ $userData->acc_type==1?'https://kreditsathi.com/self-apply':'https://kreditsathi.com/loan-agent' }}" style="
-                                                                                                    background-color: #1ebc62;
+                                                                                                    background-color: #0055da;
                                                                                                     color: #fff;
                                                                                                     font-family: Poppins, sans-serif;
                                                                                                     font-size: 14px;
@@ -432,7 +432,7 @@
                                         <table class="es-footer-body" cellspacing="0" cellpadding="0" align="center" style="mso-table-lspace: 0; mso-table-rspace: 0; border-collapse: collapse; border-spacing: 0; background-color: transparent; width: 600px;">
                                             <tbody>
                                                 <tr>
-                                                    <td align="left" style="padding: 20px;mso-table-lspace: 0;mso-table-rspace: 0;border-collapse: collapse;border-spacing: 0;float: left;background-color: #fff;border: 1px solid #1ebc62;  border-radius: 12px; display: block;" bgcolor="#ffffff">
+                                                    <td align="left" style="padding: 20px;mso-table-lspace: 0;mso-table-rspace: 0;border-collapse: collapse;border-spacing: 0;float: left;background-color: #fff;border: 1px solid #0055da;  border-radius: 12px; display: block;" bgcolor="#ffffff">
                                                         <table cellspacing="0" cellpadding="0" width="100%" style="mso-table-lspace: 0; mso-table-rspace: 0; border-collapse: collapse; border-spacing: 0;">
                                                             <tbody>
                                                                 <tr>

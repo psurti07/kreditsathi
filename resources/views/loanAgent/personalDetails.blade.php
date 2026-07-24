@@ -13,12 +13,16 @@
 .txt-block h2 {
     margin-bottom: 0px !important;
 }
+
+.bg-custom-blue-100{
+    background-color: #f5f9fc;
+}
 </style>
 @endpush
 
 @section('content')
 <section id="contacts"
-    class="bg--white-100 bg--fixed pb-80 personal-details-form d-flex align-items-center">
+    class="bg-custom-blue-100 bg--fixed pb-80 personal-details-form d-flex align-items-center">
     <div class="container">
         <div class="row justify-content-center">
             <div class="col-md-3 col-lg-3 col-12">

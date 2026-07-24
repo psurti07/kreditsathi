@@ -18,11 +18,14 @@
         @media screen and (min-width:992px) and (max-width:1199px){
             .input-group-text{ padding:1rem 1rem;margin-top:1px; }
         }*/
+        .bg-custom-blue-100{
+            background-color: #f5f9fc;
+        }
     </style>
 @endpush
 @section('content')
     <!-- main section starts -->
-    <section class="bg--white-100 bg--fixed pb-80 personal-details-form d-flex align-items-center">
+    <section class="bg-custom-blue-100 bg--fixed pb-80 personal-details-form d-flex align-items-center">
         <div class="container">
             <div class="row d-flex align-items-center">
                 <!-- <div class="col-md-6 col-lg-6">

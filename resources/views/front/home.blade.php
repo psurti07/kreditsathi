@@ -179,61 +179,61 @@
             </div>
         </div>
         <div class="fbox-wrapper text-center">
-            <div class="row gx-3 gy-2 row-cols-1 row-cols-md-2 row-cols-lg-4">
-                <div class="col mb-lg-0 mb-2">
-                    <div class="fbox-8 fb-1 r-12 border-success h-100">
-                        <div class="fbox-txt text-start mb-3 pb-md-0 pb-5">
-                            <h4 class="s-18 w-700">Enriching Collaboration</h4>
-                            <p>Explore a wide range of financial services powered by our trusted network of leading NBFC partners.</p>
-                        </div>
-                        <div class="fbox-ico ico-50 text-end mb-0">
+            <div class="row gx-5 gy-2 row-cols-1 row-cols-md-2 row-cols-lg-4">
+                <div class="col">
+                    <div class="fbox-8 fbox--hover fb-1 r-12 border mb-md-0 mb-2 h-100">
+                        <div class="fbox-ico ico-50 mb-4">
                             <div class="shape-ico color--theme">
                                 <img class="img-fluid" src="{{ asset('front/images/Easy-Access-to-Top-NBFC.png') }}"
                                     alt="feature-image">
                             </div>
                         </div>
+                        <div class="fbox-txt">
+                            <h4 class="s-18 w-700 mb-4">Enriching Collaboration</h4>
+                            <p>Explore a wide range of financial services powered by our trusted network of leading NBFC partners.</p>
+                        </div>
                     </div>
                 </div>
-                <div class="col mb-lg-0 mb-2">
-                    <div class="fbox-8 fb-2 r-12 border-success h-100">
-                        <div class="fbox-txt text-start mb-3 pb-md-0 pb-5">
-                            <h4 class="s-18 w-700">100% Online Process</h4>
-                            <p>Experience seamless digital financial solutions from the comfort of your home.</p>
-                        </div>
-                        <div class="fbox-ico ico-50 text-end mb-0">
+                <div class="col">
+                    <div class="fbox-8 fbox--hover fb-2 r-12 border mb-md-0 mb-2 h-100">
+                        <div class="fbox-ico ico-50 mb-4">
                             <div class="shape-ico color--theme">
                                 <img class="img-fluid" src="{{ asset('front/images/100_-Online-Process.png') }}"
                                     alt="feature-image">
                             </div>
                         </div>
+                        <div class="fbox-txt">
+                            <h4 class="s-18 w-700 mb-4">100% Online Process</h4>
+                            <p>Experience seamless digital financial solutions from the comfort of your home.</p>
+                        </div>
                     </div>
                 </div>
-                <div class="col mb-lg-0 mb-2">
-                    <div class="fbox-8 fb-2 r-12 border-success h-100">
-                        <div class="fbox-txt text-start mb-3 pb-md-0 pb-5">
-                            <h4 class="s-18 w-700">Self-Apply Feature</h4>
-                            <p>Take control of your finances with solutions designed to help you succeed.</p>
-                        </div>
-                        <div class="fbox-ico ico-50 text-end mb-0">
+                <div class="col">
+                    <div class="fbox-8 fbox--hover fb-2 r-12 border mb-md-0 mb-2 h-100">
+                        <div class="fbox-ico ico-50 mb-4">
                             <div class="shape-ico color--theme">
-                                <img class="img-fluid"
-                                    src="{{ asset('front/images/Expert-Financial-Consultation.png') }}"
+                                <img class="img-fluid" src="{{ asset('front/images/Expert-Financial-Consultation.png') }}"
                                     alt="feature-image">
                             </div>
                         </div>
+                        <div class="fbox-txt">
+                            <h4 class="s-18 w-700 mb-4">Self-Apply Feature</h4>
+                            <p>Take control of your finances with solutions designed to help you succeed.</p>
+                        </div>
                     </div>
                 </div>
-                <div class="col mb-lg-0 mb-2">
-                    <div class="fbox-8 fb-3 r-12 border-success h-100">
-                        <div class="fbox-txt text-start mb-3 pb-md-0 pb-5">
-                            <h4 class="s-18 w-700">Hire Loan Agent</h4>
-                            <p>Increase your chances of loan approval with expert guidance and personalized support.</p>
-                        </div>
-                        <div class="fbox-ico ico-50 text-end mb-0">
+                <div class="col">
+                    <div class="fbox-8 fbox--hover fb-3 r-12 border mb-md-0 mb-2 h-100">
+                        <div class="fbox-ico ico-50 mb-4">
                             <div class="shape-ico color--theme">
                                 <img class="img-fluid" src="{{ asset('front/images/Your-Way-Your-Choice.png') }}"
                                     alt="feature-image">
                             </div>
+                        </div>
+                        <div class="fbox-txt">
+                            <h4 class="s-18 w-700 mb-4">Hire Loan Agent</h4>
+                            <p>Increase your chances of loan approval with expert guidance and personalized support.
+                            </p>
                         </div>
                     </div>
                 </div>
@@ -241,6 +241,92 @@
         </div>
     </div>
 </section>
+
+<!-- Products Intro section starts -->
+<section id="products" class="pt-0  pb-80 features-section division">
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-md-10 col-lg-10">
+                <div class="section-title mb-40">
+                    <h2 class="s-28 mb-5">Smart Financial Solutions for <span class="color--green-500">Every Need</span>
+                    </h2>
+                    <p class="s-16 color--grey mt-0">Choose the financial solution that best aligns with your goals and needs.</p>
+                </div>
+            </div>
+        </div>
+        <div class="row align-items-center">
+            <div class="col-12 col-lg-6 d-md-block d-none mb-3">
+                <div class="img-block right-column text-center">
+                    <img class="img-fluid light-theme-img w-100 rounded-3"
+                        src="{{ asset('front/images/product-img.jpg') }}" alt="feature-image">
+                </div>
+            </div>
+            <div class="col-12 col-lg-6 align-items-center m-auto mt-0">
+                <div class="row fbox-wrapper
+                     mb-0 fbox-8 fb-1 p-0 border-0">
+                    <div class="col-12 col-lg-12">
+                        <div class="txt-block right-column card-left p-4 r-12 mb-md-3 mb-0">
+                            <div class="d-flex align-items-center mb-3">
+                                <div class="fbox-ico ico-50 text-end mb-0">
+                                    <div class="shape-ico color--theme">
+                                        <img class="img-fluid" src="{{ asset('front/images/Quick-Self-Apply.png') }}"
+                                            alt="feature-image">
+                                    </div>
+                                </div>
+                                <h3 class="s-22 w-700 ms-3 mb-0">
+                                    Quick Self-Apply </h3>
+                            </div>
+                            <p class="mb-2">
+                                Let our experienced loan specialists handle every step of your loan application, providing expert support from start to finish.
+                            </p>
+                            <h3 class="mb-0">
+                                @if(isset($products['self-apply']))
+                                <del>₹{{ $products['self-apply']->amount }}</del>
+                                <span class="color--green-500">
+                                    ₹{{ $products['self-apply']->offeramount }}/- Only
+                                </span>
+                                @endif
+                            </h3>
+                            <a href="{{ route('self.apply.main') }}" class="btn r-04 btn--theme hover--tra-black">
+                                Apply Now
+                            </a>
+                        </div>
+                    </div>
+                    <div class="col-12 col-lg-12">
+                        <div class="left-column card-left p-4 r-12">
+                            <div class="d-flex align-items-center mb-0">
+                                <div class="fbox-ico ico-50 text-end mb-0">
+                                    <div class="shape-ico color--theme">
+                                        <img class="img-fluid" src="{{ asset('front/images/Hire-Loan-Agent.png') }}"
+                                            alt="feature-image">
+                                    </div>
+                                </div>
+                                <h3 class="s-22 w-700 ms-3 mb-0">Hire Loan Agent</h3>
+                            </div>
+
+                            <p class="mb-2">
+                                Receive dedicated assistance from an experienced loan agent who can guide you throughout the process and help you understand the required steps.
+                            </p>
+                            <h3 class="mb-0">
+                                @if(isset($products['hire-loan-agent']))
+                                <del>₹{{ $products['hire-loan-agent']->amount }}</del>
+                                <span class="color--green-500">
+                                    ₹{{ $products['hire-loan-agent']->offeramount }}/- Only
+                                </span>
+                                @endif
+                            </h3>
+                            <a href="{{ route('loan.agent.main') }}" class="btn r-04 btn--theme hover--tra-black">
+                                Apply Now
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    </div>
+</section>
+<!-- Products Intro section ends -->
 
 <section id="features-21" class="pt-0 pb-80 features-section division">
     <div class="container">
@@ -500,92 +586,6 @@
 </section>
 <!-- eligibility calculator ends -->
 {{--<hr class="divider">--}}
-
-<!-- Products Intro section starts -->
-<section id="products" class="pt-0  pb-80 features-section division">
-    <div class="container">
-        <div class="row justify-content-center">
-            <div class="col-md-10 col-lg-10">
-                <div class="section-title mb-40">
-                    <h2 class="s-28 mb-5">Smart Financial Solutions for <span class="color--green-500">Every Need</span>
-                    </h2>
-                    <p class="s-16 color--grey mt-0">Choose the financial solution that best aligns with your goals and needs.</p>
-                </div>
-            </div>
-        </div>
-        <div class="row align-items-center">
-            <div class="col-12 col-lg-6 d-md-block d-none mb-3">
-                <div class="img-block right-column text-center">
-                    <img class="img-fluid light-theme-img w-100 rounded-3"
-                        src="{{ asset('front/images/product-img.jpg') }}" alt="feature-image">
-                </div>
-            </div>
-            <div class="col-12 col-lg-6 align-items-center m-auto mt-0">
-                <div class="row fbox-wrapper
-                     mb-0 fbox-8 fb-1 p-0 border-0">
-                    <div class="col-12 col-lg-12">
-                        <div class="txt-block right-column card-left p-4 r-12 mb-md-3 mb-0">
-                            <div class="d-flex align-items-center mb-3">
-                                <div class="fbox-ico ico-50 text-end mb-0">
-                                    <div class="shape-ico color--theme">
-                                        <img class="img-fluid" src="{{ asset('front/images/Quick-Self-Apply.png') }}"
-                                            alt="feature-image">
-                                    </div>
-                                </div>
-                                <h3 class="s-22 w-700 ms-3 mb-0">
-                                    Quick Self-Apply </h3>
-                            </div>
-                            <p class="mb-2">
-                                Let our experienced loan specialists handle every step of your loan application, providing expert support from start to finish.
-                            </p>
-                            <h3 class="mb-0">
-                                @if(isset($products['self-apply']))
-                                <del>₹{{ $products['self-apply']->amount }}</del>
-                                <span class="color--green-500">
-                                    ₹{{ $products['self-apply']->offeramount }}/- Only
-                                </span>
-                                @endif
-                            </h3>
-                            <a href="{{ route('self.apply.main') }}" class="btn r-04 btn--theme hover--tra-black">
-                                Apply Now
-                            </a>
-                        </div>
-                    </div>
-                    <div class="col-12 col-lg-12">
-                        <div class="left-column card-left p-4 r-12">
-                            <div class="d-flex align-items-center mb-0">
-                                <div class="fbox-ico ico-50 text-end mb-0">
-                                    <div class="shape-ico color--theme">
-                                        <img class="img-fluid" src="{{ asset('front/images/Hire-Loan-Agent.png') }}"
-                                            alt="feature-image">
-                                    </div>
-                                </div>
-                                <h3 class="s-22 w-700 ms-3 mb-0">Hire Loan Agent</h3>
-                            </div>
-
-                            <p class="mb-2">
-                                Receive dedicated assistance from an experienced loan agent who can guide you throughout the process and help you understand the required steps.
-                            </p>
-                            <h3 class="mb-0">
-                                @if(isset($products['hire-loan-agent']))
-                                <del>₹{{ $products['hire-loan-agent']->amount }}</del>
-                                <span class="color--green-500">
-                                    ₹{{ $products['hire-loan-agent']->offeramount }}/- Only
-                                </span>
-                                @endif
-                            </h3>
-                            <a href="{{ route('loan.agent.main') }}" class="btn r-04 btn--theme hover--tra-black">
-                                Apply Now
-                            </a>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-    </div>
-</section>
-<!-- Products Intro section ends -->
 
 <!-- Quick and swift steps section starts -->
 <section id="features-2" class="pt-0 pb-80 features-section division">
@@ -979,31 +979,31 @@
     });
 
     var owl = $('.reviews-1-wrapper-new');
-			owl.owlCarousel({
-				items: 1,
-				loop:true,
-				autoplay:true,
-				navBy: 1,
-				autoplayTimeout: 4500,
-				autoplayHoverPause: true,
-				smartSpeed: 1500,
-				responsive:{
-					0:{
-						items:1
-					},
-					767:{
-						items:1
-					},
-					768:{
-						items:1
-					},
-					991:{
-						items:1
-					},
-					1000:{
-						items:1
-					}
-				}
-		});
+    owl.owlCarousel({
+        items: 1,
+        loop: true,
+        autoplay: true,
+        navBy: 1,
+        autoplayTimeout: 4500,
+        autoplayHoverPause: true,
+        smartSpeed: 1500,
+        responsive: {
+            0: {
+                items: 1
+            },
+            767: {
+                items: 1
+            },
+            768: {
+                items: 1
+            },
+            991: {
+                items: 1
+            },
+            1000: {
+                items: 1
+            }
+        }
+    });
 </script>
 @endpush

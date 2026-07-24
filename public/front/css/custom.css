@@ -320,7 +320,7 @@
 
 }
 
-#features-6 .fbox-8:before {
+/* #features-6 .fbox-8:before {
   content: "";
   position: absolute;
   width: 130px;
@@ -337,7 +337,7 @@
   right: 13px;
   bottom: 15px;
   position: absolute;
-}
+} */
 
 @media screen and (max-width:550px) {
   #features-6 .fbox-8:before {
@@ -378,11 +378,11 @@
 }
 
 #features-6 .fbox-8:hover {
-  background: linear-gradient(270deg, #0db02b1a, #fff9dd);
+  background: linear-gradient(180deg, #ffffff, #a1c4fc);
 }
 
 .features-card:hover {
-  background: linear-gradient(270deg, #0db02b1a, #fff9dd);
+  background: linear-gradient(180deg, #ffffff, #a1c4fc);
 }
 
 #statistic-1 {

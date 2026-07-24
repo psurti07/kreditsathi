@@ -32,12 +32,16 @@ a#failed-btn:hover {
 .card:hover .radio:checked {
     border-color: transparent !important;
 }
+
+.bg-custom-blue-100{
+    background-color: #f5f9fc;
+}
 </style>
 @endpush
 
 @section('content')
 <section id="contacts"
-    class="bg--white-100 personal-details-form inner-page-hero contacts-section division min-vh-100 d-flex align-items-center">
+    class="bg-custom-blue-100 personal-details-form inner-page-hero contacts-section division min-vh-100 d-flex align-items-center">
     <div class="container">
         <div class="row justify-content-center mb-35">
             <div class="col-md-3 col-lg-3 col-12">

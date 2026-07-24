@@ -58,30 +58,15 @@
     }
 
     #hero-201 {
-        position: relative;
-        background-image: url(public/front/images/loan-agent-lendingpage.png);
-        background-repeat: no-repeat;
-        background-size: cover;
-        background-position: right;
-        max-width: 100%;
-        width: 100%;
-        height: 840px;
-    }
-
-
-    @media screen and (max-width:1000px) {
-        #hero-201 {
-            background-image: none;
-            height: unset;
-        }
+        background-color: #f5f9fc;
     }
 </style>
 @endpush
 @section('content')
-<section id="hero-201" class="bg--white-100 bg--fixed">
+<section id="hero-201" class=" bg--fixed">
     <div class="container">
         <div class="row d-flex align-items-center">
-            <div class="col-md-6 col-lg-6 self-apply-form mb-lg-0 mb-3">
+            <div class="col-md-6 col-lg-6 align-items-center m-auto self-apply-form mb-lg-0 mb-3">
                 <div id="hero-8-form" class="border border-primary r-06">
                     <h4 class="s-20 w-700 mb-2">Apply in <span class="color--green-500">5 Minutes</span></h4>
                     <p class="s-16">Get instant pre-approved offers.</p>
@@ -163,7 +148,11 @@
                     </form>
                 </div>
             </div>
-
+            <div class="col-md-12 col-lg-6">
+                <div class="img-block">
+                    <img src="{{ asset('front/images/loan-agent-lendingpage-1.png') }}" alt="kreditsathi" class="img-fluid p-0 m-auto">
+                </div>
+            </div>
         </div>
     </div>
 </section>
@@ -204,73 +193,80 @@
         <div class="row justify-content-center">
             <div class="col-md-10 col-lg-9">
                 <div class="section-title mb-40">
-                    <h2 class="s-28 mb-5">Why <span class="color--green-500">kreditsathi</span></h2>
-                    <p class="s-16 color--grey mt-0">Here's What Sets Our Platform Apart</p>
+                    <h2 class="s-28 mb-5">Why <span class="color--green-500">KreditSathi?</span></h2>
+                    <p class="s-16 color--grey mt-0">Reliable Support at Every Step</p>
                 </div>
             </div>
         </div>
         <div class="fbox-wrapper text-center">
-            <div class="row gx-3 gy-2 row-cols-1 row-cols-md-2 row-cols-lg-4">
+            <div class="row gx-5 gy-2 row-cols-1 row-cols-md-2 row-cols-lg-4">
                 <div class="col">
-                    <div class="fbox-8 fb-1 r-12 border h-100">
-                        <div class="fbox-txt text-start mb-3 pb-md-0 pb-5">
-                            <h4 class="s-18 w-700">Strategic Lending Network</h4>
-                            <p>Access multiple NBFC-backed lending options through a single digital interface.</p>
-                        </div>
-                        <div class="fbox-ico ico-50">
+                    <div class="fbox-8 fbox--hover fb-1 r-12 border mb-md-0 mb-2 h-100">
+                        <div class="fbox-ico ico-50 mb-4">
                             <div class="shape-ico color--theme">
-                                <img class="img-fluid"
-                                    src="{{ asset('front/images/Strategic-Lending-Network.png') }}" alt="feature-image">
+                                <img class="img-fluid" src="{{ asset('front/images/Easy-Access-to-Top-NBFC.png') }}"
+                                    alt="feature-image">
                             </div>
                         </div>
-
+                        <div class="fbox-txt">
+                            <h4 class="s-18 w-700 mb-4">Enriching Collaboration</h4>
+                            <p>Explore a wide range of financial services powered by our trusted network of leading NBFC partners.</p>
+                        </div>
                     </div>
                 </div>
                 <div class="col">
-                    <div class="fbox-8 fb-2 r-12 border h-100">
-                        <div class="fbox-txt text-start mb-3 pb-md-0 pb-5">
-                            <h4 class="s-18 w-700">Completely Online Process</h4>
-                            <p>From eligibility check to document submission, everything happens digitally.</p>
-                        </div>
-                        <div class="fbox-ico ico-50">
+                    <div class="fbox-8 fbox--hover fb-2 r-12 border mb-md-0 mb-2 h-100">
+                        <div class="fbox-ico ico-50 mb-4">
                             <div class="shape-ico color--theme">
-                                <img class="img-fluid"
-                                    src="{{ asset('front/images/Completely-Online-Process.png') }}" alt="feature-image">
+                                <img class="img-fluid" src="{{ asset('front/images/100_-Online-Process.png') }}"
+                                    alt="feature-image">
                             </div>
                         </div>
-
+                        <div class="fbox-txt">
+                            <h4 class="s-18 w-700 mb-4">100% Online Process</h4>
+                            <p>Experience seamless digital financial solutions from the comfort of your home.</p>
+                        </div>
                     </div>
                 </div>
                 <div class="col">
-                    <div class="fbox-8 fb-2 r-12 border h-100">
-                        <div class="fbox-txt text-start mb-3 pb-md-0 pb-5">
-                            <h4 class="s-18 w-700">Self-Apply Feature</h4>
-                            <p>Take control of your finances while enjoying the benefits of excellent provisions.</p>
-                        </div>
-                        <div class="fbox-ico ico-50">
+                    <div class="fbox-8 fbox--hover fb-2 r-12 border mb-md-0 mb-2 h-100">
+                        <div class="fbox-ico ico-50 mb-4">
                             <div class="shape-ico color--theme">
-                                <img class="img-fluid"
-                                    src="{{ asset('front/images/Quick-Self-Apply.png') }}" alt="feature-image">
+                                <img class="img-fluid" src="{{ asset('front/images/Expert-Financial-Consultation.png') }}"
+                                    alt="feature-image">
                             </div>
                         </div>
-
+                        <div class="fbox-txt">
+                            <h4 class="s-18 w-700 mb-4">Self-Apply Feature</h4>
+                            <p>Take control of your finances with solutions designed to help you succeed.</p>
+                        </div>
                     </div>
                 </div>
                 <div class="col">
-                    <div class="fbox-8 fb-2 r-12 border h-100">
-                        <div class="fbox-txt text-start mb-3 pb-md-0 pb-5">
-                            <h4 class="s-18 w-700">Hire Loan Agent</h4>
-                            <p>Get guidance from experienced professionals to improve your loan approval possibilities.</p>
-                        </div>
-                        <div class="fbox-ico ico-50">
+                    <div class="fbox-8 fbox--hover fb-3 r-12 border mb-md-0 mb-2 h-100">
+                        <div class="fbox-ico ico-50 mb-4">
                             <div class="shape-ico color--theme">
-                                <img class="img-fluid"
-                                    src="{{ asset('front/images/Loan-Agent.png') }}" alt="feature-image">
+                                <img class="img-fluid" src="{{ asset('front/images/Your-Way-Your-Choice.png') }}"
+                                    alt="feature-image">
                             </div>
                         </div>
-
+                        <div class="fbox-txt">
+                            <h4 class="s-18 w-700 mb-4">Hire Loan Agent</h4>
+                            <p>Increase your chances of loan approval with expert guidance and personalized support.
+                            </p>
+                        </div>
                     </div>
                 </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="full-banner w-100">
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-md-12 col-lg-12">
+                <img class="w-100 h-auto d-block" src="{{ asset('front/images/lending-page-middle.png') }}" alt="Banner">
             </div>
         </div>
     </div>

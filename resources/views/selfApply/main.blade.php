@@ -138,7 +138,7 @@
             </div>
             <div class="col-md-12 col-lg-6">
                 <div class="img-block">
-                    <img src="{{ asset('front/images/self-apply-lendingpage-1.png') }}" alt="kreditsathi" class="img-fluid p-0 m-auto">
+                    <img src="{{ asset('front/images/self-apply-lendingpage-1.jpg') }}" alt="kreditsathi" class="img-fluid p-0 m-auto">
                 </div>
             </div>
         </div>

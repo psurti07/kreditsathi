@@ -105,7 +105,7 @@
         </div>
         <div class="review-txt p-4">
             <div class="review-avatar float-none mb-3">
-                <img src="{{ asset('front/images/review/reviews-03.jpg') }}" alt="review-avatar" width="auto"
+                <img src="{{ asset('front/images/review/reviews-06.jpg') }}" alt="review-avatar" width="auto"
                     class="m-auto">
             </div>
             <div class="author-data clearfix text-center">

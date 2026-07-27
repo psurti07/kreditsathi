@@ -1,3 +1,29 @@
+<section id="advisorBanner" class="position-fixed bottom-0 start-50 translate-middle-x w-100 left-0 right-0">
+    <div class="bg--blue-300 w-100">
+        <div class="container">
+            <div class="row align-items-center">
+                <div class="col-lg-2 d-none d-lg-block">
+                    <img src="{{ asset('front/images/footer-image.png') }}" class="img-fluid" alt="Advisor">
+                </div>
+
+                <div class="col-12 col-lg-7 text-center text-lg-start py-2 py-lg-0">
+                    <p class="banner-title fw-semibold fs-6 text-black mb-lg-0">
+                        Loans at the speed of life! Say YES and get 5-lakhs instantly
+                    </p>
+                </div>
+
+                <div class="col-12 col-lg-3 text-center pb-3 pb-lg-0">
+                    <a href="{{ route('self.apply.main') }}" class="custom-btn">
+                        <span class="btn-text">Apply Now</span>
+                        <span class="btn-icon">→</span>
+                    </a>
+                </div>
+
+            </div>
+        </div>
+    </div>
+</section>
+
 <footer id="footer-3" class="pt-0 footer">
     <div class="container">
         <!-- FOOTER CONTENT -->
@@ -99,14 +125,14 @@
                     </p>
                     <h6 class="s-14 w-700 mt-15 kbz-h6 text-light" style="margin-bottom:5px!important;">Address</h6>
                     <p class="footer-mail-link ico-25">
-                        <p class="text-light">{{ env('COMPANY_ADDRESS') }}</p>
+                    <p class="text-light">{{ env('COMPANY_ADDRESS') }}</p>
                     </p>
                 </div>
             </div>
             <!-- END FOOTER LINKS -->
         </div>
         <!-- END FOOTER CONTENT -->
-        <hr class="text-light"/>
+        <hr class="text-light" />
         <!-- BOTTOM FOOTER -->
         <div class="bottom-footer text-center">
             <div class="row">

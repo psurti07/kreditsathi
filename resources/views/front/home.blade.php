@@ -83,6 +83,11 @@
         .banner-content {
             padding: 40px 0 0px;
         }
+
+        #product-banner .custom-btn {
+            width: 60% !important;
+            margin: auto;
+        }
     }
 </style>
 @endpush

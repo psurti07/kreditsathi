@@ -4,6 +4,87 @@
 <link rel="stylesheet" href="{{ asset('front/calc/emicalculator.css') }}">
 <link rel="stylesheet" href="{{ asset('front/calc/calcstyle.css') }}">
 <link rel="stylesheet" href="{{ asset('front/css/custom.css') }}">
+
+<style>
+    @media screen and (min-width:768px) {
+        #product-banner {
+            position: relative;
+            width: 100%;
+            min-height: 620px;
+            display: flex;
+            align-items: flex-end;
+            background: url('{{ asset("front/images/products_image.png") }}') no-repeat;
+            background-size: cover;
+            overflow: hidden;
+        }
+
+        .banner-image-section .banner-content {
+            position: absolute;
+            bottom: 0;
+            transform: translateX(0%);
+        }
+    }
+
+    @media screen and (min-width:768px) and (max-width:991px) {
+        .banner-image-section .banner-content {
+            position: absolute;
+            bottom: 0;
+            transform: translateX(0%);
+            right: 20px;
+        }
+    }
+
+
+    #product-banner .container {
+        position: relative;
+        z-index: 2;
+    }
+
+    .banner-content {
+        color: #fff;
+        padding: 70px 0;
+        max-width: 640px;
+    }
+
+    .banner-title {
+        font-weight: 700;
+        line-height: 1.15;
+        margin-bottom: 1rem;
+        color: #fff;
+    }
+
+    .banner-subtitle {
+        font-size: clamp(1rem, 1.6vw, 1.25rem);
+        line-height: 1.7;
+        margin-bottom: 2rem;
+        color: rgba(255, 255, 255, 0.92);
+    }
+
+    /* Tablet */
+    @media (max-width: 767px) {
+        #product-banner {
+            min-height: 250px;
+        }
+
+        .banner-content {
+            text-align: center;
+            margin: 0 auto;
+            padding: 50px 0 0px;
+        }
+    }
+
+    /* Mobile */
+    @media (max-width: 575.98px) {
+        #product-banner {
+            min-height: 325px;
+            margin-bottom: 50px;
+        }
+
+        .banner-content {
+            padding: 40px 0 0px;
+        }
+    }
+</style>
 @endpush
 @push('style-css')
 
@@ -243,6 +324,7 @@
 </section>
 
 <!-- Products Intro section starts -->
+@if(false)
 <section id="products" class="pt-0  pb-80 features-section division">
     <div class="container">
         <div class="row justify-content-center">
@@ -287,8 +369,12 @@
                                 </span>
                                 @endif
                             </h3>
-                            <a href="{{ route('self.apply.main') }}" class="btn r-04 btn--theme hover--tra-black">
+                            <!-- <a href="{{ route('self.apply.main') }}" class="btn r-04 btn--theme hover--tra-black">
                                 Apply Now
+                            </a> -->
+                            <a href="{{ route('self.apply.main') }}" class="custom-btn">
+                                <span class="btn-text">Apply Now</span>
+                                <span class="btn-icon"> → </span>
                             </a>
                         </div>
                     </div>
@@ -315,8 +401,12 @@
                                 </span>
                                 @endif
                             </h3>
-                            <a href="{{ route('loan.agent.main') }}" class="btn r-04 btn--theme hover--tra-black">
+                            <!-- <a href="{{ route('loan.agent.main') }}" class="btn r-04 btn--theme hover--tra-black">
                                 Apply Now
+                            </a> -->
+                            <a href="{{ route('loan.agent.main') }}" class="custom-btn">
+                                <span class="btn-text">Apply Now</span>
+                                <span class="btn-icon"> → </span>
                             </a>
                         </div>
                     </div>
@@ -326,9 +416,39 @@
     </div>
     </div>
 </section>
+@endif
 <!-- Products Intro section ends -->
+<section class="full-banner w-100 pb-80 banner-image-section bg--blue-500" id="product-banner">
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-lg-5">
+            </div>
+            <div class="col-lg-7">
+                <div class="banner-content">
+                    <h2 class="banner-title">Get Personal Loan Approval in Minutes</h2>
+                    <p class="banner-subtitle">Quick approval. Minimal paperwork. Funds in your account.</p>
+                    <div class="row">
+                        <div class="col-lg-4 col-md-6 col-sm-6 col-12">
+                            <a href="{{ route('self.apply.main') }}" class="custom-btn text-center w-100 mb-sm-0 mb-3">
+                                <span class="btn-text">Self Apply</span>
+                                <span class="btn-icon">→</span>
+                            </a>
+                        </div>
+                        <div class="col-lg-4 col-md-6 col-sm-6 col-12">
+                            <a href="{{ route('loan.agent.main') }}" class="custom-btn text-center w-100">
+                                <span class="btn-text">Hire an Agent</span>
+                                <span class="btn-icon">→</span>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
 
-<section id="features-21" class="pt-0 pb-80 features-section division">
+
+<section id="features-21" class="pt-80 pb-80 features-section division">
     <div class="container">
         <div class="row justify-content-center">
             <div class="col-md-10 col-lg-10">
@@ -573,8 +693,12 @@
                                     <span class="s-16">Total amount</span>
                                     <span id="emitotalamount">₹<span>10,000</span></span>
                                 </div>
-                                <a href="{{ route('loan.agent.main') }}"
-                                    class="btn btn--green-400 hover--tra-black w-100">Apply for loan</a>
+                                <div class="text-center align-items-center justify-content-center m-auto">
+                                    <a href="{{ route('loan.agent.main') }}" class="custom-btn">
+                                        <span class="btn-text">Apply Now</span>
+                                        <span class="btn-icon"> → </span>
+                                    </a>
+                                </div>
                             </div>
                         </div>
                     </div>
@@ -822,8 +946,10 @@
                                     @component('components.ajax-error',['field'=>'desc'])@endcomponent
                                 </div>
                                 <div class="col-12 text-start">
-                                    <button type="submit" class="s-14 btn btn--green-400 hover--tra-black submit"
-                                        id="submit-btn">Submit Request</button>
+                                    <button type="submit" class="custom-btn text-center submit" id="submit-btn">
+                                        <span class="btn-text fw-semibold">Submit</span>
+                                        <span class="btn-icon"> → </span>
+                                    </button>
                                 </div>
                             </div>
                         </form>

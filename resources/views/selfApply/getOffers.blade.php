@@ -1,24 +1,25 @@
 @extends('layouts.selfapply')
 @push('css')
+<link href="{{ asset('front/css/custom.css') }}" rel="stylesheet" type="text/css" />
 <style>
-.accordion-button {
-    background-color: transparent !important;
-}
+    .accordion-button {
+        background-color: transparent !important;
+    }
 
-.accordion-button:focus {
-    box-shadow: none !important;
-}
+    .accordion-button:focus {
+        box-shadow: none !important;
+    }
 
-body {
-    -webkit-user-select: none;
-    -moz-user-select: none;
-    -ms-user-select: none;
-    user-select: none;
-}
+    body {
+        -webkit-user-select: none;
+        -moz-user-select: none;
+        -ms-user-select: none;
+        user-select: none;
+    }
 
-.bg-custom-blue-100{
-    background-color: #f5f9fc;
-}
+    .bg-custom-blue-100 {
+        background-color: #f5f9fc;
+    }
 </style>
 @endpush
 
@@ -132,7 +133,8 @@ body {
                                             <div class="fbox-txt">
                                                 <h6 class="s-12">Loan Amount</h6>
                                                 <p class="s-14 text-black">&#8377;
-                                                    {{ formatePriceIndia($offersData[0]['loanAmount']) }}</p>
+                                                    {{ formatePriceIndia($offersData[0]['loanAmount']) }}
+                                                </p>
                                                 <hr class="custm-HR" />
 
                                                 <h6 class="s-12">Max Tenure</h6>
@@ -175,7 +177,8 @@ body {
                                             <div class="fbox-txt">
                                                 <h6 class="s-12">Loan Amount</h6>
                                                 <p class="s-14 text-black">&#8377;
-                                                    {{ formatePriceIndia($item['loanAmount']) }}</p>
+                                                    {{ formatePriceIndia($item['loanAmount']) }}
+                                                </p>
                                                 <hr class="custm-HR" />
 
                                                 <h6 class="s-12">Max Tenure</h6>
@@ -191,8 +194,10 @@ body {
                                 </div>
                             </div>
                             <div class="col-md-12 form-btn mt-4">
-                                <button type="submit" class="btn btn--theme hover--tra-black submit unlockBtn w-100">Unlock
-                                    Your Offers!</button>
+                                <button type="submit" class="custom-btn text-center submit unlockBtn w-auto">
+                                    <span class="btn-text fw-semibold">Unlock Your Offers!</span>
+                                    <span class="btn-icon"> → </span>
+                                </button>
                             </div>
                         </form>
                     </div>
@@ -205,27 +210,27 @@ body {
 
 @push('scripts')
 <script>
-$(document).ready(function() {
-    $('.unlockBtn').click(function() {
-        var btn = $(this);
-        btn.html(
-            '<span class="spinner-border spinner-border-sm" role="status" aria-hidden="true"></span> Unlock Your Offers!'
+    $(document).ready(function() {
+        $('.unlockBtn').click(function() {
+            var btn = $(this);
+            btn.html(
+                '<span class="spinner-border spinner-border-sm" role="status" aria-hidden="true"></span> Unlock Your Offers!'
             ).prop('disabled', true);
-        setTimeout(function() {
-            window.location.href = `{{ route('self.apply.buyNow') }}`;
-        }, 2000); // Delay of 3 seconds (3000 milliseconds)
-    });
+            setTimeout(function() {
+                window.location.href = `{{ route('self.apply.buyNow') }}`;
+            }, 2000); // Delay of 3 seconds (3000 milliseconds)
+        });
 
-    function toggleAccordion() {
-        if ($(window).width() <= 767) {
-            $("#flush-collapseOne").removeClass("show"); // Collapse for small screens
-        } else {
-            $("#flush-collapseOne").addClass("show"); // Open for larger screens
+        function toggleAccordion() {
+            if ($(window).width() <= 767) {
+                $("#flush-collapseOne").removeClass("show"); // Collapse for small screens
+            } else {
+                $("#flush-collapseOne").addClass("show"); // Open for larger screens
+            }
         }
-    }
 
-    toggleAccordion(); // Call on page load
-    $(window).resize(toggleAccordion); // Call on window resize
-})
+        toggleAccordion(); // Call on page load
+        $(window).resize(toggleAccordion); // Call on window resize
+    })
 </script>
 @endpush

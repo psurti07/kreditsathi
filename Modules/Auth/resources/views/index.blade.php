@@ -43,6 +43,9 @@
   <link href="https://fonts.googleapis.com/css2?family=Rubik:wght@300;400;500;600;700&amp;display=swap" rel="stylesheet" />
   <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700&amp;display=swap" rel="stylesheet" />
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&amp;display=swap" rel="stylesheet" />
+
+  <link href="{{ asset('front/css/custom.css') }}" rel="stylesheet" type="text/css" />
+
   @include('stacks.css.selfapply.style')
   <style>
     .register-page-form .form-control {
@@ -53,70 +56,73 @@
 
 <body>
   <!-- PAGE CONTENT -->
-   <div id="page" class="page font--jakarta">
-			<div id="login" class="bg--fixed login-1 login-section division">
-				<div class="container">
-					<div class="row align-items-center justify-content-center">
-						<div class="col-md-6 col-lg-6 col-12">	
-							<div class="register-page-form border-success border">
-								<!-- TITLE -->
-								<div class="col-md-12">
-									<div class="register-form-title">
-                    <img src="{{ asset('front/images/logo/logo.png') }}" width="150" alt="{{ env('APP_NAME') }}">
-										<h4 class="mt-20 w-700">Log in to Portal</h4>
-									</div>
-								</div>
+  <div id="page" class="page font--jakarta">
+    <div id="login" class="bg--fixed login-1 login-section division">
+      <div class="container">
+        <div class="row align-items-center justify-content-center">
+          <div class="col-md-6 col-lg-6 col-12">
+            <div class="register-page-form border-success border">
+              <!-- TITLE -->
+              <div class="col-md-12">
+                <div class="register-form-title">
+                  <img src="{{ asset('front/images/logo/logo.png') }}" width="150" alt="{{ env('APP_NAME') }}">
+                  <h4 class="mt-20 w-700">Log in to Portal</h4>
+                </div>
+              </div>
 
-								<!-- LOGIN FORM -->
-								 <form name="signinform" class="row sign-in-form auth-form g-3" action="{{ route('customer.authenticate') }}" method="post">
-                    <!-- Form Input -->
-                    <div class="col-md-12">
-                      <p class="p-sm input-header">Mobile Number</p>
-                      <input class="form-control" type="text" name="mobile" placeholder="Mobile Number" id="mobile" maxlength="10" minlength="10" autocomplete="off" inputmode="numeric">
-                      @component('components.ajax-error',['field'=>'mobile'])@endcomponent
-                    </div>
+              <!-- LOGIN FORM -->
+              <form name="signinform" class="row sign-in-form auth-form g-3" action="{{ route('customer.authenticate') }}" method="post">
+                <!-- Form Input -->
+                <div class="col-md-12">
+                  <p class="p-sm input-header">Mobile Number</p>
+                  <input class="form-control" type="text" name="mobile" placeholder="Mobile Number" id="mobile" maxlength="10" minlength="10" autocomplete="off" inputmode="numeric">
+                  @component('components.ajax-error',['field'=>'mobile'])@endcomponent
+                </div>
 
-                    <!-- Form Input -->
-                    <div class="col-md-12">
-                      <p class="p-sm input-header">Password</p>
-                      <div class="wrap-input">
-                        <span class="btn-show-pass ico-20"><span class="flaticon-visibility eye-pass"></span></span>
-                        <input class="form-control password" type="password" name="password" id="password" placeholder="* * * * * * * * *">
-                        @component('components.ajax-error',['field'=>'password'])@endcomponent
-                      </div>
-                    </div>
+                <!-- Form Input -->
+                <div class="col-md-12">
+                  <p class="p-sm input-header">Password</p>
+                  <div class="wrap-input">
+                    <span class="btn-show-pass ico-20"><span class="flaticon-visibility eye-pass"></span></span>
+                    <input class="form-control password" type="password" name="password" id="password" placeholder="* * * * * * * * *">
+                    @component('components.ajax-error',['field'=>'password'])@endcomponent
+                  </div>
+                </div>
 
-                    <!-- Reset Password Link -->
-                    <div class="col-md-12">
-                      <div class="reset-password-link text-end">
-                        <p class="p-sm mb-0"><a href="{{ route('customer.forget.password') }}" class="color--theme">Forgot your password?</a></p>
-                      </div>
-                    </div>
-                    <!-- Form Submit Button -->
-                    <div class="col-md-12">
-                      <button type="submit" class="btn btn--theme  hover--tra-black submit btn-login mt-0">Log In</button>
-                    </div>
-                    <!-- Sign Up Link -->
-                    <div class="col-md-12">
-                      <p class="create-account text-center mt-0">
-                        Don't have an account? <a href="{{ route('self.apply.main') }}" class="color--theme">Sign up</a>
-                      </p>
-                    </div>
-								</form>	<!-- END LOGIN FORM -->
-							</div>	
-						</div>	
+                <!-- Reset Password Link -->
+                <div class="col-md-12">
+                  <div class="reset-password-link text-end">
+                    <p class="p-sm mb-0"><a href="{{ route('customer.forget.password') }}" class="color--theme">Forgot your password?</a></p>
+                  </div>
+                </div>
+                <!-- Form Submit Button -->
+                <div class="col-md-12 text-center">
+                  <button type="submit" class="custom-btn w-50 text-center submit">
+                    <span class="btn-text fw-semibold">Log In</span>
+                    <span class="btn-icon"> → </span>
+                  </button>
+                </div>
+                <!-- Sign Up Link -->
+                <div class="col-md-12">
+                  <p class="create-account text-center mt-0">
+                    Don't have an account? <a href="{{ route('self.apply.main') }}" class="color--theme">Sign up</a>
+                  </p>
+                </div>
+              </form> <!-- END LOGIN FORM -->
+            </div>
+          </div>
 
-            <!-- <div class="col-md-6 col-lg-6 col-12">
+          <!-- <div class="col-md-6 col-lg-6 col-12">
               <div class="d-flex justify-content-center align-items-start">
                   <div class="img-block">
                       <img src="{{ asset('front/images/Login-page-1.png') }}" alt="login now" class="img-fluid">
                   </div>
               </div>
             </div> -->
-			 		</div>	  <!-- End row -->	
-			 	</div> <!-- End container -->		
-			</div>	<!-- END LOGIN PAGE -->
-	 </div>
+        </div> <!-- End row -->
+      </div> <!-- End container -->
+    </div> <!-- END LOGIN PAGE -->
+  </div>
 
   <script src="{{ asset('front/js/jquery-3.7.0.min.js') }}"></script>
   <script src="{{ asset('front/js/bootstrap.min.js') }}"></script>

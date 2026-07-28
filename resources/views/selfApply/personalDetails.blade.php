@@ -1,21 +1,22 @@
 @extends('layouts.selfapply')
 @push('css')
+<link href="{{ asset('front/css/custom.css') }}" rel="stylesheet" type="text/css" />
 <style>
-.accordion-button {
-    background-color: transparent !important;
-}
+    .accordion-button {
+        background-color: transparent !important;
+    }
 
-.accordion-button:focus {
-    box-shadow: none !important;
-}
+    .accordion-button:focus {
+        box-shadow: none !important;
+    }
 
-.txt-block h2 {
-    margin-bottom: 0px !important;
-}
+    .txt-block h2 {
+        margin-bottom: 0px !important;
+    }
 
-.bg-custom-blue-100{
-    background-color: #f5f9fc;
-}
+    .bg-custom-blue-100 {
+        background-color: #f5f9fc;
+    }
 </style>
 @endpush
 
@@ -165,8 +166,10 @@
                                     @component('components.ajax-error',['field'=>'state'])@endcomponent
                                 </div>
                                 <div class="text-start">
-                                    <button type="submit" class="s-14 btn btn--theme hover--tra-black submit"
-                                        id="submit-btn">Continue</button>
+                                    <button type="submit" class="custom-btn text-center submit" id="submit-btn">
+                                        <span class="btn-text fw-semibold">Continue</span>
+                                        <span class="btn-icon"> → </span>
+                                    </button>
                                 </div>
                             </div>
                         </div>
@@ -180,95 +183,85 @@
 
 @push('scripts')
 <script>
-$(document).ready(function() {
-    $('#pancard').on('input', function() {
-        $(this).val($(this).val().toUpperCase());
-    });
-    $('.save-form-4').submit(function(event) {
-        var status = document.activeElement.innerHTML;
-        event.preventDefault();
-        if (status) {
-            $('.ajax-error').html('');
-            var data = new FormData(this);
-            $.ajax({
-                url: $(this).attr("action"),
-                headers: {
-                    'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
-                },
-                type: 'POST',
-                data: data,
-                processData: false,
-                contentType: false,
-                beforeSend: function() {
-                    $('#submit-btn').html(
-                        '<span class="spinner-border spinner-border-sm"></span> Continue'
-                        );
-                    $('#submit-btn').attr('disabled', true);
-                },
-                success: function(result) {
-                    $(this).attr("disabled", false);
-                    if (result.type === 'SUCCESS') {
-                        window.location.href = `{{ route('self.apply.get.offers') }}`;
-                    } else {
-                        toastr.error(result.message);
-                        $('#submit-btnsubmit-btn').html('Continue');
-                        $('#submit-btn').attr('disabled', false);
+    $(document).ready(function() {
+        $('#pancard').on('input', function() {
+            $(this).val($(this).val().toUpperCase());
+        });
+        $('.save-form-4').submit(function(event) {
+            var status = document.activeElement.innerHTML;
+            event.preventDefault();
+            if (status) {
+                $('.ajax-error').html('');
+                var data = new FormData(this);
+                $.ajax({
+                    url: $(this).attr("action"),
+                    headers: {
+                        'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+                    },
+                    type: 'POST',
+                    data: data,
+                    processData: false,
+                    contentType: false,
+                    success: function(result) {
+                        $(this).attr("disabled", false);
+                        if (result.type === 'SUCCESS') {
+                            window.location.href = `{{ route('self.apply.get.offers') }}`;
+                        } else {
+                            toastr.error(result.message);
+                        }
+                    },
+                    error: function(error) {
+                        $(this).attr("disabled", false);
+                        let errors = error.responseJSON.errors,
+                            errorsHtml = '';
+                        $.each(errors, function(key, value) {
+                            errorsHtml = '<strong>' + value[0] + '</strong>';
+                            $('.' + key).html(errorsHtml);
+                        });
                     }
-                },
-                error: function(error) {
-                    $(this).attr("disabled", false);
-                    let errors = error.responseJSON.errors,
-                        errorsHtml = '';
-                    $.each(errors, function(key, value) {
-                        errorsHtml = '<strong>' + value[0] + '</strong>';
-                        $('.' + key).html(errorsHtml);
-                    });
-                    $('#submit-btn').html('Continue');
-                    $('#submit-btn').attr('disabled', false);
-                }
-            });
-        }
-    });
-    /* get postal data like city and state */
-    $('#pincode').on('input', function() {
-        var pincode = $(this).val();
+                });
+            }
+        });
+        /* get postal data like city and state */
+        $('#pincode').on('input', function() {
+            var pincode = $(this).val();
 
-        // Only make request if pincode is of 6 digits
-        if (pincode.length === 6) {
-            $('#loader').show(); // Show loader
-            $.ajax({
-                url: `{{ route('self.apply.postal.details') }}`, // Route to the Laravel controller
-                type: 'POST',
-                data: {
-                    pincode: pincode
-                },
-                headers: {
-                    'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr(
-                        'content') // Pass CSRF token
-                },
-                success: function(response) {
-                    $('#loader').hide(); // Hide loader
-                    if (response.status === 'success') {
-                        // Populate District and State fields
-                        $('#city').val(response.district);
-                        $('#state').val(response.state);
-                    } else {
-                        alert(response.message);
-                        $('#district').val('');
-                        $('#state').val('');
+            // Only make request if pincode is of 6 digits
+            if (pincode.length === 6) {
+                $('#loader').show(); // Show loader
+                $.ajax({
+                    url: `{{ route('self.apply.postal.details') }}`, // Route to the Laravel controller
+                    type: 'POST',
+                    data: {
+                        pincode: pincode
+                    },
+                    headers: {
+                        'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr(
+                            'content') // Pass CSRF token
+                    },
+                    success: function(response) {
+                        $('#loader').hide(); // Hide loader
+                        if (response.status === 'success') {
+                            // Populate District and State fields
+                            $('#city').val(response.district);
+                            $('#state').val(response.state);
+                        } else {
+                            alert(response.message);
+                            $('#district').val('');
+                            $('#state').val('');
+                        }
+                    },
+                    error: function() {
+                        $('#loader').hide(); // Hide loader on error
+                        alert('An error occurred while fetching the details.');
                     }
-                },
-                error: function() {
-                    $('#loader').hide(); // Hide loader on error
-                    alert('An error occurred while fetching the details.');
-                }
-            });
-        } else {
-            // Clear the fields if pincode length is not 6 digits
-            $('#city').val('');
-            $('#state').val('');
-        }
-    });
-})
+                });
+            } else {
+                // Clear the fields if pincode length is not 6 digits
+                $('#city').val('');
+                $('#state').val('');
+            }
+        });
+    })
 </script>
 @endpush

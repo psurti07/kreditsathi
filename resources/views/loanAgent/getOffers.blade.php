@@ -1,5 +1,6 @@
 @extends('layouts.selfapply')
 @push('css')
+<link href="{{ asset('front/css/custom.css') }}" rel="stylesheet" type="text/css" />
 <style>
 .accordion-button {
     background-color: transparent !important;
@@ -189,8 +190,10 @@ body {
                                 </div>
                             </div>
                             <div class="col-md-12 form-btn mt-4">
-                                <button type="submit" class="btn btn--theme hover--tra-black submit unlockBtn w-100">Unlock
-                                    Your Offers!</button>
+                                <button type="submit" class="custom-btn text-center submit unlockBtn w-auto">
+                                    <span class="btn-text fw-semibold">Unlock Your Offers!</span>
+                                    <span class="btn-icon"> → </span>
+                                </button>
                             </div>
                         </form>
                     </div>

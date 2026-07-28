@@ -1,5 +1,6 @@
 @extends('layouts.front')
 @push('css')
+<link href="{{ asset('front/css/custom.css') }}" rel="stylesheet" type="text/css" />
 @endpush
 @push('style-css')
 @endpush

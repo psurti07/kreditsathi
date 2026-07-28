@@ -3,39 +3,39 @@
 <link rel="stylesheet" href="{{ asset('front/css/radiocards.css') }}">
 <link rel="stylesheet" href="{{ asset('front/css/custom.css') }}">
 <style>
-.accordion-button {
-    background-color: transparent !important;
-}
+    .accordion-button {
+        background-color: transparent !important;
+    }
 
-.accordion-button:focus {
-    box-shadow: none !important;
-}
+    .accordion-button:focus {
+        box-shadow: none !important;
+    }
 
-.txt-block h2 {
-    margin-bottom: 0px !important;
-}
+    .txt-block h2 {
+        margin-bottom: 0px !important;
+    }
 
-.cbox-1.ico-15 span {
-    top: 5px !important;
-}
+    .cbox-1.ico-15 span {
+        top: 5px !important;
+    }
 
-a#failed-btn {
-    background: #dc3545;
-    border: 1px solid #dc3545;
-}
+    a#failed-btn {
+        background: #dc3545;
+        border: 1px solid #dc3545;
+    }
 
-a#failed-btn:hover {
-    background: #bb2d3b !important;
-    color: #fff !important;
-}
+    a#failed-btn:hover {
+        background: #bb2d3b !important;
+        color: #fff !important;
+    }
 
-.card:hover .radio:checked {
-    border-color: transparent !important;
-}
+    .card:hover .radio:checked {
+        border-color: transparent !important;
+    }
 
-.bg-custom-blue-100{
-    background-color: #f5f9fc;
-}
+    .bg-custom-blue-100 {
+        background-color: #f5f9fc;
+    }
 </style>
 @endpush
 
@@ -187,8 +187,12 @@ a#failed-btn:hover {
                                                 </div>
                                             </div>
 
-                                            <button type="submit" class="btn btn-sm btn--theme hover--tra-black"
-                                                id="submit-btn">Buy Now</button>
+                                            <div class="text-center ">
+                                                <button type="submit" class="custom-btn w-50 text-center" id="submit-btn">
+                                                    <span class="btn-text fw-semibold">Buy Now</span>
+                                                    <span class="btn-icon"> → </span>
+                                                </button>
+                                            </div>
                                         </div>
                                     </label>
                                 </div>
@@ -274,77 +278,77 @@ a#failed-btn:hover {
 
 @push('scripts')
 <script>
-$(document).ready(function() {
-    // Set initial value based on the checked radio button
-    updateOrderAmount();
-
-    // Listen for the change event on the radio buttons with the class .plan-card
-    $('input[name="plan"]').change(function() {
+    $(document).ready(function() {
+        // Set initial value based on the checked radio button
         updateOrderAmount();
+
+        // Listen for the change event on the radio buttons with the class .plan-card
+        $('input[name="plan"]').change(function() {
+            updateOrderAmount();
+        });
+
+        // Function to update the order amount based on the selected radio button
+        function updateOrderAmount() {
+            // Get the value of the selected radio button
+            var selectedPlan = $('input[name="plan"]:checked').val();
+
+            // Determine the base price of the selected plan
+            var baseAmount = 0;
+            if (selectedPlan == "1") {
+                baseAmount = {
+                    {
+                        $selfApply - > inOffer ? $selfApply - > offeramount : $selfApply - > amount
+                    }
+                }; // Set price for Super Saver
+            } else if (selectedPlan == "2") {
+                baseAmount = {
+                    {
+                        $hireAgent - > inOffer ? $hireAgent - > offeramount : $hireAgent - > amount
+                    }
+                }; // Set price for Standard
+            }
+
+            // Calculate the total amount including 18% GST
+            var gst = 0.18;
+            var totalAmount = baseAmount + (baseAmount * gst);
+
+            // Use Math.floor to round down the total amount
+            var finalAmount = totalAmount;
+            $('#submit-btn').text('Purchase Plan: ₹' + Math.floor(baseAmount));
+            // Update the hidden input field with the final amount
+            $('#order_amount').val(finalAmount);
+        }
     });
-
-    // Function to update the order amount based on the selected radio button
-    function updateOrderAmount() {
-        // Get the value of the selected radio button
-        var selectedPlan = $('input[name="plan"]:checked').val();
-
-        // Determine the base price of the selected plan
-        var baseAmount = 0;
-        if (selectedPlan == "1") {
-            baseAmount = {
-                {
-                    $selfApply - > inOffer ? $selfApply - > offeramount : $selfApply - > amount
-                }
-            }; // Set price for Super Saver
-        } else if (selectedPlan == "2") {
-            baseAmount = {
-                {
-                    $hireAgent - > inOffer ? $hireAgent - > offeramount : $hireAgent - > amount
-                }
-            }; // Set price for Standard
+    var owl = $('.buyNow-carousel');
+    owl.owlCarousel({
+        items: 5,
+        loop: true,
+        autoplay: true,
+        navBy: 1,
+        nav: false,
+        autoplayTimeout: 4000,
+        autoplayHoverPause: false,
+        smartSpeed: 2000,
+        responsive: {
+            0: {
+                items: 4
+            },
+            550: {
+                items: 4
+            },
+            767: {
+                items: 5
+            },
+            768: {
+                items: 5
+            },
+            991: {
+                items: 5
+            },
+            1000: {
+                items: 5
+            }
         }
-
-        // Calculate the total amount including 18% GST
-        var gst = 0.18;
-        var totalAmount = baseAmount + (baseAmount * gst);
-
-        // Use Math.floor to round down the total amount
-        var finalAmount = totalAmount;
-        $('#submit-btn').text('Purchase Plan: ₹' + Math.floor(baseAmount));
-        // Update the hidden input field with the final amount
-        $('#order_amount').val(finalAmount);
-    }
-});
-var owl = $('.buyNow-carousel');
-owl.owlCarousel({
-    items: 5,
-    loop: true,
-    autoplay: true,
-    navBy: 1,
-    nav: false,
-    autoplayTimeout: 4000,
-    autoplayHoverPause: false,
-    smartSpeed: 2000,
-    responsive: {
-        0: {
-            items: 4
-        },
-        550: {
-            items: 4
-        },
-        767: {
-            items: 5
-        },
-        768: {
-            items: 5
-        },
-        991: {
-            items: 5
-        },
-        1000: {
-            items: 5
-        }
-    }
-});
+    });
 </script>
 @endpush

@@ -38,8 +38,6 @@ $(document).ready(function(){
 
     /* when click on edit button in modal tha perform */
     $(".edit-phoneNumber").on('click', function(){
-        $('#checkmodal').html('Apply Now');
-        $('#checkmodal').attr('disabled', false);
         $('#exampleModal').modal('hide');
         let mobileField = document.getElementById('mobile');
         if(mobileField.value == '' || mobileField.value == null){
@@ -66,10 +64,6 @@ $(document).ready(function(){
                 data: data,
                 processData: false,
                 contentType: false,
-                beforeSend: function () {
-                    $('#checkmodal').html('<span class="spinner-border spinner-border-sm"></span> Process Now');
-                    $('#checkmodal').attr('disabled', true);
-                },
                 /* success function handle */
                 success: function (result) {
                     $(this).attr("disabled", false);
@@ -119,8 +113,6 @@ $(document).ready(function(){
                     } else {
                         toastr.error(result.message);
                         $('#usererrormsg').html(result.message);
-                        $('#checkmodal').html('Apply Now');
-                        $('#checkmodal').attr('disabled', false);
                     }
                 },
                 /* error function handle */
@@ -131,8 +123,6 @@ $(document).ready(function(){
                         errorsHtml = '<strong>' + value[0] + '</strong>';
                         $('.' + key).html(errorsHtml);
                     });
-                    $('#checkmodal').html('Process Now');
-                    $('#checkmodal').attr('disabled', false);
                 }
             });
             /* ajax ends */

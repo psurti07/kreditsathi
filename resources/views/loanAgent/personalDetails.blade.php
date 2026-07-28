@@ -166,8 +166,10 @@
                                     @component('components.ajax-error',['field'=>'state'])@endcomponent
                                 </div>
                                 <div class="text-start">
-                                    <button type="submit" class="s-14 btn btn--theme hover--tra-black  submit"
-                                        id="submit-btn">Continue</button>
+                                    <button type="submit" class="custom-btn text-center submit" id="submit-btn">
+                                        <span class="btn-text fw-semibold">Continue</span>
+                                        <span class="btn-icon"> → </span>
+                                    </button>
                                 </div>
                             </div>
                         </div>
@@ -200,20 +202,12 @@ $(document).ready(function() {
                 data: data,
                 processData: false,
                 contentType: false,
-                beforeSend: function() {
-                    $('#submit-btn').html(
-                        '<span class="spinner-border spinner-border-sm"></span> Continue'
-                        );
-                    $('#submit-btn').attr('disabled', true);
-                },
                 success: function(result) {
                     $(this).attr("disabled", false);
                     if (result.type === 'SUCCESS') {
                         window.location.href = `{{ route('loan.agent.get.offers') }}`;
                     } else {
                         toastr.error(result.message);
-                        $('#submit-btnsubmit-btn').html('Continue');
-                        $('#submit-btn').attr('disabled', false);
                     }
                 },
                 error: function(error) {
@@ -224,8 +218,6 @@ $(document).ready(function() {
                         errorsHtml = '<strong>' + value[0] + '</strong>';
                         $('.' + key).html(errorsHtml);
                     });
-                    $('#submit-btn').html('Continue');
-                    $('#submit-btn').attr('disabled', false);
                 }
             });
         }

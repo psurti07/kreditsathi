@@ -96,9 +96,12 @@
                                         <input type="text" name="current_emi" id="current_emi" value="" class="numeric-input form-control" placeholder="Enter Current EMI (&#8377;) (If Any)" autocomplete="off" inputmode="numeric">
                                     </div>
                                 </div>
-
-                                <div class="col-md-12 form-btn">
-                                    <button type="submit" class="btn btn--theme hover--tra-black submit processNowBtn" id="processNowBtn" onclick="_tfa.push({notify: 'event', name: 'self_lead', id: 1776413})">Process Now</button>
+                                
+                                <div class="col-md-12 form-btn text-center">
+                                    <button type="submit" class="custom-btn text-center submit processNowBtn" id="processNowBtn" onclick="_tfa.push({notify: 'event', name: 'self_lead', id: 1776413})">
+                                        <span class="btn-text fw-semibold">Process Now</span>
+                                        <span class="btn-icon"> → </span>
+                                    </button>
                                 </div>
                             </div>
                         </form>

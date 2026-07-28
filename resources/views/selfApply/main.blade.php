@@ -127,7 +127,10 @@
                                 @component('components.ajax-error',['field'=>'mobile'])@endcomponent
                             </div>
                             <div class="col-md-12 form-btn">
-                                <button type="submit" id="checkmodal" class="btn btn--theme hover--tra-black submit">Apply Now</button>
+                                 <button type="submit" class="custom-btn text-center submit" id="checkmodal">
+                                        <span class="btn-text fw-semibold">Apply Now</span>
+                                        <span class="btn-icon"> → </span>
+                                    </button>
                             </div>
                             <div class="col-md-12"><span class="text-danger" id="usererrormsg"></span></div>
                         </div>
@@ -347,7 +350,10 @@
                         <p class="s-12">Didn’t receive the code? <a href="javascript:;" id="resendOtp" class="text-success">Resend OTP</a>&nbsp;<span id="timer" class="text-success">(00:15)</span></p>
                     </div>
                 </div>
-                <button type="submit" id="otpBtn" class="btn btn--theme hover--tra-black submit mt-3">Verify OTP</button>
+                <button type="submit" class="custom-btn text-center submit" id="otpBtn">
+                                        <span class="btn-text fw-semibold">Verify OTP</span>
+                                        <span class="btn-icon"> → </span>
+                                    </button>
             </form>
         </div>
     </div>

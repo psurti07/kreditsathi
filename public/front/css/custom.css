@@ -642,10 +642,11 @@
 }
 
 .custom-btn:hover .btn-text{
-    color:#111;
+    color:#fff;
 }
 
 .custom-btn:hover .btn-icon{
     transform:translateX(3px);
     background:transparent;
+    color:#fff;
 }

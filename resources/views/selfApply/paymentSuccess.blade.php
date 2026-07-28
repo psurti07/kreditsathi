@@ -47,10 +47,10 @@
                         <hr class="divider my-3" />
 
                         <div class="text-center">
-                            <a href="{{ route('customer.authenticate2') }}"
-                                class="btn btn-xs r-06 btn--theme hover--tra-black px-3 py-3">Access Pre-Approved
-                                Offers!</a>
-
+                            <a href="{{ route('customer.authenticate2') }}" class="custom-btn w-50">
+                                <span class="btn-text">Access Pre-Approved Offers!</span>
+                                <span class="btn-icon"> → </span>
+                            </a>
                             <p class="text-center mt-20">For any further queries, raise a request here: <a
                                     href="{{ route('front.raise.request') }}" class="text-success">Click Here</a>
                             </p>

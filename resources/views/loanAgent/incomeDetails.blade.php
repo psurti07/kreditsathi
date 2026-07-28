@@ -3,38 +3,38 @@
 {{-- write or link your css file and styles tag here --}}
 <link href="{{ asset('front/css/custom.css') }}" rel="stylesheet" type="text/css" />
 <style>
-.accordion-button {
-    background-color: #f8f8fb !important;
-}
-
-.accordion-button:focus {
-    box-shadow: none !important;
-}
-
-.contact-form .form-select {
-    margin-bottom: 0px !important;
-}
-
-@media screen and (max-width: 767px) {
-    .hero-section {
-        padding-top: 10px !important;
+    .accordion-button {
+        background-color: #f8f8fb !important;
     }
-}
 
-.input-group-text {
-    color: #666;
-    border: none;
-    background-color: #f5f6f8;
-    line-height: 1.3;
-    border-top-left-radius: 5px;
-    border-bottom-left-radius: 5px;
-    border-top-right-radius: 0px;
-    border-bottom-right-radius: 0px;
-}
+    .accordion-button:focus {
+        box-shadow: none !important;
+    }
 
-.bg-custom-blue-100{
-    background-color: #f5f9fc;
-}
+    .contact-form .form-select {
+        margin-bottom: 0px !important;
+    }
+
+    @media screen and (max-width: 767px) {
+        .hero-section {
+            padding-top: 10px !important;
+        }
+    }
+
+    .input-group-text {
+        color: #666;
+        border: none;
+        background-color: #f5f6f8;
+        line-height: 1.3;
+        border-top-left-radius: 5px;
+        border-bottom-left-radius: 5px;
+        border-top-right-radius: 0px;
+        border-bottom-right-radius: 0px;
+    }
+
+    .bg-custom-blue-100 {
+        background-color: #f5f9fc;
+    }
 </style>
 @endpush
 @section('content')
@@ -120,11 +120,12 @@
                                         inputmode="numeric">
                                 </div>
                             </div>
-                            <div class="col-md-12 form-btn">
-                                <button type="submit" class="btn btn--theme hover--tra-black submit processNowBtn"
-                                    id="processNowBtn"
-                                    onclick="_tfa.push({notify: 'event', name: 'hire_lead', id: 1776413})">Process
-                                    Now</button>
+
+                            <div class="col-md-12 form-btn text-center">
+                                <button type="submit" class="custom-btn text-center submit processNowBtn" id="processNowBtn" onclick="_tfa.push({notify: 'event', name: 'hire_lead', id: 1776413})">
+                                    <span class="btn-text fw-semibold">Process Now</span>
+                                    <span class="btn-icon"> → </span>
+                                </button>
                             </div>
                         </div>
                     </form>
@@ -157,52 +158,52 @@
 @endsection
 @push('scripts')
 <script>
-$(document).ready(function() {
-    $('.save-form-3').submit(function(event) {
-        var status = document.activeElement.innerHTML;
-        event.preventDefault();
-        if (status) {
-            $('.ajax-error').html('');
-            var data = new FormData(this);
-            $.ajax({
-                url: $(this).attr("action"),
-                headers: {
-                    'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
-                },
-                type: 'POST',
-                data: data,
-                processData: false,
-                contentType: false,
-                beforeSend: function() {
-                    $('#processNowBtn').html(
-                        '<span class="spinner-border spinner-border-sm"></span> Process Now'
+    $(document).ready(function() {
+        $('.save-form-3').submit(function(event) {
+            var status = document.activeElement.innerHTML;
+            event.preventDefault();
+            if (status) {
+                $('.ajax-error').html('');
+                var data = new FormData(this);
+                $.ajax({
+                    url: $(this).attr("action"),
+                    headers: {
+                        'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+                    },
+                    type: 'POST',
+                    data: data,
+                    processData: false,
+                    contentType: false,
+                    beforeSend: function() {
+                        $('#processNowBtn').html(
+                            '<span class="spinner-border spinner-border-sm"></span> Process Now'
                         );
-                    $('#processNowBtn').attr('disabled', true);
-                },
-                success: function(result) {
-                    $(this).attr("disabled", false);
-                    if (result.type === 'SUCCESS') {
-                        window.location.href = `{{ route('loan.agent.personal.details') }}`;
-                    } else {
-                        toastr.error(result.message);
+                        $('#processNowBtn').attr('disabled', true);
+                    },
+                    success: function(result) {
+                        $(this).attr("disabled", false);
+                        if (result.type === 'SUCCESS') {
+                            window.location.href = `{{ route('loan.agent.personal.details') }}`;
+                        } else {
+                            toastr.error(result.message);
+                            $('#processNowBtn').html('Process Now');
+                            $('#processNowBtn').attr('disabled', false);
+                        }
+                    },
+                    error: function(error) {
+                        $(this).attr("disabled", false);
+                        let errors = error.responseJSON.errors,
+                            errorsHtml = '';
+                        $.each(errors, function(key, value) {
+                            errorsHtml = '<strong>' + value[0] + '</strong>';
+                            $('.' + key).html(errorsHtml);
+                        });
                         $('#processNowBtn').html('Process Now');
                         $('#processNowBtn').attr('disabled', false);
                     }
-                },
-                error: function(error) {
-                    $(this).attr("disabled", false);
-                    let errors = error.responseJSON.errors,
-                        errorsHtml = '';
-                    $.each(errors, function(key, value) {
-                        errorsHtml = '<strong>' + value[0] + '</strong>';
-                        $('.' + key).html(errorsHtml);
-                    });
-                    $('#processNowBtn').html('Process Now');
-                    $('#processNowBtn').attr('disabled', false);
-                }
-            });
-        }
-    });
-})
+                });
+            }
+        });
+    })
 </script>
 @endpush

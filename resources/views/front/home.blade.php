@@ -89,12 +89,60 @@
             margin: auto;
         }
     }
+
+    #hero-7 {
+        background-color: #f5f9fc;
+    }
 </style>
 @endpush
 @push('style-css')
 
 @endpush
 @section('content')
+
+<section id="hero-7" class="hero-section bg--scroll pb-0">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-7 col-lg-7 col-12 m-auto">
+                <div class="hero-7-txt pb-3">
+                    <div class="text-start">
+                        <h1 class="s-40 w-700">Personal Loan Ki Har Raah Mein, Aapka Sathi</h1>
+                        <p class="mb-20">Get Personalized Financial Consultation and Services for Your Specific Needs</p>
+                        <a href="{{ route('self.apply.main') }}"
+                            class="btn r-12 btn--theme hover--tra-black last-link">Self Apply</a>
+                        <a href="{{ route('loan.agent.main') }}"
+                            class="btn r-12 btn--theme hover--tra-black last-link">Hire an Agent</a>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-5 col-lg-5 col-12 m-auto mt-md-5">
+                <div class="hero-7-img ps-0 text-center align-item-center justify-content-center m-auto">
+                    <div class="owl-carousel owl-theme main-wrapper-new">
+                        <div class="slide-box border-bottom border-3 border-primary">
+                            <img src="{{ asset('front/images/home/home-1.png') }}" class="img-fluid w-100">
+                        </div>
+                        <div class="slide-box border-bottom border-3 border-primary">
+                            <img src="{{ asset('front/images/home/home-2.png') }}" class="img-fluid w-100">
+                        </div>
+                        <div class="slide-box border-bottom border-3 border-primary">
+                            <img src="{{ asset('front/images/home/home-3.png') }}" class="img-fluid w-100">
+                        </div>
+                        <div class="slide-box border-bottom border-3 border-primary">
+                            <img src="{{ asset('front/images/home/home-4.png') }}" class="img-fluid w-100">
+                        </div>
+                        <div class="slide-box border-bottom border-3 border-primary">
+                            <img src="{{ asset('front/images/home/home-5.png') }}" class="img-fluid w-100">
+                        </div>
+                        <div class="slide-box border-bottom border-3 border-primary">
+                            <img src="{{ asset('front/images/home/home-6.png') }}" class="img-fluid w-100">
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
 <!-- main section starts -->
 <section id="hero-7" class="hero-section position-relative pb-0">
     <div class="container-fluid">
@@ -267,7 +315,7 @@
         <div class="fbox-wrapper text-center">
             <div class="row gx-5 gy-2 row-cols-1 row-cols-md-2 row-cols-lg-4">
                 <div class="col">
-                    <div class="fbox-8 fbox--hover fb-1 r-12 border mb-md-0 mb-2 h-100">
+                    <div class="fbox-8 fbox--hover fb-1 r-12 border shadow mb-md-0 mb-2 h-100">
                         <div class="fbox-ico ico-50 mb-4">
                             <div class="shape-ico color--theme">
                                 <img class="img-fluid" src="{{ asset('front/images/Easy-Access-to-Top-NBFC.png') }}"
@@ -281,7 +329,7 @@
                     </div>
                 </div>
                 <div class="col">
-                    <div class="fbox-8 fbox--hover fb-2 r-12 border mb-md-0 mb-2 h-100">
+                    <div class="fbox-8 fbox--hover fb-2 r-12 border shadow mb-md-0 mb-2 h-100">
                         <div class="fbox-ico ico-50 mb-4">
                             <div class="shape-ico color--theme">
                                 <img class="img-fluid" src="{{ asset('front/images/100_-Online-Process.png') }}"
@@ -295,7 +343,7 @@
                     </div>
                 </div>
                 <div class="col">
-                    <div class="fbox-8 fbox--hover fb-2 r-12 border mb-md-0 mb-2 h-100">
+                    <div class="fbox-8 fbox--hover fb-2 r-12 border shadow mb-md-0 mb-2 h-100">
                         <div class="fbox-ico ico-50 mb-4">
                             <div class="shape-ico color--theme">
                                 <img class="img-fluid" src="{{ asset('front/images/Expert-Financial-Consultation.png') }}"
@@ -309,7 +357,7 @@
                     </div>
                 </div>
                 <div class="col">
-                    <div class="fbox-8 fbox--hover fb-3 r-12 border mb-md-0 mb-2 h-100">
+                    <div class="fbox-8 fbox--hover fb-3 r-12 border shadow mb-md-0 mb-2 h-100">
                         <div class="fbox-ico ico-50 mb-4">
                             <div class="shape-ico color--theme">
                                 <img class="img-fluid" src="{{ asset('front/images/Your-Way-Your-Choice.png') }}"
@@ -422,28 +470,31 @@
     </div>
 </section>
 @endif
-<!-- Products Intro section ends -->
-<section class="full-banner w-100 pb-80 banner-image-section bg--blue-500" id="product-banner">
-    <div class="container-fluid">
-        <div class="row">
-            <div class="col-lg-5">
+
+<section class="pt-50 ct-02 content-section division bg--blue-500">
+    <div class="container">
+        <div class="row align-items-center justify-content-center m-auto">
+            <div class="col-lg-5 col-md-6 col-12 text-center order-2 order-md-1">
+                <img src="{{ asset('front/images/product-image.png') }}" alt="kreditsathi" class="img-fluid p-0">
             </div>
-            <div class="col-lg-7">
+            <div class="col-lg-7 col-md-6 col-12 order-1 order-md-2">
                 <div class="banner-content">
                     <h2 class="banner-title">Get Personal Loan Approval in Minutes</h2>
                     <p class="banner-subtitle">Quick approval. Minimal paperwork. Funds in your account.</p>
-                    <div class="row">
-                        <div class="col-lg-4 col-md-6 col-sm-6 col-12">
-                            <a href="{{ route('self.apply.main') }}" class="custom-btn text-center w-100 mb-sm-0 mb-3">
-                                <span class="btn-text">Self Apply</span>
-                                <span class="btn-icon">→</span>
-                            </a>
-                        </div>
-                        <div class="col-lg-4 col-md-6 col-sm-6 col-12">
-                            <a href="{{ route('loan.agent.main') }}" class="custom-btn text-center w-100">
-                                <span class="btn-text">Hire an Agent</span>
-                                <span class="btn-icon">→</span>
-                            </a>
+                    <div class="col-lg-12 col-md-12 col-7 align-items-center justify-content-center m-auto">
+                        <div class="row pb-3">
+                            <div class="col-lg-4 col-md-6 col-sm-6 col-12">
+                                <a href="{{ route('self.apply.main') }}" class="custom-btn text-center w-100 mb-sm-0 mb-3">
+                                    <span class="btn-text">Self Apply</span>
+                                    <span class="btn-icon">→</span>
+                                </a>
+                            </div>
+                            <div class="col-lg-4 col-md-6 col-sm-6 col-12">
+                                <a href="{{ route('loan.agent.main') }}" class="custom-btn text-center w-100">
+                                    <span class="btn-text">Hire an Agent</span>
+                                    <span class="btn-icon">→</span>
+                                </a>
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -717,7 +768,7 @@
 {{--<hr class="divider">--}}
 
 <!-- Quick and swift steps section starts -->
-<section id="features-2" class="pt-0 pb-80 features-section division">
+<section id="features-6" class="py-80 features-section division">
     <div class="container">
         <div class="row justify-content-center">
             <div class="col-md-10 col-lg-9">
@@ -727,87 +778,82 @@
                 </div>
             </div>
         </div>
-
         <div class="fbox-wrapper text-center">
             <div class="row g-4 row-cols-1 row-cols-md-2 row-cols-lg-3">
                 <div class="col">
-                    <div
-                        class="fb-1 r-12 px-4 py-3 d-block text-start bg--white-100 block-shadow r-08 features-card h-100">
-                        <div class="fbox-ico ico-40 mb-md-3 mb-3">
+                    <div class="fbox-8 fbox--hover fb-1 r-12 border shadow mb-md-0 mb-2 h-100">
+                        <div class="fbox-ico ico-50 mb-4">
                             <div class="shape-ico color--theme">
                                 <span class="flaticon-mobile-search"></span>
                             </div>
                         </div>
                         <div class="fbox-txt">
-                            <p class="mt-0">Enter your name, registered mobile number, and other necessary information.</p>
+                            <p>Enter your name, registered mobile number, and other necessary information.</p>
                         </div>
                     </div>
                 </div>
                 <div class="col">
-                    <div
-                        class="fb-1 r-12 px-4 py-3 d-block text-start bg--white-100 block-shadow r-08 features-card h-100">
-                        <div class="fbox-ico ico-40 mb-md-3 mb-3">
+                    <div class="fbox-8 fbox--hover fb-2 r-12 border shadow mb-md-0 mb-2 h-100">
+                        <div class="fbox-ico ico-50 mb-4">
                             <div class="shape-ico color--theme">
                                 <span class="flaticon-computer"></span>
                             </div>
                         </div>
                         <div class="fbox-txt">
-                            <p class="mt-0">Complete the remaining details to check your eligibility and view your pre-qualified loan offer(s). This is not the final offer.</p>
+                            <p>Complete the remaining details to check your eligibility and view your pre-qualified loan offer(s). This is not the final offer.</p>
                         </div>
                     </div>
                 </div>
                 <div class="col">
-                    <div
-                        class="fb-1 r-12 px-4 py-3 d-block text-start bg--white-100 block-shadow r-08 features-card h-100">
-                        <div class="fbox-ico ico-40 mb-md-3 mb-3">
+                    <div class="fbox-8 fbox--hover fb-2 r-12 border shadow mb-md-0 mb-2 h-100">
+                        <div class="fbox-ico ico-50 mb-4">
                             <div class="shape-ico color--theme">
                                 <span class="flaticon-credit-card"></span>
                             </div>
                         </div>
                         <div class="fbox-txt">
-                            <p class="mt-0">Choose a subscription plan to view and access your available pre-qualified loan offers.</p>
+                            <p>Choose a subscription plan to view and access your available pre-qualified loan offers.</p>
                         </div>
                     </div>
                 </div>
                 <div class="col">
-                    <div
-                        class="fb-1 r-12 px-4 py-3 d-block text-start bg--white-100 block-shadow r-08 features-card h-100">
-                        <div class="fbox-ico ico-40 mb-md-3 mb-3">
+                    <div class="fbox-8 fbox--hover fb-3 r-12 border shadow mb-md-0 mb-2 h-100">
+                        <div class="fbox-ico ico-50 mb-4">
                             <div class="shape-ico color--theme">
                                 <span class="flaticon-time"></span>
                             </div>
                         </div>
                         <div class="fbox-txt">
-                            <p class="mt-0">Our verification team will contact you within 24–48 hours to verify your details and guide you through the document submission process.</p>
+                            <p>Our verification team will contact you within 24–48 hours to verify your details and guide you through the document submission process.</p>
                         </div>
                     </div>
                 </div>
                 <div class="col">
-                    <div
-                        class="fb-1 r-12 px-4 py-3 d-block text-start bg--white-100 block-shadow r-08 features-card h-100">
-                        <div class="fbox-ico ico-40 mb-md-3 mb-3">
+                    <div class="fbox-8 fbox--hover fb-3 r-12 border shadow mb-md-0 mb-2 h-100">
+                        <div class="fbox-ico ico-50 mb-4">
                             <div class="shape-ico color--theme">
                                 <span class="flaticon-check-1"></span>
                             </div>
                         </div>
                         <div class="fbox-txt">
-                            <p class="mt-0">Your documents and profile will be verified by the NBFC in accordance with its eligibility criteria and terms & conditions.</p>
+                            <p>Your documents and profile will be verified by the NBFC in accordance with its eligibility criteria and terms & conditions.
+                            </p>
                         </div>
                     </div>
                 </div>
                 <div class="col">
-                    <div
-                        class="fb-1 r-12 px-4 py-3 d-block text-start bg--white-100 block-shadow r-08 features-card h-100">
-                        <div class="fbox-ico ico-40 mb-md-3 mb-3">
+                    <div class="fbox-8 fbox--hover fb-3 r-12 border shadow mb-md-0 mb-2 h-100">
+                        <div class="fbox-ico ico-50 mb-4">
                             <div class="shape-ico color--theme">
                                 <span class="flaticon-profits"></span>
                             </div>
                         </div>
                         <div class="fbox-txt">
-                            <p class="mt-0">The NBFC will review your application and make the final decision on loan approval and disbursement based on its eligibility criteria and policies.</p>
+                            <p>The NBFC will review your application and make the final decision on loan approval and disbursement based on its eligibility criteria and policies.</p>
                         </div>
                     </div>
                 </div>
+
             </div>
         </div>
     </div>
@@ -1118,6 +1164,34 @@
         autoplayTimeout: 4500,
         autoplayHoverPause: true,
         smartSpeed: 1500,
+        responsive: {
+            0: {
+                items: 1
+            },
+            767: {
+                items: 1
+            },
+            768: {
+                items: 1
+            },
+            991: {
+                items: 1
+            },
+            1000: {
+                items: 1
+            }
+        }
+    });
+
+    var owl = $('.main-wrapper-new');
+    owl.owlCarousel({
+        items: 1,
+        loop: true,
+        autoplay: true,
+        navBy: 1,
+        autoplayTimeout: 3000,
+        autoplayHoverPause: true,
+        smartSpeed: 1000,
         responsive: {
             0: {
                 items: 1

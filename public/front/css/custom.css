@@ -378,11 +378,37 @@
 }
 
 #features-6 .fbox-8:hover {
-  background: linear-gradient(180deg, #ffffff, #a1c4fc);
+  background-color: #a1c4fc;
+}
+
+#features-6 .shape-ico{
+    width: 90px;
+    height: 90px;
+    margin: 0 auto;
+    border-radius: 50%;
+    background: #fff;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+#features-6 .fbox-8:hover .shape-ico{
+    background: #fff;
 }
 
 .features-card:hover {
-  background: linear-gradient(180deg, #ffffff, #a1c4fc);
+  background-color: #a1c4fc;
+}
+
+#features-2 .shape-ico{
+    width: 90px;
+    height: 90px;
+    margin: 0 auto;
+    border-radius: 50%;
+    background: #fff;
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
 
 #statistic-1 {

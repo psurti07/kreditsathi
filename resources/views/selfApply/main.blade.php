@@ -140,8 +140,8 @@
                 </div>
             </div>
             <div class="col-md-12 col-lg-6">
-                <div class="img-block">
-                    <img src="{{ asset('front/images/self-apply-lendingpage-1.jpg') }}" alt="kreditsathi" class="img-fluid p-0 m-auto">
+                <div class="img-block border-bottom border-3 border-primary">
+                    <img src="{{ asset('front/images/self-apply-lendingpage-1.png') }}" alt="kreditsathi" class="img-fluid p-0 m-auto">
                 </div>
             </div>
         </div>
@@ -190,7 +190,7 @@
         <div class="fbox-wrapper text-center">
             <div class="row gx-5 gy-2 row-cols-1 row-cols-md-2 row-cols-lg-4">
                 <div class="col">
-                    <div class="fbox-8 fbox--hover fb-1 r-12 border mb-md-0 mb-2 h-100">
+                    <div class="fbox-8 fbox--hover fb-1 r-12 border shadow mb-md-0 mb-2 h-100">
                         <div class="fbox-ico ico-50 mb-4">
                             <div class="shape-ico color--theme">
                                 <img class="img-fluid" src="{{ asset('front/images/Easy-Access-to-Top-NBFC.png') }}"
@@ -204,7 +204,7 @@
                     </div>
                 </div>
                 <div class="col">
-                    <div class="fbox-8 fbox--hover fb-2 r-12 border mb-md-0 mb-2 h-100">
+                    <div class="fbox-8 fbox--hover fb-2 r-12 border shadow mb-md-0 mb-2 h-100">
                         <div class="fbox-ico ico-50 mb-4">
                             <div class="shape-ico color--theme">
                                 <img class="img-fluid" src="{{ asset('front/images/100_-Online-Process.png') }}"
@@ -218,7 +218,7 @@
                     </div>
                 </div>
                 <div class="col">
-                    <div class="fbox-8 fbox--hover fb-2 r-12 border mb-md-0 mb-2 h-100">
+                    <div class="fbox-8 fbox--hover fb-2 r-12 border shadow mb-md-0 mb-2 h-100">
                         <div class="fbox-ico ico-50 mb-4">
                             <div class="shape-ico color--theme">
                                 <img class="img-fluid" src="{{ asset('front/images/Expert-Financial-Consultation.png') }}"
@@ -232,7 +232,7 @@
                     </div>
                 </div>
                 <div class="col">
-                    <div class="fbox-8 fbox--hover fb-3 r-12 border mb-md-0 mb-2 h-100">
+                    <div class="fbox-8 fbox--hover fb-3 r-12 border shadow mb-md-0 mb-2 h-100">
                         <div class="fbox-ico ico-50 mb-4">
                             <div class="shape-ico color--theme">
                                 <img class="img-fluid" src="{{ asset('front/images/Your-Way-Your-Choice.png') }}"
@@ -255,7 +255,7 @@
     <div class="container">
         <div class="row justify-content-center">
             <div class="col-md-12 col-lg-12">
-                <img class="w-100 h-auto d-block" src="{{ asset('front/images/lending-page-middle.png') }}" alt="Banner">
+                <a href="{{ route('self.apply.main') }}"><img class="w-100 h-auto d-block" src="{{ asset('front/images/lending-page-middle.png') }}" alt="Banner"></a>
             </div>
         </div>
     </div>

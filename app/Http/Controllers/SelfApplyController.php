@@ -1121,7 +1121,7 @@ class SelfApplyController extends Controller
 
     public function buyDigitalPlan(Request $request)
     {
-        Log::info("buyDigitalPlan start");
+        Log::info("self apply buyDigitalPlan start");
         Log::info('SabPaisa Callback Response', $request->all());
         try {
             $grandtotal = $netamount = $cgstamount = $sgstamount = $igstamount = 0;
@@ -1144,7 +1144,7 @@ class SelfApplyController extends Controller
 
             $subpaisaData = array(
                 'rec_date' => date('Y-m-d H:i:s'),
-                'referenceid' => $request->merchant_txn_id,
+                'referenceid' => $request->transaction_id,
                 'txstatus' => $request->status,
                 'paymentmode' => $request->payment_mode
             );
@@ -1174,7 +1174,7 @@ class SelfApplyController extends Controller
                 ->first();
 
             Cookie::queue('applyid', $userData->id, $this->lifetime, '/', null, false, true, false, 'lax');
-            if ($responseCode == 'success') {
+            if ($request->status == 'SUCCESS') {
                 $cardno = random_code_num(16);
 
                 $membershipData = array(

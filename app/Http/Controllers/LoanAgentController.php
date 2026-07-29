@@ -641,7 +641,7 @@ class LoanAgentController extends Controller
                 'rec_date' => date('Y-m-d H:i:s'),
                 'entryfor' => $entryfor,
                 'userid' => Cookie::get('userid'),
-                'orderid' => $orderid,
+                'orderid' => $merchantTxnId,
                 'orderamount' => round($roundAmount),
                 'ordernote' => $productData->productname
             );
@@ -1196,6 +1196,8 @@ class LoanAgentController extends Controller
 
     public function buyDigitalPlan(Request $request)
     {
+        Log::info("Loan agent buyDigitalPlan start");
+        Log::info('SabPaisa Callback Response', $request->all());
         try {
             $grandtotal = $netamount = $cgstamount = $sgstamount = $igstamount = 0;
             $meta = selfApplyMeta();
@@ -1217,7 +1219,7 @@ class LoanAgentController extends Controller
 
             $subpaisaData = array(
                 'rec_date' => date('Y-m-d H:i:s'),
-                'referenceid' => $request->merchant_txn_id,
+                'referenceid' => $request->transaction_id,
                 'txstatus' => $request->status,
                 'paymentmode' => $request->payment_mode
             );
@@ -1247,7 +1249,7 @@ class LoanAgentController extends Controller
                 ->first();
             Cookie::queue('applyid', $userData->id, $this->lifetime, '/', null, false, true, false, 'lax');
 
-            if ($responseCode == 'success') {
+            if ($responseCode == 'SUCCESS') {
                 $cardno = random_code_num(16);
                 $membershipData = array(
                     'rec_date' => now(),

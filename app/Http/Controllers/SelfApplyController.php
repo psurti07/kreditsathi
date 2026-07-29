@@ -1121,6 +1121,8 @@ class SelfApplyController extends Controller
 
     public function buyDigitalPlan(Request $request)
     {
+        Log::info("buyDigitalPlan start");
+        Log::info('SabPaisa Callback Response', $request->all());
         try {
             $grandtotal = $netamount = $cgstamount = $sgstamount = $igstamount = 0;
             $meta = selfApplyMeta();

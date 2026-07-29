@@ -606,7 +606,7 @@ class SelfApplyController extends Controller
                 'rec_date' => date('Y-m-d H:i:s'),
                 'entryfor' => $entryfor,
                 'userid' => Cookie::get('userid'),
-                'orderid' => $orderid,
+                'orderid' => $merchantTxnId,
                 'orderamount' => round($roundAmount),
                 'ordernote' => $productData->productname
             );

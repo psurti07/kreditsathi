@@ -108,10 +108,14 @@
                     <div class="text-start">
                         <h1 class="s-40 w-700">Personal Loan Ki Har Raah Mein, Aapka Sathi</h1>
                         <p class="mb-20">Get Personalized Financial Consultation and Services for Your Specific Needs</p>
-                        <a href="{{ route('self.apply.main') }}"
-                            class="btn r-12 btn--theme hover--tra-black last-link">Self Apply</a>
-                        <a href="{{ route('loan.agent.main') }}"
-                            class="btn r-12 btn--theme hover--tra-black last-link">Hire an Agent</a>
+                        <a href="{{ route('self.apply.main') }}" class="custom-btn w-auto">
+                                <span class="btn-text pe-2">Self Apply</span>
+                                <span class="btn-icon"> → </span>
+                        </a>
+                        <a href="{{ route('loan.agent.main') }}" class="custom-btn w-auto">
+                                <span class="btn-text pe-2">Hire an Agent</span>
+                                <span class="btn-icon"> → </span>
+                        </a>
                     </div>
                 </div>
             </div>

@@ -1181,7 +1181,7 @@ class SelfApplyController extends Controller
                     'rec_date' => now()->setTimezone(config('app.timezone'))->format('Y-m-d H:i:s'),
                     'userid' => $userData->userid,
                     'registration_date' => now()->setTimezone(config('app.timezone'))->format('Y-m-d'),
-                    'expiry_date' => now()->setTimezone(config('app.timezone'))->addMonth()->format('Y-m-d'),
+                    'expiry_date' => date('Y-m-d', strtotime('+6 months')),
                     'card_number' => $cardno,
                     'amount' => $orderAmount,
                     'paymentid' => $txnId,

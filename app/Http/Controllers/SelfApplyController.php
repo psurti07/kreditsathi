@@ -1148,7 +1148,7 @@ class SelfApplyController extends Controller
                 'txstatus' => $request->status,
                 'paymentmode' => $request->payment_mode
             );
-            Log::info('subpaisa data - '. json_encode($subpaisaData));
+            Log::info('subpaisa data - ' . json_encode($subpaisaData));
             $response1 = SubpaisaEntry::where('id', $paymentData->id)->update($subpaisaData);
 
             $userData = $query = LoanApplications::select(
@@ -1390,98 +1390,96 @@ class SelfApplyController extends Controller
                 $state = strtolower(getStateAbbreviation($userData->state));
                 $orderData = orderdata($orderId, 'razorpayentry');
 
-                if (isset($responsecode) && $responsecode == 100) {
-                    UserRegistration::where('id', $userData->userid)->update(['process_step' => 5]);
+                UserRegistration::where('id', $userData->userid)->update(['process_step' => 5]);
 
-                    $staffID = assignAgentSelf();
-                    /* application remarks entry start */
-                    DB::table('application_remarks')->updateOrInsert(
-                        [
-                            'application_id' => $userData->id,
-                            'service'        => 5,
-                            'subject'        => 9,
-                        ],
-                        [
-                            'rec_date' => now(),
-                            'entry_at' => now(),
-                            'notes'    => '',
-                            'staff_id' => $staffID->id,
-                        ]
-                    );
-                    /* application remarks entry ends */
+                $staffID = assignAgentSelf();
+                /* application remarks entry start */
+                DB::table('application_remarks')->updateOrInsert(
+                    [
+                        'application_id' => $userData->id,
+                        'service'        => 5,
+                        'subject'        => 9,
+                    ],
+                    [
+                        'rec_date' => now(),
+                        'entry_at' => now(),
+                        'notes'    => '',
+                        'staff_id' => $staffID->id,
+                    ]
+                );
+                /* application remarks entry ends */
 
-                    /* fb conversion code starts here */
-                    $fbleads = FbAdsEntry::where('userid', $userData->userid)->orderByDesc('id')->limit(1)->first();
+                /* fb conversion code starts here */
+                $fbleads = FbAdsEntry::where('userid', $userData->userid)->orderByDesc('id')->limit(1)->first();
 
-                    $fbdata = array(
-                        'type' => 'self-apply',
-                        'firstname' => $firstname,
-                        'lastname' => $lastname,
-                        'mobile' => "91" . $userData->mobile,
-                        'email' => strtolower($userData->email),
-                        'city' => $city,
-                        'state' => $state,
-                        'zip' => $userData->pincode,
-                        'orderid' => $orderId,
-                        'odamount' => $orderData->orderamount,
-                        // 'sourceurl' => 'https://kreditsathi.com/self-apply/paymentSuccess'
-                        'sourceurl' => route('payment.success')
-                    );
+                $fbdata = array(
+                    'type' => 'self-apply',
+                    'firstname' => $firstname,
+                    'lastname' => $lastname,
+                    'mobile' => "91" . $userData->mobile,
+                    'email' => strtolower($userData->email),
+                    'city' => $city,
+                    'state' => $state,
+                    'zip' => $userData->pincode,
+                    'orderid' => $orderId,
+                    'odamount' => $orderData->orderamount,
+                    // 'sourceurl' => 'https://kreditsathi.com/self-apply/paymentSuccess'
+                    'sourceurl' => route('payment.success')
+                );
 
-                    if ($fbleads) {
-                        if ($fbleads->fbclid != "") {
-                            $fbclidpl = "fb.0." . round(microtime(true) * 1000) . "." . $fbleads->fbclid;
-                            $fbdata['fbclid'] = $fbclidpl;
-                        } else {
-                            $fbdata['fbclid'] = '';
-                        }
+                if ($fbleads) {
+                    if ($fbleads->fbclid != "") {
+                        $fbclidpl = "fb.0." . round(microtime(true) * 1000) . "." . $fbleads->fbclid;
+                        $fbdata['fbclid'] = $fbclidpl;
                     } else {
                         $fbdata['fbclid'] = '';
                     }
-
-                    $fbresponse = fbconversioncurl($fbdata, 16);
-                    $dataleads = array(
-                        'rec_date' => date('Y-m-d H:i:s'),
-                        'send_data' => json_encode($fbdata),
-                        'received_data' => $fbresponse
-                    );
-
-                    if ($fbleads) {
-                        $fbid = DB::table('fb_ads_entry')->where('id', $fbleads->id)->update($dataleads);
-                    }
-                    /* fb conversion code ends here */
-
-                    /* send payment success message starts */
-                    $msg = DB::table('sms_list')->where('type', 1)->where('slug', 'payment_successful')->first()->message;
-                    if ($msg != '#') {
-                        $senderId = DB::table('info_pages')->where('slug', 'sa-senderid')->first()->content;
-                        sendDynamicSMS($senderId, $msg, Cookie::get('user_mobile'), 'self');
-                    }
-                    /* send payment success message ends */
-
-                    /* interakt code starts here */
-                    $data2 = array(
-                        'phoneNumber' => Cookie::get('user_mobile'),
-                        'countryCode' => '+91',
-                        'traits' => array(
-                            'name' => Cookie::get('fullname')
-                        ),
-                        'tags' => array('Self Payment Successful')
-                    );
-                    $restrack1 = user_track($data2);
-
-                    $data3 = array(
-                        'phoneNumber' => Cookie::get('user_mobile'),
-                        'countryCode' => '+91',
-                        'event' => 'Self Payment Successful',
-                        'traits' => array(
-                            'userid' => Cookie::get('user_mobile'),
-                            'userpass' => Session::get('user_password')
-                        )
-                    );
-                    $restrack2 = event_track($data3);
-                    /* interakt code ends here */
+                } else {
+                    $fbdata['fbclid'] = '';
                 }
+
+                $fbresponse = fbconversioncurl($fbdata, 16);
+                $dataleads = array(
+                    'rec_date' => date('Y-m-d H:i:s'),
+                    'send_data' => json_encode($fbdata),
+                    'received_data' => $fbresponse
+                );
+
+                if ($fbleads) {
+                    $fbid = DB::table('fb_ads_entry')->where('id', $fbleads->id)->update($dataleads);
+                }
+                /* fb conversion code ends here */
+
+                /* send payment success message starts */
+                $msg = DB::table('sms_list')->where('type', 1)->where('slug', 'payment_successful')->first()->message;
+                if ($msg != '#') {
+                    $senderId = DB::table('info_pages')->where('slug', 'sa-senderid')->first()->content;
+                    sendDynamicSMS($senderId, $msg, Cookie::get('user_mobile'), 'self');
+                }
+                /* send payment success message ends */
+
+                /* interakt code starts here */
+                $data2 = array(
+                    'phoneNumber' => Cookie::get('user_mobile'),
+                    'countryCode' => '+91',
+                    'traits' => array(
+                        'name' => Cookie::get('fullname')
+                    ),
+                    'tags' => array('Self Payment Successful')
+                );
+                $restrack1 = user_track($data2);
+
+                $data3 = array(
+                    'phoneNumber' => Cookie::get('user_mobile'),
+                    'countryCode' => '+91',
+                    'event' => 'Self Payment Successful',
+                    'traits' => array(
+                        'userid' => Cookie::get('user_mobile'),
+                        'userpass' => Session::get('user_password')
+                    )
+                );
+                $restrack2 = event_track($data3);
+                /* interakt code ends here */
             }
             return view('selfApply.paymentSuccess', compact('meta', 'data', 'orderData'));
         } catch (\Exception $e) {

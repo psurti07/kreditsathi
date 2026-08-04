@@ -1492,98 +1492,96 @@ class LoanAgentController extends Controller
 
                 $staff = Administrations::where('id', $userData->staff_id)->first();
 
-                if (isset($responsecode) && $responsecode == 100) {
-                    UserRegistration::where('id', $userData->userid)->update(['process_step' => 5]);
+                UserRegistration::where('id', $userData->userid)->update(['process_step' => 5]);
 
-                    /* application remarks entry start */
-                    $staffID = assignAgent();
-                    $existingApplication = DB::table('application_remarks')->where(['service' => 5, 'subject' => 9, 'application_id' => $applyId])->first();
-                    if (!$existingApplication) {
-                        DB::table('application_remarks')->insert([
-                            'rec_date' => now(),
-                            'entry_at' => now(),
-                            'service' => 5,
-                            'subject' => 9,
-                            'notes' => '',
-                            'application_id' => $applyId,
-                            'staff_id' => $staffID->id
-                        ]);
-                    }
-                    /* application remarks entry ends */
+                /* application remarks entry start */
+                $staffID = assignAgent();
+                $existingApplication = DB::table('application_remarks')->where(['service' => 5, 'subject' => 9, 'application_id' => $applyId])->first();
+                if (!$existingApplication) {
+                    DB::table('application_remarks')->insert([
+                        'rec_date' => now(),
+                        'entry_at' => now(),
+                        'service' => 5,
+                        'subject' => 9,
+                        'notes' => '',
+                        'application_id' => $applyId,
+                        'staff_id' => $staffID->id
+                    ]);
+                }
+                /* application remarks entry ends */
 
-                    /* send payment success message starts */
-                    $msg = DB::table('sms_list')->where('type', 2)->where('slug', 'payment_successful')->first()->message;
-                    if ($msg != '#') {
-                        $senderId = DB::table('info_pages')->where('slug', 'la-senderid')->first()->content;
-                        sendDynamicSMS($senderId, $msg, Cookie::get('user_mobile'), 'hire');
-                    }
-                    /* send payment success message ends */
+                /* send payment success message starts */
+                $msg = DB::table('sms_list')->where('type', 2)->where('slug', 'payment_successful')->first()->message;
+                if ($msg != '#') {
+                    $senderId = DB::table('info_pages')->where('slug', 'la-senderid')->first()->content;
+                    sendDynamicSMS($senderId, $msg, Cookie::get('user_mobile'), 'hire');
+                }
+                /* send payment success message ends */
 
-                    /* fb conversion code starts here */
-                    $fbleads = FbAdsEntry::where('userid', $userData->userid)->orderByDesc('id')->limit(1)->first();
+                /* fb conversion code starts here */
+                $fbleads = FbAdsEntry::where('userid', $userData->userid)->orderByDesc('id')->limit(1)->first();
 
-                    $fbdata = array(
-                        'type' => 'hire-agent',
-                        'firstname' => $firstname,
-                        'lastname' => $lastname,
-                        'mobile' => "91" . $userData->mobile,
-                        'email' => strtolower($userData->email),
-                        'city' => $city,
-                        /*'dob' => date('Ymd',strtotime($userData->dob)),*/
-                        'state' => $state,
-                        'zip' => $userData->pincode,
-                        'orderid' => $orderId,
-                        'odamount' => $orderData->orderamount,
-                        'sourceurl' => 'https://Kreditsathi.com/loan-agent/paymentSuccess'
-                    );
+                $fbdata = array(
+                    'type' => 'hire-agent',
+                    'firstname' => $firstname,
+                    'lastname' => $lastname,
+                    'mobile' => "91" . $userData->mobile,
+                    'email' => strtolower($userData->email),
+                    'city' => $city,
+                    /*'dob' => date('Ymd',strtotime($userData->dob)),*/
+                    'state' => $state,
+                    'zip' => $userData->pincode,
+                    'orderid' => $orderId,
+                    'odamount' => $orderData->orderamount,
+                    'sourceurl' => 'https://Kreditsathi.com/loan-agent/paymentSuccess'
+                );
 
-                    if ($fbleads) {
-                        if ($fbleads->fbclid != "") {
-                            $fbclidpl = "fb.0." . round(microtime(true) * 1000) . "." . $fbleads->fbclid;
-                            $fbdata['fbclid'] = $fbclidpl;
-                        } else {
-                            $fbdata['fbclid'] = '';
-                        }
+                if ($fbleads) {
+                    if ($fbleads->fbclid != "") {
+                        $fbclidpl = "fb.0." . round(microtime(true) * 1000) . "." . $fbleads->fbclid;
+                        $fbdata['fbclid'] = $fbclidpl;
                     } else {
                         $fbdata['fbclid'] = '';
                     }
-
-                    $fbresponse = fbconversioncurl($fbdata, 16);
-                    $dataleads = array(
-                        'rec_date' => now(),
-                        'send_data' => json_encode($fbdata),
-                        'received_data' => $fbresponse
-                    );
-                    if ($fbleads) {
-                        $fbid = DB::table('fb_ads_entry')->where('id', $fbleads->id)->update($dataleads);
-                    }
-                    /* fb conversion code ends here */
-
-                    /* interakt code starts here */
-                    $data2 = array(
-                        'phoneNumber' => Cookie::get('user_mobile'),
-                        'countryCode' => '+91',
-                        'traits' => array(
-                            'name' => Cookie::get('fullname')
-                        ),
-                        'tags' => array('Hire Payment Successful')
-                    );
-                    $restrack1 = user_track($data2);
-
-                    $data3 = array(
-                        'phoneNumber' => Cookie::get('user_mobile'),
-                        'countryCode' => '+91',
-                        'event' => 'Hire Payment Successful',
-                        'traits' => array(
-                            'userid' => Cookie::get('user_mobile'),
-                            'userpass' => Session::get('user_password')
-                        )
-                    );
-                    //Log::info('Hire Payment Success '. json_encode($data3));
-                    $restrack2 = event_track($data3);
-
-                    /* interakt code ends here */
+                } else {
+                    $fbdata['fbclid'] = '';
                 }
+
+                $fbresponse = fbconversioncurl($fbdata, 16);
+                $dataleads = array(
+                    'rec_date' => now(),
+                    'send_data' => json_encode($fbdata),
+                    'received_data' => $fbresponse
+                );
+                if ($fbleads) {
+                    $fbid = DB::table('fb_ads_entry')->where('id', $fbleads->id)->update($dataleads);
+                }
+                /* fb conversion code ends here */
+
+                /* interakt code starts here */
+                $data2 = array(
+                    'phoneNumber' => Cookie::get('user_mobile'),
+                    'countryCode' => '+91',
+                    'traits' => array(
+                        'name' => Cookie::get('fullname')
+                    ),
+                    'tags' => array('Hire Payment Successful')
+                );
+                $restrack1 = user_track($data2);
+
+                $data3 = array(
+                    'phoneNumber' => Cookie::get('user_mobile'),
+                    'countryCode' => '+91',
+                    'event' => 'Hire Payment Successful',
+                    'traits' => array(
+                        'userid' => Cookie::get('user_mobile'),
+                        'userpass' => Session::get('user_password')
+                    )
+                );
+                //Log::info('Hire Payment Success '. json_encode($data3));
+                $restrack2 = event_track($data3);
+
+                /* interakt code ends here */
             }
             return view('loanAgent.paymentSuccess', compact('data', 'orderData', 'meta'));
         } catch (\Exception $e) {

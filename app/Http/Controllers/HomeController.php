@@ -281,4 +281,17 @@ class HomeController extends Controller
 
         dd($res);
     }
+
+    public function testevent(){
+        $data3 = array(
+            'phoneNumber' => '9408881214',
+            'countryCode' => '+91',
+            'event' => 'Self Payment Successful',
+            'traits' => array(
+                'userid' => '9408881214',
+                'userpass' => '123456'
+            )
+        );
+        $restrack2 = event_track($data3);
+    }
 }

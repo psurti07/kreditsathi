@@ -1488,7 +1488,7 @@ class LoanAgentController extends Controller
                 $city = strtolower(preg_replace("/[^a-zA-Z]+/", "", $userData->city));
                 $state = strtolower(getStateAbbreviation($userData->state));
                 //$orderData = orderdata($orderId,'phonepe_entry');
-                $orderData = orderdata($orderId, 'razorpayentry');
+                $orderData = orderdata($orderId, 'subpaisa_entry');
 
                 $staff = Administrations::where('id', $userData->staff_id)->first();
 

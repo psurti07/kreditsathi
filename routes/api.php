@@ -57,3 +57,6 @@ Route::post('/bdpg-response',[BilldeskController::class, 'bdResponse']);
 Route::post('/veegah-response',[\App\Http\Controllers\pg\VeegahController::class, 'response'])->name('api.veegah.response');
 Route::post('/zwitch-response',[\App\Http\Controllers\pg\ZwitchController::class, 'response'])->name('api.zwitch.response');
 Route::post('/paytm-response',[\App\Http\Controllers\pg\PaytmController::class, 'response'])->name('api.paytm.response');
+
+
+Route::post('/webhooks/razorpay-response',[SelfApplyController::class, 'razorpayResponse'])->name('api.razorpay.response');

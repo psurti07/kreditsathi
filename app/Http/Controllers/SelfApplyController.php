@@ -634,7 +634,6 @@ class SelfApplyController extends Controller
             Log::info($response);
 
             return redirect()->away($response['response']['checkoutUrl'] . '?clientSecret=' . $response['response']['clientSecret']);
-
         } catch (\Exception $e) {
             Log::error('selfapply checkout - checkout method error occured: ' . $e->getMessage());
             return redirect('/error')->with('error', 'Oops! Something went wrong.');
@@ -1328,6 +1327,11 @@ class SelfApplyController extends Controller
         return false; // No user found in either table.
     }
 
+    public function razorpayResponse(Request $request)
+    {
+        // d8Vc3AAUD2d@sSe
+        Log::info("razorpayResponse", [$request->all()]);
+    }
 
     public function offer1()
     {
@@ -2253,7 +2257,7 @@ class SelfApplyController extends Controller
         return view('selfApply.offers.offer-4', compact('meta', 'productData'));
     }
 
-    
+
     public function getOffer4_razorpay(Request $request)
     {
         try {
@@ -2531,7 +2535,7 @@ class SelfApplyController extends Controller
             $message = "{$merchantId}|{$merchantTxnId}|{$amountInPaise}|{$currency}|{$timestamp}";
             $checksum = hash_hmac('sha256', $message, $secretKey);
 
-             $subpaisaData = array(
+            $subpaisaData = array(
                 'rec_date' => date('Y-m-d H:i:s'),
                 'entryfor' => 9,
                 'userid' => $offerId,
@@ -2575,7 +2579,7 @@ class SelfApplyController extends Controller
     public function offer4Response(Request $request)
     {
         try {
-            Log::info('offer2Response request data - '. json_encode($request->all()));
+            Log::info('offer2Response request data - ' . json_encode($request->all()));
 
             $meta = selfApplyMeta();
 
@@ -2586,9 +2590,9 @@ class SelfApplyController extends Controller
                 'txstatus' => $request->status,
                 'paymentmode' => $request->payment_mode
             );
-            Log::info('subpaisa data - '. json_encode($subpaisaData));
+            Log::info('subpaisa data - ' . json_encode($subpaisaData));
             $response1 = SubpaisaEntry::where('id', $paymentData->id)->update($subpaisaData);
-            Log::info('subpaisa response - '. $response1);
+            Log::info('subpaisa response - ' . $response1);
             if ($request->status == 'SUCCESS') {
                 $cardno = random_code_num(16);
                 $userData = Cardoffer::where('id', $paymentData->userid)->first();

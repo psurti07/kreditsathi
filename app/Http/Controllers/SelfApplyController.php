@@ -493,7 +493,7 @@ class SelfApplyController extends Controller
     }
 
     /* checkout the data */
-    public function checkout_razorpay(Request $request)
+    public function checkout(Request $request)
     {
         try {
             $inputs = $request->all();
@@ -555,7 +555,7 @@ class SelfApplyController extends Controller
         }
     }
 
-    public function checkout(Request $request)
+    public function checkout_subpaisa(Request $request)
     {
         try {
             $inputs = $request->all();
@@ -646,237 +646,7 @@ class SelfApplyController extends Controller
         dd('Callback function call.Go Back and make furthur process');
     }
 
-    /* buyDigitalPlan function handle */
-    public function buyDigitalPlan_PHONEPE(Request $request)
-    {
-        try {
-            //Log::info('request data - '.json_encode($request->all()));
-            $grandtotal = $netamount = $cgstamount = $sgstamount = $igstamount = 0;
-            $meta = selfApplyMeta();
-            $password = trim(random_code(6));
-            Session::put('user_password', $password);
-            if (!$request->has(['code', 'transactionId', 'providerReferenceId'])) {
-                //Log::info('in if self');
-                return redirect("self-apply");
-            }
-
-            $paymentData = PhonrPeEntry::where('orderid', $request->input('transactionId'))->first();
-
-            $txStatus = $request->input('code');
-            Session::put('responsecode', $txStatus);
-            $transactionId = $request->input('transactionId');
-            Session::put('orderid', $transactionId);
-            $referenceId = $request->input('providerReferenceId');
-
-            $phonepedata = array(
-                'rec_date' => date('Y-m-d H:i:s'),
-                'referenceid' => $referenceId,
-                'txstatus' => $txStatus
-            );
-            $response1 = PhonrPeEntry::where('id', $paymentData->id)->update($phonepedata);
-            $userData = $query = LoanApplications::select(
-                'user_registrations.id as userid',
-                'user_registrations.first_name',
-                'user_registrations.last_name',
-                'user_registrations.mobile',
-                'user_registrations.email',
-                'user_registrations.city',
-                'user_registrations.state',
-                'user_registrations.isUser',
-                'user_registrations.acc_type',
-                'user_registrations.process_step',
-                'loan_applications.id',
-                'loan_applications.loan_type',
-                'loan_applications.loan_amount',
-                'loan_applications.monthly_income',
-                'loan_applications.currentemi'
-            )
-                ->join('user_registrations', 'user_registrations.id', '=', 'loan_applications.userid')
-                ->where('user_registrations.id', $paymentData->userid)
-                ->where('user_registrations.isDelete', 0)
-                ->first();
-            if ($txStatus == "PAYMENT_SUCCESS") {
-                $isEntry = MembershipOrder::where('paymentid', $referenceId)
-                    ->where('isDelete', 0)
-                    ->count();
-                if ($isEntry == 0) {
-                    Cookie::queue('applyid', $userData->id, $this->lifetime, '/', null, false, true, false, 'lax');
-                    $cardno = random_code_num(16);
-                    $productslug = "self-apply";
-                    $invprefix = "SA_";
-                    $productData = Product::where('productslug', $productslug)->first();
-                    $netamount = ($productData->inOffer == 1) ? $productData->offeramount : $productData->amount;
-
-                    if ($userData->state == 'Gujarat') {
-                        $cgstamount = $netamount * 0.09;
-                        $sgstamount = $netamount * 0.09;
-                    } else {
-                        $igstamount = $netamount * 0.18;
-                    }
-                    $grandtotal = $netamount + $cgstamount + $sgstamount + $igstamount;
-
-                    $membershipData = array(
-                        'rec_date' => date('Y-m-d H:i:s'),
-                        'userid' => $userData->userid,
-                        'registration_date' => date('Y-m-d'),
-                        'expiry_date' => date('Y-m-d', strtotime('+3 months')),
-                        'card_number' => $cardno,
-                        'amount' => $grandtotal,
-                        'paymentid' => $transactionId,
-                        'isActive' => 1,
-                        'isDelete' => 0
-                    );
-                    $existingMembership = MembershipOrder::where('userid', $userData->userid)
-                        ->where('paymentid', $transactionId)
-                        ->first();
-
-                    //Log::info('membership data - '. json_encode($membershipData));
-                    if (!$existingMembership) {
-                        $membershipId = MembershipOrder::create($membershipData)->id;
-                    }
-
-                    if ($password == '' || $password == null) {
-                        dd('session null');
-                    }
-                    $passwordkey = Hash::make($request->user_password);
-                    $refcode = strtolower(substr(str_replace(" ", "", $userData->first_name), 0, 3));
-                    $refcode .= substr($userData->mobile, -4);
-                    $staffID = assignAgentSelf();
-
-                    $regData = array(
-                        'rec_date' => date('Y-m-d H:i:s'),
-                        'update_date' => date('Y-m-d H:i:s'),
-                        'staff_id' => $staffID->id,
-                        'password' => $passwordkey,
-                        'refcode' => $refcode,
-                        'process_step' => 5,
-                        'isUser' => 2,
-                        'acc_type' => 1
-                    );
-                    $response2 = UserRegistration::where('id', $userData->userid)->update($regData);
-                    $invoiceNo = SiteOption::where('option_key', 'newinvoiceno')
-                        ->select('option_value')
-                        ->first();
-                    $existingInvoice = Invoice::where('userid', $userData->userid)
-                        ->where('cardid', $membershipId)
-                        ->where('inv_number', $invoiceNo->option_value)
-                        ->first();
-
-                    $invData3 = array(
-                        'rec_date' => date('Y-m-d H:i:s'),
-                        'userid' => $userData->userid,
-                        'cardid' => $membershipId,
-                        // 'inv_for' => $invfor,
-                        'inv_prefix' => $invprefix,
-                        'inv_number' => $invoiceNo->option_value,
-                        'inv_date' => date('Y-m-d'),
-                        'inv_price' => $netamount,
-                        'inv_cgst' => $cgstamount,
-                        'inv_sgst' => $sgstamount,
-                        'inv_igst' => $igstamount,
-                        'inv_grandtotal' => $grandtotal,
-                        'isdelete' => 0
-                    );
-
-                    if (!$existingInvoice) {
-                        DB::beginTransaction();
-                        try {
-                            //Log::info('invData - '.json_encode($invData3));
-                            $responseinvoice = Invoice::create($invData3)->id;
-                            $invNoData = array(
-                                'rec_date' => date('Y-m-d H:i:s'),
-                                'option_value' => $invoiceNo->option_value + 1
-                            );
-                            $updateInvoiceNo = SiteOption::where('option_key', 'newinvoiceno')->update($invNoData);
-                            DB::commit();
-                        } catch (\Exception $e) {
-                            DB::rollBack();
-                            Log::error('Invoice creation failed', ['error' => $e->getMessage()]);
-                        }
-                        /*$data4 = array(
-                            'payout' => 0,
-                            'payout_amount' => $netamount * env('CU_PAYOUT_RATIO'),
-                            'order_amount' => $netamount
-                        );*/
-                        //$response4 = 'self-apply/paymentFailed';
-                        /* wp campaign */
-                        /*$user = UserTree::where('subuserid', $userData->userid)
-                            ->orderBy('id', 'desc')
-                            ->first();
-
-                        if ($user) {
-                            // Update the record where the 'id' matches
-                            $updated = UserTree::where('id', $user->id)->update($data4);
-                        }*/
-
-                        //Log::info('response 4 - '. $response4);
-                        $mailData = array(
-                            'fullname' => $userData->first_name . ' ' . $userData->last_name,
-                            'mobile' => $userData->mobile,
-                            'email' => $userData->email,
-                            'password' => $password,
-                            'order_number' => $transactionId,
-                            'order_date' => date('d-m-Y'),
-                            'order_amount' => $grandtotal,
-                            'transactionId' => $referenceId,
-                            'agentName' => $staffID->fullname,
-                            'agentMobile' => $staffID->mobile
-                        );
-                        $sendGreetings = view('mail.welcomeGreetings', $mailData)->render();
-                        $invAttach = array_merge(
-                            $invData3,
-                            [
-                                'fullname' => $userData->first_name . ' ' . $userData->last_name,
-                                'city' => $userData->city,
-                                'mobile' => $userData->mobile,
-                                'email' => $userData->email,
-                                'acc_type' => $userData->acc_type,
-                                'state' => $userData->state,
-                                'isCustomer' => 0
-                            ],
-                            [
-                                'card_number' => $membershipData['card_number'],
-                                'registration_date' => $membershipData['registration_date'],
-                                'expiry_date' => $membershipData['expiry_date'],
-                                'paymentid' => $membershipData['paymentid'],
-                            ]
-                        );
-                        $invoiceData = view('mail.invoice', $invAttach)->render();
-                        $pdf = Pdf::loadHTML($invoiceData)->setPaper('A4', 'portrait')->output();
-                        $base64Pdf = base64_encode($pdf);
-
-                        /* creating attachments array */
-                        $attachments = [
-                            [
-                                'content' => $base64Pdf,
-                                'name' => 'Invoice.pdf'
-                            ]
-                        ];
-
-                        /* send email in brevo */
-                        sendBrevoHtmlMail2($mailData, 'Congratulations! Payment Successful for Kreditsathi Self-Apply Plan.', $sendGreetings, 3, $attachments);
-                    }
-                    if ($response2 > 0) {
-                        $redRoute = 'self-apply/paymentSuccess'; // Row was updated
-                    } else {
-                        $redRoute = 'self-apply/paymentFailed'; // No rows were updated
-                    }
-                    return redirect($redRoute);
-                } else {
-                    return redirect("self-apply/paymentSuccess");
-                }
-            } else if ($txStatus == "PAYMENT_FAILURE") {
-                return redirect("self-apply/paymentFailed");
-            } else {
-                return redirect("self-apply/paymentFailed");
-            }
-        } catch (\Exception $e) {
-            Log::error('checkout method error occured: ' . $e->getMessage());
-            return redirect('/error')->with('error', 'Ops! Something went wrong.');
-        }
-    }
-
-    public function buyDigitalPlan_razorpay(Request $request)
+    public function buyDigitalPlan(Request $request)
     {
         try {
             $grandtotal = $netamount = $cgstamount = $sgstamount = $igstamount = 0;
@@ -1119,7 +889,7 @@ class SelfApplyController extends Controller
         }
     }
 
-    public function buyDigitalPlan(Request $request)
+    public function buyDigitalPlan_subpaisa(Request $request)
     {
         Log::info("self apply buyDigitalPlan start");
         Log::info('SabPaisa Callback Response', $request->all());
@@ -2483,228 +2253,8 @@ class SelfApplyController extends Controller
         return view('selfApply.offers.offer-4', compact('meta', 'productData'));
     }
 
-    // public function getOffer4(Request $request)
-    // {
-    //     try {
-    //         $inputs = $request->all();
-    //         $request->validate([
-    //             'first_name' => 'required',
-    //             'last_name' => 'required',
-    //             'email' => 'required|email',
-    //             'mobile' => ['required', 'numeric', 'regex:/^[6-9]\d{9}$/']
-    //         ]);
-    //         /* first check in user registration */
-    //         $profile = $this->checkUserProcess($inputs);
-    //         if ($profile) {
-    //             return response()->json($profile);
-    //         } else {
-    //             $first_name = $inputs['first_name'];
-    //             $last_name = $inputs['last_name'];
-    //             $mobile = $inputs['mobile'];
-    //             $email = $inputs['email'];
-    //         }
-    //         /* product Data */
-    //         $products = Product::where('productslug', env('SA_OFFER_4'))->first();
-    //         // Log::info('products - '.json_encode($products));
-    //         /* set amount of offer */
-    //         $amount = ($products->inOffer == 1) ? $products->offeramount : $products->amount;
-    //         $grandAmount = $amount + ($amount * 0.18);
-
-    //         $uatNumbers = explode(',', env('UAT_MOBILE_NUMBERS', '')); // Convert the string into an array
-
-    //         foreach ($uatNumbers as $uatNum) {
-    //             if ($uatNum == $mobile) {
-    //                 $grandAmount = 1;
-    //                 break; // Exit the loop once a match is found
-    //             }
-    //         }
-
-    //         /* insert the adta in cardoffer */
-    //         $offerId = DB::table('cardoffer')->updateOrInsert(
-    //             ['mobile' => $mobile], // Search condition
-    //             [ // Values to update or insert
-    //                 'rec_date' => date('Y-m-d H:i:s'),
-    //                 'offerpage' => 7, //sa offer 4 or star offer
-    //                 'first_name' => $first_name,
-    //                 'last_name' => $last_name,
-    //                 'emailid' => $email,
-    //                 'amount' => round($grandAmount),
-    //                 'isCustomer' => 0,
-    //                 'isActive' => 0,
-    //                 'isDelete' => 0,
-    //             ]
-    //         );
-
-    //         // Get the ID of the updated or inserted record
-    //         $record = DB::table('cardoffer')->where('mobile', $mobile)->first();
-    //         $offerId = $record->id;
-
-    //         $orderid = number_format(microtime(true) * 1000, 0, '.', '');
-    //         $password = trim(random_code(6));
-    //         Session::put('orderid', $orderid);
-    //         Session::save();
-    //         Cache::put('user_password', $password, $this->lifetime);
-    //         //Log::info('order ID - ' .$orderid);
-
-    //         // $returnUrl = 'https://kreditsathi.com/api/self-apply/star-offer-response';
-    //         $returnUrl = route('api.self.apply.offer4Response');
-
-    //         if (env('LYRA_MODE') == "PROD") {
-    //             $curlurl = "https://api.in.lyra.com/pg/rest/v1/charge";
-    //         } else {
-    //             $curlurl = "https://api.in.lyra.com/pg/rest/v1/charge";
-    //         }
-
-    //         /* lyra post data */
-    //         $postData = array(
-    //             "orderId" => $orderid,
-    //             "currency" => 'INR',
-    //             "amount" => floor($grandAmount) * 100,
-    //             "orderInfo" => $products->productname,
-    //             "maxAgeInHours" => '240',
-    //             "customer" => array(
-    //                 "uid" => $offerId,
-    //                 "name" => $first_name . ' ' . $last_name,
-    //                 "emailId" => $email,
-    //                 "phone" => $mobile
-    //             ),
-    //             "webhook" => array(
-    //                 "url" => $returnUrl
-    //             ),
-    //             "return" => array(
-    //                 "method" => 'POST',
-    //                 "url" => $returnUrl,
-    //                 "timeout" => '0'
-    //             )
-    //         );
-    //         //Log::info('lyra entry - '. json_encode($postData));
-    //         /* generate lyra paymenturl */
-    //         $payurl = getlyrapaymenturl($curlurl, $postData);
-    //         $lyraData = array(
-    //             'rec_date' => now(),
-    //             'entryfor' => 9, //la offer 1 or great deal offer
-    //             'userid' => $offerId,
-    //             'orderid' => $orderid,
-    //             'orderamount' => floor($grandAmount),
-    //             'ordernote' => $products->productname,
-    //         );
-    //         //Log::info('Lyra insert - '. json_encode($lyraData));
-    //         $response = LyraEntry::insert($lyraData);
-
-    //         if ($payurl) {
-    //             if ($payurl->paymentLink) {
-    //                 return response()->json(array('type' => 'SUCCESS', 'message' => 'Please wait... We are redirecting to the payment page.', 'url' => $payurl->paymentLink));
-    //             } else {
-    //                 return response()->json(array('type' => 'ERROR', 'url' => route('loan.agent.offer1')));
-    //             }
-    //         } else {
-    //             return response()->json(array('type' => 'ERROR', 'url' => route('loan.agent.offer1')));
-    //         }
-    //     } catch (ValidationException $e) {
-    //         return response()->json(array('type' => 'ERROR', 'errors' => $e->errors()), 422);
-    //     } catch (\Exception $e) {
-    //         Log::info($e->getMessage());
-    //         return response()->json(array('type' => 'ERROR', 'message' => 'Oops! Something went wrong.'));
-    //     }
-    // }
-
-    // public function offer4Response(Request $request)
-    // {
-    //     try {
-    //         $inputs = $request->all();
-    //         //Log::info('request data - '.json_encode($request->all()));
-    //         $grandtotal = $netamount = $cgstamount = $sgstamount = $igstamount = 0;
-    //         $meta = selfApplyMeta();
-
-    //         $response = FALSE;
-
-    //         if (isset($inputs["vads_order_id"])) {
-    //             $orderId = $inputs["vads_order_id"];
-    //             $orderAmount = $inputs["vads_amount"];
-    //             $responseCode = $inputs["vads_charge_status"];
-    //             $txnId = $inputs["vads_trans_uuid"];
-
-    //             $paymentData = LyraEntry::where('orderid', $orderId)->first();
-
-    //             $lyraData = array(
-    //                 'rec_date' => now(),
-    //                 'orderamount' => $orderAmount / 100,
-    //                 'statuscode' => $responseCode,
-    //                 'transactionid' => $txnId
-    //             );
-
-    //             $response1 = LyraEntry::where('id', $paymentData->id)->update($lyraData);
-
-    //             $userData = Cardoffer::where('id', $paymentData->userid)->first();
-
-    //             if ($responseCode == "PAID") {
-    //                 $isEntry = Cardoffer::where('paymentid', $txnId)
-    //                     ->where('isDelete', 0)
-    //                     ->count();
-
-    //                 if ($isEntry == 0) {
-    //                     $cardno = random_code_num(16);
-    //                     $orderAmountInRupees = $orderAmount / 100;
-
-    //                     $data = [
-    //                         'rec_date' => now(),
-    //                         'card_number' => $cardno,
-    //                         'registration_date' => now(),
-    //                         'expiry_date' => date('Y-m-d', strtotime('+9 months')),
-    //                         'amount' => $orderAmountInRupees,
-    //                         'paymentid' => $txnId,
-    //                         'isActive' => 1
-    //                     ];
-
-    //                     $response = Cardoffer::where('id', $paymentData->userid)->update($data);
-    //                     if ($response) {
-    //                         $regUser = UserRegistration::where('mobile', $userData->mobile)
-    //                             ->where(['isActive' => 1, 'isDelete' => 0])
-    //                             ->first();
-
-    //                         $data = array(
-    //                             'rec_date' => date('Y-m-d H:i:s'),
-    //                             'card_number' => $cardno,
-    //                             'registration_date' => date('Y-m-d'),
-    //                             'expiry_date' => date('Y-m-d', strtotime('+3 months')),
-    //                             'amount' => $paymentData->orderamount,
-    //                             'paymentid' => $txnId,
-    //                             'isActive' => 1
-    //                         );
-    //                         $response = Cardoffer::where('id', $paymentData->userid)->update($data);
-
-    //                         if ($regUser) {
-    //                             $cardOffer = Cardoffer::where('id', $paymentData->userid)->first();
-    //                             $converted = convertIntoCustomer($cardno, $regUser, $userData, $paymentData->orderamount, $txnId, 1, 'self-apply', 'SA_', 7);
-    //                             if (!$converted) {
-    //                                 Log::error("Conversion to customer failed for user: " . $regUser->id);
-    //                                 dd('check log');
-    //                             }
-    //                         } else {
-    //                             sendPaymentGreetings($userData->first_name . ' ' . $userData->last_name, $userData->mobile, $userData->emailid);
-    //                         }
-    //                     }
-    //                     session()->forget(['isMailSend', 'cardno']);
-    //                     return View('cardoffer-response', compact('meta', 'response'));
-    //                 }
-
-    //                 return View('cardoffer-response', compact('meta', 'response'));
-    //             } else {
-    //                 //$sent = $this->Site_Onlineprocess_Model->sendPaymentFailedGreetings($userdata->mobile, $userdata->emailid);
-    //                 $response = FALSE;
-    //                 return View('cardoffer-response', compact('meta', 'response'));
-    //             }
-    //         } else {
-    //             $response = FALSE;
-    //             return View('cardoffer-response', compact('meta', 'response'));
-    //         }
-    //     } catch (\Exception $e) {
-    //         Log::info($e->getMessage());
-    //         dd('Ops! Something went wrong.');
-    //     }
-    // }
-
-    public function getOffer4(Request $request)
+    
+    public function getOffer4_razorpay(Request $request)
     {
         try {
             $inputs = $request->all();
@@ -2800,7 +2350,7 @@ class SelfApplyController extends Controller
         }
     }
 
-    public function offer4Response(Request $request)
+    public function offer4Response_razorpay(Request $request)
     {
         try {
 
@@ -2907,6 +2457,184 @@ class SelfApplyController extends Controller
         }
     }
 
+
+    public function getOffer4(Request $request)
+    {
+        try {
+            $inputs = $request->all();
+            $request->validate([
+                'first_name' => 'required',
+                'last_name' => 'required',
+                'email' => 'required|email',
+                'mobile' => ['required', 'numeric', 'regex:/^[6-9]\d{9}$/']
+            ]);
+            $profile = $this->checkUserProcess($inputs);
+            if ($profile) {
+                return response()->json($profile);
+            } else {
+                $first_name = $inputs['first_name'];
+                $last_name = $inputs['last_name'];
+                $mobile = $inputs['mobile'];
+                $email = $inputs['email'];
+            }
+            /* product Data */
+            $products = Product::where('productslug', config('constant.SA_OFFER_4'))->first();
+
+            /* set amount of offer */
+            $amount = ($products->inOffer == 1) ? $products->offeramount : $products->amount;
+            $grandAmount = $amount + ($amount * 0.18);
+
+            $uatNumbers = explode(',', env('UAT_MOBILE_NUMBERS', '')); // Convert the string into an array
+
+            foreach ($uatNumbers as $uatNum) {
+                if ($uatNum == $mobile) {
+                    $grandAmount = 1;
+                    break; // Exit the loop once a match is found
+                }
+            }
+
+            /* insert the adta in cardoffer */
+            $offerId = DB::table('cardoffer')->updateOrInsert(
+                ['mobile' => $mobile], // Search condition
+                [ // Values to update or insert
+                    'rec_date' => date('Y-m-d H:i:s'),
+                    'offerpage' =>  7, //sa offer 4 or star offer
+                    'first_name' => $first_name,
+                    'last_name' => $last_name,
+                    'emailid' => $email,
+                    'amount' => round($grandAmount),
+                    'isCustomer' => 0,
+                    'isActive' => 0,
+                    'isDelete' => 0,
+                ]
+            );
+
+            // Get the ID of the updated or inserted record
+            $record = DB::table('cardoffer')->where('mobile', $mobile)->first();
+            $offerId = $record->id;
+
+            $fullname = trim($first_name) . " " . trim($last_name);
+
+            $returnUrl = route('api.self.apply.offer4Response');
+
+            $merchantId = config('constant.SABPAISA_CLIENT_CODE');
+            $apiKey     = config('constant.SABPAISA_AUTH_KEY');
+            $secretKey  = config('constant.SABPAISA_AUTH_IV');
+            $url = "https://merchant-api.sabpaisa.in/api/v2/payments";
+            $merchantTxnId = "TXN" . time() . rand(1000, 9999);
+            $amountInPaise = ($grandAmount * 100);
+            $currency      = "INR";
+            $timestamp     = time();
+
+            $input = $merchantId . "|" . $merchantTxnId . "|" . $amountInPaise . "|" . $currency . "|" . $timestamp;
+
+            $message = "{$merchantId}|{$merchantTxnId}|{$amountInPaise}|{$currency}|{$timestamp}";
+            $checksum = hash_hmac('sha256', $message, $secretKey);
+
+             $subpaisaData = array(
+                'rec_date' => date('Y-m-d H:i:s'),
+                'entryfor' => 9,
+                'userid' => $offerId,
+                'orderid' => $merchantTxnId,
+                'orderamount' => round($grandAmount),
+                'ordernote' => $products->productname
+            );
+
+            $response1 = SubpaisaEntry::insert($subpaisaData);
+
+            // Request payload
+            $postData = [
+                "merchantId"    => $merchantId,
+                "merchantTxnId" => $merchantTxnId,
+                "amount"        => $amountInPaise,  // Amount in PAISE
+                "currency"      => $currency,
+                "returnUrl"     => $returnUrl,
+                "timestamp"     => $timestamp,
+                "checksum"      => $checksum,
+                "customerName"  => $fullname,
+                "customerEmail" => $email,
+                "customerPhone" => $mobile,
+            ];
+
+            $headers = [
+                "Content-Type" => "application/json",
+                'X-Api-Key' =>  $apiKey,
+            ];
+            $response = commanCurlCall($url, 'POST', $postData, $headers);
+            Log::info($response);
+
+            return response()->json(array('type' => 'SUCCESS', 'message' => 'Please wait... We are redirecting to the payment page.', 'url' => $response['checkoutUrl'] . "?clientSecret=" . $response['clientSecret']));
+        } catch (ValidationException $e) {
+            return response()->json(array('type' => 'ERROR', 'errors' => $e->errors()), 422);
+        } catch (\Exception $e) {
+            Log::info($e->getMessage());
+            return response()->json(array('type' => 'ERROR', 'message' => 'Oops! Something went wrong.'));
+        }
+    }
+
+    public function offer4Response(Request $request)
+    {
+        try {
+            Log::info('offer2Response request data - '. json_encode($request->all()));
+
+            $meta = selfApplyMeta();
+
+            $paymentData = SubpaisaEntry::where('orderid', $request->merchant_txn_id)->first();
+            $subpaisaData = array(
+                'rec_date' => date('Y-m-d H:i:s'),
+                'referenceid' => $request->merchant_txn_id,
+                'txstatus' => $request->status,
+                'paymentmode' => $request->payment_mode
+            );
+            Log::info('subpaisa data - '. json_encode($subpaisaData));
+            $response1 = SubpaisaEntry::where('id', $paymentData->id)->update($subpaisaData);
+            Log::info('subpaisa response - '. $response1);
+            if ($request->status == 'SUCCESS') {
+                $cardno = random_code_num(16);
+                $userData = Cardoffer::where('id', $paymentData->userid)->first();
+                $data = array(
+                    'rec_date' => date('Y-m-d H:i:s'),
+                    'card_number' => $cardno,
+                    'registration_date' => date('Y-m-d'),
+                    'expiry_date' => date('Y-m-d', strtotime('+3 months')),
+                    'paymentid' => $request->sabpaisaTxnId,
+                    'amount' => $paymentData->orderamount,
+                    'isActive' => 1
+                );
+                $response = Cardoffer::where('id', $paymentData->userid)->update($data);
+                if ($response) {
+                    $regUser = UserRegistration::where('mobile', $userData->mobile)
+                        ->where(['isActive' => 1, 'isDelete' => 0])
+                        ->first();
+
+                    if ($regUser) {
+                        $converted = convertIntoCustomer($cardno, $regUser, $userData, $paymentData->orderamount, $request->sabpaisaTxnId, 1, 'self-apply', 'SA_', 5);
+                        if (!$converted) {
+                            Log::error("Conversion to customer failed for user: " . $regUser->id);
+                        }
+                    } else {
+                        $sent = sendPaymentGreetings($userData->first_name . ' ' . $userData->last_name, $userData->mobile, $userData->emailid);
+                    }
+                }
+                session()->forget(['isMailSend', 'cardno']);
+                return view('cardoffer-response', [
+                    'meta' => $meta,
+                    'response' => TRUE,
+                ]);
+            } else {
+                return view('cardoffer-response', [
+                    'meta' => $meta,
+                    'response' => FALSE,
+                ]);
+            }
+        } catch (\Exception $e) {
+            Log::info($e->getMessage());
+            return view('cardoffer-response', [
+                'meta' => $meta,
+                'response' => FALSE,
+            ]);
+        }
+    }
 
     /* offer 5 */
     public function offer5()

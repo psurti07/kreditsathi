@@ -59,4 +59,4 @@ Route::post('/zwitch-response',[\App\Http\Controllers\pg\ZwitchController::class
 Route::post('/paytm-response',[\App\Http\Controllers\pg\PaytmController::class, 'response'])->name('api.paytm.response');
 
 
-Route::post('/webhooks/razorpay-response',[SelfApplyController::class, 'razorpayResponse'])->name('api.razorpay.response');
+Route::any('/webhooks/razorpay-response',[SelfApplyController::class, 'razorpayResponse'])->name('api.razorpay.response');

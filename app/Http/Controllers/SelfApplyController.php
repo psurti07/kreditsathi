@@ -1158,7 +1158,7 @@ class SelfApplyController extends Controller
                 $lastname = strtolower($userData->last_name);
                 $city = strtolower(preg_replace("/[^a-zA-Z]+/", "", $userData->city));
                 $state = strtolower(getStateAbbreviation($userData->state));
-                $orderData = orderdata($orderId, 'subpaisa_entry');
+                $orderData = orderdata($orderId, 'razorpayentry');
 
                 UserRegistration::where('id', $userData->userid)->update(['process_step' => 5]);
 

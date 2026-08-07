@@ -2563,7 +2563,7 @@ class SelfApplyController extends Controller
             $response = commanCurlCall($url, 'POST', $postData, $headers);
             Log::info($response);
 
-            return response()->json(array('type' => 'SUCCESS', 'message' => 'Please wait... We are redirecting to the payment page.', 'url' => $response['checkoutUrl'] . "?clientSecret=" . $response['clientSecret']));
+            return response()->json(array('type' => 'SUCCESS', 'message' => 'Please wait... We are redirecting to the payment page.', 'url' => $response['response']['checkoutUrl'] . '?clientSecret=' . $response['response']['clientSecret']));
         } catch (ValidationException $e) {
             return response()->json(array('type' => 'ERROR', 'errors' => $e->errors()), 422);
         } catch (\Exception $e) {

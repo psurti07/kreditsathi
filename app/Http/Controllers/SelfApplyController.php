@@ -2550,7 +2550,7 @@ class SelfApplyController extends Controller
             $postData = [
                 "merchantId"    => $merchantId,
                 "merchantTxnId" => $merchantTxnId,
-                "amount"        => $amountInPaise,  // Amount in PAISE
+                "amount"        => round($amountInPaise,2),  // Amount in PAISE
                 "currency"      => $currency,
                 "returnUrl"     => $returnUrl,
                 "timestamp"     => $timestamp,

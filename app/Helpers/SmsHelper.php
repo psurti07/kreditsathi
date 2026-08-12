@@ -6,7 +6,7 @@ use Illuminate\Support\Facades\DB;
 
 if(!function_exists('sendSingleSMS')){
     function sendSingleSMS($mobile, $otp, $panel = 'self'){
-        $message = "Hello, the Kreditsathi OTP for your mobile number registration is ".$otp.". Kindly do not share it with anyone. Thanks, Kreditsathi";
+        $message = "Hello, the https://kreditsathi.com OTP for your mobile number registration is ".$otp.". Kindly do not share it with anyone. Thanks, Kreditsathi";
         Log::info("otp sms message : " . $message);
         // URL encode the message
        // URL encode the message

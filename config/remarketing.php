@@ -2,7 +2,7 @@
 
     return [
         /* self apply lead whatsapp cycle */
-        'saLeadWhatsapp' => [
+        'saLeadWhatsappInterakt' => [
             '0'  => ['07:45', '22:45'],
             '1'  => ['08:45', '21:45'],
             '2'  => ['09:45', '20:45'],
@@ -51,5 +51,15 @@
         /* self apply customer service closed cycle */
         'saCustomerServiceClosed' => [
             '7' => ['10:30']
+        ],
+
+        'saLeadWhatsappAisensy' => [
+            '0'  => ['07:45', '22:45'],
+            '1'  => ['08:45', '21:45'],
+            '2'  => ['09:45', '20:45'],
+            '3'  => ['10:45', '19:45'],
+            '5'  => ['11:45', '18:45'],
+            '10' => ['12:45', '17:45'],
+            '20' => ['13:45', '16:45']
         ]
     ];

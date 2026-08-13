@@ -19,7 +19,7 @@ class SALeadWhatsappServicesInterakt
             $now = now();
             $nowFormatted = $now->format('H:i');
 
-            $schedules = config('remarketing.saLeadWhatsapp');
+            $schedules = config('remarketing.saLeadWhatsappInterakt');
            
             foreach ($schedules as $daysAgo => $times) {
                 $response = $wpresponse = "";
@@ -59,9 +59,9 @@ class SALeadWhatsappServicesInterakt
                         if($users->isNotEmpty()){
                             $data1 = array(
                 				'rec_date' => date('Y-m-d H:i:s'),
-                				'crontype' => 'Self Apply Lead Whatsapp',
+                				'crontype' => 'Self Apply Lead Whatsapp Interakt',
                 				'parentid' => 11, // Hire Agent
-                				'cronname' => 'Whatsapp Day - ' . $daysAgo,
+                				'cronname' => 'Whatsapp Interakt Day - ' . $daysAgo,
                 				'msgcount' => $arrnumbers,
                 				'msgresponse' => $wpresponse
                 			);
@@ -138,7 +138,7 @@ class SALeadWhatsappServicesInterakt
                 }
             }
         } catch (\Exception $e) {
-            Log::error('Error in Self Apply Lead Whatsapp Service: ' . $e->getMessage());
+            Log::error('Error in Self Apply Lead Whatsapp Interakt Service: ' . $e->getMessage());
         }
     }
 }

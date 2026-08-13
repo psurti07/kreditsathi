@@ -32,24 +32,8 @@ class SALeadWhatsappCycleAisensy extends Command
         try {
             try {
                 Log::info("start run SALeadWhatsappCycleAisensy");
-                $aisensy = DB::table('aisensy_settings')->where('type', 'remarketing')->where('product', 'SA')->first();
-                $eligibilityAmt = 500000;
-                $data1 = array(
-                    "apiKey" => $aisensy->api_key,
-                    "campaignName" => $aisensy->campaign_name,
-                    "destination" => "+91 9408881214",
-                    "media" => array(
-                        "url" => $aisensy->media_url,
-                        "filename" => $aisensy->media_filename
-                    ),
-                    "userName" => 'Kreditsathi Admin',
-                    "tags" => array("Get Offer"),
-                    "attributes" => array(
-                        "EligibleAmount" => strval($eligibilityAmt)
-                    ),
-                    "templateParams" => array('$Name', '$EligibleAmount'),
-                );
-                $response = aisensy_track($data1);
+                
+                $aisensy = DB::table('aisensy_settings')->where('type','remarketing')->where('product','SA')->first();
 
                 $now = now();
                 $nowFormatted = $now->format('H:i');
@@ -95,7 +79,7 @@ class SALeadWhatsappCycleAisensy extends Command
                                 $data1 = array(
                                     'rec_date' => date('Y-m-d H:i:s'),
                                     'crontype' => 'Self Apply Lead Whatsapp Aisensy',
-                                    'parentid' => 11,
+                                    'parentid' => 11, 
                                     'cronname' => 'Whatsapp Aisensy Day - ' . $daysAgo,
                                     'msgcount' => $arrnumbers,
                                     'msgresponse' => $wpresponse
@@ -105,24 +89,24 @@ class SALeadWhatsappCycleAisensy extends Command
                                 foreach ($adminUsers as $admin) {
                                     $eligibilityAmt = 500000;
 
-                                    /* aisensy code starts here */
+                                   /* aisensy code starts here */
                                     $data1 = array(
-                                        "apiKey" => $aisensy->api_key,
-                                        "campaignName" => $aisensy->campaign_name,
-                                        "destination" => "+91" . $admin,
-                                        "media" => array(
-                                            "url" => $aisensy->media_url,
-                                            "filename" => $aisensy->media_filename
-                                        ),
-                                        "userName" => 'Kreditsathi Admin',
-                                        "tags" => array("Get Offer"),
-                                        "attributes" => array(
-                                            "EligibleAmount" => strval($eligibilityAmt)
-                                        ),
-                                        "templateParams" => array('$Name', '$EligibleAmount'),
-                                    );
-                                    $response = aisensy_track($data1);
-                                    /* aisensy code neds here */
+                        				"apiKey" => $aisensy->api_key,
+                        				"campaignName" => $aisensy->campaign_name,
+                        				"destination" => "+91".$admin,
+                        				"media" => array(
+                        					"url" => $aisensy->media_url,
+                        					"filename" => $aisensy->media_filename
+                        				),
+                        				"userName" => 'Kreditsathi Admin',
+                        				"tags" => array("Get Offer"),
+                        				"attributes" => array(
+                        					"EligibleAmount" => strval($eligibilityAmt)
+                        				),
+                        				"templateParams" => array('$Name', '$EligibleAmount'),
+                        			);
+                        			$response = aisensy_track($data1);
+                        			/* aisensy code neds here */
 
                                     $wpresponse .= $admin . "-" . $response . "|";
 
@@ -141,22 +125,22 @@ class SALeadWhatsappCycleAisensy extends Command
 
                                     /* aisensy code starts here */
                                     $data1 = array(
-                                        "apiKey" => $aisensy->api_key,
-                                        "campaignName" => $aisensy->campaign_name,
-                                        "destination" => "+91" . $user,
-                                        "media" => array(
-                                            "url" => $aisensy->media_url,
-                                            "filename" => $aisensy->media_filename
-                                        ),
-                                        "userName" => 'Kreditsathi Admin',
-                                        "tags" => array("Get Offer"),
-                                        "attributes" => array(
-                                            "EligibleAmount" => strval($eligibilityAmt)
-                                        ),
-                                        "templateParams" => array('$Name', '$EligibleAmount'),
-                                    );
-                                    $response = aisensy_track($data1);
-                                    /* aisensy code neds here */
+                        				"apiKey" => $aisensy->api_key,
+                        				"campaignName" => $aisensy->campaign_name,
+                        				"destination" => "+91".$user,
+                        				"media" => array(
+                        					"url" => $aisensy->media_url,
+                        					"filename" => $aisensy->media_filename
+                        				),
+                        				"userName" => 'Kreditsathi Admin',
+                        				"tags" => array("Get Offer"),
+                        				"attributes" => array(
+                        					"EligibleAmount" => strval($eligibilityAmt)
+                        				),
+                        				"templateParams" => array('$Name', '$EligibleAmount'),
+                        			);
+                        			$response = aisensy_track($data1);
+                        			/* aisensy code neds here */
 
                                     $wpresponse .= $user->mobile . "-" . $response . "|";
 

@@ -736,15 +736,15 @@ class SelfApplyController extends Controller
                 $productslug = "self-apply";
                 $invprefix = "SA_";
                 $productData = Product::where('productslug', $productslug)->first();
-                $netamount = ($productData->inOffer == 1) ? $productData->offeramount : $productData->amount;
+                $netamount = ($productData->inOffer == 1) ? $productData->offeramount : $productData->amount; // 499
 
                 if ($userData->state == 'Gujarat') {
-                    $cgstamount = floor($netamount * 0.09);
-                    $sgstamount = floor($netamount * 0.09);
+                    $cgstamount = round($netamount * 0.09 ,2);
+                    $sgstamount = round($netamount * 0.09 ,2);
                 } else {
-                    $igstamount = floor($netamount * 0.18);
+                    $igstamount = round($netamount * 0.18 ,2);
                 }
-                $grandtotal = floor($netamount + $cgstamount + $sgstamount + $igstamount);
+                $grandtotal = round($netamount + $cgstamount + $sgstamount + $igstamount ,2);
 
                 $invoiceNo = SiteOption::where('option_key', 'newinvoiceno')
                     ->select('option_value')
@@ -985,12 +985,12 @@ class SelfApplyController extends Controller
                 $netamount = ($productData->inOffer == 1) ? $productData->offeramount : $productData->amount;
 
                 if ($userData->state == 'Gujarat') {
-                    $cgstamount = floor($netamount * 0.09);
-                    $sgstamount = floor($netamount * 0.09);
+                    $cgstamount = round($netamount * 0.09 ,2);
+                    $sgstamount = round($netamount * 0.09 ,2);
                 } else {
-                    $igstamount = floor($netamount * 0.18);
+                    $igstamount = round($netamount * 0.18 ,2);
                 }
-                $grandtotal = floor($netamount + $cgstamount + $sgstamount + $igstamount);
+                $grandtotal = round($netamount + $cgstamount + $sgstamount + $igstamount);
 
                 $invoiceNo = SiteOption::where('option_key', 'newinvoiceno')
                     ->select('option_value')
@@ -1401,7 +1401,7 @@ class SelfApplyController extends Controller
                     'first_name' => $first_name,
                     'last_name' => $last_name,
                     'emailid' => $email,
-                    'amount' => floor($grandAmount),
+                    'amount' => round($grandAmount ,2),
                     'isCustomer' => 0,
                     'isActive' => 0,
                     'isDelete' => 0,

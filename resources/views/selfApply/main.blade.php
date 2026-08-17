@@ -188,7 +188,7 @@
             </div>
         </div>
         <div class="fbox-wrapper text-center">
-            <div class="row gx-5 gy-2 row-cols-1 row-cols-md-2 row-cols-lg-4">
+            <div class="row gx-5 gy-2 row-cols-1 row-cols-md-2 row-cols-lg-3">
                 <div class="col">
                     <div class="fbox-8 fbox--hover fb-1 r-12 border shadow mb-md-0 mb-2 h-100">
                         <div class="fbox-ico ico-50 mb-4">
@@ -231,7 +231,7 @@
                         </div>
                     </div>
                 </div>
-                <div class="col">
+                {{-- <div class="col">
                     <div class="fbox-8 fbox--hover fb-3 r-12 border shadow mb-md-0 mb-2 h-100">
                         <div class="fbox-ico ico-50 mb-4">
                             <div class="shape-ico color--theme">
@@ -245,7 +245,7 @@
                             </p>
                         </div>
                     </div>
-                </div>
+                </div> --}}
             </div>
         </div>
     </div>
@@ -289,17 +289,17 @@
             <div class="col-md-12 col-lg-12 col-xl-12">
                 <div class="form-holder">
                     <div class="contact-form-notice">
-                        {{-- <p class="s-14">
-                            <strong>Important Disclosure : </strong> Kredit Sathi Private Limited is a service provider that connects users with third-party banks and NBFCs and does not provide loans directly. The repayment tenure for personal loans typically ranges from a minimum of 6 months to a maximum of 60 months (5 years), depending on the lender. The maximum Annual Percentage Rate (APR) can go up to 34.5% per annum, inclusive of applicable charges, depending on the applicant’s profile and lender policies.
+                        <p class="s-14">
+                            <strong>Important Note : </strong>We ask our customers to make payments ONLY on our website kreditsathi.com and NOT through any other source, directly or indirectly.
+                        </p>                
+                        <p class="s-14">
+                            <strong>Disclaimer : </strong>Kredit Sathi Private Limited is not a lender or financial institution. We do not provide loans or make credit decisions. All loan approvals, interest rates, fees, and disbursal are handled by third-party lenders/NBFCs. We do not guarantee loan approval, disbursal, or specific loan terms. The amount paid is only for the service charge. We are not lenders and do not guarantee any loan approval. Loan approval, disbursement/sanction is entirely dependent on NBFC criteria.
                         </p>
                         <p class="s-14">
-                            For example, if a user takes a loan of ₹5,00,000 at an interest rate of 12% per annum for 60 months, the processing fee may be up to 2% (₹10,000), the EMI would be approximately ₹11,122, the total interest payable would be around ₹1,67,320, and the total repayment amount would be approximately ₹6,67,320. All figures are indicative. Actual loan terms may vary depending on eligibility and lender criteria.
-                        </p> --}}
-                        <p class="s-14">
-                            <strong>Disclaimer : </strong>Kredit Sathi Private Limited is not a lender or financial institution. We do not provide loans or make credit decisions. All loan approvals, interest rates, fees, and disbursal are handled by third-party lenders such as banks and NBFCs. We do not guarantee loan approval, disbursal, or specific loan terms. Users are advised to verify all details and read the terms and conditions of the respective lender before proceeding.
+                            <strong>PRE-APPLICATION NOTE : </strong>Users are advised to read our terms and conditions and policies before proceeding/applying/registration.
                         </p>
                         <p class="s-14">
-                            <strong>Registered Office Address:</strong> {{ env('COMPANY_ADDRESS') }} <br /> Mobile: {{ env('COMPANY_MOBILE') }} | Email: {{ env('INFO_EMAIL') }}
+                            <strong>Registered Office Address:</strong> {{ env('COMPANY_ADDRESS') }} <br /><strong> Mobile:</strong> {{ env('COMPANY_MOBILE') }} | <strong> Email:</strong> {{ env('INFO_EMAIL') }}
                         </p>
                     </div>
                 </div>

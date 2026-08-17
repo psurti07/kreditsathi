@@ -135,7 +135,7 @@
 
                 <div class="col-12 col-lg-7 text-center text-lg-start py-2 py-lg-0">
                     <p class="banner-title fw-semibold fs-6 text-black mb-lg-0">
-                        Loans at the speed of life! Say YES and get 5-lakhs instantly
+                        A Simple Way to Explore Personal Loan Options Up to ₹5 Lakh
                     </p>
                 </div>
 

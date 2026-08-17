@@ -139,10 +139,10 @@
 
                                                 <h6 class="s-12">Max Tenure</h6>
                                                 <p class="s-14 text-black">{{ $offersData[0]['tenures'] }} Months</p>
-                                                <hr class="custm-HR" />
+                                                {{-- <hr class="custm-HR" /> --}}
 
-                                                <h6 class="s-12">Best Rate</h6>
-                                                <p class="s-14 text-black">{{ $offersData[0]['roi'] }}% P.A</p>
+                                                {{-- <h6 class="s-12">Best Rate</h6>
+                                                <p class="s-14 text-black">{{ $offersData[0]['roi'] }}% P.A</p> --}}
                                             </div>
                                         </div>
                                     </div>
@@ -183,10 +183,10 @@
 
                                                 <h6 class="s-12">Max Tenure</h6>
                                                 <p class="s-14 text-black">-- Months</p>
-                                                <hr class="custm-HR" />
+                                                {{-- <hr class="custm-HR" /> --}}
 
-                                                <h6 class="s-12">Best Rate</h6>
-                                                <p class="s-14 text-black">-.--% P.M</p>
+                                                {{-- <h6 class="s-12">Best Rate</h6>
+                                                <p class="s-14 text-black">-.--% P.M</p> --}}
                                             </div>
                                         </div>
                                     </div>

@@ -251,7 +251,7 @@
     </div>
 </section>
 
-<section class="full-banner w-100">
+{{-- <section class="full-banner w-100">
     <div class="container">
         <div class="row justify-content-center">
             <div class="col-md-12 col-lg-12">
@@ -259,7 +259,7 @@
             </div>
         </div>
     </div>
-</section>
+</section> --}}
 
 <!-- Testimonioals section starts -->
 <section id="reviews-1" class="pt-0 pb-80 shape--06 reviews-section">

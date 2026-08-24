@@ -142,12 +142,7 @@
                 <div class="form-holder">
                     <div class="contact-form-notice">
                         <p class="s-14">
-                            Range of Loan tenure is up to 72 months with Annual Interest Rates ranging between 11% - 36%
-                            and the processing fee up to 2%. For Example: Taking in consideration a personal loan of
-                            Rs.1,00,000 availed at 11%* interest rate for a tenure of 6* years with 2%* processing fee,
-                            the APR will be 11.75%*. *T&C Apply. All these numbers are tentative/indicative, the final
-                            loan specifics may vary depending upon the customer profile and NBFCs’ criteria, rules &
-                            regulations, and terms &amp; conditions.
+                                Kredit Sathi Private Limited is not a lender or financial institution. We do not provide loans or make credit decisions. All loan approvals, interest rates, fees, and disbursal are handled by third-party lenders such as banks and NBFCs. We do not guarantee loan approval, disbursal, or specific loan terms. Users are advised to verify all details and read the terms and conditions of the respective lender before proceeding.
                         </p>
                     </div>
                 </div>

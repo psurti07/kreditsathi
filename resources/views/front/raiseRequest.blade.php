@@ -71,11 +71,11 @@
                                                         id="inlineRadio1" autocomplete="off" checked>
                                                     <label for="inlineRadio1">Self Apply</label>
                                                 </div>
-                                                {{-- <div class="col-md-4 col-4">
+                                                <div class="col-md-4 col-4">
                                                     <input type="radio" name="usertype" value="3" id="inlineRadio3"
                                                         autocomplete="off">
                                                     <label for="inlineRadio3">Hire Agent</label>
-                                                </div> --}}
+                                                </div>
                                                 <div class="col-md-4 col-4">
                                                     <input type="radio" name="usertype" value="2" id="inlineRadio2"
                                                         autocomplete="off">

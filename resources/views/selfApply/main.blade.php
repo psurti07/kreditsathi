@@ -188,7 +188,7 @@
             </div>
         </div>
         <div class="fbox-wrapper text-center">
-            <div class="row gx-5 gy-2 row-cols-1 row-cols-md-2 row-cols-lg-3">
+            <div class="row gx-5 gy-2 row-cols-1 row-cols-md-2 row-cols-lg-4">
                 <div class="col">
                     <div class="fbox-8 fbox--hover fb-1 r-12 border shadow mb-md-0 mb-2 h-100">
                         <div class="fbox-ico ico-50 mb-4">
@@ -231,7 +231,7 @@
                         </div>
                     </div>
                 </div>
-                {{-- <div class="col">
+                <div class="col">
                     <div class="fbox-8 fbox--hover fb-3 r-12 border shadow mb-md-0 mb-2 h-100">
                         <div class="fbox-ico ico-50 mb-4">
                             <div class="shape-ico color--theme">
@@ -245,7 +245,7 @@
                             </p>
                         </div>
                     </div>
-                </div> --}}
+                </div>
             </div>
         </div>
     </div>

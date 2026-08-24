@@ -112,10 +112,10 @@
                                 <span class="btn-text pe-2">Self Apply</span>
                                 <span class="btn-icon"> → </span>
                         </a>
-                        {{-- <a href="{{ route('loan.agent.main') }}" class="custom-btn w-auto">
+                        <a href="{{ route('loan.agent.main') }}" class="custom-btn w-auto">
                                 <span class="btn-text pe-2">Hire an Agent</span>
                                 <span class="btn-icon"> → </span>
-                        </a> --}}
+                        </a>
                     </div>
                 </div>
             </div>
@@ -317,7 +317,7 @@
             </div>
         </div>
         <div class="fbox-wrapper text-center">
-            <div class="row gx-5 gy-2 row-cols-1 row-cols-md-3 row-cols-lg-3">
+            <div class="row gx-5 gy-2 row-cols-1 row-cols-md-3 row-cols-lg-4">
                 <div class="col">
                     <div class="fbox-8 fbox--hover fb-1 r-12 border shadow mb-md-0 mb-2 h-100">
                         <div class="fbox-ico ico-50 mb-4">
@@ -360,7 +360,7 @@
                         </div>
                     </div>
                 </div>
-                {{-- <div class="col">
+                <div class="col">
                     <div class="fbox-8 fbox--hover fb-3 r-12 border shadow mb-md-0 mb-2 h-100">
                         <div class="fbox-ico ico-50 mb-4">
                             <div class="shape-ico color--theme">
@@ -374,7 +374,7 @@
                             </p>
                         </div>
                     </div>
-                </div> --}}
+                </div>
             </div>
         </div>
     </div>
@@ -435,7 +435,7 @@
                             </a>
                         </div>
                     </div>
-                    {{-- <div class="col-12 col-lg-12">
+                    <div class="col-12 col-lg-12">
                         <div class="left-column card-left p-4 r-12">
                             <div class="d-flex align-items-center mb-0">
                                 <div class="fbox-ico ico-50 text-end mb-0">
@@ -466,7 +466,7 @@
                                 <span class="btn-icon"> → </span>
                             </a>
                         </div>
-                    </div> --}}
+                    </div>
                 </div>
             </div>
         </div>
@@ -493,12 +493,12 @@
                                     <span class="btn-icon">→</span>
                                 </a>
                             </div>
-                            {{-- <div class="col-lg-4 col-md-6 col-sm-6 col-12">
+                            <div class="col-lg-4 col-md-6 col-sm-6 col-12">
                                 <a href="{{ route('loan.agent.main') }}" class="custom-btn text-center w-100">
                                     <span class="btn-text">Hire an Agent</span>
                                     <span class="btn-icon">→</span>
                                 </a>
-                            </div> --}}
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -754,7 +754,7 @@
                                     <span id="emitotalamount">₹<span>10,000</span></span>
                                 </div>
                                 <div class="text-center align-items-center justify-content-center m-auto">
-                                    <a href="{{ route('self.apply.main') }}" class="custom-btn">
+                                    <a href="{{ route('loan.agent.main') }}" class="custom-btn">
                                         <span class="btn-text">Apply Now</span>
                                         <span class="btn-icon"> → </span>
                                     </a>
@@ -1059,6 +1059,7 @@
 <script>
     const routes = {
         'selfapply': "{{ route('self.apply.send.otp') }}",
+        'loanagent': "{{ route('loan.agent.send.otp') }}",
     };
 
     document.addEventListener('DOMContentLoaded', () => {

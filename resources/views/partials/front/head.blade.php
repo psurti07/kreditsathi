@@ -19,6 +19,7 @@
     <meta name="twitter:description" content="{{ $meta['description'] }}" />
     <meta name="twitter:site" content="{{ '@' . env('APP_NAME') }}" />
     <meta name="csrf-token" content="{{ csrf_token() }}">
+    <meta name="google-site-verification" content="CE5e2FxR9FjXlIbbOQJZqMAXs2gk5yajbJKlrpb7KYA">
     <link rel="icon" href="{{ asset('front/images/logo/favicon.ico') }}" type="image/x-icon">
     <link rel="shortcut icon" href="{{ asset('front/images/logo/favicon.ico') }}" type="image/x-icon">
     <!-- SITE TITLE -->

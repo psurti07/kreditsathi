@@ -70,8 +70,8 @@
         <div class="row">
             <div class="col-md-6 col-lg-6 align-items-center m-auto self-apply-form mb-lg-0 mb-3">
                 <div id="hero-8-form" class="border border-primary r-06">
-                    <h4 class="s-20 w-700 mb-2">Apply in <span class="color--green-500">5 Minutes</span></h4>
-                    <p class="s-16">Check Your Loan Eligibility.</p>
+                    <h4 class="s-20 w-700 mb-2">Start Your Loan <span class="color--green-500">Journey</span></h4>
+                    <p class="s-16">Explore available loan options.</p>
                     <form method="post" action="{{ route('self.apply.send.otp') }}" class="request-form save-form-1 needs-validation" novalidate>
                         <div class="row g-2">
                             <div class="col-md-12">
@@ -155,8 +155,8 @@
             <div class="row justify-content-center">
                 <div class="col-md-12 col-lg-12">
                     <div class="section-title mb-40">
-                        <h2 class="s-28 mb-5">Our <span class="color--green-500">Lending Partners</span></h2>
-                        <p class="s-16 color--grey mt-0">Partnering with the best NBFCs to provide the best for our customers.</p>
+                        <h2 class="s-28 mb-5">Meet Our Lending <span class="color--green-500">Network</span></h2>
+                        <p class="s-16 color--grey mt-0">Compare available options from multiple lending partners in one place.</p>
                     </div>
                 </div>
             </div>
@@ -183,7 +183,7 @@
             <div class="col-md-10 col-lg-9">
                 <div class="section-title mb-40">
                     <h2 class="s-28 mb-5">Why <span class="color--green-500">KreditSathi?</span></h2>
-                    <p class="s-16 color--grey mt-0">Reliable Support at Every Step</p>
+                    <p class="s-16 color--grey mt-0">Built around your convenience.</p>
                 </div>
             </div>
         </div>
@@ -198,8 +198,8 @@
                             </div>
                         </div>
                         <div class="fbox-txt">
-                            <h4 class="s-18 w-700 mb-4">Enriching Collaboration</h4>
-                            <p>Explore a wide range of financial services powered by our trusted network of leading NBFC partners.</p>
+                            <h4 class="s-18 w-700 mb-4">Lending Partner Network</h4>
+                            <p>Explore loan options available through our network of lending partners.</p>
                         </div>
                     </div>
                 </div>
@@ -212,8 +212,8 @@
                             </div>
                         </div>
                         <div class="fbox-txt">
-                            <h4 class="s-18 w-700 mb-4">100% Online Process</h4>
-                            <p>Experience seamless digital financial solutions from the comfort of your home.</p>
+                            <h4 class="s-18 w-700 mb-4">Online Application Process</h4>
+                            <p>Complete key application steps online at your convenience.</p>
                         </div>
                     </div>
                 </div>
@@ -227,7 +227,7 @@
                         </div>
                         <div class="fbox-txt">
                             <h4 class="s-18 w-700 mb-4">Self-Apply Feature</h4>
-                            <p>Take control of your finances with solutions designed to help you succeed.</p>
+                            <p>Check eligibility and continue your application independently.</p>
                         </div>
                     </div>
                 </div>
@@ -241,7 +241,7 @@
                         </div>
                         <div class="fbox-txt">
                             <h4 class="s-18 w-700 mb-4">Hire Loan Agent</h4>
-                            <p>Increase your chances of loan approval with expert guidance and personalized support.
+                            <p>Get assistance with application steps and documentation.
                             </p>
                         </div>
                     </div>

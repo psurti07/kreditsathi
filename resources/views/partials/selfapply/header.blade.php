@@ -8,7 +8,7 @@
             {{--<a id="wsnavtoggle" class="wsanimated-arrow"><span></span></a>--}}
         </div>
         <!-- NAVIGATION MENU -->
-        <div class="wsmainfull menu clearfix">
+        <div class="wsmainfull menu clearfix header-top">
             <div class="wsmainwp clearfix">
                 <!-- HEADER BLACK LOGO -->
                 <div class="desktoplogo">

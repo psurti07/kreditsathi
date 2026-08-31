@@ -430,7 +430,7 @@
   .hero-section .hero-20-txt h2.s-48 { margin-bottom: 25px; }
 
   /* HERO-201 */
-  #hero-201 { padding-top: 100px; padding-bottom: 90px; }
+  #hero-201 { padding-top: 100px; padding-bottom: 0px; }
   #hero-201:after { width: 50%; }
   .hero-section .hero-20-txt h2.s-48 { margin-bottom: 25px; }
 
@@ -690,8 +690,8 @@
   /* STATISTIC */
   .sb-rounded .statistic-block { padding: 25px; }
   #statistic-5 .statistic-digit { padding-bottom: 18px; margin: 0 70px 18px 0; }
-  .statistic-1-wrapper .statistic-block-digit { width: 32%; }
-  .statistic-1-wrapper .statistic-block-txt { width: 68%; padding-left: 10px; }
+  /* .statistic-1-wrapper .statistic-block-digit { width: 32%; } */
+  /* .statistic-1-wrapper .statistic-block-txt { width: 68%; padding-left: 10px; } */
   #sb-2-3, #sb-2-4 { padding-right: 12px; }
 
   h2.statistic-number, #statistic-5 .statistic-digit h2 { letter-spacing: -0.5px; }
@@ -751,7 +751,7 @@
   .review-2 .author-data, .review-3 .author-data, .review-5 .author-data { margin-top: 8px; }
   .review-4 .author-data { margin-top: 0; }
 
-  .review-avatar img, .owl-item .review-avatar img { width: 60px; height: 60px; }
+
   .review-2 .review-avatar img, .review-3 .review-avatar img, .review-5 .review-avatar img { width: 52px; height: 52px; }
 
   .review-author { padding: 0 0 0 12px; }
@@ -977,7 +977,7 @@
   #faqs-2.faqs-section .accordion-thumb { padding: 22px 15px 28px; }
 
   .faqs-section .accordion-item .accordion-thumb:after,
-  .faqs-section .accordion-item.is-active .accordion-thumb:after { font-size: 0.9rem; top: 19px; right: 15px; }
+  .faqs-section .accordion-item.is-active .accordion-thumb:after { font-size: 0.9rem; }
   #faqs-2.faqs-section .accordion-item .accordion-thumb:after,
   #faqs-2.faqs-section .accordion-item.is-active .accordion-thumb:after { font-size: 1rem; top: 23px; right: 15px; }
 
@@ -1810,7 +1810,7 @@
   .hero-section .hero-20-txt h2.s-48 { margin-bottom: 18px; }
 
   /* HERO-201 */
-  #hero-201 { padding-top: 100px; padding-bottom: 80px; }
+  #hero-201 { padding-top: 100px; padding-bottom: 0px; }
   #hero-201:after { width: 54%; }
   .hero-201-txt { padding: 0 10% 0 0; }
   .hero-201-txt .hero-logo { display: none; }
@@ -2137,8 +2137,8 @@
 
   #statistic-5 .statistic-digit { padding-bottom: 15px; margin: 0 40px 15px 0; }
   #statistic-1 .statistic-block { display: block!important; text-align: center; }
-  .statistic-1-wrapper .statistic-block-digit { width: 100%; display: block!important; float: none; margin-bottom: 15px; }
-  .statistic-1-wrapper .statistic-block-txt { width: 100%; display: inline-block!important; padding: 0 8%; }
+  .statistic-1-wrapper .statistic-block-digit { width: 100%; display: block!important; float: none; margin-bottom: 0px; }
+  .statistic-1-wrapper .statistic-block-txt { width: 100%; display: inline-block!important; padding: 0; }
 
   #sb-2-3, #sb-2-4 { width: 50%; padding-right: 0; }
   #sb-2-3 .statistic-block, #sb-2-4 .statistic-block { display: block!important; }
@@ -2211,7 +2211,7 @@
   .review-1 .author-data, .review-2 .author-data,
   .review-3 .author-data, .review-4 .author-data, .review-5 .author-data { margin-top: 0; }
 
-  .review-avatar img, .owl-item .review-avatar img { width: 55px; height: 55px; }
+ 
   .review-2 .review-avatar img, .review-3 .review-avatar img, .review-5 .review-avatar img { width: 46px; height: 46px; }
 
   .review-author { padding: 0 0 0 12px; }
@@ -2474,7 +2474,7 @@
   #faqs-2.faqs-section .accordion-thumb { padding: 20px 15px 25px; }
 
   .faqs-section .accordion-item .accordion-thumb:after,
-  .faqs-section .accordion-item.is-active .accordion-thumb:after { font-size: 0.825rem; top: 19px; right: 10px; }
+  .faqs-section .accordion-item.is-active .accordion-thumb:after { font-size: 0.825rem; }
   #faqs-2.faqs-section .accordion-item .accordion-thumb:after,
   #faqs-2.faqs-section .accordion-item.is-active .accordion-thumb:after { font-size: 0.935rem; top: 23px; right: 10px; }
 
@@ -3188,7 +3188,7 @@
   .hero-20-txt { padding: 0; }
 
   /* HERO-201 */
-  #hero-201{ text-align: center; padding-top: 130px; padding-bottom: 40px; }
+  #hero-201{ text-align: center; padding-top: 130px; padding-bottom: 0px; }
   #hero-201:after { width: 100%; }
   .hero-201-txt { padding: 0; }
 
@@ -4146,7 +4146,7 @@
   .review-1 .author-data, .review-2 .author-data,
   .review-3 .author-data, .review-4 .author-data, .review-5 .author-data { margin-top: 20px; }
 
-  .review-avatar img, .owl-item .review-avatar img { width: 60px; height: 60px; }
+
   .review-2 .review-avatar img, .review-3 .review-avatar img, .review-5 .review-avatar img { width: 52px; height: 52px; }
 
   .review-author { padding: 0 0 0 12px; }
@@ -4342,7 +4342,7 @@
   #faqs-2.faqs-section .accordion-thumb { padding: 20px 15px 25px; }
 
   .faqs-section .accordion-item .accordion-thumb:after,
-  .faqs-section .accordion-item.is-active .accordion-thumb:after { font-size: 0.875rem; top: 20px; right: 10px; }
+  .faqs-section .accordion-item.is-active .accordion-thumb:after { font-size: 0.875rem;  }
   #faqs-2.faqs-section .accordion-item .accordion-thumb:after,
   #faqs-2.faqs-section .accordion-item.is-active .accordion-thumb:after { font-size: 0.9rem; top: 22px; right: 10px; }
 
@@ -5241,7 +5241,7 @@
   .review-1 .author-data, .review-2 .author-data,
   .review-3 .author-data, .review-4 .author-data, .review-5 .author-data { margin-top: 20px; }
 
-  .review-avatar img, .owl-item .review-avatar img { width: 60px; height: 60px; }
+  
   .review-2 .review-avatar img, .review-3 .review-avatar img, .review-5 .review-avatar img { width: 52px; height: 52px; }
 
   .review-author { padding: 0 0 0 12px; }
@@ -5467,7 +5467,7 @@
   #faqs-2.faqs-section .accordion-thumb { padding: 20px 15px 25px; }
 
   .faqs-section .accordion-item .accordion-thumb:after,
-  .faqs-section .accordion-item.is-active .accordion-thumb:after { font-size: 0.875rem; top: 23px; right: 10px; }
+  .faqs-section .accordion-item.is-active .accordion-thumb:after { font-size: 0.875rem;  }
   #faqs-2.faqs-section .accordion-item .accordion-thumb:after,
   #faqs-2.faqs-section .accordion-item.is-active .accordion-thumb:after { font-size: 0.9rem; top: 22px; right: 10px; }
 
@@ -6414,7 +6414,7 @@
   .review-1 .author-data, .review-2 .author-data,
   .review-3 .author-data, .review-4 .author-data, .review-5 .author-data { margin-top: 20px; }
 
-  .review-avatar img, .owl-item .review-avatar img { width: 60px; height: 60px; }
+ 
   .review-2 .review-avatar img, .review-3 .review-avatar img, .review-5 .review-avatar img { width: 52px; height: 52px; }
 
   .review-author { padding: 0 0 0 12px; }
@@ -6639,7 +6639,7 @@
   #faqs-2.faqs-section .accordion-thumb { padding: 20px 15px 25px; }
 
   .faqs-section .accordion-item .accordion-thumb:after,
-  .faqs-section .accordion-item.is-active .accordion-thumb:after { font-size: 0.875rem; top: 23px; right: 10px; }
+  .faqs-section .accordion-item.is-active .accordion-thumb:after { font-size: 0.875rem;  }
   #faqs-2.faqs-section .accordion-item .accordion-thumb:after,
   #faqs-2.faqs-section .accordion-item.is-active .accordion-thumb:after { font-size: 0.9rem; top: 22px; right: 10px; }
 
@@ -7261,7 +7261,7 @@
   .hero-section .hero-20-txt h2.s-48 { margin-bottom: 20px; }
 
   /* HERO-201 */
-  #hero-201 { padding-top: 120px; padding-bottom: 40px; }
+  #hero-201 { padding-top: 120px; padding-bottom: 0px; }
   .hero-201-txt { padding: 0 3%; }
   .hero-201-txt .hero-logo { display: none; }
   .hero-section .hero-201-txt h2.s-48 { margin-bottom: 20px; }
@@ -7630,7 +7630,7 @@
   .review-1 .author-data, .review-2 .author-data,
   .review-3 .author-data, .review-4 .author-data, .review-5 .author-data { margin-top: 20px; }
 
-  .review-avatar img, .owl-item .review-avatar img { width: 60px; height: 60px; }
+  
   .review-2 .review-avatar img, .review-3 .review-avatar img, .review-5 .review-avatar img { width: 52px; height: 52px; }
 
   .review-author { padding: 0 0 0 12px; }
@@ -7869,7 +7869,7 @@
   #faqs-2.faqs-section .accordion-thumb { padding: 20px 15px 25px; }
 
   .faqs-section .accordion-item .accordion-thumb:after,
-  .faqs-section .accordion-item.is-active .accordion-thumb:after { font-size: 0.875rem; top: 23px; right: 10px; }
+  .faqs-section .accordion-item.is-active .accordion-thumb:after { font-size: 0.875rem; }
   #faqs-2.faqs-section .accordion-item .accordion-thumb:after,
   #faqs-2.faqs-section .accordion-item.is-active .accordion-thumb:after { font-size: 0.9rem; top: 22px; right: 10px; }
 
@@ -8891,7 +8891,7 @@
   .review-1 .author-data, .review-2 .author-data,
   .review-3 .author-data, .review-4 .author-data, .review-5 .author-data { margin-top: 20px; }
 
-  .review-avatar img, .owl-item .review-avatar img { width: 60px; height: 60px; }
+  
   .review-2 .review-avatar img, .review-3 .review-avatar img, .review-5 .review-avatar img { width: 45px; height: 45px; }
 
   .review-author { padding: 0 0 0 12px; }
@@ -9134,7 +9134,7 @@
   #faqs-2.faqs-section .accordion-thumb { padding: 16px 15px 21px; }
 
   .faqs-section .accordion-item .accordion-thumb:after,
-  .faqs-section .accordion-item.is-active .accordion-thumb:after { font-size: 0.875rem; top: 20px; right: 10px; }
+  .faqs-section .accordion-item.is-active .accordion-thumb:after { font-size: 0.875rem;}
   #faqs-2.faqs-section .accordion-item .accordion-thumb:after,
   #faqs-2.faqs-section .accordion-item.is-active .accordion-thumb:after { font-size: 0.875rem; top: 17px; right: 10px; }
 

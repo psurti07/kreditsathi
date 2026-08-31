@@ -2,24 +2,24 @@
 @push('css')
 <link href="{{ asset('front/css/custom.css') }}" rel="stylesheet" type="text/css" />
 <style>
-    .accordion-button {
-        background-color: transparent !important;
-    }
+.accordion-button {
+    background-color: transparent !important;
+}
 
-    .accordion-button:focus {
-        box-shadow: none !important;
-    }
+.accordion-button:focus {
+    box-shadow: none !important;
+}
 
-    body {
-        -webkit-user-select: none;
-        -moz-user-select: none;
-        -ms-user-select: none;
-        user-select: none;
-    }
+body {
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+}
 
-    .bg-custom-blue-100 {
-        background-color: #f5f9fc;
-    }
+.bg-custom-blue-100 {
+ background-color: #EAF2FF;
+}
 </style>
 @endpush
 
@@ -28,58 +28,70 @@
     class="bg-custom-blue-100 personal-details-form inner-page-hero contacts-section division min-vh-100 d-flex align-items-center">
     <div class="container">
         <div class="row justify-content-center mb-35">
-            <div class="col-md-3 col-lg-3 col-12">
-                <div class="txt-block left-column gr--white border border-radius-10 p-2">
-                    <div class="accordion accordion-flush mb-10" id="accordionFlushExample">
+            <div class="col-md-5 col-lg-4 col-12 order-md-1 order-2 mt-md-0 mt-20">
+                <div class="txt-block left-column gr--white r-28 bg-white p-3">
+                    <div class="accordion accordion-flush mb-0" id="accordionFlushExample">
                         <div class="accordion-item bg-transparent">
                             <h2 class="accordion-header mb-0" id="flush-headingOne">
-                                <button class="accordion-button" type="button" data-bs-toggle="collapse"
+                                <button class="accordion-button text-uppercase" type="button" data-bs-toggle="collapse"
                                     data-bs-target="#flush-collapseOne" aria-expanded="true"
                                     aria-controls="flush-collapseOne">
                                     User Details
                                 </button>
                             </h2>
-                            <div id="flush-collapseOne" class="accordion-collapse collapse show"
+                            <div id="flush-collapseOne" class="accordion-collapse collapse"
                                 aria-labelledby="flush-headingOne" data-bs-parent="#accordionFlushExample">
                                 <div class="accordion-body p-2">
-                                    <p class="s-12 text-grey mb-0">Fullname :</p>
-                                    <p class="s-14 text-black mt-0">{{ Cookie::get('fullname') }}</p>
+                                    <div
+                                        class="d-flex justify-content-between  details-main px-3 py-3 bg--white-300 r-14 mb-2 border">
+                                        <p class="s-12 text-grey mb-0">Fullname :</p>
+                                        <p class="s-14 text-black mt-0">{{ Cookie::get('fullname') }}</p>
+                                    </div>
+                                    <div
+                                        class="d-flex justify-content-between  details-main px-3 py-3 bg--white-300 r-14 mb-2 border">
+                                        <p class="s-12 text-grey m-0">Mobile :</p>
+                                        <p class="s-14 text-black m-0">{{ Cookie::get('user_mobile') }}</p>
 
-                                    <p class="s-12 text-grey mb-0">Mobile :</p>
-                                    <p class="s-14 text-black mt-0">{{ Cookie::get('user_mobile') }}</p>
-
-                                    <p class="s-12 text-grey mb-0">Loan Amount :</p>
-                                    <p class="s-14 text-black mt-0 mb-0">
-                                        &#8377;{{ formatePriceIndia(Cookie::get('loan_amount')) }}</p>
+                                    </div>
+                                    <div class="d-flex justify-content-between  details-main px-3 py-3 bg--white-300 r-14 border">
+                                        <p class="s-12 text-grey m-0">Loan Amount :</p>
+                                        <p class="s-14 text-black m-0">
+                                            &#8377;{{ formatePriceIndia(Cookie::get('loan_amount')) }}</p>
+                                    </div>
                                 </div>
                             </div>
                         </div>
                     </div>
 
-                    <hr class="divider" />
 
                     <div class="p-2">
-                        <p class="s-12 mt-10 mb-10">Application Process </p>
+                        <p class="s-12 mt-10 mb-10 text-uppercase">Application Process </p>
 
                         <div class="cbox-12 process-step">
                             <div class="ico-wrap">
-                                <div class="cbox-12-ico text-white bg--green-500">1</div>
+                                <div class="cbox-12-ico text-white bg--green-300 border border-green">
+                                    <span class="fbox-ico ico-9 lh-1"> <span
+                                            class="flaticon-check ms-0 color--white lh-1"></span></span>
+                                </div>
                             </div>
                             <div class="cbox-12-txt">
-                                <p class="s-11">Loan Details</p>
+                                <p class="s-11 w-600">Loan Details</p>
                             </div>
                         </div>
                         <div class="cbox-12 process-step">
                             <div class="ico-wrap">
-                                <div class="cbox-12-ico text-white bg--green-500">2</div>
+                                <div class="cbox-12-ico text-white bg--green-300 border border-green"><span
+                                        class="fbox-ico ico-9 lh-1">
+                                        <span class="flaticon-right-arrow ms-0 color--white lh-1"></span></span></div>
                             </div>
                             <div class="cbox-12-txt">
-                                <p class="s-11">Personal Details</p>
+                                <p class="s-11 w-600">Personal Details</p>
                             </div>
                         </div>
                         <div class="cbox-12 process-step">
                             <div class="ico-wrap">
-                                <div class="cbox-12-ico text-white bg--green-500">3</div>
+                                <div class="cbox-12-ico bg--blue-400"><span class="fbox-ico ico-9 lh-1"> <span
+                                            class="flaticon-right-arrow ms-0 color--white lh-1"></span></span></div>
                             </div>
                             <div class="cbox-12-txt">
                                 <p class="s-11">Unlock Offers</p>
@@ -87,7 +99,8 @@
                         </div>
                         <div class="cbox-12 process-step">
                             <div class="ico-wrap">
-                                <div class="cbox-12-ico border-dark-subtle">4</div>
+                                <div class="cbox-12-ico border"><span class="fbox-ico ico-9 lh-1"> <span
+                                            class="flaticon-right-arrow ms-0 color--black lh-1"></span></span></div>
                             </div>
                             <div class="cbox-12-txt">
                                 <p class="s-11">Purchase Plan</p>
@@ -95,7 +108,8 @@
                         </div>
                         <div class="cbox-12 process-step">
                             <div class="ico-wrap">
-                                <div class="cbox-12-ico border-dark-subtle">5</div>
+                                <div class="cbox-12-ico border"><span class="fbox-ico ico-9 lh-1"> <span
+                                            class="flaticon-right-arrow ms-0 color--black lh-1"></span></span></div>
                             </div>
                             <div class="cbox-12-txt">
                                 <p class="s-11">Personalized Offers</p>
@@ -104,11 +118,31 @@
                     </div>
                 </div>
             </div>
-            <div class="col-md-9 col-lg-9 col-12">
-                <div class="card">
+
+            <div class="col-md-7 col-lg-8 col-12 mt-md-0 mt-20 order-md-2 order-1">
+                <div class="r-28 bg-white p-4">
                     <div class="card-body">
-                        <h5 class="fw-bolder s-16">You’re Eligible For Loan Offers.</h5>
-                        <p class="mb-30 color--grey">Unlock Offers with Our Expert Consultation!</p>
+                        <div
+                            class="fbox-7 fb-1 r-18 border-0  d-flex align-items-center justify-content-between p-0 mb-0">
+
+                            <div class="fbox-ico d-flex align-items-start justify-content-start mb-3">
+                                <div>
+                                    <div
+                                        class="fbox-image d-flex align-items-center justify-content-center r-16 ico-20 details-icon bg--blue-400">
+                                        <span class="flaticon-briefcase text-white lh-1"></span>
+                                    </div>
+                                </div>
+                                <div class="fbox-txt ms-3">
+                                    <h4 class="mb-0 w-700 d-block">You’re Eligible For Loan Offers.
+                                    </h4>
+                                    <p class="mt-0 color--grey">Unlock Offers with Our Expert Consultation!
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+
+
+
 
                         <form action="{{ route('self.apply.buyNow') }}" id="unlockOffersForm"
                             class="contact-form save-form-5" novalidate="novalidate" method="post"
@@ -153,6 +187,8 @@
                                     @endif
 
                                     <div class="col-lg-6 col-md-6 col-12">
+                                           <span class="badge badge-success w-100 text-start"
+                                            style="border-radius: 12px 12px 0 0;">Most Recommended Offer*</span>
                                         <div class="lock-icon">
                                             <svg width="30px" height="30px" viewBox="0 0 24 24" fill="none"
                                                 xmlns="http://www.w3.org/2000/svg">
@@ -162,8 +198,7 @@
                                             </svg>
                                         </div>
 
-                                        <div id="fb-12-3"
-                                            class="fbox-12 bg--white-100 block-shadow r-12 lockoffers">
+                                        <div id="fb-12-3" class="fbox-12 bg--white-100 block-shadow r-12 lockoffers">
                                             <!-- Icon -->
                                             <div class="fbox-ico">
                                                 <div class="shape-ico">
@@ -194,7 +229,7 @@
                                 </div>
                             </div>
                             <div class="col-md-12 form-btn mt-4">
-                                <button type="submit" class="custom-btn text-center submit unlockBtn w-auto">
+                                <button type="submit" class="custom-btn text-center submit unlockBtn w-100">
                                     <span class="btn-text fw-semibold">Unlock Your Offers!</span>
                                     <span class="btn-icon"> → </span>
                                 </button>
@@ -210,27 +245,27 @@
 
 @push('scripts')
 <script>
-    $(document).ready(function() {
-        $('.unlockBtn').click(function() {
-            var btn = $(this);
-            btn.html(
-                '<span class="spinner-border spinner-border-sm" role="status" aria-hidden="true"></span> Unlock Your Offers!'
-            ).prop('disabled', true);
-            setTimeout(function() {
-                window.location.href = `{{ route('self.apply.buyNow') }}`;
-            }, 2000); // Delay of 3 seconds (3000 milliseconds)
-        });
+$(document).ready(function() {
+    $('.unlockBtn').click(function() {
+        var btn = $(this);
+        btn.html(
+            '<span class="spinner-border spinner-border-sm" role="status" aria-hidden="true"></span> Unlock Your Offers!'
+        ).prop('disabled', true);
+        setTimeout(function() {
+            window.location.href = `{{ route('self.apply.buyNow') }}`;
+        }, 2000); // Delay of 3 seconds (3000 milliseconds)
+    });
 
-        function toggleAccordion() {
-            if ($(window).width() <= 767) {
-                $("#flush-collapseOne").removeClass("show"); // Collapse for small screens
-            } else {
-                $("#flush-collapseOne").addClass("show"); // Open for larger screens
-            }
+    function toggleAccordion() {
+        if ($(window).width() <= 767) {
+            $("#flush-collapseOne").removeClass("show"); // Collapse for small screens
+        } else {
+            $("#flush-collapseOne").addClass("show"); // Open for larger screens
         }
+    }
 
-        toggleAccordion(); // Call on page load
-        $(window).resize(toggleAccordion); // Call on window resize
-    })
+    toggleAccordion(); // Call on page load
+    $(window).resize(toggleAccordion); // Call on window resize
+})
 </script>
 @endpush

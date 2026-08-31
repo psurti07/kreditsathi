@@ -219,6 +219,36 @@
 				}
 		});
 
+				var owl = $('.reviews-1-wrapper-main');
+			owl.owlCarousel({
+				items: 3,
+				loop:true,
+				// autoplay:true,
+				navBy: 1,
+				dots:false,
+				// autoplayTimeout: 4500,
+				// autoplayHoverPause: true,
+				// smartSpeed: 1500,
+				nav:true,
+				responsive:{
+					0:{
+						items:1
+					},
+					767:{
+						items:1
+					},
+					768:{
+						items:1
+					},
+					991:{
+						items:1
+					},
+					1000:{
+						items:1
+					}
+				}
+		});
+
 
 		/*----------------------------------------------------*/
 		/*	Brands Logo Rotator
@@ -327,6 +357,40 @@
 				}
 		});
 
+		
+		var owl = $('.brands-carousel-main');
+			owl.owlCarousel({
+				items: 3,
+				loop:true,
+				autoplay:true,
+				navBy: 1,
+                dots: false,
+				nav:false,
+				autoplayTimeout: 4000,
+				autoplayHoverPause: false,
+				smartSpeed: 2000,
+                margin: 20,
+				responsive:{
+					0:{
+						items:3
+					},
+					550:{
+						items:3
+					},
+					767:{
+						items:3//3
+					},
+					768:{
+						items:3//5
+					},
+					991:{
+						items:3//5
+					},
+					1000:{
+						items:3//5
+					}
+				}
+		});
 
 		/*----------------------------------------------------*/
 		/*	Show Password
@@ -495,7 +559,7 @@ class Slider {
         }
 
         let percentage =  (this.rangeElement.value - this.options.min) / (this.options.max - this.options.min) * 100
-        return 'background: linear-gradient(to right, #0e5281, #5484a6 ' + percentage + '%, #acc3d4 ' + percentage + '%, #dee2de 100%)'
+        return 'background: linear-gradient(to right, #FFD400, #FFD400 ' + percentage + '%, #acc3d4 ' + percentage + '%, #dee2de 100%)'
     }
 
     updateSlider (newValue) {

@@ -30,6 +30,7 @@
     <script src="{{ asset('front/js/wow.js') }}"></script>
     <script src="{{ asset('front/js/custom.js') }}"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/2.0.2/js/toastr.min.js"></script>
+    
     @stack('script-src')
     @include('stacks.js.front.script')
 </body>

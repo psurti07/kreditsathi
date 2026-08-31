@@ -770,7 +770,7 @@
 <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
     aria-hidden="true" data-bs-backdrop="static" data-bs-keyboard="false">
     <div class="modal-dialog modal-dialog-centered" role="document">
-        <div class="modal-content p-30 border-radius-10">
+        <div class="modal-content p-30 r-24">
             <form action="{{ route('loan.agent.verify.otp') }}" method="post"
                 class="request-form save-form-2 needs-validation" novalidate>
                 <div class="modal-body">

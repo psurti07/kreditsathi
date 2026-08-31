@@ -148,10 +148,6 @@ $(document).ready(function(){
                 data: data,
                 processData: false,
                 contentType: false,
-                beforeSend: function() {
-                    $('#otpBtn').html('<span class="spinner-border spinner-border-sm"></span> Validating...');
-                    $('#otpBtn').attr('disabled', true);
-                },
                 /* success function handle */
                 success: function (result) {
                     $(this).attr("disabled", false);
@@ -185,8 +181,8 @@ $(document).ready(function(){
                     } else {
                         /* failed response */
                         $("#invalidOtp").text(result.message);
-                        $('#otpBtn').html('Verify &amp; Proceed');
-                        $('#otpBtn').attr('disabled', false);
+                        // $('#otpBtn').html('Verify &amp; Proceed');
+                        // $('#otpBtn').attr('disabled', false);
                     }
                 },
                 /* error function handle */
@@ -197,8 +193,8 @@ $(document).ready(function(){
                         errorsHtml = '<strong>' + value[0] + '</strong>';
                         $('.' + key).html(errorsHtml);
                     });
-                    $('#otpBtn').html('Verify &amp; Proceed');
-                    $('#otpBtn').attr('disabled', false);
+                    // $('#otpBtn').html('Verify &amp; Proceed');
+                    // $('#otpBtn').attr('disabled', false);
                 }
             })
             /* ajax ends */

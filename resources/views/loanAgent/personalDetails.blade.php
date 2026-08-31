@@ -139,7 +139,7 @@
                                         Name *</label>
                                     <div class="form-group form-floating">
                                         <input id="firstname" name="firstname" type="text"
-                                            class="form-control name mb-0 py-0" placeholder=""
+                                            class="form-control name mb-0 py-0 r-12 border" placeholder=""
                                             value="{{ old('firstname') }}">
                                        
                                     </div>
@@ -150,7 +150,7 @@
                                         class="position-static p-0 text-uppercase s-14 mb-1 fw-normal color--grey">Last
                                         Name *</label>
                                     <div class="form-group form-floating">
-                                        <input id="lastname" name="lastname" type="text" class="form-control name mb-0 py-0"
+                                        <input id="lastname" name="lastname" type="text" class="form-control name mb-0 py-0 r-12 border"
                                             placeholder="" value="{{ old('lastname') }}">
                                   
                                     </div>
@@ -161,7 +161,7 @@
                                         class="position-static p-0 text-uppercase s-14 mb-1 fw-normal color--grey">Email
                                         *</label>
                                     <div class="form-group form-floating">
-                                        <input id="email" name="email" type="email" class="form-control name mb-0 py-0"
+                                        <input id="email" name="email" type="email" class="form-control name mb-0 py-0 r-12 border"
                                             placeholder="" value="{{ old('email') }}">
                                      
                                     </div>
@@ -173,7 +173,7 @@
                                         *</label>
                                     <div class="form-group form-floating">
                                         <input id="pincode" name="pincode" type="text"
-                                            class="form-control name numeric-input mb-0 py-0" placeholder=""
+                                            class="form-control name numeric-input mb-0 py-0 r-12 border" placeholder=""
                                             value="{{ old('pincode') }}" maxlength="6" minlength="6"
                                             inputmode="numeric">
                                    
@@ -188,7 +188,7 @@
                                         class="position-static p-0 text-uppercase s-14 mb-1 fw-normal color--grey">City
                                         *</label>
                                     <div class="form-group form-floating">
-                                        <input id="city" name="city" type="text" class="form-control mb-0 py-0"
+                                        <input id="city" name="city" type="text" class="form-control mb-0 py-0 r-12 border"
                                             placeholder="" value="{{ old('city') }}">
                                    
                                     </div>
@@ -200,7 +200,7 @@
                                         *</label>
                                     <div class="form-group form-floating">
                                         <!--<input id="state" name="state" type="text" class="form-control mb-0" placeholder="" value="{{ old('state') }}">-->
-                                        <select id="state" name="state" class="form-control mb-0 py-0"
+                                        <select id="state" name="state" class="form-control mb-0 py-0 r-12 border"
                                             style="font-size:16px!important;">
                                             <option value="">Select State</option>
                                             {!! getStateOption(old('state')) !!}

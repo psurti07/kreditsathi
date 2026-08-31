@@ -658,7 +658,7 @@
   background: #ffd400;
   border-radius: 50px;
   transition: .45s ease;
-  z-index: 1;
+  z-index: -1;
 }
 
 .custom-btn:hover::before {
@@ -671,7 +671,7 @@
 
 .custom-btn:hover .btn-icon {
   transform: translateX(3px);
-  background: transparent;
+  background: #fff;
   color: #000;
 }
 

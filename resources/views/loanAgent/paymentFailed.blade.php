@@ -9,9 +9,10 @@
     <div class="container">
         <div class="row">
             <div class="col-md-7 col-lg-7 col-12 m-auto">
-                <div class="card">
+            <div class="r-24 bg-white p-4">
                     <div class="card-body">
                         <div class="text-center mb-20">
+                            <i class="far fa-times-circle display-3 text-danger"></i>
                             <h4 class="fw-bolder text-danger mb-15">Payment Unsuccessful </h4>
                             <h4 class="fw-bolder text-danger mb-15">Sorry</h4>
                             <p>Your Subscription Plan Payment Was not Successful. </p>
@@ -24,21 +25,21 @@
 
                             <div class="row gy-2 gx-2">
                                 <div class="col-lg-4 col-md-4 col-12">
-                                    <div class="border rounded-3 p-2 bg--red-100">
+                                    <div class="rounded-3 p-2 bg--red-100">
                                         <p class="fw-bold mb-2">Card Issue</p>
                                         <p>Insufficient balance or card limit exceeded.</p>
                                     </div>
                                 </div>
 
                                 <div class="col-lg-4 col-md-4 col-12">
-                                    <div class="border rounded-3 p-2 bg--red-100">
+                                    <div class="rounded-3 p-2 bg--red-100">
                                         <p class="fw-bold mb-2">Network</p>
                                         <p>Connection timeout or bank service issue.</p>
                                     </div>
                                 </div>
 
                                 <div class="col-lg-4 col-md-4 col-12">
-                                    <div class="border rounded-3 p-2 bg--red-100">
+                                    <div class="rounded-3 p-2 bg--red-100">
                                         <p class="fw-bold mb-2">Cancelled</p>
                                         <p>Transaction was cancelled by user.</p>
                                     </div>
@@ -52,8 +53,8 @@
                         <hr class="divider my-3" />
 
                         <div class="text-center">
-                            <a href="{{ route('loan.agent.offer2') }}" class="custom-btn w-50">
-                                <span class="btn-text">Try another payment method</span>
+                            <a href="{{ route('loan.agent.offer2') }}" class="custom-btn w-auto">
+                                <span class="btn-text me-3">Try another payment method</span>
                                 <span class="btn-icon"> → </span>
                             </a>
                             <p class="text-center mt-20">If you've any queries/ issues, kindly raise a request here:

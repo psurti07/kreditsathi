@@ -187,12 +187,12 @@
                                 <label for="form_mobile"
                                     class="position-static p-0 text-uppercase s-14 mb-2 color--grey text-start d-block">enter
                                     monthly income</label>
-                                <div class="input-group">
+                                <div class="input-group border r-12">
                                     <div class="input-group-prepend">
                                         <span class="input-group-text" id="basic-addon1">&#8377;</span>
                                     </div>
                                     <input type="text" name="monthly_income" id="monthly_income"
-                                        class="numeric-input form-control mb-2"
+                                        class="numeric-input form-control mb-2 border-start"
                                         placeholder="Enter Monthly Income (&#8377;)" autocomplete="off"
                                         inputmode="numeric">
                                 </div>
@@ -203,7 +203,7 @@
                                 <label for="form_mobile"
                                     class="position-static p-0 text-uppercase s-14 mb-2 color--grey text-start d-block">enter
                                     monthly income</label>
-                                <div class="input-group">
+                                <div class="input-group border r-12">
                                     <div class="input-group-prepend">
                                         <span class="input-group-text" id="basic-addon1">&#8377;</span>
                                     </div>

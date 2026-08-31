@@ -10715,7 +10715,7 @@ span.release-date span {
 
 .contact-form .form-control,
 .contact-form .form-select {
-    height: 62px;
+    height: 52px;
     background-color: #f5f6f8;
     border: 1px solid transparent;
     box-shadow: 0 0 0 0;
@@ -10724,9 +10724,10 @@ span.release-date span {
     font-weight: 400;
     padding: 0 15px;
     margin-bottom: 30px;
-    -webkit-border-radius: 6px;
-    -moz-border-radius: 6px;
-    border-radius: 6px;
+    -webkit-border-radius: 12px;
+    -moz-border-radius: 12px;
+    border-radius: 12px;
+    min-height:52px;
 }
 
 .bg--snow .contact-form .form-control,

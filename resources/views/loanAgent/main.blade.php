@@ -517,7 +517,7 @@
                             lending
                             partners.
                         </p>
-                        <a href="#" class="btn btn--yellow-400 r-13 hover--tra-black last-link">Check eligibility
+                        <a href="#" class="btn btn--yellow-400 r-13 hover--tra-black last-link">Apply Now
                             <span class="fbox-ico ico-10"> <span
                                     class="flaticon-right-arrow  ico-20 ms-1"></span></span></a>
                     </div>
@@ -530,7 +530,7 @@
                                 </div>
                             </div>
                             <div class="cbox-1-txt ms-2">
-                                <p class="my-0 color--white">Magna dolor luctus at egestas sapien</p>
+                                <p class="my-0 color--white">Online Application Process</p>
                             </div>
                         </div>
                         <div class="cbox-1 ico-15 p-3 mb-2">
@@ -539,7 +539,7 @@
                                 </div>
                             </div>
                             <div class="cbox-1-txt ms-2">
-                                <p class="my-0 color--white">Magna dolor luctus at egestas sapien</p>
+                                <p class="my-0 color--white">Flexible Repayment Options</p>
                             </div>
                         </div>
                         <div class="cbox-1 ico-15 p-3 mb-2">
@@ -548,7 +548,7 @@
                                 </div>
                             </div>
                             <div class="cbox-1-txt ms-2">
-                                <p class="my-0 color--white">Magna dolor luctus at egestas sapien</p>
+                                <p class="my-0 color--white">Convenient Online Journey</p>
                             </div>
                         </div>
                     </div>

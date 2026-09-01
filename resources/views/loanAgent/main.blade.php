@@ -711,6 +711,19 @@
                                     and policies before proceeding/applying/registration.</p>
                             </div>
                         </div>
+                        <div class="d-flex">
+                            <div>
+                                <div class="fbox-ico">
+                                    <div class="fbox-image r-14 ico-10 lh-1">
+                                        <span class="flaticon-file lh-1 color--white"></span>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="s-14 mb-3 ms-3">
+                                <h6 class="color--white mb-1">Disclosure </h6>
+                                <p class="mt-0 color--white s-12">Loan tenure minimum 6 months & maximum 60 months; Maximum APR: 34% p.a.; processing fee: up to 2%. Representative example: ₹1,00,000 at 11.5% for 60 months with ₹2,000 processing fee — EMI ₹2,301, total interest ₹38,059, total repayment ₹1,38,059, indicative APR 14.41%.</p>
+                            </div>
+                        </div>
 
                     </div>
                 </div>

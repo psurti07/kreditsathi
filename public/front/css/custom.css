@@ -288,6 +288,10 @@
   box-shadow: 0 3px 8px rgba(0, 0, 0, 0.25);
   letter-spacing: 1px;
 }
+.custom-control-input{
+      -webkit-appearance: checkbox !important;
+    accent-color: #1C8EF9;
+}
 
 @media screen and (max-width:991px) {
   .hero-section {
@@ -307,10 +311,7 @@
   .personal-details-form {
     min-height: 100vh;
   }
-
-  .integrations-section .owl-carousel .owl-item img {
-    padding: 0 15px !important;
-  }
+ 
 }
 
 @media screen and (max-width:767px) {
@@ -605,6 +606,15 @@
   }
 }
 
+.btn-text {
+  position: relative;
+  z-index: 2;
+  flex: 1;
+  padding-left: 18px;
+  transition: .45s;
+}
+
+
 .custom-btn {
   position: relative;
   display: inline-flex;
@@ -623,15 +633,9 @@
   color: #222;
   transition: .45s ease;
   box-shadow: 0 5px 15px rgba(0, 0, 0, .08);
+  z-index: 2;
 }
 
-.btn-text {
-  position: relative;
-  z-index: 2;
-  flex: 1;
-  padding-left: 18px;
-  transition: .45s;
-}
 
 .btn-icon {
   position: relative;
@@ -657,7 +661,7 @@
   height: 100%;
   background: #ffd400;
   border-radius: 50px;
-  transition: .45s ease;
+  transition: .45s ease; 
   z-index: -1;
 }
 
@@ -694,11 +698,25 @@
     padding-bottom: 150px !important;
   }
 }
+.bg-gredient-img{
+  background: linear-gradient(180deg, #FFFFFF 0%, #EEF6FF 100%);
 
+}
+
+.landing-bg-image{
+   background-image: url(../images/bg-landing-img.png);
+ 
+  background-repeat: no-repeat;
+  background-position: unset;
+  background-size: cover;
+  display: inline-block;
+  position: relative;
+  width: 100%;
+} 
 .partner-section {
   background-image: url(../images/background-img.png);
   background-repeat: no-repeat;
-  background-position: center center;
+  background-position: unset;
   background-size: cover;
   display: inline-block;
   position: relative;

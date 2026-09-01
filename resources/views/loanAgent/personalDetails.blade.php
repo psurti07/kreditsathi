@@ -110,7 +110,7 @@
             <div class="col-md-7 col-lg-8 col-12 mt-md-0 mt-20 order-md-2 order-1">
                 <div class="r-28 bg-white p-4">
                     <form action="{{ route('loan.agent.personal.details.store') }}" id="personalDetailForm"
-                        class="contact-form save-form-4" novalidate="novalidate" method="post" accept-charset="utf-8">
+                        class="contact-form contact-form-1 save-form-4" novalidate="novalidate" method="post" accept-charset="utf-8">
                         <div class="card-body">
                             <div
                                 class="fbox-7 fb-1 r-18 border-0  d-flex align-items-center justify-content-between p-0 mb-0">

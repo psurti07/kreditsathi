@@ -871,7 +871,7 @@
     <div class="container">
         <div class="row justify-content-center">
             <div class="col-md-12 col-lg-12">
-                <div class="section-title mb-40">
+                <div class="section-title mb-40 text-start">
                     <h2 class="s-28 mb-5">See what our <span class="color--green-500">customers have to say</span></h2>
                     <p class="s-16 color--grey mt-0"> Expert guidance at every step</p>
                 </div>
@@ -963,7 +963,7 @@
                                     <div class="form-group form-floating">
                                         <input id="form_name" name="fullname" type="text" class="form-control name mb-0"
                                             placeholder="">
-                                        <label for="firstname">Full Name *</label>
+                                        <label for="firstname" class="pt-2">Full Name *</label>
                                     </div>
                                     @component('components.ajax-error',['field'=>'fullname'])@endcomponent
                                 </div>
@@ -972,7 +972,7 @@
                                         <input id="form_mobile" type="text" name="mobile"
                                             class="numeric-input mb-0 form-control mobile" placeholder="" minlength="10"
                                             maxlength="10" inputmode="numeric">
-                                        <label for="form_mobile">Mobile *</label>
+                                        <label for="form_mobile" class="pt-2">Mobile *</label>
                                     </div>
                                     @component('components.ajax-error',['field'=>'mobile'])@endcomponent
                                 </div>
@@ -980,7 +980,7 @@
                                     <div class="form-group form-floating">
                                         <input id="form_email" type="email" name="email" class="mb-0 form-control email"
                                             placeholder="">
-                                        <label for="form_email">Email *</label>
+                                        <label for="form_email" class="pt-2">Email *</label>
                                     </div>
                                     @component('components.ajax-error',['field'=>'email'])@endcomponent
                                 </div>
@@ -988,7 +988,7 @@
                                     <div class="form-group form-floating">
                                         <input id="form_subject" type="text" name="subject"
                                             class="mb-0 form-control subject" placeholder="">
-                                        <label for="form_subject">Subject *</label>
+                                        <label for="form_subject" class="pt-2">Subject *</label>
                                     </div>
                                     @component('components.ajax-error',['field'=>'subject'])@endcomponent
                                 </div>
@@ -996,7 +996,7 @@
                                     <div class="form-group form-floating">
                                         <textarea id="form_message" name="desc" class="mb-0 form-control message"
                                             placeholder="" style="height: 150px"></textarea>
-                                        <label for="form_message">Message *</label>
+                                        <label for="form_message" class="pt-2">Message *</label>
                                     </div>
                                     @component('components.ajax-error',['field'=>'desc'])@endcomponent
                                 </div>

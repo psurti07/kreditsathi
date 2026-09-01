@@ -143,7 +143,7 @@
                     </div>
 
                     <form method="post" action="{{ route('loan.agent.loan.details.store') }}"
-                        class="request-form save-form-3 needs-validation" novalidate>
+                        class="request-form contact-form-1 save-form-3 needs-validation" novalidate>
                         <div class="row">
                             <div class="col-md-12 range">
                                 <div class="range__value form-group-range r-10 w-100">
@@ -189,10 +189,10 @@
                                     monthly income</label>
                                 <div class="input-group border r-12">
                                     <div class="input-group-prepend">
-                                        <span class="input-group-text" id="basic-addon1">&#8377;</span>
+                                        <span class="input-group-text border-start" id="basic-addon1">&#8377;</span>
                                     </div>
                                     <input type="text" name="monthly_income" id="monthly_income"
-                                        class="numeric-input form-control mb-2 border-start"
+                                        class="numeric-input form-control mb-0"
                                         placeholder="Enter Monthly Income (&#8377;)" autocomplete="off"
                                         inputmode="numeric">
                                 </div>
@@ -205,10 +205,10 @@
                                     monthly income</label>
                                 <div class="input-group border r-12">
                                     <div class="input-group-prepend">
-                                        <span class="input-group-text" id="basic-addon1">&#8377;</span>
+                                        <span class="input-group-text border-start" id="basic-addon1">&#8377;</span>
                                     </div>
                                     <input type="text" name="current_emi" id="current_emi" value=""
-                                        class="numeric-input form-control mb-2"
+                                        class="numeric-input form-control mb-0"
                                         placeholder="Enter Current EMI (&#8377;) (If Any)" autocomplete="off"
                                         inputmode="numeric">
                                 </div>

@@ -5105,7 +5105,7 @@ span.sm-info {
     z-index: 999;
     background-color: #fff;
     border: 1px solid #f8f8f8;
-    padding: 45px 35px;
+    padding:35px;
     -webkit-box-shadow: 0px 15px 20px 0px rgba(0, 0, 0, .08);
     -moz-box-shadow: 0px 15px 20px 0px rgba(0, 0, 0, .08);
     box-shadow: 0px 15px 20px 0px rgba(0, 0, 0, .08);
@@ -5129,7 +5129,7 @@ span.sm-info {
 }
 
 #hero-8-form p a {
-    color: #1e90ff;
+    color: #1e90ff !important;
     text-decoration: underline;
 }
 
@@ -5440,7 +5440,7 @@ span.sm-info {
 }
 
 #hero-201 {
-    background: #fff;
+    /* background: #fff; */
     /* background-image: url(../images/site-img-4.jpg); */
     padding-top: 140px;
     padding-bottom: 0px;
@@ -10729,7 +10729,13 @@ span.release-date span {
     border-radius: 12px;
     min-height:52px;
 }
-
+.contact-form.contact-form-1 .form-control,
+.contact-form.contact-form-1 .form-select {
+    background-color: transparent;
+}
+.request-form.contact-form-1 .form-control{
+     background-color: transparent;
+}
 .bg--snow .contact-form .form-control,
 .bg--snow .contact-form .form-select {
     background-color: #fff;

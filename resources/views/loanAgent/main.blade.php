@@ -30,7 +30,7 @@
 .input-group-text {
     color: #666;
     border: none;
-    background-color: #f5f6f8;
+    background-color: #E6EAF4 !important;
     line-height: 1.3;
     border-top-left-radius: 5px;
     border-bottom-left-radius: 5px;
@@ -56,25 +56,31 @@
         margin-top: 1px;
     }
 }
-
-#hero-201 {
-    background-color: #f4f9fc;
-}
 </style>
 @endpush
 @section('content')
-<section id="hero-201" class=" bg--fixed">
+<section id="hero-201" class="bg--fixed landing-bg-image">
     <div class="container">
         <div class="row align-items-end">
             <div class="col-md-6 col-lg-6 align-items-center m-auto self-apply-form mb-xl-0 mb-3">
                 <div id="hero-8-form" class="r-24 mb-50">
-                    <h4 class="s-20 w-700 mb-2">Apply in <span class="color--green-500">5 Minutes</span></h4>
-                    <p class="s-16">Get instant pre-approved offers.</p>
+
+                    <div class="d-flex justify-content-between align-items-center mb-20">
+                        <div>
+                            <h4 class="s-20 w-700 mb-0">Start Your Loan Journey
+                            </h4>
+                            <p class="s-16 m-0">Explore available loan options.</p>
+                        </div>
+                        <div>
+                            <img src="{{ asset('front/images/dolar-image.png') }}" alt="kreditsathi"
+                                class="img-fluid p-0 m-auto">
+                        </div>
+                    </div>
 
                     <form method="post" action="{{ route('loan.agent.send.otp') }}"
                         class="request-form save-form-1 needs-validation" novalidate>
                         <div class="row g-2">
-                            <div class="col-md-12">
+                           <div class="col-md-12">
                                 <div class="form-check ps-0">
                                     <div class="row gx-2">
                                         <div class="col-md-6 col-lg-6 col-sm-6 mb-2">
@@ -108,11 +114,11 @@
 
                                     <div class="mb-2">
                                         <select name="user_type" id="user_type" class="form-control form-select">
-                                            <!-- Personal Options -->
+                                         
                                             <option value="1" data-loan="personal">Salaried</option>
                                             <option value="2" data-loan="personal">Self Employed</option>
 
-                                            <!-- Business Options -->
+                                           
                                             <option value="3" data-loan="business" style="display:none;">Small Business
                                             </option>
                                             <option value="4" data-loan="business" style="display:none;">Audited Report
@@ -120,9 +126,9 @@
                                         </select>
                                     </div>
                                 </div>
-                            </div>
+                            </div>  
                             <div class="col-md-12">
-                                <div class="input-group">
+                                <div class="input-group border r-12">
                                     <div class="input-group-prepend">
                                         <span class="input-group-text" id="basic-addon1">+91</span>
                                     </div>
@@ -141,20 +147,28 @@
                             <div class="col-md-12"><span class="text-danger" id="usererrormsg"></span></div>
                         </div>
 
-                        <p class="mb-0 s-14 text-start text-dark"><small>By submitting the form and proceeding, you
-                                agree to
-                                the <a href="{{ route('front.terms.conditions') }}" target="_blank"
+
+                        <p class="mb-0 s-14 text-start text-dark d-flex align-items-start"><input type="checkbox" name="promotion" id="promotion"
+                                class="custom-control-input mt-1" value="1" required checked><label class="ms-1">
+                                I agree to the
+                                <a href="{{ route('front.terms.conditions') }}" target="_blank"
                                     class="text-dark text-decoration-none">Terms of Use</a> and <a
                                     href="{{ route('front.privacy.policy') }}" class="text-dark text-decoration-none"
-                                    target="_blank">Privacy Policy</a> of <a href="{{ route('front.home') }}"
-                                    class="text-dark text-decoration-none" target="_blank">Kreditsathi.com.</a></small>
+                                    target="_blank">Privacy Policy</a> <a href="{{ route('front.home') }}"
+                                    class="text-dark text-decoration-none" target="_blank">Kreditsathi.com.
+                            </label></a>
+                        </p>
+                        <p class="mb-0 s-14 text-start text-dark d-flex align-items-start"><input type="checkbox" name="promotion" id="promotion"
+                                class="custom-control-input mt-1" value="1" required checked><label class="ms-1">I agree to receive
+                            promotional & informational
+                            communications from Fintopcorporate through Emails, calls or SMS, RCS Services.</label>
                         </p>
                     </form>
                 </div>
             </div>
             <div class="col-md-12 col-lg-6 mb-0">
-                <div class="img-block border-bottom border-3 border-primary">
-                    <img src="{{ asset('front/images/loan-agent-lendingpage-1.png') }}" alt="kreditsathi"
+                <div class="img-block">
+                    <img src="{{ asset('front/images/loan-agent-img-1.png') }}" alt="kreditsathi"
                         class="img-fluid p-0 m-auto">
                 </div>
             </div>
@@ -202,7 +216,7 @@
                 <div class="bank-crousel">
                     <div class="row">
                         <div class="col text-center">
-                            <div class="owl-carousel brands-carousel-main emi-carousel mb-20">
+                            <div class="owl-carousel brands-carousel-main emi-carousel mb-0">
                                 {!! $lists['carousel'] !!}
                             </div>
                         </div>

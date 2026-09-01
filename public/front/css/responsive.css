@@ -9389,7 +9389,7 @@
     .bank-crousel{ display: block!important; }
 }
 @media (max-width:453px){
-    .btn-radio-1, .btn-radio-3, #checkmodal{ padding: 0.9rem 0.75rem!important; }
+    .btn-radio-1, .btn-radio-3, #checkmodal{ padding: 0!important; }
     .hero-section .quick-form.form-half .form-control { height: 48px!important }
 }
 @media screen and (min-width: 768px) {

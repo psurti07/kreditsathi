@@ -44,8 +44,8 @@
                                     <div class="accordion-body p-2">
                                         <div
                                             class="d-flex justify-content-between  details-main px-3 py-3 bg--white-300 r-14 mb-2 border">
-                                            <p class="s-12 text-grey mb-0">Fullname :</p>
-                                            <p class="s-14 text-black mt-0">{{ Cookie::get('fullname') }}</p>
+                                            <p class="s-12 text-grey m-0">Fullname :</p>
+                                            <p class="s-14 text-black m-0">{{ Cookie::get('fullname') }}</p>
                                         </div>
                                         <div
                                             class="d-flex justify-content-between  details-main px-3 py-3 bg--white-300 r-14 mb-2 border">

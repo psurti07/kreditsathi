@@ -46,7 +46,6 @@
         <div class="container">
             <div class="row justify-content-center mb-35">
                 <div class="col-md-5 col-lg-4 col-12 order-md-1 order-2 mt-md-0 mt-20">
-
                     <div class="txt-block left-column gr--white r-28 bg-white p-3">
                         <div class="accordion accordion-flush mb-0" id="accordionFlushExample">
                             <div class="accordion-item bg-transparent">
@@ -63,7 +62,7 @@
                                         <div
                                             class="d-flex justify-content-between  details-main px-3 py-3 bg--white-300 r-14 mb-2 border">
                                             <p class="s-12 text-grey m-0">Fullname :</p>
-                                            <p class="s-14 text-black  m-0">{{ Cookie::get('fullname') }}</p>
+                                            <p class="s-14 text-black m-0">{{ Cookie::get('fullname') }}</p>
                                         </div>
                                         <div
                                             class="d-flex justify-content-between  details-main px-3 py-3 bg--white-300 r-14 mb-2 border">

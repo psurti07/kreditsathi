@@ -225,3 +225,37 @@
 [2026-08-31 11:16:18] local.INFO: Interakt User_track Response {"response":"{\"result\":false,\"message\":\"You don't have an active subscription on Interakt\"}"} 
 [2026-08-31 11:16:18] local.INFO: Interakt Event_track Request {"phoneNumber":"9878877878","countryCode":"+91","event":"Self Get Offer","traits":{"SelfEligibleAmount":875000.0}} 
 [2026-08-31 11:16:18] local.INFO: Interakt Event_track Response {"response":"{\"result\":false,\"message\":\"You don't have an active subscription on Interakt\"}"} 
+[2026-08-31 17:24:53] local.INFO: otp sms message : Hello, the https://kreditsathi.com OTP for your mobile number registration is 2273. Kindly do not share it with anyone. Thanks, Kreditsathi  
+[2026-08-31 17:24:53] local.INFO: sms api_url : http://m.onlinebusinessbazaar.in/sendsms.jsp?user=kredsthi&password=c5df69c3e4XX&senderid=#&mobiles=9787898787&sms=Hello%2C+the+https%3A%2F%2Fkreditsathi.com+OTP+for+your+mobile+number+registration+is+2273.+Kindly+do+not+share+it+with+anyone.+Thanks%2C+Kreditsathi  
+[2026-08-31 17:24:53] local.INFO: otp sms response : 
+<smslist>
+<sms>
+<status>error</status>
+<code>1005</code>
+<reason>SMSContentCannotBeBlank</reason>
+<clientsmsid></clientsmsid>
+<messageid>-1</messageid>
+<mobileno>0</mobileno>
+</sms>
+</smslist>
+  
+[2026-08-31 17:25:21] local.INFO: otp sms message : Hello, the https://kreditsathi.com OTP for your mobile number registration is 8239. Kindly do not share it with anyone. Thanks, Kreditsathi  
+[2026-08-31 17:25:21] local.INFO: sms api_url : http://m.onlinebusinessbazaar.in/sendsms.jsp?user=kredsthi&password=c5df69c3e4XX&senderid=#&mobiles=9787897878&sms=Hello%2C+the+https%3A%2F%2Fkreditsathi.com+OTP+for+your+mobile+number+registration+is+8239.+Kindly+do+not+share+it+with+anyone.+Thanks%2C+Kreditsathi  
+[2026-08-31 17:25:22] local.INFO: otp sms response : 
+<smslist>
+<sms>
+<status>error</status>
+<code>1005</code>
+<reason>SMSContentCannotBeBlank</reason>
+<clientsmsid></clientsmsid>
+<messageid>-1</messageid>
+<mobileno>0</mobileno>
+</sms>
+</smslist>
+  
+[2026-08-31 17:26:16] local.INFO: Interakt User_track Request {"phoneNumber":"9787897878","countryCode":"+91","traits":{"name":"Fdsfdsfd Fdsf"},"tags":["Self Get Offer"]} 
+[2026-08-31 17:26:16] local.INFO: Interakt User_track Response {"response":"{\"result\":false,\"message\":\"You don't have an active subscription on Interakt\"}"} 
+[2026-08-31 17:26:17] local.INFO: Interakt Event_track Request {"phoneNumber":"9787897878","countryCode":"+91","event":"Self Get Offer","traits":{"SelfEligibleAmount":875000.0}} 
+[2026-08-31 17:26:17] local.INFO: Interakt Event_track Response {"response":"{\"result\":false,\"message\":\"You don't have an active subscription on Interakt\"}"} 
+[2026-08-31 17:50:32] local.INFO: self apply send otp function error - Undefined array key "loan_type"  
+[2026-08-31 17:50:40] local.INFO: self apply send otp function error - Undefined array key "loan_type"  

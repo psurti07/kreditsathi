@@ -145,7 +145,7 @@
                         </div>
 
                         <form method="post" action="{{ route('self.apply.loan.details.store') }}"
-                            class="request-form save-form-3 needs-validation" novalidate>
+                            class="request-form contact-form-1 save-form-3 needs-validation" novalidate>
                             <div class="row">
                                 <div class="col-md-12 range">
                                     <div class="range__value form-group-range r-10 w-100">
@@ -189,11 +189,11 @@
                                         class="position-static p-0 text-uppercase s-14 mb-2 color--grey text-start d-block">enter
                                         monthly income</label>
                                     <div class="input-group border r-12">
-                                        <div class="input-group-prepend">
+                                        <div class="input-group-prepend border-start">
                                             <span class="input-group-text h-100" id="basic-addon1">&#8377;</span>
                                         </div>
                                         <input type="text" name="monthly_income" id="monthly_income"
-                                            class="numeric-input form-control border-start"
+                                            class="numeric-input form-control"
                                             placeholder="Enter Monthly Income (&#8377;)" autocomplete="off"
                                             inputmode="numeric">
                                     </div>
@@ -206,11 +206,11 @@
                                         class="position-static p-0 text-uppercase s-14 mb-2 color--grey text-start d-block">enter
                                         current emi (if any)</label>
                                     <div class="input-group border r-12">
-                                        <div class="input-group-prepend">
+                                        <div class="input-group-prepend border-start">
                                             <span class="input-group-text h-100" id="basic-addon1">&#8377;</span>
                                         </div>
                                         <input type="text" name="current_emi" id="current_emi" value=""
-                                            class="numeric-input form-control border-start"
+                                            class="numeric-input form-control"
                                             placeholder="Enter Current EMI (&#8377;) (If Any)" autocomplete="off"
                                             inputmode="numeric">
                                     </div>

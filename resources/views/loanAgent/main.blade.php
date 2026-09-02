@@ -67,9 +67,9 @@
 
                     <div class="d-flex justify-content-between align-items-center mb-20">
                         <div>
-                            <h4 class="s-20 w-700 mb-0">Start Your Loan Journey
+                            <h4 class="s-20 w-700 mb-0">Find the Right Loan
                             </h4>
-                            <p class="s-16 m-0">Explore available loan options.</p>
+                            <p class="s-16 m-0">Compare available financing options with ease.</p>
                         </div>
                         <div>
                             <img src="{{ asset('front/images/dolar-image.png') }}" alt="kreditsathi"

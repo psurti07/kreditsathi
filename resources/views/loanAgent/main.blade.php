@@ -475,7 +475,7 @@
                             <div id="sb-1-1" class="wow fadeInUp">
                                 <div class="statistic-block d-block bg-transparent">
                                     <div class="statistic-block-digit text-sm-start text-center">
-                                        <h3 class="statistic-number w-500"><span class="count-element">40</span>Million+
+                                        <h3 class="statistic-number w-500"><span class="count-element">50,000</span>+
                                         </h3>
                                     </div>
                                     <div class="statistic-block-txt text-sm-start text-center">
@@ -488,7 +488,7 @@
                             <div id="sb-1-2" class="wow fadeInUp">
                                 <div class="statistic-block d-block bg-transparent">
                                     <div class="statistic-block-digit text-sm-start text-center">
-                                        <h3 class="statistic-number w-500"><span class="count-element">12000</span>Cr+
+                                        <h3 class="statistic-number w-500"><span class="count-element">80</span>Cr+
                                         </h3>
                                     </div>
                                     <div class="statistic-block-txt text-sm-start text-center">
@@ -501,7 +501,7 @@
                             <div id="sb-1-3" class="wow fadeInUp">
                                 <div class="statistic-block d-block bg-transparent">
                                     <div class="statistic-block-digit text-sm-start text-center">
-                                        <h3 class="statistic-number w-500"><span class="count-element">49000</span>+
+                                        <h3 class="statistic-number w-500"><span class="count-element">5000</span>+
                                         </h3>
                                     </div>
                                     <div class="statistic-block-txt text-sm-start text-center">

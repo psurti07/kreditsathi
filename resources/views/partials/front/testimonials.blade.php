@@ -61,7 +61,7 @@
                         <div class="review-author text-start ps-0">
                             <h4 class="s-16 w-600 mb-2">Rohan Joshi</h4>
 
-                            <span>Feb 26, 2025</span>
+                            <span>Dec 12, 2025</span>
                         </div>
                     </div>
                 </div>
@@ -95,7 +95,7 @@
                     <div class="author-data clearfix text-start mt-0">
                         <div class="review-author text-start ps-0">
                             <h4 class="s-16 w-600 mb-2">Sneha Kapoor</h4>
-                            <span>Feb 26, 2025</span>
+                            <span>Jan 17, 2026</span>
                         </div>
                     </div>
                 </div>
@@ -132,7 +132,7 @@
                     <div class="author-data clearfix text-start mt-0">
                         <div class="review-author text-start ps-0">
                             <h4 class="s-16 w-600 mb-2">Vikram Singh</h4>
-                            <span>Feb 26, 2025</span>
+                            <span>Mar 10, 2026</span>
                         </div>
                     </div>
                 </div>
@@ -141,7 +141,7 @@
 
     </div>
 
-    {{-- <div class="review-1 bg--white-100 shadow-md r-08 p-4  bg--blue-100">
+    <div class="review-1 bg--white-100 shadow-md r-08 p-4  bg--blue-100">
             <div class="row align-items-center">
             <div class="col-lg-3 col-md-5 col-12">
             <div class="review-avatar float-none mb-md-0 mb-3">
@@ -167,13 +167,13 @@
                     <div class="author-data clearfix text-start mt-0">
                         <div class="review-author text-start ps-0">
                             <h4 class="s-16 w-600 mb-2">Pooja Nair</h4>
-                            <span>Feb 26, 2025</span>
+                            <span>May 02, 2026</span>
                         </div>
                     </div>
                 </div>
             </div>
         </div>
        
-    </div> --}}
+    </div>
 </div>
 <!-- Testimonials carousel ends  -->

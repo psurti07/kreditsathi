@@ -67,7 +67,7 @@
                 <div id="hero-8-form" class="r-24 mb-50">
                     <div class="d-flex justify-content-between align-items-center mb-20">
                         <div>
-                            <h4 class="s-30 w-700 mb-0">Start Your Loan Journey
+                            <h4 class="s-32 w-700 mb-0">Start Your Loan Journey
                             </h4>
                             <p class="s-16 m-0">Explore available loan options.</p>
                         </div>

@@ -369,7 +369,7 @@
             </div>
         </div>
         <div class="fbox-wrapper text-center">
-            <div class="row row-cols-1 row-cols-md-2 row-cols-lg-4 gy-4">
+            <div class="row row-cols-1 row-cols-md-2 row-cols-lg-3 gy-4">
                 <div class="col">
                     <div class="fbox-8 fbox--hover fb-1 border shadow mb-md-0 mb-2 h-100 bg--yellow-500">
                         <div class="fbox-ico">
@@ -396,7 +396,7 @@
                         </div>
                     </div>
                 </div>
-                <div class="col">
+                {{-- <div class="col">
                     <div class="fbox-8 fbox--hover fb-2 border shadow mb-md-0 mb-2 h-100 bg--yellow-500">
                         <div class="fbox-ico">
                             <div class="fbox-image r-14 ico-20">
@@ -408,7 +408,7 @@
                             <p>Check eligibility and continue your application independently.</p>
                         </div>
                     </div>
-                </div>
+                </div> --}}
                 <div class="col">
                     <div class="fbox-8 fbox--hover fb-3 border shadow mb-md-0 mb-2 h-100 bg--yellow-500">
                         <div class="fbox-ico">

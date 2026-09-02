@@ -443,7 +443,7 @@
                                         </h3>
                                     </div>
                                     <div class="statistic-block-txt text-sm-start text-center">
-                                        <p class="p-sm text-uppercase mt-0">Loan Applications Facilitated</p>
+                                        <p class="p-sm text-uppercase mt-0">Loan Applications Facilitated*</p>
                                     </div>
                                 </div>
                             </div>

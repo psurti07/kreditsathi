@@ -71,10 +71,6 @@
                             </h4>
                             <p class="s-16 m-0">Explore available loan options.</p>
                         </div>
-                        <div>
-                            <img src="{{ asset('front/images/dolar-image.png') }}" alt="kreditsathi"
-                                class="img-fluid p-0 m-auto">
-                        </div>
                     </div>
                     <form method="post" action="{{ route('self.apply.send.otp') }}"
                         class="request-form save-form-1 needs-validation" novalidate>

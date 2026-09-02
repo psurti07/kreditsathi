@@ -71,10 +71,6 @@
                             </h4>
                             <p class="s-16 m-0">Compare available financing options with ease.</p>
                         </div>
-                        <div>
-                            <img src="{{ asset('front/images/dolar-image.png') }}" alt="kreditsathi"
-                                class="img-fluid p-0 m-auto">
-                        </div>
                     </div>
 
                     <form method="post" action="{{ route('loan.agent.send.otp') }}"

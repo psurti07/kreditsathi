@@ -75,9 +75,9 @@
 
                         <div class="cbox-12 process-step">
                             <div class="ico-wrap">
-                                <div class="cbox-12-ico text-white bg--green-300 border border-green">
+                                <div class="cbox-12-ico text-white bg--blue-400 border border-green">
                                     <span class="fbox-ico ico-9 lh-1"> <span
-                                            class="flaticon-check ms-0 color--white lh-1"></span></span>
+                                            class="flaticon-right-arrow ms-0 color--white lh-1"></span></span>
                                 </div>
                             </div>
                             <div class="cbox-12-txt">
@@ -86,11 +86,12 @@
                         </div>
                         <div class="cbox-12 process-step">
                             <div class="ico-wrap">
-                                <div class="cbox-12-ico cbox-12-ico bg--blue-400"><span class="fbox-ico ico-9 lh-1">
-                                        <span class="flaticon-right-arrow ms-0 color--white lh-1"></span></span></div>
-                            </div>
+                                    <div class="cbox-12-ico text-white border border-green"><span
+                                            class="fbox-ico ico-9 lh-1">
+                                            <span class="flaticon-right-arrow ms-0 color--black lh-1"></span></span></div>
+                                </div>
                             <div class="cbox-12-txt">
-                                <p class="s-11 w-600">Personal Details</p>
+                                <p class="s-11">Personal Details</p>
                             </div>
                         </div>
                         <div class="cbox-12 process-step">

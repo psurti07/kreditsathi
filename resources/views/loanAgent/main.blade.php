@@ -80,7 +80,10 @@
                     <form method="post" action="{{ route('loan.agent.send.otp') }}"
                         class="request-form save-form-1 needs-validation" novalidate>
                         <div class="row g-2">
-                           <div class="col-md-12">
+                            <input type="hidden" name="loan_type" value="1">
+                            <input type="hidden" name="acc_type" value="1" id="acc_type">
+                            <input type="hidden" name="user_type" value="1">
+                           {{-- <div class="col-md-12">
                                 <div class="form-check ps-0">
                                     <div class="row gx-2">
                                         <div class="col-md-6 col-lg-6 col-sm-6 mb-2">
@@ -126,7 +129,7 @@
                                         </select>
                                     </div>
                                 </div>
-                            </div>  
+                            </div>   --}}
                             <div class="col-md-12">
                                 <div class="input-group border r-12">
                                     <div class="input-group-prepend">
@@ -461,27 +464,25 @@
 </section>
 <!-- Testimonioals section ends -->
 
-<section id="statistic-1" class="py-100 statistic-section division bg--yellow-500">
+<section id="statistic-1" class="pt-lg-0 pb-lg-0 pt-5 pb-md-5 statistic-section division bg--yellow-500">
     <div class="container">
-        <div class="row justify-content-between">
-            <div class="col-lg-5 col-md-12 col-12">
-                <div class="txt-block">
-                    <span class="text-uppercase">Our Impact</span>
-                    <h2 class="s-28 mb-5 color--green ">Growing With Our Customers </h2>
+        <div class="row justify-content-between align-items-center">
+            <div class="col-md-7 col-12">
+                <div class="txt-block mb-10">
+
+                    <h2 class="s-28 mb-5">Growing With Our Customers </h2>
                     <p class="s-16 mt-0">Helping customers explore loan options through a simple online platform.</p>
                 </div>
-            </div>
-            <div class="col-lg-6 col-md-12 col-12">
-                <div class="statistic-1-wrapper">
-                    <div class="row justify-content-md-center row-cols-1 row-cols-md-3">
+                <div class="statistic-1-wrapper mt-25">
+                    <div class="row justify-content-md-center row-cols-1 row-cols-sm-3 row-cols-md-3">
                         <div class="col">
                             <div id="sb-1-1" class="wow fadeInUp">
-                                <div class="statistic-block d-block bg--yellow-200 r-12 p-3">
-                                    <div class="statistic-block-digit text-start">
-                                        <h3 class="statistic-number w-500"><span class="count-element">40</span>M+</h3>
+                                <div class="statistic-block d-block bg-transparent">
+                                    <div class="statistic-block-digit text-sm-start text-center">
+                                        <h3 class="statistic-number w-500"><span class="count-element">40</span>Million+
+                                        </h3>
                                     </div>
-
-                                    <div class="statistic-block-txt text-start">
+                                    <div class="statistic-block-txt text-sm-start text-center">
                                         <p class="p-sm text-uppercase mt-0">Happy Users</p>
                                     </div>
                                 </div>
@@ -489,12 +490,12 @@
                         </div>
                         <div class="col">
                             <div id="sb-1-2" class="wow fadeInUp">
-                                <div class="statistic-block r-12 p-3">
-                                    <div class="statistic-block-digit text-start">
+                                <div class="statistic-block d-block bg-transparent">
+                                    <div class="statistic-block-digit text-sm-start text-center">
                                         <h3 class="statistic-number w-500"><span class="count-element">12000</span>Cr+
                                         </h3>
                                     </div>
-                                    <div class="statistic-block-txt text-start">
+                                    <div class="statistic-block-txt text-sm-start text-center">
                                         <p class="p-sm text-uppercase mt-0">Loans Disbursed</p>
                                     </div>
                                 </div>
@@ -502,18 +503,24 @@
                         </div>
                         <div class="col">
                             <div id="sb-1-3" class="wow fadeInUp">
-                                <div class="statistic-block r-12 p-3">
-                                    <div class="statistic-block-digit text-start">
+                                <div class="statistic-block d-block bg-transparent">
+                                    <div class="statistic-block-digit text-sm-start text-center">
                                         <h3 class="statistic-number w-500"><span class="count-element">49000</span>+
                                         </h3>
                                     </div>
-                                    <div class="statistic-block-txt text-start">
+                                    <div class="statistic-block-txt text-sm-start text-center">
                                         <p class="p-sm text-uppercase mt-0">Pincodes Served</p>
                                     </div>
                                 </div>
                             </div>
                         </div>
                     </div>
+                </div>
+            </div>
+            <div class="col-md-5 col-12">
+                <div class="img-block">
+                    <img src="{{ asset('front/images/customers-img.png') }}" alt="kreditsathi"
+                        class="img-fluid p-0 m-auto">
                 </div>
             </div>
         </div>

@@ -79,7 +79,10 @@
                     <form method="post" action="{{ route('self.apply.send.otp') }}"
                         class="request-form save-form-1 needs-validation" novalidate>
                         <div class="row g-2">
-                            <div class="col-md-12">
+                            <input type="hidden" name="loan_type" value="1">
+                            <input type="hidden" name="acc_type" value="1" id="acc_type">
+                            <input type="hidden" name="user_type" value="1">
+                            {{-- <div class="col-md-12">
                                 <div class="form-check ps-0">
                                     <div class="row gx-2">
                                         <div class="col-md-6 col-lg-6 col-sm-6 mb-2">
@@ -127,7 +130,7 @@
                                         </select>
                                     </div>
                                 </div>
-                            </div> 
+                            </div>  --}}
                             <div class="col-md-12">
                                 <div class="input-group border r-12">
                                     <div class="input-group-prepend">

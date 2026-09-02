@@ -82,7 +82,7 @@
                                 <div class="ico-wrap">
                                     <div class="cbox-12-ico text-white bg--green-300 border border-green"><span
                                             class="fbox-ico ico-9 lh-1">
-                                            <span class="flaticon-right-arrow ms-0 color--white lh-1"></span></span></div>
+                                            <span class="flaticon-check ms-0 color--white lh-1"></span></span></div>
                                 </div>
                                 <div class="cbox-12-txt">
                                     <p class="s-11 w-600">Personal Details</p>
@@ -94,7 +94,7 @@
                                                 class="flaticon-right-arrow ms-0 color--white lh-1"></span></span></div>
                                 </div>
                                 <div class="cbox-12-txt">
-                                    <p class="s-11">Unlock Offers</p>
+                                    <p class="s-11 w-600">Unlock Offers</p>
                                 </div>
                             </div>
                             <div class="cbox-12 process-step">

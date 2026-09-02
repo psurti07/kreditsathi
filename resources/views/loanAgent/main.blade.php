@@ -149,7 +149,7 @@
                         </div>
 
 
-                        <p class="mb-0 s-14 text-start text-dark d-flex align-items-start"><input type="checkbox" name="promotion" id="promotion"
+                        <p class="mb-0 s-14 text-start text-dark d-flex align-items-start"><input type="checkbox" name="accept_tnc" id="promotion"
                                 class="custom-control-input mt-1" value="1" required checked><label class="ms-1">
                                 I agree to the
                                 <a href="{{ route('front.terms.conditions') }}" target="_blank"
@@ -160,7 +160,7 @@
                             </label></a>
                         </p>
                         @component('components.ajax-error',['field'=>'accept_tnc'])@endcomponent
-                        <p class="mb-0 s-14 text-start text-dark d-flex align-items-start"><input type="checkbox" name="promotion" id="promotion"
+                        <p class="mb-0 s-14 text-start text-dark d-flex align-items-start"><input type="checkbox" name="accept_agr" id="promotion"
                                 class="custom-control-input mt-1" value="1" required checked><label class="ms-1">I agree to receive
                             promotional & informational
                             communications from Fintopcorporate through Emails, calls or SMS, RCS Services.</label>

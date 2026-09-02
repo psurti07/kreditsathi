@@ -67,8 +67,7 @@
 
                     <div class="d-flex justify-content-between align-items-center mb-20">
                         <div>
-                            <h4 class="s-20 w-700 mb-0">Find the Right Loan
-                            </h4>
+                            <h3 class="s-26 w-700 mb-0">Find the Right Loan</h3>
                             <p class="s-16 m-0">Compare available financing options with ease.</p>
                         </div>
                     </div>
@@ -137,6 +136,9 @@
                                 </div>
                                 @component('components.ajax-error',['field'=>'mobile'])@endcomponent
                             </div>
+                            <div class="d-flex justify-content-between align-items-center mb-10">
+                                <p class="s-10 m-0 ms-2">An OTP will be sent for verification</p>
+                            </div>
                             <div class="col-md-12 form-btn">
                                 <button type="submit" class="custom-btn text-center submit w-100" id="checkmodal">
                                     <span class="btn-text fw-semibold">Apply Now</span>
@@ -157,11 +159,13 @@
                                     class="text-dark text-decoration-none" target="_blank">Kreditsathi.com.
                             </label></a>
                         </p>
+                        @component('components.ajax-error',['field'=>'accept_tnc'])@endcomponent
                         <p class="mb-0 s-14 text-start text-dark d-flex align-items-start"><input type="checkbox" name="promotion" id="promotion"
                                 class="custom-control-input mt-1" value="1" required checked><label class="ms-1">I agree to receive
                             promotional & informational
                             communications from Fintopcorporate through Emails, calls or SMS, RCS Services.</label>
                         </p>
+                        @component('components.ajax-error',['field'=>'accept_agr'])@endcomponent
                     </form>
                 </div>
             </div>
@@ -475,7 +479,7 @@
                             <div id="sb-1-1" class="wow fadeInUp">
                                 <div class="statistic-block d-block bg-transparent">
                                     <div class="statistic-block-digit text-sm-start text-center">
-                                        <h3 class="statistic-number w-500"><span class="count-element">50,000</span>+
+                                        <h3 class="statistic-number w-500"><span class="count-element">50000</span>+
                                         </h3>
                                     </div>
                                     <div class="statistic-block-txt text-sm-start text-center">

@@ -67,7 +67,7 @@
                 <div id="hero-8-form" class="r-24 mb-50">
                     <div class="d-flex justify-content-between align-items-center mb-20">
                         <div>
-                            <h4 class="s-20 w-700 mb-0">Start Your Loan Journey
+                            <h4 class="s-30 w-700 mb-0">Start Your Loan Journey
                             </h4>
                             <p class="s-16 m-0">Explore available loan options.</p>
                         </div>
@@ -139,6 +139,9 @@
                                 @component('components.ajax-error', ['field' => 'mobile'])
                                 @endcomponent
                             </div>
+                            <div class="d-flex justify-content-between align-items-center mb-10">
+                                <p class="s-10 m-0 ms-2">An OTP will be sent for verification</p>
+                            </div>
                             <div class="col-md-12 form-btn">
                                 <button type="submit" class="custom-btn text-center submit w-100" id="checkmodal">
                                     <span class="btn-text fw-semibold">Apply Now</span>
@@ -148,8 +151,8 @@
                             <div class="col-md-12"><span class="text-danger" id="usererrormsg"></span></div>
                         </div>
 
-                        <p class="mb-0 s-14 text-start text-dark d-flex align-items-start">
-                            <input type="checkbox" name="promotion" id="promotion" class="custom-control-input mt-1"
+                        <p class="mb-0 s-12 text-start text-dark d-flex align-items-start">
+                            <input type="checkbox" name="accept_tnc" id="promotion" class="custom-control-input mt-1"
                                 value="1" required checked><label class="ms-1">I agree to the
                             <a href="{{ route('front.terms.conditions') }}" target="_blank"
                                 class="text-dark text-decoration-none">Terms of Use</a> and <a
@@ -157,11 +160,13 @@
                                 target="_blank">Privacy Policy</a> <a href="{{ route('front.home') }}"
                                 class="text-dark text-decoration-none" target="_blank">Kreditsathi.com.</label></a>
                         </p>
-                        <p class="mb-0 s-14 text-start text-dark d-flex align-items-start">
-                            <input type="checkbox" name="promotion" id="promotion" class="custom-control-input mt-1"
+                        @component('components.ajax-error',['field'=>'accept_tnc'])@endcomponent
+                        <p class="mb-0 s-12 text-start text-dark d-flex align-items-start">
+                            <input type="checkbox" name="accept_agr" id="promotion" class="custom-control-input mt-1"
                                 value="1" required checked><label class="ms-1">I agree to receive promotional & informational
                             communications from Fintopcorporate through Emails, calls or SMS, RCS Services.</label>
                         </p>
+                        @component('components.ajax-error',['field'=>'accept_agr'])@endcomponent
                     </form>
                 </div>
             </div>

@@ -79,9 +79,13 @@ class SelfApplyController extends Controller
             }
             /* validate the request fields */
             $request->validate([
-                'mobile' => ['required', 'numeric', 'regex:/^[6-9]\d{9}$/']
+                'mobile' => ['required', 'numeric', 'regex:/^[6-9]\d{9}$/'],
+                'accept_tnc' => 'required',
+                'accept_agr' => 'required',
             ], [
-                'mobile.regex' => 'Enter valid mobile number'
+                'mobile.regex' => 'Enter valid mobile number',
+                'accept_tnc.required' => 'Click checkbox to accept our terms conditions and privacy policy',
+                'accept_agr.required' => 'Click checkbox to accept our Agrement',
             ]);
             /* create cookie/session for entered mobile number */
             Cookie::queue('user_mobile', $inputs['mobile'], $this->lifetime, '/', null, false, true, false, 'lax');

@@ -30,7 +30,7 @@
 .input-group-text {
     color: #666;
     border: none;
-    background-color: #f5f6f8;
+    background-color: #E6EAF4 !important;
     line-height: 1.3;
     border-top-left-radius: 5px;
     border-bottom-left-radius: 5px;
@@ -59,18 +59,28 @@
 </style>
 @endpush
 @section('content')
-<section id="hero-201" class="bg--white-100 bg--fixed">
+<section id="hero-201" class="bg--fixed landing-bg-image">
     <div class="container">
-        <div class="row d-flex align-items-center">
-            <div class="col-md-6 col-lg-6 align-items-center m-auto self-apply-form mb-lg-0 mb-3">
-                <div id="hero-8-form" class="border border-primary r-06">
-                    <h4 class="s-20 w-700 mb-2">Apply in <span class="color--green-500">5 Minutes</span></h4>
-                    <p class="s-16">Get instant pre-approved offers.</p>
+        <div class="row align-items-end">
+            <div class="col-md-6 col-lg-6 align-items-center m-auto self-apply-form mb-xl-0 mb-3">
+                <div id="hero-8-form" class="r-24 mb-50">
+
+                    <div class="d-flex justify-content-between align-items-center mb-20">
+                        <div>
+                            <h4 class="s-20 w-700 mb-0">Find the Right Loan
+                            </h4>
+                            <p class="s-16 m-0">Compare available financing options with ease.</p>
+                        </div>
+                        <div>
+                            <img src="{{ asset('front/images/dolar-image.png') }}" alt="kreditsathi"
+                                class="img-fluid p-0 m-auto">
+                        </div>
+                    </div>
 
                     <form method="post" action="{{ route('loan.agent.send.otp') }}"
                         class="request-form save-form-1 needs-validation" novalidate>
                         <div class="row g-2">
-                            <div class="col-md-12">
+                           <div class="col-md-12">
                                 <div class="form-check ps-0">
                                     <div class="row gx-2">
                                         <div class="col-md-6 col-lg-6 col-sm-6 mb-2">
@@ -104,11 +114,11 @@
 
                                     <div class="mb-2">
                                         <select name="user_type" id="user_type" class="form-control form-select">
-                                            <!-- Personal Options -->
+                                         
                                             <option value="1" data-loan="personal">Salaried</option>
                                             <option value="2" data-loan="personal">Self Employed</option>
 
-                                            <!-- Business Options -->
+                                           
                                             <option value="3" data-loan="business" style="display:none;">Small Business
                                             </option>
                                             <option value="4" data-loan="business" style="display:none;">Audited Report
@@ -116,9 +126,9 @@
                                         </select>
                                     </div>
                                 </div>
-                            </div>
+                            </div>  
                             <div class="col-md-12">
-                                <div class="input-group">
+                                <div class="input-group border r-12">
                                     <div class="input-group-prepend">
                                         <span class="input-group-text" id="basic-addon1">+91</span>
                                     </div>
@@ -129,24 +139,58 @@
                                 @component('components.ajax-error',['field'=>'mobile'])@endcomponent
                             </div>
                             <div class="col-md-12 form-btn">
-                                <button type="submit" id="checkmodal" class="btn btn--theme hover--tra-black submit">Apply
-                                    Now</button>
+                                <button type="submit" class="custom-btn text-center submit w-100" id="checkmodal">
+                                    <span class="btn-text fw-semibold">Apply Now</span>
+                                    <span class="btn-icon"> → </span>
+                                </button>
                             </div>
                             <div class="col-md-12"><span class="text-danger" id="usererrormsg"></span></div>
                         </div>
 
-                        <p class="mb-0 s-14 text-start text-dark"><small>By submitting the form and proceeding, you agree to
-                            the <a href="{{ route('front.terms.conditions') }}" target="_blank"
-                                class="text-dark text-decoration-none">Terms of Use</a> and <a
-                                href="{{ route('front.privacy.policy') }}" class="text-dark text-decoration-none"
-                                target="_blank">Privacy Policy</a> of <a href="{{ route('front.home') }}"
-                                class="text-dark text-decoration-none" target="_blank">Kreditsathi.com.</a></small></p>
+
+                        <p class="mb-0 s-14 text-start text-dark d-flex align-items-start"><input type="checkbox" name="promotion" id="promotion"
+                                class="custom-control-input mt-1" value="1" required checked><label class="ms-1">
+                                I agree to the
+                                <a href="{{ route('front.terms.conditions') }}" target="_blank"
+                                    class="text-dark text-decoration-none">Terms of Use</a> and <a
+                                    href="{{ route('front.privacy.policy') }}" class="text-dark text-decoration-none"
+                                    target="_blank">Privacy Policy</a> <a href="{{ route('front.home') }}"
+                                    class="text-dark text-decoration-none" target="_blank">Kreditsathi.com.
+                            </label></a>
+                        </p>
+                        <p class="mb-0 s-14 text-start text-dark d-flex align-items-start"><input type="checkbox" name="promotion" id="promotion"
+                                class="custom-control-input mt-1" value="1" required checked><label class="ms-1">I agree to receive
+                            promotional & informational
+                            communications from Fintopcorporate through Emails, calls or SMS, RCS Services.</label>
+                        </p>
                     </form>
                 </div>
             </div>
-            <div class="col-md-12 col-lg-6">
+            <div class="col-md-12 col-lg-6 mb-0">
                 <div class="img-block">
-                    <img src="{{ asset('front/images/loan-agent-img.png') }}" alt="kreditsathi" class="img-fluid p-0">
+                    <img src="{{ asset('front/images/loan-agent-img-1.png') }}" alt="kreditsathi"
+                        class="img-fluid p-0 m-auto">
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="py-80 ct-02 content-section division" id="company">
+    <div class="container">
+        <div class="row align-items-center justify-content-between">
+            <div class="col-lg-5 col-md-6 col-12 text-center  mb-md-0 mb-4">
+                <img src="{{ asset('front/images/journey-card.png') }}" alt="kreditsathi" class="img-fluid p-0 m-auto">
+            </div>
+            <div class="col-lg-6 col-md-6 col-12">
+                <div class="txt-block">
+                    <span class="color--green-500 text-uppercase d-block">Three simple steps</span>
+                    <h2 class="s-36 mb-5">From Details to Decision</h2>
+                    <p class="">Share a few details, explore available options, and continue with the one that suits
+                        your requirements.
+                    </p><a href="#" class="btn r-13 btn--green-400 hover--tra-black last-link mt-0">Check eligibility
+                        <span class="fbox-ico ico-10"> <span
+                                class="flaticon-right-arrow  ico-20 ms-1"></span></span></a>
                 </div>
             </div>
         </div>
@@ -154,106 +198,230 @@
 </section>
 
 <!-- Affiliate NBFCs section starts -->
-<section id="integrations-2" class="py-80 integrations-section bg--green-100">
+<section id="integrations-2" class="py-80 integrations-section partner-section">
     <div class="container">
-        <div class="r-12 text-center">
-            <div class="row justify-content-center">
-                <div class="col-md-12 col-lg-12">
-                    <div class="section-title mb-40">
-                        <h2 class="s-28 mb-5">Trusted by the <span class="color--green-500">Best in the Industry</span>
-                        </h2>
-                        <p class="s-16 color--grey mt-0">Partnering with the best NBFCs to provide the best for our
-                            customers.</p>
-                    </div>
+        <div class="row align-items-center justify-content-between">
+            <div class="col-lg-5 col-md-6 col-12">
+                <div class="txt-block">
+                    <span class="text-uppercase color--yellow-500">Our Partners</span>
+                    <h2 class="s-28 mb-5 color--white">Meet Our Lending Network </h2>
+                    <p class="s-16 color--white mt-0">Compare available options from multiple lending partners in one
+                        place.</p>
                 </div>
             </div>
             @php
             $lists = nbfcsList();
             @endphp
-            <div class="bank-crousel">
-                <div class="row">
-                    <div class="col text-center">
-                        <div class="owl-carousel brands-carousel-6 emi-carousel">
-                            {!! $lists['carousel'] !!}
+            <div class="col-lg-6 col-md-6 col-12">
+                <div class="bank-crousel">
+                    <div class="row">
+                        <div class="col text-center">
+                            <div class="owl-carousel brands-carousel-main emi-carousel mb-0">
+                                {!! $lists['carousel'] !!}
+                            </div>
                         </div>
                     </div>
                 </div>
+
             </div>
         </div>
     </div>
 </section>
 <!-- Affiliate NBFCs section ends -->
 
-<section id="features-6" class="py-80 features-section division">
+<section id="features-6" class="py-80 features-section division features-card-top features-card">
     <div class="container">
         <div class="row justify-content-center">
             <div class="col-md-10 col-lg-9">
                 <div class="section-title mb-40">
-                    <h2 class="s-28 mb-5">Why <span class="color--green-500">kreditsathi</span></h2>
-                    <p class="s-16 color--grey mt-0">Here's What Sets Our Platform Apart</p>
+                    <h2 class="s-28 mb-5">Making Loan Choices Simpler</h2>
+                    <p class="s-16 color--grey mt-0">Here's what sets us apart.</p>
                 </div>
             </div>
         </div>
         <div class="fbox-wrapper text-center">
-            <div class="row gx-3 gy-2 row-cols-1 row-cols-md-2 row-cols-lg-4">
+            <div class="row row-cols-1 row-cols-md-2 row-cols-lg-2 gy-4">
                 <div class="col">
-                    <div class="fbox-8 fb-1 r-12 border h-100">
-                        <div class="fbox-txt text-start mb-3 pb-md-0 pb-5">
-                            <h4 class="s-18 w-700">Strategic Lending Network</h4>
-                            <p>Access multiple NBFC-backed lending options through a single digital interface.</p>
-                        </div>
-                        <div class="fbox-ico ico-50">
-                            <div class="shape-ico color--theme">
-                                <img class="img-fluid"
-                                src="{{ asset('front/images/Strategic-Lending-Network.png') }}" alt="feature-image">
+                    <div class="fbox-8 fb-1 mb-md-0 mb-2 p-4 card-image-1">
+                        <div class="row align-items-center">
+                            <div class="col-lg-7 co-12">
+                                <div class="fbox-txt text-start">
+                                    <div class="fbox-ico">
+                                        <div class="fbox-image r-14 ico-20">
+
+                                            <i class="fas fa-globe color--blue-50"></i>
+                                        </div>
+                                    </div>
+                                    <h4 class="s-18 w-700 mb-2">Multiple Lending Partners</h4>
+                                    <p class="color--grey s-14">Explore loan options available through our network of
+                                        lending
+                                        partners.</p>
+                                </div>
+                            </div>
+                            <div class="col-lg-5 co-12">
+                                <div class="text-end mb-0">
+                                    <div class="img-block text-end">
+                                        <img src="{{ asset('front/images/loan-img-1.png') }}" alt="kreditsathi"
+                                            class="img-fluid p-0 mb-0">
+                                    </div>
+                                </div>
                             </div>
                         </div>
-                        
                     </div>
                 </div>
                 <div class="col">
-                    <div class="fbox-8 fb-2 r-12 border h-100">
-                          <div class="fbox-txt text-start mb-3 pb-md-0 pb-5">
-                            <h4 class="s-18 w-700">Completely Online Process</h4>
-                            <p>From eligibility check to document submission, everything happens digitally.</p>
-                        </div>
-                        <div class="fbox-ico ico-50">
-                            <div class="shape-ico color--theme">
-                                  <img class="img-fluid"
-                                src="{{ asset('front/images/Completely-Online-Process.png') }}" alt="feature-image">
+                    <div class="fbox-8 fb-2 mb-md-0 mb-2 card-image-2 p-4">
+                        <div class="row align-items-center">
+                            <div class="col-lg-7 col-12">
+                                <div class="fbox-txt text-start">
+                                    <div class="fbox-ico">
+                                        <div class="fbox-image r-14 ico-20">
+
+                                            <i class="fas fa-link"></i>
+                                        </div>
+                                    </div>
+                                    <h4 class="s-18 w-700 mb-2">Flexible Loan Options</h4>
+                                    <p class="color--grey s-14">Compare available loan options and repayment plans based
+                                        on
+                                        eligibility.</p>
+                                </div>
+                            </div>
+                            <div class="col-lg-5 col-12">
+                                <div class="text-end mb-0">
+                                    <div class="img-block text-end">
+                                        <img src="{{ asset('front/images/loan-img-2.png') }}" alt="kreditsathi"
+                                            class="img-fluid p-0">
+                                    </div>
+                                </div>
                             </div>
                         </div>
-                      
                     </div>
                 </div>
                 <div class="col">
-                    <div class="fbox-8 fb-2 r-12 border h-100">
-                         <div class="fbox-txt text-start mb-3 pb-md-0 pb-5">
-                            <h4 class="s-18 w-700">Self-Apply Feature</h4>
-                            <p>Take control of your finances while enjoying the benefits of excellent provisions.</p>
-                        </div>
-                        <div class="fbox-ico ico-50">
-                            <div class="shape-ico color--theme">
-                          <img class="img-fluid"
-                                src="{{ asset('front/images/Quick-Self-Apply.png') }}" alt="feature-image">
+                    <div class="fbox-8 fb-2 mb-md-0 mb-2 card-image-3 p-4">
+                        <div class="row align-items-center">
+                            <div class="col-lg-7 col-12">
+                                <div class="fbox-txt text-start">
+                                    <div class="fbox-ico">
+                                        <div class="fbox-image r-14 ico-20">
+                                            <i class="fas fa-search"></i>
+
+                                        </div>
+                                    </div>
+                                    <h4 class="s-18 w-700 mb-2">Clear Loan Information</h4>
+                                    <p class="color--grey s-14">Review applicable charges, repayment details, and key
+                                        terms before
+                                        proceeding.</p>
+                                </div>
+                            </div>
+                            <div class="col-lg-5 col-12">
+                                <div class="text-end mb-0">
+                                    <div class="img-block text-end">
+                                        <img src="{{ asset('front/images/loan-img-3.png') }}" alt="kreditsathi"
+                                            class="img-fluid p-0">
+                                    </div>
+                                </div>
                             </div>
                         </div>
-                       
                     </div>
                 </div>
                 <div class="col">
-                    <div class="fbox-8 fb-2 r-12 border h-100">
-                         <div class="fbox-txt text-start mb-3 pb-md-0 pb-5">
-                            <h4 class="s-18 w-700">Hire Loan Agent</h4>
-                            <p>Get guidance from experienced professionals to improve your loan approval possibilities.</p>
-                        </div>
-                        <div class="fbox-ico ico-50">
-                            <div class="shape-ico color--theme">
-                                  <img class="img-fluid"
-                                src="{{ asset('front/images/Loan-Agent.png') }}" alt="feature-image">
+                    <div class="fbox-8 fb-3 mb-md-0 mb-2 card-image-4 p-4">
+                        <div class="row align-items-center">
+                            <div class="col-lg-7 col-12">
+                                <div class="fbox-txt text-start">
+                                    <div class="fbox-ico">
+                                        <div class="fbox-image r-14 ico-20">
+
+                                            <i class="fas fa-mobile-alt"></i>
+                                        </div>
+                                    </div>
+                                    <h4 class="s-18 w-700 mb-2">Simple Online Process</h4>
+                                    <p class="color--grey s-14">Check eligibility and explore available loan options
+                                        through a
+                                        convenient online process.
+                                    </p>
+                                </div>
+                            </div>
+                            <div class="col-lg-5 col-12">
+                                <div class="text-end mb-0">
+                                    <div class="img-block text-end">
+                                        <img src="{{ asset('front/images/loan-img-4.png') }}" alt="kreditsathi"
+                                            class="img-fluid p-0">
+                                    </div>
+                                </div>
                             </div>
                         </div>
-                       
+                    </div>
+                </div>
+            </div>
+        </div>
+</section>
+
+
+<section id="features-6" class="py-80 features-section division bg--blue-100 features-card">
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-md-10 col-lg-9">
+                <div class="section-title mb-40">
+                    <h2 class="s-28 mb-5">Why KreditSathi?</h2>
+                    <p class="s-16 color--grey mt-0">Built around your convenience.</p>
+                </div>
+            </div>
+        </div>
+        <div class="fbox-wrapper text-center">
+            <div class="row row-cols-1 row-cols-md-2 row-cols-lg-4 gy-4">
+                <div class="col">
+                    <div class="fbox-8 fbox--hover fb-1 border shadow mb-md-0 mb-2 h-100 bg--yellow-500">
+                        <div class="fbox-ico">
+                            <div class="fbox-image r-14 ico-20">
+                                <span class="flaticon-layers-1 lh-1 color--blue-500"></span>
+                            </div>
+                        </div>
+                        <div class="fbox-txt text-start">
+                            <h4 class="s-18 w-700 mb-2">Lending Partner Network</h4>
+                            <p>Explore loan options available through our network of lending partners.</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col">
+                    <div class="fbox-8 fbox--hover fb-2  border shadow mb-md-0 mb-2 h-100 bg--yellow-500">
+                        <div class="fbox-ico">
+                            <div class="fbox-image r-14 ico-20">
+                                <span class="flaticon-computer-1 lh-1 color--blue-500"></span>
+                            </div>
+                        </div>
+                        <div class="fbox-txt text-start">
+                            <h4 class="s-18 w-700 mb-2">Online Application Process</h4>
+                            <p>Complete key application steps online at your convenience.</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col">
+                    <div class="fbox-8 fbox--hover fb-2 border shadow mb-md-0 mb-2 h-100 bg--yellow-500">
+                        <div class="fbox-ico">
+                            <div class="fbox-image r-14 ico-20">
+                                <span class="flaticon-click-1 lh-1 color--blue-500"></span>
+                            </div>
+                        </div>
+                        <div class="fbox-txt text-start">
+                            <h4 class="s-18 w-700 mb-2">Self-Apply Feature</h4>
+                            <p>Check eligibility and continue your application independently.</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col">
+                    <div class="fbox-8 fbox--hover fb-3 border shadow mb-md-0 mb-2 h-100 bg--yellow-500">
+                        <div class="fbox-ico">
+                            <div class="fbox-image r-14 ico-20">
+                                <span class="flaticon-tech-support lh-1 color--blue-500"></span>
+                            </div>
+                        </div>
+                        <div class="fbox-txt text-start">
+                            <h4 class="s-18 w-700 mb-2">Hire Loan Agent</h4>
+                            <p>Get assistance with application steps and documentation.
+                            </p>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -261,12 +429,23 @@
     </div>
 </section>
 
-<!-- Testimonioals section starts -->
-<section id="reviews-1" class="pt-0 pb-80 shape--06 reviews-section">
+{{-- <section class="full-banner w-100">
     <div class="container">
         <div class="row justify-content-center">
             <div class="col-md-12 col-lg-12">
-                <div class="section-title mb-40">
+                <a href="{{ route('loan.agent.main') }}"><img class="w-100 h-auto d-block"
+    src="{{ asset('front/images/lending-page-middle.png') }}" alt="Banner"></a>
+</div>
+</div>
+</div>
+</section> --}}
+
+<!-- Testimonioals section starts -->
+<section id="reviews-1" class="py-80 shape--06 reviews-section">
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-md-12 col-lg-12">
+                <div class="section-title mb-40 text-start">
                     <h2 class="s-28 mb-5">What Our <span class="color--green-500">Customer Says</span></h2>
                     <p class="s-16 color--grey mt-0">Hear directly from our customers about their experiences with us.
                     </p>
@@ -274,59 +453,351 @@
             </div>
         </div>
         <div class="row">
-            <div class="col-md-12">
-                <!-- Testimonials carousel start  -->
-                @include('partials.front.testimonials')
-                <!-- Testimonials carousel end  -->
-            </div>
+            <!-- Testimonials carousel start  -->
+            @include('partials.front.testimonials')
+            <!-- Testimonials carousel end  -->
         </div>
     </div>
 </section>
 <!-- Testimonioals section ends -->
 
-<section class="py-20 shape--06 gr--smoke">
+<section id="statistic-1" class="py-100 statistic-section division bg--yellow-500">
     <div class="container">
-        <div class="row justify-content-center">
-            <div class="col-md-12 col-lg-12 col-xl-12">
-                <div class="form-holder">
-                    <div class="contact-form-notice">
-                        <p class="s-14">
-                            <strong>Important Disclosure : </strong> The loan tenure ranges from a minimum of 6 months
-                            to a maximum of 60 months (5 years), depending on the lender’s policies. The Annual
-                            Percentage Rate (APR) will be between 11.5% to 34% per annum, inclusive of interest rate and
-                            applicable charges. Processing fees may apply up to 2% of the approved loan amount.
-                            Representative Example, for a loan amount of ₹1,00,000 at an interest rate of 11.5% per
-                            annum for a tenure of 60 months (5 years), with a processing fee of 2% (₹2,000), the
-                            approximate EMI would be ₹2,301, the total interest payable would be approximately ₹38,059,
-                            and the total repayment amount would be approximately ₹1,38,059, resulting in an APR of
-                            approximately 14.41% including applicable charges. *T&C Apply. All these numbers are
-                            tentative/indicative, the final loan specifics may vary depending upon the customer profile
-                            and NBFCs’ criteria, rules & regulations, and terms & conditions. AI Loans Private Limited
-                            does not guarantee loan approval or disbursal. Terms & Conditions apply.
-                        </p>
+        <div class="row justify-content-between">
+            <div class="col-lg-5 col-md-12 col-12">
+                <div class="txt-block">
+                    <span class="text-uppercase">Our Impact</span>
+                    <h2 class="s-28 mb-5 color--green ">Growing With Our Customers </h2>
+                    <p class="s-16 mt-0">Helping customers explore loan options through a simple online platform.</p>
+                </div>
+            </div>
+            <div class="col-lg-6 col-md-12 col-12">
+                <div class="statistic-1-wrapper">
+                    <div class="row justify-content-md-center row-cols-1 row-cols-md-3">
+                        <div class="col">
+                            <div id="sb-1-1" class="wow fadeInUp">
+                                <div class="statistic-block d-block bg--yellow-200 r-12 p-3">
+                                    <div class="statistic-block-digit text-start">
+                                        <h3 class="statistic-number w-500"><span class="count-element">40</span>M+</h3>
+                                    </div>
 
-                        <p class="s-14">
-                            <strong>Disclaimer : </strong>AI Loans Private Limited is not a lender or financial
-                            institution. We do not provide loans or make credit decisions. All loan approvals, interest
-                            rates, fees, and disbursal are handled by third-party lenders such as banks and NBFCs. We do
-                            not guarantee loan approval, disbursal, or specific loan terms. Users are advised to verify
-                            all details and read the terms and conditions of the respective lender before proceeding.
-                        </p>
-                        <p class="s-14">
-                            <strong>Registered Office Address:</strong> {{ env('COMPANY_ADDRESS') }} <br /> Mobile:
-                            {{ env('COMPANY_MOBILE') }} | Email: {{ env('INFO_EMAIL') }}
-                        </p>
+                                    <div class="statistic-block-txt text-start">
+                                        <p class="p-sm text-uppercase mt-0">Happy Users</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col">
+                            <div id="sb-1-2" class="wow fadeInUp">
+                                <div class="statistic-block r-12 p-3">
+                                    <div class="statistic-block-digit text-start">
+                                        <h3 class="statistic-number w-500"><span class="count-element">12000</span>Cr+
+                                        </h3>
+                                    </div>
+                                    <div class="statistic-block-txt text-start">
+                                        <p class="p-sm text-uppercase mt-0">Loans Disbursed</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col">
+                            <div id="sb-1-3" class="wow fadeInUp">
+                                <div class="statistic-block r-12 p-3">
+                                    <div class="statistic-block-digit text-start">
+                                        <h3 class="statistic-number w-500"><span class="count-element">49000</span>+
+                                        </h3>
+                                    </div>
+                                    <div class="statistic-block-txt text-start">
+                                        <p class="p-sm text-uppercase mt-0">Pincodes Served</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>
         </div>
     </div>
 </section>
+
+<section class="py-80 ct-02 content-section-main division">
+    <div class="container">
+        <div class="background-overlay p-md-5 p-4">
+            <div class="row align-items-center justify-content-between">
+                <div class="col-lg-6 col-md-6 col-12">
+                    <div class="txt-block">
+                        <h2 class="s-28 mb-5 color--white">Explore Personal Loan Options Online</h2>
+                        <p class="color--white"> Check eligibility and explore available loan options from participating
+                            lending
+                            partners.
+                        </p>
+                        <a href="#" class="btn btn--yellow-400 r-13 hover--tra-black last-link">Apply Now
+                            <span class="fbox-ico ico-10"> <span
+                                    class="flaticon-right-arrow  ico-20 ms-1"></span></span></a>
+                    </div>
+                </div>
+                <div class="col-lg-6 col-md-6 col-12">
+                    <div class="column-right">
+                        <div class="cbox-1 ico-15 p-3 mb-2">
+                            <div class="ico-wrap color--theme mt-1">
+                                <div class="cbox-1-ico bg--yellow-500 rounded-pill"><span class="flaticon-check"></span>
+                                </div>
+                            </div>
+                            <div class="cbox-1-txt ms-2">
+                                <p class="my-0 color--white">Online Application Process</p>
+                            </div>
+                        </div>
+                        <div class="cbox-1 ico-15 p-3 mb-2">
+                            <div class="ico-wrap color--theme mt-1">
+                                <div class="cbox-1-ico bg--yellow-500 rounded-pill"><span class="flaticon-check"></span>
+                                </div>
+                            </div>
+                            <div class="cbox-1-txt ms-2">
+                                <p class="my-0 color--white">Flexible Repayment Options</p>
+                            </div>
+                        </div>
+                        <div class="cbox-1 ico-15 p-3 mb-2">
+                            <div class="ico-wrap color--theme mt-1">
+                                <div class="cbox-1-ico bg--yellow-500 rounded-pill"><span class="flaticon-check"></span>
+                                </div>
+                            </div>
+                            <div class="cbox-1-txt ms-2">
+                                <p class="my-0 color--white">Convenient Online Journey</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section id="faqs-3" class="pt-0 pb-80 faqs-section">
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-md-10 col-lg-9">
+                <div class="section-title mb-40">
+                    <span class="color--green-500 text-uppercase">Faq</span>
+                    <h2 class="s-28 mb-5">Frequently Asked Questions</span></h2>
+                    <p class="s-16 color--grey mt-0">Checking your eligibility takes about 5 minutes. Once your
+                        documents are verified by the lending partner, disbursal is usually completed within 24–48
+                        working hours.
+                    </p>
+                </div>
+            </div>
+        </div>
+        <div class="faqs-3-questions">
+            <div class="row justify-content-center">
+                <div class="col-lg-12 col-xl-12">
+                    <div class="accordion-wrapper">
+                        <ul class="accordion">
+                            <li class="accordion-item mb-0">
+                                <div class="accordion-thumb">
+                                    <h6 class="s-16 w-600">Who is eligible to apply for a personal loan?</h6>
+                                </div>
+                                <div class="accordion-panel">
+                                    <div class="accordion-panel-item">
+                                        <div class="faqs-2-answer">
+                                            <p>Eligibility depends on factors like income, employment type, and credit
+                                                profile, and is finally assessed by our lending partners based on their
+                                                own criteria.</p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </li>
+                            <li class="accordion-item mb-0">
+                                <div class="accordion-thumb">
+                                    <h6 class="s-16 w-600">Does KreditSathi lend money directly?</h6>
+                                </div>
+                                <div class="accordion-panel">
+                                    <div class="accordion-panel-item">
+                                        <div class="faqs-2-answer">
+                                            <p>No. KreditSathi is not a lender. We help you compare and apply to loan
+                                                options offered by our partner NBFCs and lenders.</p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </li>
+                            <li class="accordion-item mb-0">
+                                <div class="accordion-thumb">
+                                    <h6 class="s-16 w-600">What documents do I need to keep ready?</h6>
+                                </div>
+                                <div class="accordion-panel">
+                                    <div class="accordion-panel-item">
+                                        <div class="faqs-2-answer">
+                                            <p>Typically ID proof, address proof, income proof, and bank statements —
+                                                the exact list may vary by lending partner.</p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </li>
+                            <li class="accordion-item mb-0">
+                                <div class="accordion-thumb">
+                                    <h6 class="s-16 w-600">Is there any charge to check my eligibility?</h6>
+                                </div>
+                                <div class="accordion-panel">
+                                    <div class="accordion-panel-item">
+                                        <div class="faqs-2-answer">
+                                            <p>Checking your eligibility on KreditSathi is free. Any applicable service
+                                                charges are shared upfront before you proceed.</p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="py-60 shape--06 gr--smoke disclamair-section">
+    <div class="container">
+        <div class="row gx-10">
+            <div class="col-md-6 col-lg-6 col-12">
+                <div class="form-holder">
+                    <div class="contact-form-notice">
+                        <div class="d-flex">
+                            <div>
+                                <div class="fbox-ico">
+                                    <div class="fbox-image r-14 ico-10 lh-1">
+                                        <span class="flaticon-file lh-1 color--white"></span>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="s-14 mb-3 ms-3">
+                                <h6 class="color--white mb-1">Important Note</h6>
+                                <p class="mt-0 color--white s-12">We ask our customers to make payments ONLY on our
+                                    website
+                                    kreditsathi.com and NOT through any other source, directly or indirectly.</p>
+                            </div>
+                        </div>
+                        <div class="d-flex">
+
+                            <div>
+                                <div class="fbox-ico">
+                                    <div class="fbox-image r-14 ico-10 lh-1">
+                                        <i class="fas fa-exclamation-triangle color--white"></i>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="s-14 mb-3 ms-3">
+                                <h6 class="color--white mb-1">Disclaimer </h6>
+                                <p class="mt-0 color--white s-12">Kredit Sathi Private Limited is not a lender or
+                                    financial
+                                    institution. We do not provide loans or make credit decisions. All loan approvals,
+                                    interest
+                                    rates, fees, and disbursal are handled by third-party lenders/NBFCs. We do not
+                                    guarantee
+                                    loan approval, disbursal, or specific loan terms. The amount paid is only for the
+                                    service
+                                    charge. We are not lenders and do not guarantee any loan approval. Loan approval,
+                                    disbursement/sanction is entirely dependent on NBFC criteria.</p>
+                            </div>
+                        </div>
+                        <div class="d-flex">
+
+                            <div>
+                                <div class="fbox-ico">
+                                    <div class="fbox-image r-14 ico-10 lh-1">
+                                        <span class="flaticon-file lh-1 color--white"></span>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="s-14 mb-3 ms-3">
+                                <h6 class="color--white mb-1">Pre-Application Note </h6>
+                                <p class="mt-0 color--white s-12">Users are advised to read our terms and conditions
+                                    and policies before proceeding/applying/registration.</p>
+                            </div>
+                        </div>
+                        <div class="d-flex">
+                            <div>
+                                <div class="fbox-ico">
+                                    <div class="fbox-image r-14 ico-10 lh-1">
+                                        <span class="flaticon-file lh-1 color--white"></span>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="s-14 mb-3 ms-3">
+                                <h6 class="color--white mb-1">Disclosure </h6>
+                                <p class="mt-0 color--white s-12">Loan tenure minimum 6 months & maximum 60 months; Maximum APR: 34% p.a.; processing fee: up to 2%. Representative example: ₹1,00,000 at 11.5% for 60 months with ₹2,000 processing fee — EMI ₹2,301, total interest ₹38,059, total repayment ₹1,38,059, indicative APR 14.41%.</p>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-6 col-lg-6 col-12">
+                <div class="footer-links fl-4">
+                    <div class="footer-info">
+                        <img class="footer-logo" src="{{ asset('front/images/logo/logo-w.png') }}"
+                            alt="{{ env('APP_NAME') }}" width="140" height="50" />
+                    </div>
+                    <!-- Title -->
+                    <div class="d-flex mb-3">
+
+                        <div>
+                            <div class="fbox-ico">
+                                <div class="fbox-image r-14 ico-10 lh-1">
+                                    <i class="fas fa-map-pin color--white"></i>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="ms-3">
+                            <h6 class="s-14 w-700 mt-0 kbz-h6 text-light" style="margin-bottom:5px!important;">
+                                Registered
+                                Office Address</h6>
+                            <p class="footer-mail-link ico-25">
+                            <p class="text-light">{{ env('COMPANY_ADDRESS') }}</p>
+                            </p>
+                        </div>
+                    </div>
+                    <div class="d-flex mb-3">
+
+                        <div>
+                            <div class="fbox-ico">
+                                <div class="fbox-image r-14 ico-10 lh-1">
+                                    <i class="fas fa-phone-volume color--white"></i>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="ms-3">
+                            <h6 class="s-14 w-700 mt-0 kbz-h6 text-light" style="margin-bottom:5px!important;">
+                                Phone</h6>
+                            <p class="footer-mail-link ico-25">
+                                <a href="tel:{{str_ireplace(' ','',env('COMPANY_MOBILE'))}}"
+                                    class="text-light">{{ env('COMPANY_MOBILE') }}</a>
+                            </p>
+                        </div>
+                    </div>
+                    <!-- Mail Link -->
+                    <div class="d-flex mb-3">
+
+                        <div>
+                            <div class="fbox-ico">
+                                <div class="fbox-image r-14 ico-10 lh-1">
+                                    <i class="fas fa-envelope color--white"></i>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="ms-3">
+                            <h6 class="s-14 w-700 kbz-h6 text-light" style="margin-bottom:5px!important;">Email</h6>
+                            <p class="footer-mail-link ico-25">
+                                <a href="mailto:{{ env('INFO_EMAIL') }}" class="text-light">{{ env('INFO_EMAIL') }}</a>
+                            </p>
+
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+</section>
 <!-- otp modal -->
 <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
     aria-hidden="true" data-bs-backdrop="static" data-bs-keyboard="false">
     <div class="modal-dialog modal-dialog-centered" role="document">
-        <div class="modal-content p-30 border-radius-10">
+        <div class="modal-content p-30 r-24">
             <form action="{{ route('loan.agent.verify.otp') }}" method="post"
                 class="request-form save-form-2 needs-validation" novalidate>
                 <div class="modal-body">
@@ -374,7 +845,10 @@
                                 class="text-success">(00:15)</span></p>
                     </div>
                 </div>
-                <button type="submit" id="otpBtn" class="btn btn--theme hover--tra-black submit mt-3">Verify OTP</button>
+                <button type="submit" class="custom-btn text-center submit w-100" id="otpBtn">
+                    <span class="btn-text fw-semibold">Verify OTP</span>
+                    <span class="btn-icon"> → </span>
+                </button>
             </form>
         </div>
     </div>
@@ -428,7 +902,7 @@ const sendOtpUrl = @json(route('self.apply.send.otp'));
 window.onscroll = function() {
     const btn = document.getElementById("goTopBtn");
     btn.style.display = (document.body.scrollTop > 20 || document.documentElement.scrollTop > 20) ? "block" :
-    "none";
+        "none";
 };
 
 // Scroll to top smoothly

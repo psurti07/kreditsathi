@@ -526,7 +526,7 @@ class LoanAgentController extends Controller
     }
 
     /* checkout the data */
-    public function checkout(Request $request)
+    public function checkout_razorpay(Request $request)
     {
         try {
             $inputs = $request->all();
@@ -583,6 +583,93 @@ class LoanAgentController extends Controller
                 'plan' => $inputs['plan'],
                 'returnUrl' => $returnUrl
             ]);
+        } catch (\Exception $e) {
+            Log::error('loan agent checkout method error occured: ' . $e->getMessage());
+            return redirect('/error')->with('error', 'Oops! Something went wrong.');
+        }
+    }
+
+    public function checkout(Request $request)
+    {
+        try {
+            $inputs = $request->all();
+            $loanAppUpdates = array(
+                'rec_date' => date('Y-m-d H:i:s'),
+                'status' => 1,
+                'isDelete' => 0
+            );
+            $res1 = LoanApplications::where('id', Cookie::get('applyid'))->update($loanAppUpdates);
+            $productslug = 'hire-loan-agent';
+            $entryfor = 12;
+            $productData = Product::where('productslug', $productslug)->first();
+            $amount = ($productData->inOffer == 1) ? $productData->offeramount : $productData->amount;
+            $grandAmount = $amount + ($amount * 0.18);
+            $roundAmount  = floor($grandAmount);
+
+            $uatNumbers = explode(',', env('UAT_MOBILE_NUMBERS', '')); // Convert the string into an array
+
+            foreach ($uatNumbers as $uatNum) {
+                if ($uatNum == Cookie::get('user_mobile')) {
+                    $roundAmount = 1;
+                    break; // Exit the loop once a match is found
+                }
+            }
+
+            Log::info($roundAmount);
+            $returnUrl = $inputs['plan'] == 2 ? route('api.loan.agent.buy.digital.agent.plan') : route('api.self.apply.buy.digital.plan');
+
+           $orderid = "order_" . time();
+
+            $merchantId = config('constant.SABPAISA_CLIENT_CODE');
+            $apiKey     = config('constant.SABPAISA_AUTH_KEY');
+            $secretKey  = config('constant.SABPAISA_AUTH_IV');
+            $url = "https://merchant-api.sabpaisa.in/api/v2/payments";
+            $merchantTxnId = "TXN" . time() . rand(1000, 9999);
+            $amountInPaise = ($roundAmount * 100);
+            $currency      = "INR";
+            $timestamp     = time();
+
+            $input = $merchantId . "|" . $merchantTxnId . "|" . $amountInPaise . "|" . $currency . "|" . $timestamp;
+
+            $message = "{$merchantId}|{$merchantTxnId}|{$amountInPaise}|{$currency}|{$timestamp}";
+            $checksum = hash_hmac('sha256', $message, $secretKey);
+
+            Log::info('Checksum Input String: ' . $input);
+            Log::info('Generated Checksum: ' . $checksum);
+
+            $subpaisaData = array(
+                'rec_date' => date('Y-m-d H:i:s'),
+                'entryfor' => $entryfor,
+                'userid' => Cookie::get('userid'),
+                'orderid' => $merchantTxnId,
+                'orderamount' => round($roundAmount),
+                'ordernote' => $productData->productname
+            );
+
+            $response1 = SubpaisaEntry::insert($subpaisaData);
+
+            $postData = [
+                "merchantId"    => $merchantId,
+                "merchantTxnId" => $merchantTxnId,
+                "amount"        => $amountInPaise,  // Amount in PAISE
+                "currency"      => $currency,
+                "returnUrl"     => $returnUrl,
+                "timestamp"     => $timestamp,
+                "checksum"      => $checksum,
+                "customerName"  => Cookie::get('fullname'),
+                "customerEmail" => Cookie::get('email'),
+                "customerPhone" => Cookie::get('user_mobile'),
+            ];
+
+            $headers = [
+                "Content-Type" => "application/json",
+                'X-Api-Key' =>  $apiKey,
+            ];
+            $response = commanCurlCall($url, 'POST', $postData, $headers);
+            Log::info($response);
+
+            return redirect()->away($response['response']['checkoutUrl'] . '?clientSecret=' . $response['response']['clientSecret']);
+
         } catch (\Exception $e) {
             Log::error('loan agent checkout method error occured: ' . $e->getMessage());
             return redirect('/error')->with('error', 'Oops! Something went wrong.');
@@ -840,7 +927,7 @@ class LoanAgentController extends Controller
     }
 
     /* buyDigitalPlan function handle */
-    public function buyDigitalPlan(Request $request)
+    public function buyDigitalPlan_razorpay(Request $request)
     {
         try {
             $grandtotal = $netamount = $cgstamount = $sgstamount = $igstamount = 0;
@@ -1107,6 +1194,276 @@ class LoanAgentController extends Controller
         }
     }
 
+    public function buyDigitalPlan(Request $request)
+    {
+        Log::info("Loan agent buyDigitalPlan start");
+        Log::info('SabPaisa Callback Response', $request->all());
+        try {
+            $grandtotal = $netamount = $cgstamount = $sgstamount = $igstamount = 0;
+            $meta = selfApplyMeta();
+
+            $password = trim(random_code(6));
+            Session::put('user_password', $password);
+
+            $orderId = $request->merchant_txn_id;
+            Session::put('orderid', $orderId);
+
+            $responseCode = $request->status;
+            Session::put('responsecode', $responseCode);
+
+            $orderAmount = $request->amount / 100;
+            $txnId = $request->merchant_txn_id;
+            $paymentMode = 'subpaisa';
+
+            $paymentData = SubpaisaEntry::where('orderid', $request->merchant_txn_id)->first();
+
+            $subpaisaData = array(
+                'rec_date' => date('Y-m-d H:i:s'),
+                'referenceid' => $request->transaction_id,
+                'txstatus' => $request->status,
+                'paymentmode' => $request->payment_mode
+            );
+            Log::info('subpaisa data - '. json_encode($subpaisaData));
+            $response1 = SubpaisaEntry::where('id', $paymentData->id)->update($subpaisaData);
+
+            $userData = $query = LoanApplications::select(
+                'user_registrations.id as userid',
+                'user_registrations.first_name',
+                'user_registrations.last_name',
+                'user_registrations.mobile',
+                'user_registrations.email',
+                'user_registrations.city',
+                'user_registrations.state',
+                'user_registrations.isUser',
+                'user_registrations.acc_type',
+                'user_registrations.process_step',
+                'loan_applications.id',
+                'loan_applications.loan_type',
+                'loan_applications.loan_amount',
+                'loan_applications.monthly_income',
+                'loan_applications.currentemi'
+            )
+                ->join('user_registrations', 'user_registrations.id', '=', 'loan_applications.userid')
+                ->where('user_registrations.id', $paymentData->userid)
+                ->where('user_registrations.isDelete', 0)
+                ->first();
+            Cookie::queue('applyid', $userData->id, $this->lifetime, '/', null, false, true, false, 'lax');
+
+            if ($responseCode == 'SUCCESS') {
+                $cardno = random_code_num(16);
+                $membershipData = array(
+                    'rec_date' => now(),
+                    'userid' => $userData->userid,
+                    'registration_date' => now(),
+                    'expiry_date' => date('Y-m-d', strtotime('+12 months')),
+                    'card_number' => $cardno,
+                    'amount' => $orderAmount,
+                    'paymentid' => $txnId,
+                    'isActive' => 1,
+                    'isDelete' => 0
+                );
+
+                //Log::info('membership data - '. json_encode($membershipData));
+                $existingMembership = MembershipOrder::where('userid', $userData->userid)
+                    ->where('paymentid', $txnId)
+                    ->first();
+                $membershipId = $existingMembership ? $existingMembership->id : 0;
+
+                if (!$existingMembership) {
+                    $membershipId = MembershipOrder::create($membershipData)->id;
+                }
+
+                //Log::info('passsword user - ' . Cache::get('user_password'));
+
+                $passwordkey = Hash::make($password);
+                $refcode = strtolower(substr(str_replace(" ", "", $userData->first_name), 0, 3));
+                $refcode .= substr($userData->mobile, -4);
+
+                $regData = array(
+                    'rec_date' => now(),
+                    'update_date' => now(),
+                    'password' => $passwordkey,
+                    'refcode' => $refcode,
+                    'process_step' => 5,
+                    'isUser' => 2,
+                    'acc_type' => 2
+                );
+                //Log::info('reg data'. json_encode($regData));
+                $response2 =  UserRegistration::where('id', $userData->userid)->update($regData);
+
+                /*if ($userData->acc_type == 2) {*/
+                $productslug = "hire-loan-agent";
+                //$invfor = 2;
+                $invprefix = "LA_";
+                /*} else {
+                        $productslug = "self-apply";
+                        //$invfor = 1;
+                        $invprefix = "SA_";
+                    }*/
+                /*Log::info('product Slug - '. $productslug);
+                    Log::info('invfor - '. $invfor);
+                    Log::info('invprefix - '. $invprefix);*/
+                $productData = Product::where('productslug', $productslug)->first();
+                $netamount = ($productData->inOffer == 1) ? $productData->offeramount : $productData->amount;
+
+                if ($userData->state == 'Gujarat') {
+                    $cgstamount = floor($netamount * 0.09);
+                    $sgstamount = floor($netamount * 0.09);
+                } else {
+                    $igstamount = floor($netamount * 0.18);
+                }
+                $grandtotal = floor($netamount + $cgstamount + $sgstamount + $igstamount);
+                $invoiceNo = SiteOption::where('option_key', 'newinvoiceno')
+                    ->select('option_value')
+                    ->first();
+
+                $existingInvoice = Invoice::where('userid', $userData->userid)
+                    ->where('cardid', $membershipId)
+                    //->where('inv_number', $invoiceNo->option_value)
+                    ->first();
+
+                $invData3 = array(
+                    'rec_date' => $membershipData['rec_date'],
+                    'userid' => $userData->userid,
+                    'cardid' => $membershipId,
+                    // 'inv_for' => $invfor,
+                    'inv_prefix' => $invprefix,
+                    'inv_number' => $invoiceNo->option_value,
+                    'inv_date' => $membershipData['registration_date'],
+                    'inv_price' => $netamount,
+                    'inv_cgst' => $cgstamount,
+                    'inv_sgst' => $sgstamount,
+                    'inv_igst' => $igstamount,
+                    'inv_grandtotal' => $grandtotal,
+                    'isdelete' => 0
+                );
+                if (!$existingInvoice) {
+                    DB::beginTransaction();
+                    try {
+                        //Log::info('invData - '.json_encode($invData3));
+                        $responseinvoice = Invoice::create($invData3)->id;
+                        $invNoData = array(
+                            'rec_date' => now(),
+                            'option_value' => $invoiceNo->option_value + 1
+                        );
+                        $updateInvoiceNo = SiteOption::where('option_key', 'newinvoiceno')->update($invNoData);
+                        DB::commit();
+                    } catch (\Exception $e) {
+                        DB::rollBack();
+                        Log::error('Invoice creation failed', ['error' => $e->getMessage()]);
+                    }
+                    /*$data4 = array(
+                            'payout' => 0,
+                            'payout_amount' => $netamount * env('CU_PAYOUT_RATIO'),
+                            'order_amount' => $netamount
+                        );*/
+                    $response4 = 'loan-agent/paymentFailed';
+                    /* wp campaign */
+                    /*$user = UserTree::where('subuserid', $userData->userid)
+                            ->orderBy('id', 'desc')
+                            ->first();*/
+
+                    /*if ($user) {
+                            // Update the record where the 'id' matches
+                            $updated = UserTree::where('id', $user->id)->update($data4);
+                        }*/
+
+                    //Log::info('response 4 - '. $response4);
+
+                    $staffID = assignAgent();
+                    UserRegistration::where('id', $userData->userid)->update(['process_step' => 5, 'staff_id' => $staffID->id]);
+
+                    $mailData = array(
+                        'fullname' => $userData->first_name . ' ' . $userData->last_name,
+                        'mobile' => $userData->mobile,
+                        'email' => $userData->email,
+                        'password' => $password,
+                        'order_number' => $invoiceNo->option_value,
+                        'order_date' => date('d-m-Y'),
+                        'order_amount' => $grandtotal,
+                        'transactionId' => $txnId,
+                        'agentName' => $staffID->fullname,
+                        'agentMobile' => $staffID->mobile
+                    );
+                    $sendGreetings = view('mail.welcomeGreetingsla', $mailData)->render();
+                    //Log::info($sendGreetings);
+                    $invAttach = array_merge(
+                        $invData3,
+                        [
+                            'fullname' => $userData->first_name . ' ' . $userData->last_name,
+                            'city' => $userData->city,
+                            'mobile' => $userData->mobile,
+                            'email' => $userData->email,
+                            'acc_type' => $userData->acc_type,
+                            'state' => $userData->state,
+                            'isCustomer' => 0
+                        ],
+                        [
+                            'card_number' => $membershipData['card_number'],
+                            'registration_date' => $membershipData['registration_date'],
+                            'expiry_date' => $membershipData['expiry_date'],
+                            'paymentid' => $membershipData['paymentid'],
+                        ]
+                    );
+                    /* invoice data */
+                    $invoiceData = view('mail.invoice', $invAttach)->render();
+                    $pdf = Pdf::loadHTML($invoiceData)->setPaper('A4', 'portrait')->output();
+                    $base64Pdf = base64_encode($pdf);
+
+                    /* creating attachments array */
+                    $attachments = [
+                        [
+                            'content' => $base64Pdf,
+                            'name' => 'Invoice.pdf'
+                        ]
+                    ];
+
+                    /* send email in brevo */
+                    sendBrevoHtmlMail2($mailData, 'Congratulations! Payment for Kreditsathi Hire Agent plan has been successful.', $sendGreetings, 3, $attachments);
+
+                    $remote_data = array(
+                        'company_code' => config('constant.COMPANY_CODE'),
+                        'company_local_ip' => '190.92.174.183',
+                        'product_code' => 'HIRELOAN',
+                        'customer_name' => $userData->first_name . ' ' . $userData->last_name,
+                        'customer_email' => $userData->email,
+                        'customer_mobile' => $userData->mobile,
+                        'userid' => $userData->userid,
+                        'card_number' => $cardno,
+                        'rec_date' => now()->setTimezone(config('app.timezone'))->format('Y-m-d H:i:s'),
+                        'inv_prefix' => $invprefix,
+                        'inv_number' => $invoiceNo->option_value,
+                        'inv_date' => now()->setTimezone(config('app.timezone'))->format('Y-m-d'),
+                        'inv_price' => $netamount,
+                        'inv_cgst' => $cgstamount,
+                        'inv_sgst' => $sgstamount,
+                        'inv_igst' => $igstamount,
+                        'inv_grandtotal' => $grandtotal,
+                    );
+                    $api_response = sendOrderData(json_encode($remote_data));
+                }
+                if ($response2 > 0) {
+                    $redRoute = 'loan-agent/paymentSuccess'; // Row was updated
+                } else {
+                    $redRoute = 'loan-agent/paymentFailed'; // No rows were updated
+                }
+                return redirect($redRoute);
+            } else {
+                return redirect("loan-agent/paymentFailed");
+            }
+            /*} else {
+                Log::info('else checksum not matched');
+                //$sent = $this->Site_Digital_Model->sendPaymentFailedGreetings($userdata->mobile, $userdata->email);
+                //$key = stringCrypt($userdata->id, 'encrypt');
+                //return redirect("digital/subscriptionorder/" . $key);
+                return redirect("loan-agent/paymentFailed");
+            }*/
+        } catch (\Exception $e) {
+            Log::error('loan agent buydigital checkout method error occured: ' . $e->getMessage());
+            return redirect('/error')->with('error', 'Oops! Something went wrong.');
+        }
+    }
+
     /* paymentSuccess handle function */
     public function paymentSuccess()
     {
@@ -1131,102 +1488,100 @@ class LoanAgentController extends Controller
                 $city = strtolower(preg_replace("/[^a-zA-Z]+/", "", $userData->city));
                 $state = strtolower(getStateAbbreviation($userData->state));
                 //$orderData = orderdata($orderId,'phonepe_entry');
-                $orderData = orderdata($orderId, 'razorpayentry');
+                $orderData = orderdata($orderId, 'subpaisa_entry');
 
                 $staff = Administrations::where('id', $userData->staff_id)->first();
 
-                if (isset($responsecode) && $responsecode == 100) {
-                    UserRegistration::where('id', $userData->userid)->update(['process_step' => 5]);
+                UserRegistration::where('id', $userData->userid)->update(['process_step' => 5]);
 
-                    /* application remarks entry start */
-                    $staffID = assignAgent();
-                    $existingApplication = DB::table('application_remarks')->where(['service' => 5, 'subject' => 9, 'application_id' => $applyId])->first();
-                    if (!$existingApplication) {
-                        DB::table('application_remarks')->insert([
-                            'rec_date' => now(),
-                            'entry_at' => now(),
-                            'service' => 5,
-                            'subject' => 9,
-                            'notes' => '',
-                            'application_id' => $applyId,
-                            'staff_id' => $staffID->id
-                        ]);
-                    }
-                    /* application remarks entry ends */
+                /* application remarks entry start */
+                $staffID = assignAgent();
+                $existingApplication = DB::table('application_remarks')->where(['service' => 5, 'subject' => 9, 'application_id' => $applyId])->first();
+                if (!$existingApplication) {
+                    DB::table('application_remarks')->insert([
+                        'rec_date' => now(),
+                        'entry_at' => now(),
+                        'service' => 5,
+                        'subject' => 9,
+                        'notes' => '',
+                        'application_id' => $applyId,
+                        'staff_id' => $staffID->id
+                    ]);
+                }
+                /* application remarks entry ends */
 
-                    /* send payment success message starts */
-                    $msg = DB::table('sms_list')->where('type', 2)->where('slug', 'payment_successful')->first()->message;
-                    if ($msg != '#') {
-                        $senderId = DB::table('info_pages')->where('slug', 'la-senderid')->first()->content;
-                        sendDynamicSMS($senderId, $msg, Cookie::get('user_mobile'), 'hire');
-                    }
-                    /* send payment success message ends */
+                /* send payment success message starts */
+                $msg = DB::table('sms_list')->where('type', 2)->where('slug', 'payment_successful')->first()->message;
+                if ($msg != '#') {
+                    $senderId = DB::table('info_pages')->where('slug', 'la-senderid')->first()->content;
+                    sendDynamicSMS($senderId, $msg, Cookie::get('user_mobile'), 'hire');
+                }
+                /* send payment success message ends */
 
-                    /* fb conversion code starts here */
-                    $fbleads = FbAdsEntry::where('userid', $userData->userid)->orderByDesc('id')->limit(1)->first();
+                /* fb conversion code starts here */
+                $fbleads = FbAdsEntry::where('userid', $userData->userid)->orderByDesc('id')->limit(1)->first();
 
-                    $fbdata = array(
-                        'type' => 'hire-agent',
-                        'firstname' => $firstname,
-                        'lastname' => $lastname,
-                        'mobile' => "91" . $userData->mobile,
-                        'email' => strtolower($userData->email),
-                        'city' => $city,
-                        /*'dob' => date('Ymd',strtotime($userData->dob)),*/
-                        'state' => $state,
-                        'zip' => $userData->pincode,
-                        'orderid' => $orderId,
-                        'odamount' => $orderData->orderamount,
-                        'sourceurl' => 'https://Kreditsathi.com/loan-agent/paymentSuccess'
-                    );
+                $fbdata = array(
+                    'type' => 'hire-agent',
+                    'firstname' => $firstname,
+                    'lastname' => $lastname,
+                    'mobile' => "91" . $userData->mobile,
+                    'email' => strtolower($userData->email),
+                    'city' => $city,
+                    /*'dob' => date('Ymd',strtotime($userData->dob)),*/
+                    'state' => $state,
+                    'zip' => $userData->pincode,
+                    'orderid' => $orderId,
+                    'odamount' => $orderData->orderamount,
+                    'sourceurl' => 'https://Kreditsathi.com/loan-agent/paymentSuccess'
+                );
 
-                    if ($fbleads) {
-                        if ($fbleads->fbclid != "") {
-                            $fbclidpl = "fb.0." . round(microtime(true) * 1000) . "." . $fbleads->fbclid;
-                            $fbdata['fbclid'] = $fbclidpl;
-                        } else {
-                            $fbdata['fbclid'] = '';
-                        }
+                if ($fbleads) {
+                    if ($fbleads->fbclid != "") {
+                        $fbclidpl = "fb.0." . round(microtime(true) * 1000) . "." . $fbleads->fbclid;
+                        $fbdata['fbclid'] = $fbclidpl;
                     } else {
                         $fbdata['fbclid'] = '';
                     }
-
-                    $fbresponse = fbconversioncurl($fbdata, 11);
-                    $dataleads = array(
-                        'rec_date' => now(),
-                        'send_data' => json_encode($fbdata),
-                        'received_data' => $fbresponse
-                    );
-                    if ($fbleads) {
-                        $fbid = DB::table('fb_ads_entry')->where('id', $fbleads->id)->update($dataleads);
-                    }
-                    /* fb conversion code ends here */
-
-                    /* interakt code starts here */
-                    $data2 = array(
-                        'phoneNumber' => Cookie::get('user_mobile'),
-                        'countryCode' => '+91',
-                        'traits' => array(
-                            'name' => Cookie::get('fullname')
-                        ),
-                        'tags' => array('Hire Payment Successful')
-                    );
-                    $restrack1 = user_track($data2);
-
-                    $data3 = array(
-                        'phoneNumber' => Cookie::get('user_mobile'),
-                        'countryCode' => '+91',
-                        'event' => 'Hire Payment Successful',
-                        'traits' => array(
-                            'userid' => Cookie::get('user_mobile'),
-                            'userpass' => Session::get('user_password')
-                        )
-                    );
-                    //Log::info('Hire Payment Success '. json_encode($data3));
-                    $restrack2 = event_track($data3);
-
-                    /* interakt code ends here */
+                } else {
+                    $fbdata['fbclid'] = '';
                 }
+
+                $fbresponse = fbconversioncurl($fbdata, 16);
+                $dataleads = array(
+                    'rec_date' => now(),
+                    'send_data' => json_encode($fbdata),
+                    'received_data' => $fbresponse
+                );
+                if ($fbleads) {
+                    $fbid = DB::table('fb_ads_entry')->where('id', $fbleads->id)->update($dataleads);
+                }
+                /* fb conversion code ends here */
+
+                /* interakt code starts here */
+                $data2 = array(
+                    'phoneNumber' => Cookie::get('user_mobile'),
+                    'countryCode' => '+91',
+                    'traits' => array(
+                        'name' => Cookie::get('fullname')
+                    ),
+                    'tags' => array('Hire Payment Successful')
+                );
+                $restrack1 = user_track($data2);
+
+                $data3 = array(
+                    'phoneNumber' => Cookie::get('user_mobile'),
+                    'countryCode' => '+91',
+                    'event' => 'Hire Payment Successful',
+                    'traits' => array(
+                        'userid' => Cookie::get('user_mobile'),
+                        'userpass' => Session::get('user_password')
+                    )
+                );
+                //Log::info('Hire Payment Success '. json_encode($data3));
+                $restrack2 = event_track($data3);
+
+                /* interakt code ends here */
             }
             return view('loanAgent.paymentSuccess', compact('data', 'orderData', 'meta'));
         } catch (\Exception $e) {
@@ -1655,10 +2010,7 @@ class LoanAgentController extends Controller
             Log::info("orderid : " . $orderId);
 
             // Keep SAME route (IMPORTANT)
-            $returnUrl = route('api.loan.agent.offer2Response', [
-                'orderId' => $orderId,
-                'token'   => 'razorpay'
-            ]);
+            $returnUrl = route('api.loan.agent.offer2Response');
 
             // Save DB (same as your logic)
             $offer = DB::table('cardoffer')->updateOrInsert(
@@ -1673,10 +2025,26 @@ class LoanAgentController extends Controller
                 ]
             );
 
+            // Get the inserted/updated record ID
+            $cardofferRecord = DB::table('cardoffer')->where('mobile', $buyerPhone)->first();
+
+            // ✅ CREATE RAZORPAY ENTRY RECORD
+            $razorpayEntry = RazorpayEntry::create([
+                'rec_date'     => now(),
+                'entryfor'     => 4,
+                'userid'       => $cardofferRecord->id,
+                'orderid'      => $orderId,
+                'orderamount'  => $grandAmount,
+                'ordernote'    => 'elite-offer',
+                'referenceid'  => null,
+                'txstatus'     => 'PENDING',
+                'paymentmode'  => null,
+            ]);
+
             return response()->json([
                 'type' => 'SUCCESS',
                 'message' => 'Redirecting...',
-                'redirect' => route('razorpay.page', [
+                'url' => route('razorpay.page', [
                     'order_id' => $orderId,
                     'amount'   => $razorAmount,
                     'name'     => $buyerFirstName . ' ' . $buyerLastName,
@@ -2260,97 +2628,92 @@ class LoanAgentController extends Controller
             $inputs = $request->all();
             $request->validate([
                 'first_name' => 'required',
-                'last_name' => 'required',
-                'email' => 'required|email',
-                'mobile' => ['required', 'numeric', 'regex:/^[6-9]\d{9}$/']
+                'last_name'  => 'required',
+                'email'      => 'required|email',
+                'mobile'     => ['required', 'numeric', 'regex:/^[6-9]\d{9}$/']
             ]);
-            /* first check in user registration */
+
             $profile = $this->checkUserProcess($inputs);
             if ($profile) {
                 return response()->json($profile);
             } else {
                 $buyerFirstName = $inputs['first_name'];
-                $buyerLastName = $inputs['last_name'];
-                $buyerPhone = $inputs['mobile'];
-                $buyerEmail = $inputs['email'];
-                $buyerCountry = 'India';
+                $buyerLastName  = $inputs['last_name'];
+                $buyerPhone     = $inputs['mobile'];
+                $buyerEmail     = $inputs['email'];
             }
-            /* product Data */
-            $products = Product::where('productslug', env('LA_OFFER_4'))->first();
-            // Log::info('products - '.json_encode($products));
 
-            /* set amount of offer */
+            $products = Product::where('productslug', config('constant.LA_OFFER_4'))->first();
+
             $amount = ($products->inOffer == 1) ? $products->offeramount : $products->amount;
-            $grandAmount = number_format($amount + ($amount * 0.18), 2);
+            $grandAmount = $amount + ($amount * 0.18);
 
             $uatNumbers = explode(',', env('UAT_MOBILE_NUMBERS', '')); // Convert the string into an array
 
             foreach ($uatNumbers as $uatNum) {
                 if ($uatNum == $buyerPhone) {
-                    $grandAmount = 10;
+                    $grandAmount = 1;
                     break; // Exit the loop once a match is found
                 }
             }
 
-            /* ORDER & TOKEN */
-            $response = createMerchantToken();
-            $orderid  = "PAYGIC" . number_format(microtime(true) * 1000, 0, '.', '');
-            $taxNote     = '';
-            $token = $response['data']['token'];
+            // Razorpay works in paise
+            $razorAmount = (int) round($grandAmount * 100);
 
-            $returnUrl = route('api.loan.agent.offer4Response', [
-                'orderId' => $orderid,
-                'token'   => $token
-            ]);
-
-            $postData = [
-                'mid' => env('PAYGIC_MERCHANT_ID'),
-                'merchantReferenceId' => $orderid,
-                'amount' => $grandAmount,
-                'customer_mobile' => $buyerPhone,
-                'customer_name' => $buyerFirstName . ' ' . $buyerLastName,
-                'customer_email' => $buyerEmail,
-                'redirect_URL' => $returnUrl,
-                'failed_URL' => $returnUrl,
+            // Create Razorpay Order
+            $orderData = [
+                'receipt' => 'order_' . time(),
+                'amount' => $razorAmount,
+                'currency' => 'INR'
             ];
 
-            $createresponse = createPaymentPage($postData, $token);
-            $post_data = json_decode($createresponse, true);
+            $razor = generateRazorpayOrder($orderData);
+            $orderId = $razor->id;
+            Log::info("orderid : " . $orderId);
 
-            $offerId = DB::table('cardoffer')->updateOrInsert(
-                ['mobile' => $buyerPhone], // Search condition
-                [ // Values to update or insert
-                    'rec_date' => date('Y-m-d H:i:s'),
-                    'offerpage' => 8, //big offer or LA offer 4
+            // Keep SAME route (IMPORTANT)
+            $returnUrl = route('api.loan.agent.offer4Response');
+
+            // Save DB (same as your logic)
+            $offer = DB::table('cardoffer')->updateOrInsert(
+                ['mobile' => $buyerPhone],
+                [
+                    'rec_date'   => now(),
+                    'offerpage'  => 8,
                     'first_name' => $buyerFirstName,
-                    'last_name' => $buyerLastName,
-                    'emailid' => $buyerEmail,
-                    'amount' => $grandAmount,
-                    'isCustomer' => 0,
-                    'isActive' => 0,
-                    'isDelete' => 0,
+                    'last_name'  => $buyerLastName,
+                    'emailid'    => $buyerEmail,
+                    'amount'     => $grandAmount,
                 ]
             );
-            $record = DB::table('cardoffer')->where('mobile', $buyerPhone)->first();
 
-            /* PAYGIC LOG */
-            $paygicData = array(
-                'rec_date'    => now(),
-                'entryfor'    => 10, // la offer 4 or big offer
-                'userid'      => $record->id,
-                'orderid'     => $orderid,
-                'orderamount' => $grandAmount,
-                'ordernote'   => $taxNote,
-                'referenceid' => null,
-                'txstatus'    => null,
-                'paymentmode' => null
-            );
-            $response = PaygicEntry::create($paygicData);
+            // Get the inserted/updated record ID
+            $cardofferRecord = DB::table('cardoffer')->where('mobile', $buyerPhone)->first();
+
+            // ✅ CREATE RAZORPAY ENTRY RECORD
+            $razorpayEntry = RazorpayEntry::create([
+                'rec_date'     => now(),
+                'entryfor'     => 10,
+                'userid'       => $cardofferRecord->id,
+                'orderid'      => $orderId,
+                'orderamount'  => $grandAmount,
+                'ordernote'    => 'big-offer',
+                'referenceid'  => null,
+                'txstatus'     => 'PENDING',
+                'paymentmode'  => null,
+            ]);
 
             return response()->json([
                 'type' => 'SUCCESS',
-                'message' => 'Please wait we are redirecting...',
-                'redirect' => $post_data['data']['payPageUrl'],
+                'message' => 'Redirecting...',
+                'url' => route('razorpay.page', [
+                    'order_id' => $orderId,
+                    'amount'   => $razorAmount,
+                    'name'     => $buyerFirstName . ' ' . $buyerLastName,
+                    'email'    => $buyerEmail,
+                    'mobile'   => $buyerPhone,
+                    'returnUrl' => $returnUrl
+                ])
             ]);
         } catch (ValidationException $e) {
             return response()->json(array('type' => 'ERROR', 'errors' => $e->errors()), 422);
@@ -2360,28 +2723,54 @@ class LoanAgentController extends Controller
         }
     }
 
-    public function offer4Response(Request $request, $orderId, $token)
+    public function offer4Response(Request $request)
     {
         try {
-            //dd($request->all());
-            $inputs = $request->all();
+
+            $input = $request->all();
             $meta = selfApplyMeta();
 
-            $createresponse = checkPaymentStatus($orderId, $token);
-            $response_data = json_decode($createresponse, true);
+            // Razorpay credentials
+            $api = new Api(config('services.razorpay.key'), config('services.razorpay.secret'));
 
-            $grandtotal = $netamount = $cgstamount = $sgstamount = $igstamount = 0;
-            $paymentdata = PaygicEntry::where('orderid', $response_data['data']['merchantReferenceId'])->firstOrFail();
+            $razorpay_payment_id = $input['razorpay_payment_id'] ?? null;
+            $razorpay_order_id   = $input['razorpay_order_id'] ?? null;
+            $razorpay_signature  = $input['razorpay_signature'] ?? null;
+
+            if (!$razorpay_payment_id || !$razorpay_order_id || !$razorpay_signature) {
+                Log::error('Missing Razorpay Data', $input);
+
+                return view('cardoffer-response', [
+                    'meta' => $meta,
+                    'response' => FALSE,
+                ]);
+            }
+
+            // ✅ Verify Signature
+            $attributes = [
+                'razorpay_order_id' => $razorpay_order_id,
+                'razorpay_payment_id' => $razorpay_payment_id,
+                'razorpay_signature' => $razorpay_signature
+            ];
+
+            try {
+                $api->utility->verifyPaymentSignature($attributes);
+                $status = 'SUCCESS';
+            } catch (\Exception $e) {
+                $status = 'FAILED';
+            }
+
+            $paymentdata = RazorpayEntry::where('orderid', $razorpay_order_id)->first();
 
             // Update Paygic log
-            PaygicEntry::where('id', $paymentdata->id)->update([
+            RazorpayEntry::where('id', $paymentdata->id)->update([
                 'rec_date'     => now(),
-                'referenceid'  => $response_data['data']['paygicReferenceId'],
-                'txstatus'     => $response_data['txnStatus'],
+                'referenceid'  => $razorpay_payment_id,
+                'txstatus'     => $status,
                 'paymentmode'  => '',
             ]);
 
-            if ($response_data['txnStatus'] == 'SUCCESS') {
+            if ($status == 'SUCCESS') {
                 $userData = Cardoffer::where('id', $paymentdata->userid)->first();
                 $cardno = random_code_num(16);
 
@@ -2390,7 +2779,7 @@ class LoanAgentController extends Controller
                     'card_number' => $cardno,
                     'registration_date' => date('Y-m-d'),
                     'expiry_date' => date('Y-m-d', strtotime('+9 months')),
-                    'paymentid' => $response_data['data']['paygicReferenceId'],
+                    'paymentid' => $razorpay_payment_id,
                     'isActive' => 1
                 );
 

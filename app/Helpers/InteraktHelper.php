@@ -34,8 +34,14 @@ use Illuminate\Support\Facades\Log;
 
             $response = curl_exec($curl);
             $err = curl_error($curl);
-            Log::info('user_track response : ' . $response);
-            Log::info('user_track error : ' . $err);
+           
+            Log::info('Interakt User_track Request', $postData);
+            Log::info('Interakt User_track Response', ['response' => $response]);
+
+            if ($err) {
+                Log::error('Interakt cURL Error', ['error' => $err]);
+            }
+
             curl_close($curl);
 
             $result = json_decode($response, true);
@@ -79,8 +85,12 @@ use Illuminate\Support\Facades\Log;
             $response = curl_exec($curl);
             $err = curl_error($curl);
             
-            Log::info('event_track response : ' . $response);
-            Log::info('event_track error : ' . $err);
+            Log::info('Interakt Event_track Request', $postData);
+            Log::info('Interakt Event_track Response', ['response' => $response]);
+
+            if ($err) {
+                Log::error('Interakt cURL Error', ['error' => $err]);
+            }
             curl_close($curl);
 
             $result = json_decode($response, true);

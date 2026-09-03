@@ -1,5 +1,6 @@
 <?php
 
+use Illuminate\Support\Facades\Log;
 
     if(!function_exists('aisensy_track')){
         function aisensy_track($postData){
@@ -21,6 +22,14 @@
         
             $response = curl_exec($curl);
             $err = curl_error($curl);
+
+            Log::info('cURL Response aisensy_track : ', ['response' => $response]);
+
+            if ($err) {
+                Log::error('cURL Error aisensy_track : ', [
+                    'error' => $err
+                ]);
+            } 
             curl_close($curl);
         
             return $response; 

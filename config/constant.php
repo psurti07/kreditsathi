@@ -15,4 +15,9 @@ return [
     'SA_OFFER_5' => 'sa-offer-5',
     'SA_OFFER_6' => 'sa-offer-6',
     'SA_OFFER_7' => 'sa-offer-7',
+
+    'SABPAISA_CLIENT_CODE' => env('SABPAISA_CLIENT_CODE'),
+    'SABPAISA_AUTH_KEY' => env('SABPAISA_AUTH_KEY'),
+    'SABPAISA_AUTH_IV' => env('SABPAISA_AUTH_IV'),
+
 ];

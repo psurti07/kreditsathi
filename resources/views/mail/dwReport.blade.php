@@ -216,7 +216,7 @@
                                                                                             <tr>
                                                                                                 <td><h5 style="margin:0">{{ $agent->fullname ?? 'Kreditsathi Support' }}</h5></td>
                                                                                                 <td><h5 style="margin:0">+91 {{ $agent->mobile ?? '97242 06519' }}</h5></td>
-                                                                                                <td><h5 style="margin:0">{{ $agent->emailid ?? 'info@ailoans.com' }}</h5></td>
+                                                                                                <td><h5 style="margin:0">{{ $agent->emailid ?? 'info@kreditsathi.com' }}</h5></td>
                                                                                             </tr>
                                                                                         </table>
                                                                                     </td>
@@ -279,7 +279,7 @@
                                                                                     @endphp
                                                                                     <tr style="font-family: Poppins, sans-serif;">
                                                                                         <td>{{ $loop->iteration }}</td>
-                                                                                        <td><img src="https://manage.kreditsathi.com/upload/banks/{{ $offer->bank_image }}" alt="{{ $offer->bank_name }}" class="bank-logo"></td>
+                                                                                        <td><img src="https://manage.kreditsathi.com/public/upload/banks/{{ $offer->bank_image }}" alt="{{ $offer->bank_name }}" class="bank-logo"></td>
                                                                                         <td>{{ $offer->bank_name }}</td>
                                                                                         <td>{{ $offer->tenures }}&nbsp;Months<br><span class="subtext">({{ $offer->roi }}%)</span></td>
                                                                                         <td><strong>{{ $click }}</strong> Clicked</td>

@@ -25,6 +25,9 @@ class Kernel extends ConsoleKernel
        
         $schedule->command('whatsapp:la-lead-cycle')->everyFifteenMinutes();
         $schedule->command('whatsapp:sa-lead-cycle')->everyFifteenMinutes();
+
+        $schedule->command('whatsapp:sa-lead-cycle-aisensy')->everyFifteenMinutes();
+
         // $schedule->command('whatsapp:blog-remarketing-cycle')->everyFifteenMinutes();
         
         // $schedule->command('sms:sa-customer-service-closed-cycle')->everyFifteenMinutes();

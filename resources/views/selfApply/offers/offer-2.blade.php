@@ -81,9 +81,9 @@
                             </div>
                             <div class="col-md-12">
                                 <div class="input-group">
-                                    <div class="input-group-prepend">
+                                    <!-- <div class="input-group-prepend">
                                         <i class="fa fa-envelope"></i>
-                                    </div>
+                                    </div> -->
                                     <input type="email" name="email" id="email" class="form-control"
                                         placeholder="Email*" autocomplete="off" value="{{ old('email') }}">
                                 </div>
@@ -225,11 +225,9 @@ $(document).ready(function() {
                     $(this).attr("disabled", false);
                     if (result.type === 'SUCCESS') {
                         toastr.success(result.message);
-                        $('#result-container').html(result.html);
-
                         setTimeout(function() {
-                            document.frm1.submit();
-                        }, 1000);
+                            window.location.href = result.url;
+                        }, 5000);
                     } else {
                         setTimeout(function() {
                             window.location.reload();

@@ -7,6 +7,7 @@ use App\Models\Careers;
 use App\Models\InfoPages;
 use Illuminate\Http\Request;
 use App\Models\ContactEnquiry;
+use App\Models\Product;
 use Illuminate\Validation\Rule;
 use Illuminate\Support\Facades\Log;
 use Illuminate\Support\Facades\DB;
@@ -19,7 +20,8 @@ class HomeController extends Controller
     public function home(){
         $meta = homeMeta();
         $msg = InfoPages::where('slug','welcome-message')->select('content','status')->first();
-        return view('front.home',compact('meta','msg'));
+        $products = Product::whereIn('productslug', ['self-apply','hire-loan-agent'])->get()->keyBy('productslug');
+        return view('front.home',compact('meta','msg', 'products'));
     }
 
     public function creditScore(){
@@ -126,7 +128,7 @@ class HomeController extends Controller
            try {
                 $maildata = array(
                     'fullname' => "Kreditsathi HR",
-                    'email' => "info@ailoans.com"
+                    'email' => "info@kreditsathi.com"
                 );
                 $maildata2 = array(
                     'fullname' => $input['firstname'].' '.$input['lastname'],
@@ -278,5 +280,18 @@ class HomeController extends Controller
         $res = sendBrevoHtmlMail2($mailData, 'Congratulations! Payment Successful for Kreditsathi’s Self-Apply Plan.', $sendGreetings, 3, $attachments);
 
         dd($res);
+    }
+
+    public function testevent(){
+        $data3 = array(
+            'phoneNumber' => '9408881214',
+            'countryCode' => '+91',
+            'event' => 'Self Payment Successful',
+            'traits' => array(
+                'userid' => '9408881214',
+                'userpass' => '123456'
+            )
+        );
+        $restrack2 = event_track($data3);
     }
 }

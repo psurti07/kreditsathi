@@ -6,7 +6,8 @@ use Illuminate\Support\Facades\DB;
 
 if(!function_exists('sendSingleSMS')){
     function sendSingleSMS($mobile, $otp, $panel = 'self'){
-        $message = "Hello, the Kreditsathi OTP for your mobile number registration is ".$otp.". Kindly do not share it with anyone. Thanks, Kreditsathi";
+        $message = "Hello, the https://kreditsathi.com OTP for your mobile number registration is ".$otp.". Kindly do not share it with anyone. Thanks, Kreditsathi";
+        Log::info("otp sms message : " . $message);
         // URL encode the message
        // URL encode the message
         $sms_text = urlencode($message);
@@ -27,10 +28,11 @@ if(!function_exists('sendSingleSMS')){
     	}
 	    // Construct the API URL
         $api_url = "http://m.onlinebusinessbazaar.in/sendsms.jsp?user={$username}&password={$password}&senderid={$sender_id}&mobiles={$mobile}&sms={$sms_text}";
-
+        Log::info('sms api_url : ' . $api_url);
         // Submit the request to the server
         $response = Http::get($api_url);
 
+        Log::info("otp sms response : " . $response);
         // Return the response
         return [
             'status_code' => $response->status(),

@@ -1,0 +1,486 @@
+[2026-09-01 06:32:56] production.ERROR: No application encryption key has been specified. {"exception":"[object] (Illuminate\\Encryption\\MissingAppKeyException(code: 0): No application encryption key has been specified. at C:/xampp/htdocs/kreditsathi/vendor/laravel/framework/src/Illuminate/Encryption/EncryptionServiceProvider.php:79)
+[stacktrace]
+#0 C:/xampp/htdocs/kreditsathi/vendor/laravel/framework/src/Illuminate/Support/helpers.php(320): Illuminate/Encryption/EncryptionServiceProvider->Illuminate/Encryption/{closure}(NULL)
+#1 C:/xampp/htdocs/kreditsathi/vendor/laravel/framework/src/Illuminate/Encryption/EncryptionServiceProvider.php(77): tap(NULL, Object(Closure))
+#2 C:/xampp/htdocs/kreditsathi/vendor/laravel/framework/src/Illuminate/Encryption/EncryptionServiceProvider.php(60): Illuminate/Encryption/EncryptionServiceProvider->key(Array)
+#3 C:/xampp/htdocs/kreditsathi/vendor/laravel/framework/src/Illuminate/Encryption/EncryptionServiceProvider.php(32): Illuminate/Encryption/EncryptionServiceProvider->parseKey(Array)
+#4 C:/xampp/htdocs/kreditsathi/vendor/laravel/framework/src/Illuminate/Container/Container.php(908): Illuminate/Encryption/EncryptionServiceProvider->Illuminate/Encryption/{closure}(Object(Illuminate/Foundation/Application), Array)
+#5 C:/xampp/htdocs/kreditsathi/vendor/laravel/framework/src/Illuminate/Container/Container.php(795): Illuminate/Container/Container->build(Object(Closure))
+#6 C:/xampp/htdocs/kreditsathi/vendor/laravel/framework/src/Illuminate/Foundation/Application.php(986): Illuminate/Container/Container->resolve('encrypter', Array, true)
+#7 C:/xampp/htdocs/kreditsathi/vendor/laravel/framework/src/Illuminate/Container/Container.php(731): Illuminate/Foundation/Application->resolve('encrypter', Array)
+#8 C:/xampp/htdocs/kreditsathi/vendor/laravel/framework/src/Illuminate/Foundation/Application.php(971): Illuminate/Container/Container->make('encrypter', Array)
+#9 C:/xampp/htdocs/kreditsathi/vendor/laravel/framework/src/Illuminate/Container/Container.php(1066): Illuminate/Foundation/Application->make('encrypter')
+#10 C:/xampp/htdocs/kreditsathi/vendor/laravel/framework/src/Illuminate/Container/Container.php(982): Illuminate/Container/Container->resolveClass(Object(ReflectionParameter))
+#11 C:/xampp/htdocs/kreditsathi/vendor/laravel/framework/src/Illuminate/Container/Container.php(943): Illuminate/Container/Container->resolveDependencies(Array)
+#12 C:/xampp/htdocs/kreditsathi/vendor/laravel/framework/src/Illuminate/Container/Container.php(795): Illuminate/Container/Container->build('App//Http//Middle...')
+#13 C:/xampp/htdocs/kreditsathi/vendor/laravel/framework/src/Illuminate/Foundation/Application.php(986): Illuminate/Container/Container->resolve('App//Http//Middle...', Array, true)
+#14 C:/xampp/htdocs/kreditsathi/vendor/laravel/framework/src/Illuminate/Container/Container.php(731): Illuminate/Foundation/Application->resolve('App//Http//Middle...', Array)
+#15 C:/xampp/htdocs/kreditsathi/vendor/laravel/framework/src/Illuminate/Foundation/Application.php(971): Illuminate/Container/Container->make('App//Http//Middle...', Array)
+#16 C:/xampp/htdocs/kreditsathi/vendor/laravel/framework/src/Illuminate/Pipeline/Pipeline.php(172): Illuminate/Foundation/Application->make('App//Http//Middle...')
+#17 C:/xampp/htdocs/kreditsathi/vendor/laravel/framework/src/Illuminate/Pipeline/Pipeline.php(119): Illuminate/Pipeline/Pipeline->Illuminate/Pipeline/{closure}(Object(Illuminate/Http/Request))
+#18 C:/xampp/htdocs/kreditsathi/vendor/laravel/framework/src/Illuminate/Routing/Router.php(805): Illuminate/Pipeline/Pipeline->then(Object(Closure))
+#19 C:/xampp/htdocs/kreditsathi/vendor/laravel/framework/src/Illuminate/Routing/Router.php(784): Illuminate/Routing/Router->runRouteWithinStack(Object(Illuminate/Routing/Route), Object(Illuminate/Http/Request))
+#20 C:/xampp/htdocs/kreditsathi/vendor/laravel/framework/src/Illuminate/Routing/Router.php(748): Illuminate/Routing/Router->runRoute(Object(Illuminate/Http/Request), Object(Illuminate/Routing/Route))
+#21 C:/xampp/htdocs/kreditsathi/vendor/laravel/framework/src/Illuminate/Routing/Router.php(737): Illuminate/Routing/Router->dispatchToRoute(Object(Illuminate/Http/Request))
+#22 C:/xampp/htdocs/kreditsathi/vendor/laravel/framework/src/Illuminate/Foundation/Http/Kernel.php(200): Illuminate/Routing/Router->dispatch(Object(Illuminate/Http/Request))
+#23 C:/xampp/htdocs/kreditsathi/vendor/laravel/framework/src/Illuminate/Pipeline/Pipeline.php(144): Illuminate/Foundation/Http/Kernel->Illuminate/Foundation/Http/{closure}(Object(Illuminate/Http/Request))
+#24 C:/xampp/htdocs/kreditsathi/vendor/laravel/framework/src/Illuminate/Foundation/Http/Middleware/TransformsRequest.php(21): Illuminate/Pipeline/Pipeline->Illuminate/Pipeline/{closure}(Object(Illuminate/Http/Request))
+#25 C:/xampp/htdocs/kreditsathi/vendor/laravel/framework/src/Illuminate/Foundation/Http/Middleware/ConvertEmptyStringsToNull.php(31): Illuminate/Foundation/Http/Middleware/TransformsRequest->handle(Object(Illuminate/Http/Request), Object(Closure))
+#26 C:/xampp/htdocs/kreditsathi/vendor/laravel/framework/src/Illuminate/Pipeline/Pipeline.php(183): Illuminate/Foundation/Http/Middleware/ConvertEmptyStringsToNull->handle(Object(Illuminate/Http/Request), Object(Closure))
+#27 C:/xampp/htdocs/kreditsathi/vendor/laravel/framework/src/Illuminate/Foundation/Http/Middleware/TransformsRequest.php(21): Illuminate/Pipeline/Pipeline->Illuminate/Pipeline/{closure}(Object(Illuminate/Http/Request))
+#28 C:/xampp/htdocs/kreditsathi/vendor/laravel/framework/src/Illuminate/Foundation/Http/Middleware/TrimStrings.php(40): Illuminate/Foundation/Http/Middleware/TransformsRequest->handle(Object(Illuminate/Http/Request), Object(Closure))
+#29 C:/xampp/htdocs/kreditsathi/vendor/laravel/framework/src/Illuminate/Pipeline/Pipeline.php(183): Illuminate/Foundation/Http/Middleware/TrimStrings->handle(Object(Illuminate/Http/Request), Object(Closure))
+#30 C:/xampp/htdocs/kreditsathi/vendor/laravel/framework/src/Illuminate/Foundation/Http/Middleware/ValidatePostSize.php(27): Illuminate/Pipeline/Pipeline->Illuminate/Pipeline/{closure}(Object(Illuminate/Http/Request))
+#31 C:/xampp/htdocs/kreditsathi/vendor/laravel/framework/src/Illuminate/Pipeline/Pipeline.php(183): Illuminate/Foundation/Http/Middleware/ValidatePostSize->handle(Object(Illuminate/Http/Request), Object(Closure))
+#32 C:/xampp/htdocs/kreditsathi/vendor/laravel/framework/src/Illuminate/Foundation/Http/Middleware/PreventRequestsDuringMaintenance.php(99): Illuminate/Pipeline/Pipeline->Illuminate/Pipeline/{closure}(Object(Illuminate/Http/Request))
+#33 C:/xampp/htdocs/kreditsathi/vendor/laravel/framework/src/Illuminate/Pipeline/Pipeline.php(183): Illuminate/Foundation/Http/Middleware/PreventRequestsDuringMaintenance->handle(Object(Illuminate/Http/Request), Object(Closure))
+#34 C:/xampp/htdocs/kreditsathi/vendor/laravel/framework/src/Illuminate/Http/Middleware/HandleCors.php(49): Illuminate/Pipeline/Pipeline->Illuminate/Pipeline/{closure}(Object(Illuminate/Http/Request))
+#35 C:/xampp/htdocs/kreditsathi/vendor/laravel/framework/src/Illuminate/Pipeline/Pipeline.php(183): Illuminate/Http/Middleware/HandleCors->handle(Object(Illuminate/Http/Request), Object(Closure))
+#36 C:/xampp/htdocs/kreditsathi/vendor/laravel/framework/src/Illuminate/Http/Middleware/TrustProxies.php(39): Illuminate/Pipeline/Pipeline->Illuminate/Pipeline/{closure}(Object(Illuminate/Http/Request))
+#37 C:/xampp/htdocs/kreditsathi/vendor/laravel/framework/src/Illuminate/Pipeline/Pipeline.php(183): Illuminate/Http/Middleware/TrustProxies->handle(Object(Illuminate/Http/Request), Object(Closure))
+#38 C:/xampp/htdocs/kreditsathi/vendor/laravel/framework/src/Illuminate/Pipeline/Pipeline.php(119): Illuminate/Pipeline/Pipeline->Illuminate/Pipeline/{closure}(Object(Illuminate/Http/Request))
+#39 C:/xampp/htdocs/kreditsathi/vendor/laravel/framework/src/Illuminate/Foundation/Http/Kernel.php(175): Illuminate/Pipeline/Pipeline->then(Object(Closure))
+#40 C:/xampp/htdocs/kreditsathi/vendor/laravel/framework/src/Illuminate/Foundation/Http/Kernel.php(144): Illuminate/Foundation/Http/Kernel->sendRequestThroughRouter(Object(Illuminate/Http/Request))
+#41 C:/xampp/htdocs/kreditsathi/index.php(51): Illuminate/Foundation/Http/Kernel->handle(Object(Illuminate/Http/Request))
+#42 {main}
+"} 
+[2026-09-01 06:32:56] production.ERROR: No application encryption key has been specified. {"exception":"[object] (Illuminate\\Encryption\\MissingAppKeyException(code: 0): No application encryption key has been specified. at C:/xampp/htdocs/kreditsathi/vendor/laravel/framework/src/Illuminate/Encryption/EncryptionServiceProvider.php:79)
+[stacktrace]
+#0 C:/xampp/htdocs/kreditsathi/vendor/laravel/framework/src/Illuminate/Support/helpers.php(320): Illuminate/Encryption/EncryptionServiceProvider->Illuminate/Encryption/{closure}(NULL)
+#1 C:/xampp/htdocs/kreditsathi/vendor/laravel/framework/src/Illuminate/Encryption/EncryptionServiceProvider.php(77): tap(NULL, Object(Closure))
+#2 C:/xampp/htdocs/kreditsathi/vendor/laravel/framework/src/Illuminate/Encryption/EncryptionServiceProvider.php(60): Illuminate/Encryption/EncryptionServiceProvider->key(Array)
+#3 C:/xampp/htdocs/kreditsathi/vendor/laravel/framework/src/Illuminate/Encryption/EncryptionServiceProvider.php(32): Illuminate/Encryption/EncryptionServiceProvider->parseKey(Array)
+#4 C:/xampp/htdocs/kreditsathi/vendor/laravel/framework/src/Illuminate/Container/Container.php(908): Illuminate/Encryption/EncryptionServiceProvider->Illuminate/Encryption/{closure}(Object(Illuminate/Foundation/Application), Array)
+#5 C:/xampp/htdocs/kreditsathi/vendor/laravel/framework/src/Illuminate/Container/Container.php(795): Illuminate/Container/Container->build(Object(Closure))
+#6 C:/xampp/htdocs/kreditsathi/vendor/laravel/framework/src/Illuminate/Foundation/Application.php(986): Illuminate/Container/Container->resolve('encrypter', Array, true)
+#7 C:/xampp/htdocs/kreditsathi/vendor/laravel/framework/src/Illuminate/Container/Container.php(731): Illuminate/Foundation/Application->resolve('encrypter', Array)
+#8 C:/xampp/htdocs/kreditsathi/vendor/laravel/framework/src/Illuminate/Foundation/Application.php(971): Illuminate/Container/Container->make('encrypter', Array)
+#9 C:/xampp/htdocs/kreditsathi/vendor/laravel/framework/src/Illuminate/Container/Container.php(1066): Illuminate/Foundation/Application->make('encrypter')
+#10 C:/xampp/htdocs/kreditsathi/vendor/laravel/framework/src/Illuminate/Container/Container.php(982): Illuminate/Container/Container->resolveClass(Object(ReflectionParameter))
+#11 C:/xampp/htdocs/kreditsathi/vendor/laravel/framework/src/Illuminate/Container/Container.php(943): Illuminate/Container/Container->resolveDependencies(Array)
+#12 C:/xampp/htdocs/kreditsathi/vendor/laravel/framework/src/Illuminate/Container/Container.php(795): Illuminate/Container/Container->build('App//Http//Middle...')
+#13 C:/xampp/htdocs/kreditsathi/vendor/laravel/framework/src/Illuminate/Foundation/Application.php(986): Illuminate/Container/Container->resolve('App//Http//Middle...', Array, true)
+#14 C:/xampp/htdocs/kreditsathi/vendor/laravel/framework/src/Illuminate/Container/Container.php(731): Illuminate/Foundation/Application->resolve('App//Http//Middle...', Array)
+#15 C:/xampp/htdocs/kreditsathi/vendor/laravel/framework/src/Illuminate/Foundation/Application.php(971): Illuminate/Container/Container->make('App//Http//Middle...', Array)
+#16 C:/xampp/htdocs/kreditsathi/vendor/laravel/framework/src/Illuminate/Foundation/Http/Kernel.php(255): Illuminate/Foundation/Application->make('App//Http//Middle...')
+#17 C:/xampp/htdocs/kreditsathi/vendor/laravel/framework/src/Illuminate/Foundation/Http/Kernel.php(213): Illuminate/Foundation/Http/Kernel->terminateMiddleware(Object(Illuminate/Http/Request), Object(Illuminate/Http/JsonResponse))
+#18 C:/xampp/htdocs/kreditsathi/index.php(55): Illuminate/Foundation/Http/Kernel->terminate(Object(Illuminate/Http/Request), Object(Illuminate/Http/JsonResponse))
+#19 {main}
+"} 
+[2026-09-01 10:03:15] local.INFO: otp sms message : Hello, the https://kreditsathi.com OTP for your mobile number registration is 5844. Kindly do not share it with anyone. Thanks, Kreditsathi  
+[2026-09-01 10:03:15] local.INFO: sms api_url : http://m.onlinebusinessbazaar.in/sendsms.jsp?user=kredsthi&password=c5df69c3e4XX&senderid=#&mobiles=8978787878&sms=Hello%2C+the+https%3A%2F%2Fkreditsathi.com+OTP+for+your+mobile+number+registration+is+5844.+Kindly+do+not+share+it+with+anyone.+Thanks%2C+Kreditsathi  
+[2026-09-01 10:03:15] local.INFO: otp sms message : Hello, the https://kreditsathi.com OTP for your mobile number registration is 7516. Kindly do not share it with anyone. Thanks, Kreditsathi  
+[2026-09-01 10:03:15] local.INFO: sms api_url : http://m.onlinebusinessbazaar.in/sendsms.jsp?user=kredsthi&password=c5df69c3e4XX&senderid=#&mobiles=8978787878&sms=Hello%2C+the+https%3A%2F%2Fkreditsathi.com+OTP+for+your+mobile+number+registration+is+7516.+Kindly+do+not+share+it+with+anyone.+Thanks%2C+Kreditsathi  
+[2026-09-01 10:03:16] local.INFO: otp sms message : Hello, the https://kreditsathi.com OTP for your mobile number registration is 1146. Kindly do not share it with anyone. Thanks, Kreditsathi  
+[2026-09-01 10:03:16] local.INFO: sms api_url : http://m.onlinebusinessbazaar.in/sendsms.jsp?user=kredsthi&password=c5df69c3e4XX&senderid=#&mobiles=8978787878&sms=Hello%2C+the+https%3A%2F%2Fkreditsathi.com+OTP+for+your+mobile+number+registration+is+1146.+Kindly+do+not+share+it+with+anyone.+Thanks%2C+Kreditsathi  
+[2026-09-01 10:03:16] local.INFO: otp sms message : Hello, the https://kreditsathi.com OTP for your mobile number registration is 6301. Kindly do not share it with anyone. Thanks, Kreditsathi  
+[2026-09-01 10:03:16] local.INFO: sms api_url : http://m.onlinebusinessbazaar.in/sendsms.jsp?user=kredsthi&password=c5df69c3e4XX&senderid=#&mobiles=8978787878&sms=Hello%2C+the+https%3A%2F%2Fkreditsathi.com+OTP+for+your+mobile+number+registration+is+6301.+Kindly+do+not+share+it+with+anyone.+Thanks%2C+Kreditsathi  
+[2026-09-01 10:03:16] local.INFO: otp sms message : Hello, the https://kreditsathi.com OTP for your mobile number registration is 7641. Kindly do not share it with anyone. Thanks, Kreditsathi  
+[2026-09-01 10:03:16] local.INFO: sms api_url : http://m.onlinebusinessbazaar.in/sendsms.jsp?user=kredsthi&password=c5df69c3e4XX&senderid=#&mobiles=8978787878&sms=Hello%2C+the+https%3A%2F%2Fkreditsathi.com+OTP+for+your+mobile+number+registration+is+7641.+Kindly+do+not+share+it+with+anyone.+Thanks%2C+Kreditsathi  
+[2026-09-01 10:03:18] local.INFO: otp sms response : 
+<smslist>
+<sms>
+<status>error</status>
+<code>1005</code>
+<reason>SMSContentCannotBeBlank</reason>
+<clientsmsid></clientsmsid>
+<messageid>-1</messageid>
+<mobileno>0</mobileno>
+</sms>
+</smslist>
+  
+[2026-09-01 10:03:18] local.INFO: otp sms response : 
+<smslist>
+<sms>
+<status>error</status>
+<code>1005</code>
+<reason>SMSContentCannotBeBlank</reason>
+<clientsmsid></clientsmsid>
+<messageid>-1</messageid>
+<mobileno>0</mobileno>
+</sms>
+</smslist>
+  
+[2026-09-01 10:03:18] local.INFO: otp sms response : 
+<smslist>
+<sms>
+<status>error</status>
+<code>1005</code>
+<reason>SMSContentCannotBeBlank</reason>
+<clientsmsid></clientsmsid>
+<messageid>-1</messageid>
+<mobileno>0</mobileno>
+</sms>
+</smslist>
+  
+[2026-09-01 06:33:57] production.ERROR: No application encryption key has been specified. {"exception":"[object] (Illuminate\\Encryption\\MissingAppKeyException(code: 0): No application encryption key has been specified. at C:/xampp/htdocs/kreditsathi/vendor/laravel/framework/src/Illuminate/Encryption/EncryptionServiceProvider.php:79)
+[stacktrace]
+#0 C:/xampp/htdocs/kreditsathi/vendor/laravel/framework/src/Illuminate/Support/helpers.php(320): Illuminate/Encryption/EncryptionServiceProvider->Illuminate/Encryption/{closure}(NULL)
+#1 C:/xampp/htdocs/kreditsathi/vendor/laravel/framework/src/Illuminate/Encryption/EncryptionServiceProvider.php(77): tap(NULL, Object(Closure))
+#2 C:/xampp/htdocs/kreditsathi/vendor/laravel/framework/src/Illuminate/Encryption/EncryptionServiceProvider.php(60): Illuminate/Encryption/EncryptionServiceProvider->key(Array)
+#3 C:/xampp/htdocs/kreditsathi/vendor/laravel/framework/src/Illuminate/Encryption/EncryptionServiceProvider.php(32): Illuminate/Encryption/EncryptionServiceProvider->parseKey(Array)
+#4 C:/xampp/htdocs/kreditsathi/vendor/laravel/framework/src/Illuminate/Container/Container.php(908): Illuminate/Encryption/EncryptionServiceProvider->Illuminate/Encryption/{closure}(Object(Illuminate/Foundation/Application), Array)
+#5 C:/xampp/htdocs/kreditsathi/vendor/laravel/framework/src/Illuminate/Container/Container.php(795): Illuminate/Container/Container->build(Object(Closure))
+#6 C:/xampp/htdocs/kreditsathi/vendor/laravel/framework/src/Illuminate/Foundation/Application.php(986): Illuminate/Container/Container->resolve('encrypter', Array, true)
+#7 C:/xampp/htdocs/kreditsathi/vendor/laravel/framework/src/Illuminate/Container/Container.php(731): Illuminate/Foundation/Application->resolve('encrypter', Array)
+#8 C:/xampp/htdocs/kreditsathi/vendor/laravel/framework/src/Illuminate/Foundation/Application.php(971): Illuminate/Container/Container->make('encrypter', Array)
+#9 C:/xampp/htdocs/kreditsathi/vendor/laravel/framework/src/Illuminate/Container/Container.php(1066): Illuminate/Foundation/Application->make('encrypter')
+#10 C:/xampp/htdocs/kreditsathi/vendor/laravel/framework/src/Illuminate/Container/Container.php(982): Illuminate/Container/Container->resolveClass(Object(ReflectionParameter))
+#11 C:/xampp/htdocs/kreditsathi/vendor/laravel/framework/src/Illuminate/Container/Container.php(943): Illuminate/Container/Container->resolveDependencies(Array)
+#12 C:/xampp/htdocs/kreditsathi/vendor/laravel/framework/src/Illuminate/Container/Container.php(795): Illuminate/Container/Container->build('App//Http//Middle...')
+#13 C:/xampp/htdocs/kreditsathi/vendor/laravel/framework/src/Illuminate/Foundation/Application.php(986): Illuminate/Container/Container->resolve('App//Http//Middle...', Array, true)
+#14 C:/xampp/htdocs/kreditsathi/vendor/laravel/framework/src/Illuminate/Container/Container.php(731): Illuminate/Foundation/Application->resolve('App//Http//Middle...', Array)
+#15 C:/xampp/htdocs/kreditsathi/vendor/laravel/framework/src/Illuminate/Foundation/Application.php(971): Illuminate/Container/Container->make('App//Http//Middle...', Array)
+#16 C:/xampp/htdocs/kreditsathi/vendor/laravel/framework/src/Illuminate/Pipeline/Pipeline.php(172): Illuminate/Foundation/Application->make('App//Http//Middle...')
+#17 C:/xampp/htdocs/kreditsathi/vendor/laravel/framework/src/Illuminate/Pipeline/Pipeline.php(119): Illuminate/Pipeline/Pipeline->Illuminate/Pipeline/{closure}(Object(Illuminate/Http/Request))
+#18 C:/xampp/htdocs/kreditsathi/vendor/laravel/framework/src/Illuminate/Routing/Router.php(805): Illuminate/Pipeline/Pipeline->then(Object(Closure))
+#19 C:/xampp/htdocs/kreditsathi/vendor/laravel/framework/src/Illuminate/Routing/Router.php(784): Illuminate/Routing/Router->runRouteWithinStack(Object(Illuminate/Routing/Route), Object(Illuminate/Http/Request))
+#20 C:/xampp/htdocs/kreditsathi/vendor/laravel/framework/src/Illuminate/Routing/Router.php(748): Illuminate/Routing/Router->runRoute(Object(Illuminate/Http/Request), Object(Illuminate/Routing/Route))
+#21 C:/xampp/htdocs/kreditsathi/vendor/laravel/framework/src/Illuminate/Routing/Router.php(737): Illuminate/Routing/Router->dispatchToRoute(Object(Illuminate/Http/Request))
+#22 C:/xampp/htdocs/kreditsathi/vendor/laravel/framework/src/Illuminate/Foundation/Http/Kernel.php(200): Illuminate/Routing/Router->dispatch(Object(Illuminate/Http/Request))
+#23 C:/xampp/htdocs/kreditsathi/vendor/laravel/framework/src/Illuminate/Pipeline/Pipeline.php(144): Illuminate/Foundation/Http/Kernel->Illuminate/Foundation/Http/{closure}(Object(Illuminate/Http/Request))
+#24 C:/xampp/htdocs/kreditsathi/vendor/laravel/framework/src/Illuminate/Foundation/Http/Middleware/TransformsRequest.php(21): Illuminate/Pipeline/Pipeline->Illuminate/Pipeline/{closure}(Object(Illuminate/Http/Request))
+#25 C:/xampp/htdocs/kreditsathi/vendor/laravel/framework/src/Illuminate/Foundation/Http/Middleware/ConvertEmptyStringsToNull.php(31): Illuminate/Foundation/Http/Middleware/TransformsRequest->handle(Object(Illuminate/Http/Request), Object(Closure))
+#26 C:/xampp/htdocs/kreditsathi/vendor/laravel/framework/src/Illuminate/Pipeline/Pipeline.php(183): Illuminate/Foundation/Http/Middleware/ConvertEmptyStringsToNull->handle(Object(Illuminate/Http/Request), Object(Closure))
+#27 C:/xampp/htdocs/kreditsathi/vendor/laravel/framework/src/Illuminate/Foundation/Http/Middleware/TransformsRequest.php(21): Illuminate/Pipeline/Pipeline->Illuminate/Pipeline/{closure}(Object(Illuminate/Http/Request))
+#28 C:/xampp/htdocs/kreditsathi/vendor/laravel/framework/src/Illuminate/Foundation/Http/Middleware/TrimStrings.php(40): Illuminate/Foundation/Http/Middleware/TransformsRequest->handle(Object(Illuminate/Http/Request), Object(Closure))
+#29 C:/xampp/htdocs/kreditsathi/vendor/laravel/framework/src/Illuminate/Pipeline/Pipeline.php(183): Illuminate/Foundation/Http/Middleware/TrimStrings->handle(Object(Illuminate/Http/Request), Object(Closure))
+#30 C:/xampp/htdocs/kreditsathi/vendor/laravel/framework/src/Illuminate/Foundation/Http/Middleware/ValidatePostSize.php(27): Illuminate/Pipeline/Pipeline->Illuminate/Pipeline/{closure}(Object(Illuminate/Http/Request))
+#31 C:/xampp/htdocs/kreditsathi/vendor/laravel/framework/src/Illuminate/Pipeline/Pipeline.php(183): Illuminate/Foundation/Http/Middleware/ValidatePostSize->handle(Object(Illuminate/Http/Request), Object(Closure))
+#32 C:/xampp/htdocs/kreditsathi/vendor/laravel/framework/src/Illuminate/Foundation/Http/Middleware/PreventRequestsDuringMaintenance.php(99): Illuminate/Pipeline/Pipeline->Illuminate/Pipeline/{closure}(Object(Illuminate/Http/Request))
+#33 C:/xampp/htdocs/kreditsathi/vendor/laravel/framework/src/Illuminate/Pipeline/Pipeline.php(183): Illuminate/Foundation/Http/Middleware/PreventRequestsDuringMaintenance->handle(Object(Illuminate/Http/Request), Object(Closure))
+#34 C:/xampp/htdocs/kreditsathi/vendor/laravel/framework/src/Illuminate/Http/Middleware/HandleCors.php(49): Illuminate/Pipeline/Pipeline->Illuminate/Pipeline/{closure}(Object(Illuminate/Http/Request))
+#35 C:/xampp/htdocs/kreditsathi/vendor/laravel/framework/src/Illuminate/Pipeline/Pipeline.php(183): Illuminate/Http/Middleware/HandleCors->handle(Object(Illuminate/Http/Request), Object(Closure))
+#36 C:/xampp/htdocs/kreditsathi/vendor/laravel/framework/src/Illuminate/Http/Middleware/TrustProxies.php(39): Illuminate/Pipeline/Pipeline->Illuminate/Pipeline/{closure}(Object(Illuminate/Http/Request))
+#37 C:/xampp/htdocs/kreditsathi/vendor/laravel/framework/src/Illuminate/Pipeline/Pipeline.php(183): Illuminate/Http/Middleware/TrustProxies->handle(Object(Illuminate/Http/Request), Object(Closure))
+#38 C:/xampp/htdocs/kreditsathi/vendor/laravel/framework/src/Illuminate/Pipeline/Pipeline.php(119): Illuminate/Pipeline/Pipeline->Illuminate/Pipeline/{closure}(Object(Illuminate/Http/Request))
+#39 C:/xampp/htdocs/kreditsathi/vendor/laravel/framework/src/Illuminate/Foundation/Http/Kernel.php(175): Illuminate/Pipeline/Pipeline->then(Object(Closure))
+#40 C:/xampp/htdocs/kreditsathi/vendor/laravel/framework/src/Illuminate/Foundation/Http/Kernel.php(144): Illuminate/Foundation/Http/Kernel->sendRequestThroughRouter(Object(Illuminate/Http/Request))
+#41 C:/xampp/htdocs/kreditsathi/index.php(51): Illuminate/Foundation/Http/Kernel->handle(Object(Illuminate/Http/Request))
+#42 {main}
+"} 
+[2026-09-01 06:33:57] production.ERROR: No application encryption key has been specified. {"exception":"[object] (Illuminate\\Encryption\\MissingAppKeyException(code: 0): No application encryption key has been specified. at C:/xampp/htdocs/kreditsathi/vendor/laravel/framework/src/Illuminate/Encryption/EncryptionServiceProvider.php:79)
+[stacktrace]
+#0 C:/xampp/htdocs/kreditsathi/vendor/laravel/framework/src/Illuminate/Support/helpers.php(320): Illuminate/Encryption/EncryptionServiceProvider->Illuminate/Encryption/{closure}(NULL)
+#1 C:/xampp/htdocs/kreditsathi/vendor/laravel/framework/src/Illuminate/Encryption/EncryptionServiceProvider.php(77): tap(NULL, Object(Closure))
+#2 C:/xampp/htdocs/kreditsathi/vendor/laravel/framework/src/Illuminate/Encryption/EncryptionServiceProvider.php(60): Illuminate/Encryption/EncryptionServiceProvider->key(Array)
+#3 C:/xampp/htdocs/kreditsathi/vendor/laravel/framework/src/Illuminate/Encryption/EncryptionServiceProvider.php(32): Illuminate/Encryption/EncryptionServiceProvider->parseKey(Array)
+#4 C:/xampp/htdocs/kreditsathi/vendor/laravel/framework/src/Illuminate/Container/Container.php(908): Illuminate/Encryption/EncryptionServiceProvider->Illuminate/Encryption/{closure}(Object(Illuminate/Foundation/Application), Array)
+#5 C:/xampp/htdocs/kreditsathi/vendor/laravel/framework/src/Illuminate/Container/Container.php(795): Illuminate/Container/Container->build(Object(Closure))
+#6 C:/xampp/htdocs/kreditsathi/vendor/laravel/framework/src/Illuminate/Foundation/Application.php(986): Illuminate/Container/Container->resolve('encrypter', Array, true)
+#7 C:/xampp/htdocs/kreditsathi/vendor/laravel/framework/src/Illuminate/Container/Container.php(731): Illuminate/Foundation/Application->resolve('encrypter', Array)
+#8 C:/xampp/htdocs/kreditsathi/vendor/laravel/framework/src/Illuminate/Foundation/Application.php(971): Illuminate/Container/Container->make('encrypter', Array)
+#9 C:/xampp/htdocs/kreditsathi/vendor/laravel/framework/src/Illuminate/Container/Container.php(1066): Illuminate/Foundation/Application->make('encrypter')
+#10 C:/xampp/htdocs/kreditsathi/vendor/laravel/framework/src/Illuminate/Container/Container.php(982): Illuminate/Container/Container->resolveClass(Object(ReflectionParameter))
+#11 C:/xampp/htdocs/kreditsathi/vendor/laravel/framework/src/Illuminate/Container/Container.php(943): Illuminate/Container/Container->resolveDependencies(Array)
+#12 C:/xampp/htdocs/kreditsathi/vendor/laravel/framework/src/Illuminate/Container/Container.php(795): Illuminate/Container/Container->build('App//Http//Middle...')
+#13 C:/xampp/htdocs/kreditsathi/vendor/laravel/framework/src/Illuminate/Foundation/Application.php(986): Illuminate/Container/Container->resolve('App//Http//Middle...', Array, true)
+#14 C:/xampp/htdocs/kreditsathi/vendor/laravel/framework/src/Illuminate/Container/Container.php(731): Illuminate/Foundation/Application->resolve('App//Http//Middle...', Array)
+#15 C:/xampp/htdocs/kreditsathi/vendor/laravel/framework/src/Illuminate/Foundation/Application.php(971): Illuminate/Container/Container->make('App//Http//Middle...', Array)
+#16 C:/xampp/htdocs/kreditsathi/vendor/laravel/framework/src/Illuminate/Foundation/Http/Kernel.php(255): Illuminate/Foundation/Application->make('App//Http//Middle...')
+#17 C:/xampp/htdocs/kreditsathi/vendor/laravel/framework/src/Illuminate/Foundation/Http/Kernel.php(213): Illuminate/Foundation/Http/Kernel->terminateMiddleware(Object(Illuminate/Http/Request), Object(Illuminate/Http/JsonResponse))
+#18 C:/xampp/htdocs/kreditsathi/index.php(55): Illuminate/Foundation/Http/Kernel->terminate(Object(Illuminate/Http/Request), Object(Illuminate/Http/JsonResponse))
+#19 {main}
+"} 
+[2026-09-01 10:05:31] local.INFO: Interakt User_track Request {"phoneNumber":"8978787878","countryCode":"+91","traits":{"name":"Fdsf Fdsf"},"tags":["Self Get Offer"]} 
+[2026-09-01 10:05:31] local.INFO: Interakt User_track Response {"response":"{\"result\":false,\"message\":\"You don't have an active subscription on Interakt\"}"} 
+[2026-09-01 10:05:31] local.INFO: Interakt Event_track Request {"phoneNumber":"8978787878","countryCode":"+91","event":"Self Get Offer","traits":{"SelfEligibleAmount":875000.0}} 
+[2026-09-01 10:05:31] local.INFO: Interakt Event_track Response {"response":"{\"result\":false,\"message\":\"You don't have an active subscription on Interakt\"}"} 
+[2026-09-01 10:05:39] local.ERROR: selfapply checkout - checkout method error occured: Authentication failed  
+[2026-09-01 10:05:58] local.INFO: Interakt Event_track Request {"phoneNumber":"8978787878","countryCode":"+91","event":"Self Payment Failed"} 
+[2026-09-01 10:05:58] local.INFO: Interakt Event_track Response {"response":"{\"result\":false,\"message\":\"You don't have an active subscription on Interakt\"}"} 
+[2026-09-01 10:06:16] local.INFO: Facebook Conversion API Response {"response":"{\"error\":{\"message\":\"Invalid OAuth access token - Cannot parse access token\",\"type\":\"OAuthException\",\"code\":190,\"fbtrace_id\":\"A0uReqnkqWvJsppO6CoTrkN\"}}","decoded_response":{"error":{"message":"Invalid OAuth access token - Cannot parse access token","type":"OAuthException","code":190,"fbtrace_id":"A0uReqnkqWvJsppO6CoTrkN"}},"curl_error":"","curl_errno":0,"http_code":400} 
+[2026-09-01 10:06:16] local.INFO: Interakt User_track Request {"phoneNumber":"8978787878","countryCode":"+91","traits":{"name":"Fdsf Fdsf"},"tags":["Self Payment Successful"]} 
+[2026-09-01 10:06:16] local.INFO: Interakt User_track Response {"response":"{\"result\":false,\"message\":\"You don't have an active subscription on Interakt\"}"} 
+[2026-09-01 10:06:17] local.INFO: Interakt Event_track Request {"phoneNumber":"8978787878","countryCode":"+91","event":"Self Payment Successful","traits":{"userid":"8978787878","userpass":"3X1En5"}} 
+[2026-09-01 10:06:17] local.INFO: Interakt Event_track Response {"response":"{\"result\":false,\"message\":\"You don't have an active subscription on Interakt\"}"} 
+[2026-09-01 10:09:51] local.INFO: otp sms message : Hello, the https://kreditsathi.com OTP for your mobile number registration is 4073. Kindly do not share it with anyone. Thanks, Kreditsathi  
+[2026-09-01 10:09:51] local.INFO: sms api_url : http://m.onlinebusinessbazaar.in/sendsms.jsp?user=kredsthi&password=c5df69c3e4XX&senderid=#&mobiles=9797878787&sms=Hello%2C+the+https%3A%2F%2Fkreditsathi.com+OTP+for+your+mobile+number+registration+is+4073.+Kindly+do+not+share+it+with+anyone.+Thanks%2C+Kreditsathi  
+[2026-09-01 10:09:51] local.INFO: otp sms response : 
+<smslist>
+<sms>
+<status>error</status>
+<code>1005</code>
+<reason>SMSContentCannotBeBlank</reason>
+<clientsmsid></clientsmsid>
+<messageid>-1</messageid>
+<mobileno>0</mobileno>
+</sms>
+</smslist>
+  
+[2026-09-01 10:09:51] local.INFO: otp sms message : Hello, the https://kreditsathi.com OTP for your mobile number registration is 6677. Kindly do not share it with anyone. Thanks, Kreditsathi  
+[2026-09-01 10:09:51] local.INFO: sms api_url : http://m.onlinebusinessbazaar.in/sendsms.jsp?user=&password=&senderid=#&mobiles=9797878787&sms=Hello%2C+the+https%3A%2F%2Fkreditsathi.com+OTP+for+your+mobile+number+registration+is+6677.+Kindly+do+not+share+it+with+anyone.+Thanks%2C+Kreditsathi  
+[2026-09-01 10:09:51] local.INFO: otp sms response : 
+<smslist>
+<sms>
+<status>error</status>
+<code>1001</code>
+<reason>InvalidUseridPassword</reason>
+<clientsmsid></clientsmsid>
+<messageid>-1</messageid>
+<mobileno>0</mobileno>
+</sms>
+</smslist>
+  
+[2026-09-01 10:10:40] local.INFO: Interakt User_track Request {"phoneNumber":"9787897878","countryCode":"+91","traits":{"name":"Fdsfdsfd Fdsf"},"tags":["Hire Get Offer"]} 
+[2026-09-01 10:10:40] local.INFO: Interakt User_track Response {"response":"{\"result\":false,\"message\":\"You don't have an active subscription on Interakt\"}"} 
+[2026-09-01 10:10:41] local.INFO: Interakt Event_track Request {"phoneNumber":"9787897878","countryCode":"+91","event":"Hire Get Offer","traits":{"HireEligibleAmount":195000.0}} 
+[2026-09-01 10:10:41] local.INFO: Interakt Event_track Response {"response":"{\"result\":false,\"message\":\"You don't have an active subscription on Interakt\"}"} 
+[2026-09-01 10:10:42] local.INFO: cURL Response aisensy_track :  {"response":"{\"name\":\"ERR401\",\"message\":\"Unauthorized\"}"} 
+[2026-09-01 10:10:49] local.INFO: otp sms message : Hello, the https://kreditsathi.com OTP for your mobile number registration is 3210. Kindly do not share it with anyone. Thanks, Kreditsathi  
+[2026-09-01 10:10:49] local.INFO: sms api_url : http://m.onlinebusinessbazaar.in/sendsms.jsp?user=kredsthi&password=c5df69c3e4XX&senderid=#&mobiles=9987979797&sms=Hello%2C+the+https%3A%2F%2Fkreditsathi.com+OTP+for+your+mobile+number+registration+is+3210.+Kindly+do+not+share+it+with+anyone.+Thanks%2C+Kreditsathi  
+[2026-09-01 10:10:49] local.INFO: otp sms response : 
+<smslist>
+<sms>
+<status>error</status>
+<code>1005</code>
+<reason>SMSContentCannotBeBlank</reason>
+<clientsmsid></clientsmsid>
+<messageid>-1</messageid>
+<mobileno>0</mobileno>
+</sms>
+</smslist>
+  
+[2026-09-01 10:12:19] local.INFO: Interakt User_track Request {"phoneNumber":"9987979797","countryCode":"+91","traits":{"name":"Gred Dfgfdgga"},"tags":["Hire Get Offer"]} 
+[2026-09-01 10:12:19] local.INFO: Interakt User_track Response {"response":"{\"result\":false,\"message\":\"You don't have an active subscription on Interakt\"}"} 
+[2026-09-01 10:12:20] local.INFO: Interakt Event_track Request {"phoneNumber":"9987979797","countryCode":"+91","event":"Hire Get Offer","traits":{"HireEligibleAmount":875000.0}} 
+[2026-09-01 10:12:20] local.INFO: Interakt Event_track Response {"response":"{\"result\":false,\"message\":\"You don't have an active subscription on Interakt\"}"} 
+[2026-09-01 10:12:21] local.INFO: cURL Response aisensy_track :  {"response":"{\"name\":\"ERR401\",\"message\":\"Unauthorized\"}"} 
+[2026-09-01 10:12:26] local.INFO: 588  
+[2026-09-01 10:12:26] local.INFO: Checksum Input String: KRED1|TXN17882377462347|58800|INR|1788237746  
+[2026-09-01 10:12:26] local.INFO: Generated Checksum: a5f38726e93571c6493a3365239ae5712ef6f973c3f2054649ad435c8a60faa2  
+[2026-09-01 10:12:26] local.INFO: array (
+  'status' => true,
+  'response' => 
+  array (
+    'success' => true,
+    'paymentId' => 'sppay_2d5995a9d8834152a527',
+    'checkoutUrl' => 'https://checkout.sabpaisa.in/checkout/sppay_2d5995a9d8834152a527',
+    'status' => 'PENDING',
+    'amount' => 58800,
+    'currency' => 'INR',
+    'merchantTxnId' => 'TXN17882377462347',
+    'expiresAt' => '2026-09-01T10:44:27.882481677',
+    'message' => 'Payment created successfully. Redirect customer to checkoutUrl.',
+    'traceId' => '357ceef74bd915993998be5e3ac137c6',
+    'clientSecret' => 'sppay_2d5995a9d8834152a527_secret_6e2286e5eb937436284aa3dc242f6d64c0aec65918b567519b592418571cd344',
+    'errorCode' => NULL,
+    'errorMessage' => NULL,
+  ),
+)  
+[2026-09-01 10:12:35] local.INFO: 588  
+[2026-09-01 10:12:35] local.INFO: Checksum Input String: KRED1|TXN17882377551895|58800|INR|1788237755  
+[2026-09-01 10:12:35] local.INFO: Generated Checksum: 963778f93740d67c0d02878dbcfca470b86d1d616e562d7314899eba671fad87  
+[2026-09-01 10:12:35] local.INFO: array (
+  'status' => true,
+  'response' => 
+  array (
+    'success' => true,
+    'paymentId' => 'sppay_78a60432a1da40819abb',
+    'checkoutUrl' => 'https://checkout.sabpaisa.in/checkout/sppay_78a60432a1da40819abb',
+    'status' => 'PENDING',
+    'amount' => 58800,
+    'currency' => 'INR',
+    'merchantTxnId' => 'TXN17882377551895',
+    'expiresAt' => '2026-09-01T10:44:37.122249901',
+    'message' => 'Payment created successfully. Redirect customer to checkoutUrl.',
+    'traceId' => '849243e39a46e611114240fe9f107fd6',
+    'clientSecret' => 'sppay_78a60432a1da40819abb_secret_24b5354af725813d448ea34d3890893894c36f7051073252b9d00548e10db6e4',
+    'errorCode' => NULL,
+    'errorMessage' => NULL,
+  ),
+)  
+[2026-09-01 10:12:36] local.INFO: 588  
+[2026-09-01 10:12:36] local.INFO: Checksum Input String: KRED1|TXN17882377568455|58800|INR|1788237756  
+[2026-09-01 10:12:36] local.INFO: Generated Checksum: 833c1a16c9542b3d4a2f1e34cd3795ac584e21689b5830d17d3c564177acdb67  
+[2026-09-01 10:12:36] local.INFO: array (
+  'status' => true,
+  'response' => 
+  array (
+    'success' => true,
+    'paymentId' => 'sppay_5507a404136f46a681bc',
+    'checkoutUrl' => 'https://checkout.sabpaisa.in/checkout/sppay_5507a404136f46a681bc',
+    'status' => 'PENDING',
+    'amount' => 58800,
+    'currency' => 'INR',
+    'merchantTxnId' => 'TXN17882377568455',
+    'expiresAt' => '2026-09-01T10:44:37.530953405',
+    'message' => 'Payment created successfully. Redirect customer to checkoutUrl.',
+    'traceId' => 'cae383faed8ccf25e95384caa56be692',
+    'clientSecret' => 'sppay_5507a404136f46a681bc_secret_d8ca9c4aad1aa1487de098dc3ae0088b425ecd8cbad509cc2df0a6e1aeefc69e',
+    'errorCode' => NULL,
+    'errorMessage' => NULL,
+  ),
+)  
+[2026-09-01 10:13:02] local.ERROR: An error occurred: Attempt to read property "orderamount" on null  
+[2026-09-01 10:19:33] local.INFO: otp sms message : Hello, the https://kreditsathi.com OTP for your mobile number registration is 9610. Kindly do not share it with anyone. Thanks, Kreditsathi  
+[2026-09-01 10:19:33] local.INFO: sms api_url : http://m.onlinebusinessbazaar.in/sendsms.jsp?user=kredsthi&password=c5df69c3e4XX&senderid=#&mobiles=9999797987&sms=Hello%2C+the+https%3A%2F%2Fkreditsathi.com+OTP+for+your+mobile+number+registration+is+9610.+Kindly+do+not+share+it+with+anyone.+Thanks%2C+Kreditsathi  
+[2026-09-01 10:19:33] local.INFO: otp sms response : 
+<smslist>
+<sms>
+<status>error</status>
+<code>1005</code>
+<reason>SMSContentCannotBeBlank</reason>
+<clientsmsid></clientsmsid>
+<messageid>-1</messageid>
+<mobileno>0</mobileno>
+</sms>
+</smslist>
+  
+[2026-09-01 10:19:58] local.INFO: otp sms message : Hello, the https://kreditsathi.com OTP for your mobile number registration is 8090. Kindly do not share it with anyone. Thanks, Kreditsathi  
+[2026-09-01 10:19:58] local.INFO: sms api_url : http://m.onlinebusinessbazaar.in/sendsms.jsp?user=kredsthi&password=c5df69c3e4XX&senderid=#&mobiles=9878798787&sms=Hello%2C+the+https%3A%2F%2Fkreditsathi.com+OTP+for+your+mobile+number+registration+is+8090.+Kindly+do+not+share+it+with+anyone.+Thanks%2C+Kreditsathi  
+[2026-09-01 10:19:58] local.INFO: otp sms response : 
+<smslist>
+<sms>
+<status>error</status>
+<code>1005</code>
+<reason>SMSContentCannotBeBlank</reason>
+<clientsmsid></clientsmsid>
+<messageid>-1</messageid>
+<mobileno>0</mobileno>
+</sms>
+</smslist>
+  
+[2026-09-01 10:22:04] local.INFO: Interakt User_track Request {"phoneNumber":"9878798787","countryCode":"+91","traits":{"name":"Ekta Kakadiya Kakadiya"},"tags":["Self Get Offer"]} 
+[2026-09-01 10:22:04] local.INFO: Interakt User_track Response {"response":"{\"result\":false,\"message\":\"You don't have an active subscription on Interakt\"}"} 
+[2026-09-01 10:22:05] local.INFO: Interakt Event_track Request {"phoneNumber":"9878798787","countryCode":"+91","event":"Self Get Offer","traits":{"SelfEligibleAmount":875000.0}} 
+[2026-09-01 10:22:05] local.INFO: Interakt Event_track Response {"response":"{\"result\":false,\"message\":\"You don't have an active subscription on Interakt\"}"} 
+[2026-09-01 10:24:31] local.INFO: Interakt User_track Request {"phoneNumber":"9878798787","countryCode":"+91","traits":{"name":"Ekta Kakadiya Kakadiya"},"tags":["Self Get Offer"]} 
+[2026-09-01 10:24:31] local.INFO: Interakt User_track Response {"response":"{\"result\":false,\"message\":\"You don't have an active subscription on Interakt\"}"} 
+[2026-09-01 10:24:32] local.INFO: Interakt Event_track Request {"phoneNumber":"9878798787","countryCode":"+91","event":"Self Get Offer","traits":{"SelfEligibleAmount":875000.0}} 
+[2026-09-01 10:24:32] local.INFO: Interakt Event_track Response {"response":"{\"result\":false,\"message\":\"You don't have an active subscription on Interakt\"}"} 
+[2026-09-01 10:24:44] local.INFO: otp sms message : Hello, the https://kreditsathi.com OTP for your mobile number registration is 7235. Kindly do not share it with anyone. Thanks, Kreditsathi  
+[2026-09-01 10:24:44] local.INFO: sms api_url : http://m.onlinebusinessbazaar.in/sendsms.jsp?user=kredsthi&password=c5df69c3e4XX&senderid=#&mobiles=9879797979&sms=Hello%2C+the+https%3A%2F%2Fkreditsathi.com+OTP+for+your+mobile+number+registration+is+7235.+Kindly+do+not+share+it+with+anyone.+Thanks%2C+Kreditsathi  
+[2026-09-01 10:24:44] local.INFO: otp sms response : 
+<smslist>
+<sms>
+<status>error</status>
+<code>1005</code>
+<reason>SMSContentCannotBeBlank</reason>
+<clientsmsid></clientsmsid>
+<messageid>-1</messageid>
+<mobileno>0</mobileno>
+</sms>
+</smslist>
+  
+[2026-09-01 10:25:53] local.INFO: Interakt User_track Request {"phoneNumber":"9879797979","countryCode":"+91","traits":{"name":"Ekta Kakadiya Kakadiya"},"tags":["Self Get Offer"]} 
+[2026-09-01 10:25:53] local.INFO: Interakt User_track Response {"response":"{\"result\":false,\"message\":\"You don't have an active subscription on Interakt\"}"} 
+[2026-09-01 10:25:53] local.INFO: Interakt Event_track Request {"phoneNumber":"9879797979","countryCode":"+91","event":"Self Get Offer","traits":{"SelfEligibleAmount":875000.0}} 
+[2026-09-01 10:25:53] local.INFO: Interakt Event_track Response {"response":"{\"result\":false,\"message\":\"You don't have an active subscription on Interakt\"}"} 
+[2026-09-01 10:26:05] local.INFO: otp sms message : Hello, the https://kreditsathi.com OTP for your mobile number registration is 9094. Kindly do not share it with anyone. Thanks, Kreditsathi  
+[2026-09-01 10:26:05] local.INFO: sms api_url : http://m.onlinebusinessbazaar.in/sendsms.jsp?user=kredsthi&password=c5df69c3e4XX&senderid=#&mobiles=9797979878&sms=Hello%2C+the+https%3A%2F%2Fkreditsathi.com+OTP+for+your+mobile+number+registration+is+9094.+Kindly+do+not+share+it+with+anyone.+Thanks%2C+Kreditsathi  
+[2026-09-01 10:26:06] local.INFO: otp sms response : 
+<smslist>
+<sms>
+<status>error</status>
+<code>1005</code>
+<reason>SMSContentCannotBeBlank</reason>
+<clientsmsid></clientsmsid>
+<messageid>-1</messageid>
+<mobileno>0</mobileno>
+</sms>
+</smslist>
+  
+[2026-09-01 10:26:44] local.INFO: Interakt User_track Request {"phoneNumber":"9797979878","countryCode":"+91","traits":{"name":"Ekta Kakadiya Kakadiya"},"tags":["Hire Get Offer"]} 
+[2026-09-01 10:26:44] local.INFO: Interakt User_track Response {"response":"{\"result\":false,\"message\":\"You don't have an active subscription on Interakt\"}"} 
+[2026-09-01 10:26:45] local.INFO: Interakt Event_track Request {"phoneNumber":"9797979878","countryCode":"+91","event":"Hire Get Offer","traits":{"HireEligibleAmount":875000.0}} 
+[2026-09-01 10:26:45] local.INFO: Interakt Event_track Response {"response":"{\"result\":false,\"message\":\"You don't have an active subscription on Interakt\"}"} 
+[2026-09-01 10:26:46] local.INFO: cURL Response aisensy_track :  {"response":"{\"name\":\"ERR401\",\"message\":\"Unauthorized\"}"} 
+[2026-09-01 10:27:33] local.INFO: Interakt User_track Request {"phoneNumber":"9797979878","countryCode":"+91","traits":{"name":"Ekta Kakadiya Kakadiya"},"tags":["Hire Get Offer"]} 
+[2026-09-01 10:27:33] local.INFO: Interakt User_track Response {"response":"{\"result\":false,\"message\":\"You don't have an active subscription on Interakt\"}"} 
+[2026-09-01 10:27:34] local.INFO: Interakt Event_track Request {"phoneNumber":"9797979878","countryCode":"+91","event":"Hire Get Offer","traits":{"HireEligibleAmount":875000.0}} 
+[2026-09-01 10:27:34] local.INFO: Interakt Event_track Response {"response":"{\"result\":false,\"message\":\"You don't have an active subscription on Interakt\"}"} 
+[2026-09-01 10:27:35] local.INFO: cURL Response aisensy_track :  {"response":"{\"name\":\"ERR401\",\"message\":\"Unauthorized\"}"} 
+[2026-09-01 10:28:56] local.INFO: Interakt User_track Request {"phoneNumber":"9797979878","countryCode":"+91","traits":{"name":"Ekta Kakadiya Kakadiya"},"tags":["Hire Get Offer"]} 
+[2026-09-01 10:28:56] local.INFO: Interakt User_track Response {"response":"{\"result\":false,\"message\":\"You don't have an active subscription on Interakt\"}"} 
+[2026-09-01 10:28:57] local.INFO: Interakt Event_track Request {"phoneNumber":"9797979878","countryCode":"+91","event":"Hire Get Offer","traits":{"HireEligibleAmount":875000.0}} 
+[2026-09-01 10:28:57] local.INFO: Interakt Event_track Response {"response":"{\"result\":false,\"message\":\"You don't have an active subscription on Interakt\"}"} 
+[2026-09-01 10:28:58] local.INFO: cURL Response aisensy_track :  {"response":"{\"name\":\"ERR401\",\"message\":\"Unauthorized\"}"} 
+[2026-09-01 10:29:00] local.INFO: 588  
+[2026-09-01 10:29:00] local.INFO: Checksum Input String: KRED1|TXN17882387409498|58800|INR|1788238740  
+[2026-09-01 10:29:00] local.INFO: Generated Checksum: 4f6a7116ff3a7abf716745a333e3a297c00c3023131aae7c4135eb83435eebf5  
+[2026-09-01 10:29:00] local.INFO: array (
+  'status' => true,
+  'response' => 
+  array (
+    'success' => true,
+    'paymentId' => 'sppay_4e30f78b431d480a8191',
+    'checkoutUrl' => 'https://checkout.sabpaisa.in/checkout/sppay_4e30f78b431d480a8191',
+    'status' => 'PENDING',
+    'amount' => 58800,
+    'currency' => 'INR',
+    'merchantTxnId' => 'TXN17882387409498',
+    'expiresAt' => '2026-09-01T11:01:02.055582354',
+    'message' => 'Payment created successfully. Redirect customer to checkoutUrl.',
+    'traceId' => 'f434a2b472635bd7926eb32a88bf80dd',
+    'clientSecret' => 'sppay_4e30f78b431d480a8191_secret_cb4fa2f2dae8a5b4076d46cac639e51cef745d9318e3d6d8db81d72675e10cdc',
+    'errorCode' => NULL,
+    'errorMessage' => NULL,
+  ),
+)  
+[2026-09-01 10:33:42] local.INFO: self apply send otp function error - Undefined array key "loan_type"  
+[2026-09-01 10:35:56] local.INFO: otp sms message : Hello, the https://kreditsathi.com OTP for your mobile number registration is 6611. Kindly do not share it with anyone. Thanks, Kreditsathi  
+[2026-09-01 10:35:56] local.INFO: sms api_url : http://m.onlinebusinessbazaar.in/sendsms.jsp?user=kredsthi&password=c5df69c3e4XX&senderid=#&mobiles=9897897979&sms=Hello%2C+the+https%3A%2F%2Fkreditsathi.com+OTP+for+your+mobile+number+registration+is+6611.+Kindly+do+not+share+it+with+anyone.+Thanks%2C+Kreditsathi  
+[2026-09-01 10:35:56] local.INFO: otp sms response : 
+<smslist>
+<sms>
+<status>error</status>
+<code>1005</code>
+<reason>SMSContentCannotBeBlank</reason>
+<clientsmsid></clientsmsid>
+<messageid>-1</messageid>
+<mobileno>0</mobileno>
+</sms>
+</smslist>
+  
+[2026-09-01 10:36:03] local.INFO: otp sms message : Hello, the https://kreditsathi.com OTP for your mobile number registration is 9958. Kindly do not share it with anyone. Thanks, Kreditsathi  
+[2026-09-01 10:36:03] local.INFO: sms api_url : http://m.onlinebusinessbazaar.in/sendsms.jsp?user=kredsthi&password=c5df69c3e4XX&senderid=#&mobiles=8898797979&sms=Hello%2C+the+https%3A%2F%2Fkreditsathi.com+OTP+for+your+mobile+number+registration+is+9958.+Kindly+do+not+share+it+with+anyone.+Thanks%2C+Kreditsathi  
+[2026-09-01 10:36:03] local.INFO: otp sms response : 
+<smslist>
+<sms>
+<status>error</status>
+<code>1005</code>
+<reason>SMSContentCannotBeBlank</reason>
+<clientsmsid></clientsmsid>
+<messageid>-1</messageid>
+<mobileno>0</mobileno>
+</sms>
+</smslist>
+  
+[2026-09-01 10:41:39] local.INFO: otp sms message : Hello, the https://kreditsathi.com OTP for your mobile number registration is 2908. Kindly do not share it with anyone. Thanks, Kreditsathi  
+[2026-09-01 10:41:39] local.INFO: sms api_url : http://m.onlinebusinessbazaar.in/sendsms.jsp?user=kredsthi&password=c5df69c3e4XX&senderid=#&mobiles=8877878787&sms=Hello%2C+the+https%3A%2F%2Fkreditsathi.com+OTP+for+your+mobile+number+registration+is+2908.+Kindly+do+not+share+it+with+anyone.+Thanks%2C+Kreditsathi  
+[2026-09-01 10:41:39] local.INFO: otp sms response : 
+<smslist>
+<sms>
+<status>error</status>
+<code>1005</code>
+<reason>SMSContentCannotBeBlank</reason>
+<clientsmsid></clientsmsid>
+<messageid>-1</messageid>
+<mobileno>0</mobileno>
+</sms>
+</smslist>
+  
+[2026-09-01 10:42:26] local.INFO: Interakt User_track Request {"phoneNumber":"8877878787","countryCode":"+91","traits":{"name":"Ekta Kakadiya Kakadiya"},"tags":["Hire Get Offer"]} 
+[2026-09-01 10:42:26] local.INFO: Interakt User_track Response {"response":"{\"result\":false,\"message\":\"You don't have an active subscription on Interakt\"}"} 
+[2026-09-01 10:42:26] local.INFO: Interakt Event_track Request {"phoneNumber":"8877878787","countryCode":"+91","event":"Hire Get Offer","traits":{"HireEligibleAmount":875000.0}} 
+[2026-09-01 10:42:26] local.INFO: Interakt Event_track Response {"response":"{\"result\":false,\"message\":\"You don't have an active subscription on Interakt\"}"} 
+[2026-09-01 10:42:27] local.INFO: cURL Response aisensy_track :  {"response":"{\"name\":\"ERR401\",\"message\":\"Unauthorized\"}"} 
+[2026-09-01 10:42:37] local.INFO: otp sms message : Hello, the https://kreditsathi.com OTP for your mobile number registration is 9927. Kindly do not share it with anyone. Thanks, Kreditsathi  
+[2026-09-01 10:42:37] local.INFO: sms api_url : http://m.onlinebusinessbazaar.in/sendsms.jsp?user=kredsthi&password=c5df69c3e4XX&senderid=#&mobiles=8778787878&sms=Hello%2C+the+https%3A%2F%2Fkreditsathi.com+OTP+for+your+mobile+number+registration+is+9927.+Kindly+do+not+share+it+with+anyone.+Thanks%2C+Kreditsathi  
+[2026-09-01 10:42:37] local.INFO: otp sms response : 
+<smslist>
+<sms>
+<status>error</status>
+<code>1005</code>
+<reason>SMSContentCannotBeBlank</reason>
+<clientsmsid></clientsmsid>
+<messageid>-1</messageid>
+<mobileno>0</mobileno>
+</sms>
+</smslist>
+  
+[2026-09-01 10:43:15] local.INFO: Interakt User_track Request {"phoneNumber":"8778787878","countryCode":"+91","traits":{"name":"Gdfg Gdfg"},"tags":["Self Get Offer"]} 
+[2026-09-01 10:43:15] local.INFO: Interakt User_track Response {"response":"{\"result\":false,\"message\":\"You don't have an active subscription on Interakt\"}"} 
+[2026-09-01 10:43:16] local.INFO: Interakt Event_track Request {"phoneNumber":"8778787878","countryCode":"+91","event":"Self Get Offer","traits":{"SelfEligibleAmount":875000.0}} 
+[2026-09-01 10:43:16] local.INFO: Interakt Event_track Response {"response":"{\"result\":false,\"message\":\"You don't have an active subscription on Interakt\"}"} 

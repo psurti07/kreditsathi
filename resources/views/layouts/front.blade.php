@@ -4,6 +4,11 @@
 
 <body>
 
+    <!-- Google Tag Manager (noscript) -->
+    <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-NMJDHGJ3" height="0" width="0"
+            style="display:none;visibility:hidden"></iframe></noscript>
+    <!-- End Google Tag Manager (noscript) -->
+
     <!-- PAGE CONTENT -->
     <div id="page" class="page font--poppins">
         <!-- HEADER -->
@@ -25,6 +30,7 @@
     <script src="{{ asset('front/js/wow.js') }}"></script>
     <script src="{{ asset('front/js/custom.js') }}"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/2.0.2/js/toastr.min.js"></script>
+    
     @stack('script-src')
     @include('stacks.js.front.script')
 </body>

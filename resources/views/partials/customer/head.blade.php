@@ -12,6 +12,7 @@
     <meta property="og:url" content=""/>
     <meta property="og:site_name" content="" />
     <meta name="csrf-token" content="{{ csrf_token() }}">
+    <meta name="google-site-verification" content="CE5e2FxR9FjXlIbbOQJZqMAXs2gk5yajbJKlrpb7KYA">
     <link rel="canonical" href=""/>
     <link rel="shortcut icon" href="{{ asset('front/images/logo/favicon.ico') }}"/>
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Inter:300,400,500,600,700"/>        <!--end::Fonts-->

@@ -110,7 +110,7 @@ if (!function_exists('nbfcsList')) {
             $data['list'] .= '<div class="col company" data-index="' . $loop . '">
                             <a href="javascript:;" class="in_tool it-1 r-10">
                                 <div class="bg--white-100 block-shadow r-10 mb-20">
-                                    <img class="img-fluid" src="https://manage.kreditsathi.com/upload/banks/' . $bank->bank_image . '" alt="' . $bank->bank_name . '" width="auto">
+                                    <img class="img-fluid" src="https://manage.kreditsathi.com/public/upload/banks/' . $bank->bank_image . '" alt="' . $bank->bank_name . '" width="auto">
                                 </div>
                                 <h6 class="s-14 w-700">' . $bank->bank_name . '</h6>
                             </a>
@@ -118,7 +118,7 @@ if (!function_exists('nbfcsList')) {
 
             $data['carousel'] .= '<div class="bg--white-100 r-10 mb-0 p-2 border">
                                     <a href="javascript:;">
-                                        <img class="img-fluid" src="https://manage.kreditsathi.com/upload/banks/' . $bank->bank_image . '" alt="' . $bank->bank_name . '" width="auto">
+                                        <img class="img-fluid" src="https://manage.kreditsathi.com/public/upload/banks/' . $bank->bank_image . '" alt="' . $bank->bank_name . '" width="auto">
                                     </a>
                                 </div>';
             $loop++;
@@ -135,26 +135,26 @@ if (!function_exists('raiseRequestFaqs')) {
             <ul class="accordion">
                 <li class="accordion-item mb-0">
                     <div class="accordion-thumb">
-                        <h6 class="s-16 w-500 mb-0">I paid, but my account has not yet been created. What do I do? </h6>
+                        <h6 class="s-16 w-500 mb-0">I paid, but the account is still not created. What do I do? </h6>
                     </div>
                     <div class="accordion-panel">
                         <div class="accordion-panel-item">
                             <div class="faqs-2-answer">
                                 <p>
-                                This could occur if the payment gateway holds your funds but has yet to credit the company account. Do not worry; once the funds have been credited to the company account, your account will be created and you will be notified via email. Otherwise, the payment gateway will refund your funds according to its policies.</p>
+                                This could happen if the payment gateway holds your funds and has yet to credit the company account. Do not worry; as soon as the funds are credited to the company account, your account will be created and you will be notified via email. Otherwise, the payment gateway will refund your funds in accordance with its policies.</p>
                             </div>
                         </div>
                     </div>
                 </li>
                 <li class="accordion-item mb-0">
                     <div class="accordion-thumb">
-                        <h6 class="s-16 w-500 mb-0">Despite the fact that it has been so many days, I still have not received my refund. What do I do? </h6>
+                        <h6 class="s-16 w-500 mb-0">I have yet to receive my refund, even after so many days. What do I do?</h6>
                     </div>
                     <div class="accordion-panel">
                         <div class="accordion-panel-item">
                             <div class="faqs-2-answer">
                                 <p>
-                                    This could happen if your funds are held by the bank/payment gateway. It will be refunded in accordance with the bank/payment gateway terms and conditions.
+                                   This could happen if your money is held by the bank/payment gateway. It will be refunded in accordance with the bank/payment gateway rules and regulations.
                                 </p>
                             </div>
                         </div>
@@ -162,13 +162,13 @@ if (!function_exists('raiseRequestFaqs')) {
                 </li>
                 <li class="accordion-item mb-0">
                     <div class="accordion-thumb">
-                        <h6 class="s-16 w-500 mb-0">I misunderstood the company service and/or paid by mistake. Can I receive a refund?</h6>
+                        <h6 class="s-16 w-500 mb-0">I misunderstood the company service and/or made a payment by mistake. Can I get a refund?</h6>
                     </div>
                     <div class="accordion-panel">
                         <div class="accordion-panel-item">
                             <div class="faqs-2-answer">
                                 <p>
-                                    The subscription plan payment is only refundable under the company cancellation and refund policy. 
+                                    The subscription plan payment is only refundable under the company cancellation and refund policy.
                                 </p>
                             </div>
                         </div>
@@ -176,13 +176,13 @@ if (!function_exists('raiseRequestFaqs')) {
                 </li>
                 <li class="accordion-item mb-0">
                     <div class="accordion-thumb">
-                        <h6 class="s-16 w-500 mb-0">Despite being shown pre-approved loan offers based on my eligibility, I did not get one.Why? </h6>
+                        <h6 class="s-16 w-500 mb-0">Despite being shown pre-approved loan offers based on my eligibility, I did not receive a loan. Why?</h6>
                     </div>
                     <div class="accordion-panel">
                         <div class="accordion-panel-item">
                             <div class="faqs-2-answer">
                                 <p>
-                                   Please read the company’s terms and conditions to get a clear understanding of what a pre-approval loan offer is.
+                                  Please read the terms and conditions to get a clear understanding of what a pre-approval loan offer is.
                                 </p>
                             </div>
                         </div>
@@ -190,13 +190,13 @@ if (!function_exists('raiseRequestFaqs')) {
                 </li>
                 <li class="accordion-item mb-0">
                     <div class="accordion-thumb">
-                        <h6 class="s-16 w-500 mb-0">Who qualifies for a GST return?</h6>
+                        <h6 class="s-16 w-500 mb-0">Who can get a GST return?</h6>
                     </div>
                     <div class="accordion-panel">
                         <div class="accordion-panel-item">
                             <div class="faqs-2-answer">
                                 <p>
-                                    Anyone who updates their GST information through the portal will receive a GST return.
+                                    Anyone who updates their GST information in the portal will receive a GST return.
                                 </p>
                             </div>
                         </div>
@@ -204,7 +204,7 @@ if (!function_exists('raiseRequestFaqs')) {
                 </li>
                 <li class="accordion-item mb-0">
                     <div class="accordion-thumb">
-                        <h6 class="s-16 w-500 mb-0">I have changed my mind and no longer wish to use the company services. Can I get a refund?</h6>
+                        <h6 class="s-16 w-500 mb-0">I changed my mind and no longer want to use the company services. Can I get my refund? </h6>
                     </div>
                     <div class="accordion-panel">
                         <div class="accordion-panel-item">
@@ -218,7 +218,7 @@ if (!function_exists('raiseRequestFaqs')) {
                 </li>
                 <li class="accordion-item mb-0">
                     <div class="accordion-thumb">
-                        <h6 class="s-16 w-500 mb-0">I am not happy with the company service. What do I do?</h6>
+                        <h6 class="s-16 w-500 mb-0">I am not satisfied with the company service. What do I do?</h6>
                     </div>
                     <div class="accordion-panel">
                         <div class="accordion-panel-item">
@@ -232,13 +232,13 @@ if (!function_exists('raiseRequestFaqs')) {
                 </li>
                 <li class="accordion-item mb-0">
                     <div class="accordion-thumb">
-                        <h6 class="s-16 w-500 mb-0">What happens if I accidentally make multiple payments? Do I qualify for a refund? </h6>
+                        <h6 class="s-16 w-500 mb-0">What happens if I make multiple payments by mistake? Do I qualify for a refund?  </h6>
                     </div>
                     <div class="accordion-panel">
                         <div class="accordion-panel-item">
                             <div class="faqs-2-answer">
                                 <p>
-                                    If you accidentally make multiple payments, you are entitled to a refund. You can request a refund within 48 hours of making the payment via the website Raising A Request section or by calling the company registered contact number.
+                                   If a customer makes multiple payments, they are eligible for a refund. You can request a refund within 48 hours of making the payment via the website Raising A Request section or by calling the company registered contact number.
                                 </p>
                             </div>
                         </div>
@@ -809,7 +809,7 @@ if (!function_exists('getFacebookPixelKey')) {
     function getFacebookPixelKey()
     {
         $url = request()->segment(1);
-        $pxKey = (($url == 'loan-agent') ? 'la_facebookpixelkey' : (($url == 'loan-assistant') ? 'lat_facebookpixelkey' : 'sa_facebookpixelkey'));
+        $pxKey = ($url == 'loan-agent') ? 'la_facebookpixelkey' : 'sa_facebookpixelkey';
         return InfoPages::where('slug', $pxKey)->first()->content;
     }
 }
@@ -832,13 +832,6 @@ if (!function_exists('getFBConversionData')) {
                 'fbaccesstoken' => $data['la_facebookaccesstoken'] ?? '',
                 'fbeventname' => $data['la_facebookeventname'] ?? '',
                 'fbeventid' => $data['la_facebookeventid'] ?? ''
-            ];
-        } else if ($type == 'loan-assistant') {
-            $data = InfoPages::whereIn('slug', ['lat_facebookaccesstoken', 'lat_facebookeventname', 'lat_facebookeventid'])->get()->pluck('content', 'slug');
-            $arr_data[] = [
-                'fbaccesstoken' => $data['lat_facebookaccesstoken'] ?? '',
-                'fbeventname' => $data['lat_facebookeventname'] ?? '',
-                'fbeventid' => $data['lat_facebookeventid'] ?? ''
             ];
         } else {
             $arr_data['fbaccesstoken'] = $arr_data['fbeventname'] = $arr_data['fbeventid'] = '';
@@ -898,14 +891,15 @@ if (!function_exists('fbconversioncurl')) {
             $data["user_data"]["fbc"] = $userdata['fbclid'];
         }
         $orderAmount = $userdata['odamount'] / (1 + (18 / 100));
-        if ($ver == 11) {
+        
+        if($ver == 11 || $ver == 16){
             /* v11 code starts here */
-            $contents["id"] = "KB2025";
+            $contents["id"] = "KRDTSTHI2026";
             $contents["quantity"] = 1;
             $data["contents"][] = $contents;
 
             $data["custom_data"]["currency"] = "INR";
-            $data["custom_data"]["value"] = $orderAmount;
+            $data["custom_data"]["value"] = formatePriceIndia($orderAmount);
             $data["custom_data"]["order_id"] = $userdata['orderid'];
             /* v11 code ends here */
         } else {
@@ -917,7 +911,7 @@ if (!function_exists('fbconversioncurl')) {
             $data["custom_data"]["order_id"] = $userdata['orderid'];
             $data["custom_data"]["status"] = "registered";
 
-            $contents["id"] = "KB2025";
+            $contents["id"] = "KRDTSTHI2026";
             $contents["quantity"] = 1;
             $contents["item_price"] = formatePriceIndia($orderAmount);
             $data["custom_data"]["contents"] = array($contents);
@@ -932,9 +926,6 @@ if (!function_exists('fbconversioncurl')) {
         } else if ($userdata['type'] == 'hire-agent') {
             $fbpixel = InfoPages::where('slug', 'la_facebookpixelkey')->first()->content;
             $accesstoken = $fbaccesstoken;
-        } else if ($userdata['type'] == 'loan-assistant') {
-            $fbpixel = InfoPages::where('slug', 'lat_facebookpixelkey')->first()->content;
-            $accesstoken = $fbaccesstoken;
         } else {
             $fbpixel = '';
             $accesstoken = $fbaccesstoken;
@@ -946,8 +937,8 @@ if (!function_exists('fbconversioncurl')) {
         $fields['upload_tag'] = "orders"; // You should set a tag here (feel free to adjust)
         $fields['data'] = $data_json;
 
-        $curlUrl = (($ver == 11) ? "https://graph.facebook.com/v11.0/" . $fbpixel . "/events" : "https://graph.facebook.com/v21.0/" . $fbpixel . "/events");
-
+        $curlUrl = "https://graph.facebook.com/v{$ver}.0/{$fbpixel}/events";
+        
         $curl = curl_init();
         curl_setopt_array($curl, array(
             CURLOPT_URL => $curlUrl,
@@ -967,6 +958,15 @@ if (!function_exists('fbconversioncurl')) {
 
         $response = curl_exec($curl);
         $err = curl_error($curl);
+        
+        Log::info('Facebook Conversion API Response', [
+            'response' => $response,
+            'decoded_response' => json_decode($response, true),
+            'curl_error' => $err,
+            'curl_errno' => curl_errno($curl),
+            'http_code' => curl_getinfo($curl, CURLINFO_HTTP_CODE),
+        ]);
+                
         curl_close($curl);
 
         if ($err) {

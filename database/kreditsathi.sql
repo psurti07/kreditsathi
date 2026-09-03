@@ -1,11 +1,11 @@
 -- phpMyAdmin SQL Dump
--- version 5.2.2
+-- version 5.2.1
 -- https://www.phpmyadmin.net/
 --
--- Host: localhost:3306
--- Generation Time: Apr 24, 2026 at 05:00 AM
--- Server version: 11.4.10-MariaDB
--- PHP Version: 8.4.18
+-- Host: 127.0.0.1:3306
+-- Generation Time: Jul 06, 2026 at 11:54 AM
+-- Server version: 9.1.0
+-- PHP Version: 8.3.14
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -18,7 +18,7 @@ SET time_zone = "+00:00";
 /*!40101 SET NAMES utf8mb4 */;
 
 --
--- Database: `kreditsathi_maindb`
+-- Database: `kreditsathi`
 --
 
 -- --------------------------------------------------------
@@ -27,20 +27,22 @@ SET time_zone = "+00:00";
 -- Table structure for table `administrations`
 --
 
-CREATE TABLE `administrations` (
-  `id` int(10) UNSIGNED NOT NULL,
+DROP TABLE IF EXISTS `administrations`;
+CREATE TABLE IF NOT EXISTS `administrations` (
+  `id` int UNSIGNED NOT NULL AUTO_INCREMENT,
   `rec_date` datetime NOT NULL,
-  `fullname` varchar(255) NOT NULL,
+  `fullname` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
   `dob` date DEFAULT NULL,
-  `mobile` varchar(255) NOT NULL,
-  `emailid` varchar(255) NOT NULL,
-  `password` varchar(255) NOT NULL,
-  `staff_code` varchar(99) DEFAULT NULL,
-  `position` varchar(299) DEFAULT NULL,
-  `role` int(11) NOT NULL DEFAULT 1 COMMENT '0=Admin,1=OfficeStaff, 2=Hire-Support-Staff,3=ItStaff,4=Accounting, 5=Self-Support-Staff, 7=Assistant-Support-Staff\r\n',
-  `isActive` tinyint(4) NOT NULL DEFAULT 1 COMMENT '0 = No, 1 = Yes',
-  `isDelete` tinyint(4) NOT NULL DEFAULT 0 COMMENT '0 = No, 1 = Yes'
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+  `mobile` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `emailid` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `password` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `staff_code` varchar(99) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `position` varchar(299) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `role` int NOT NULL DEFAULT '1' COMMENT '0=Admin,1=OfficeStaff, 2=Hire-Support-Staff,3=ItStaff,4=Accounting, 5=Self-Support-Staff, 7=Assistant-Support-Staff\r\n',
+  `isActive` tinyint NOT NULL DEFAULT '1' COMMENT '0 = No, 1 = Yes',
+  `isDelete` tinyint NOT NULL DEFAULT '0' COMMENT '0 = No, 1 = Yes',
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 --
 -- Dumping data for table `administrations`
@@ -59,12 +61,14 @@ INSERT INTO `administrations` (`id`, `rec_date`, `fullname`, `dob`, `mobile`, `e
 -- Table structure for table `adscontent`
 --
 
-CREATE TABLE `adscontent` (
-  `id` int(11) NOT NULL,
-  `rec_date` datetime NOT NULL DEFAULT current_timestamp(),
-  `ad_type` tinyint(4) NOT NULL DEFAULT 1 COMMENT '1=text, 2=image',
+DROP TABLE IF EXISTS `adscontent`;
+CREATE TABLE IF NOT EXISTS `adscontent` (
+  `id` int NOT NULL AUTO_INCREMENT,
+  `rec_date` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  `ad_type` tinyint NOT NULL DEFAULT '1' COMMENT '1=text, 2=image',
   `ad_content` longtext NOT NULL,
-  `isDelete` tinyint(4) NOT NULL DEFAULT 0 COMMENT '0=no, 1=yes'
+  `isDelete` tinyint NOT NULL DEFAULT '0' COMMENT '0=no, 1=yes',
+  PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
 -- --------------------------------------------------------
@@ -73,17 +77,19 @@ CREATE TABLE `adscontent` (
 -- Table structure for table `airpay_entry`
 --
 
-CREATE TABLE `airpay_entry` (
-  `id` int(11) NOT NULL,
-  `rec_date` datetime NOT NULL DEFAULT current_timestamp(),
-  `entryfor` int(11) NOT NULL DEFAULT 0 COMMENT '1=Customer, 2=Channel, 11=Digital PL, 12=Digital BL',
-  `userid` int(11) NOT NULL,
+DROP TABLE IF EXISTS `airpay_entry`;
+CREATE TABLE IF NOT EXISTS `airpay_entry` (
+  `id` int NOT NULL AUTO_INCREMENT,
+  `rec_date` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  `entryfor` int NOT NULL DEFAULT '0' COMMENT '1=Customer, 2=Channel, 11=Digital PL, 12=Digital BL',
+  `userid` int NOT NULL,
   `orderid` varchar(50) NOT NULL,
   `orderamount` float(11,2) NOT NULL,
   `ordernote` varchar(256) DEFAULT NULL,
   `statuscode` varchar(256) DEFAULT NULL,
   `transactionid` varchar(256) DEFAULT NULL,
-  `paymentmode` varchar(256) DEFAULT NULL
+  `paymentmode` varchar(256) DEFAULT NULL,
+  PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
 -- --------------------------------------------------------
@@ -92,16 +98,18 @@ CREATE TABLE `airpay_entry` (
 -- Table structure for table `aisensy_settings`
 --
 
-CREATE TABLE `aisensy_settings` (
-  `id` int(11) NOT NULL,
-  `rec_date` datetime NOT NULL DEFAULT current_timestamp(),
-  `product` varchar(55) NOT NULL COMMENT 'SA, LA, LAT',
-  `type` varchar(99) NOT NULL COMMENT 'remarketing, buy now, pgsuccess, pgfailed',
-  `api_key` longtext NOT NULL,
-  `campaign_name` varchar(99) NOT NULL,
-  `media_url` varchar(255) NOT NULL,
-  `media_filename` varchar(255) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+DROP TABLE IF EXISTS `aisensy_settings`;
+CREATE TABLE IF NOT EXISTS `aisensy_settings` (
+  `id` int NOT NULL AUTO_INCREMENT,
+  `rec_date` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  `product` varchar(55) COLLATE utf8mb4_unicode_ci NOT NULL COMMENT 'SA, LA, LAT',
+  `type` varchar(99) COLLATE utf8mb4_unicode_ci NOT NULL COMMENT 'remarketing, buy now, pgsuccess, pgfailed',
+  `api_key` longtext COLLATE utf8mb4_unicode_ci NOT NULL,
+  `campaign_name` varchar(99) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `media_url` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `media_filename` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 --
 -- Dumping data for table `aisensy_settings`
@@ -120,15 +128,19 @@ INSERT INTO `aisensy_settings` (`id`, `rec_date`, `product`, `type`, `api_key`, 
 -- Table structure for table `application_remarks`
 --
 
-CREATE TABLE `application_remarks` (
-  `id` int(11) NOT NULL,
-  `rec_date` datetime NOT NULL DEFAULT current_timestamp(),
+DROP TABLE IF EXISTS `application_remarks`;
+CREATE TABLE IF NOT EXISTS `application_remarks` (
+  `id` int NOT NULL AUTO_INCREMENT,
+  `rec_date` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP,
   `entry_at` datetime DEFAULT NULL,
-  `service` tinyint(4) DEFAULT NULL,
+  `service` tinyint DEFAULT NULL,
   `subject` varchar(256) NOT NULL,
-  `notes` longtext DEFAULT NULL,
-  `application_id` int(11) NOT NULL,
-  `staff_id` int(11) NOT NULL
+  `notes` longtext,
+  `application_id` int NOT NULL,
+  `staff_id` int NOT NULL,
+  PRIMARY KEY (`id`),
+  KEY `loan_application_id` (`application_id`),
+  KEY `administration_id` (`staff_id`)
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
 -- --------------------------------------------------------
@@ -137,11 +149,13 @@ CREATE TABLE `application_remarks` (
 -- Table structure for table `applylink_criteria`
 --
 
-CREATE TABLE `applylink_criteria` (
-  `id` int(11) NOT NULL,
-  `applylink_id` int(11) NOT NULL,
-  `criteria_id` int(11) NOT NULL,
-  `rec_date` datetime NOT NULL DEFAULT current_timestamp()
+DROP TABLE IF EXISTS `applylink_criteria`;
+CREATE TABLE IF NOT EXISTS `applylink_criteria` (
+  `id` int NOT NULL AUTO_INCREMENT,
+  `applylink_id` int NOT NULL,
+  `criteria_id` int NOT NULL,
+  `rec_date` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  PRIMARY KEY (`id`)
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
 -- --------------------------------------------------------
@@ -150,13 +164,14 @@ CREATE TABLE `applylink_criteria` (
 -- Table structure for table `bankapplylink`
 --
 
-CREATE TABLE `bankapplylink` (
-  `id` int(11) NOT NULL,
-  `rec_date` datetime NOT NULL DEFAULT current_timestamp(),
-  `bankid` int(11) NOT NULL,
+DROP TABLE IF EXISTS `bankapplylink`;
+CREATE TABLE IF NOT EXISTS `bankapplylink` (
+  `id` int NOT NULL AUTO_INCREMENT,
+  `rec_date` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  `bankid` int NOT NULL,
   `roi` float(10,2) DEFAULT NULL,
-  `tenures` tinyint(4) DEFAULT NULL,
-  `status_type` int(11) DEFAULT NULL,
+  `tenures` tinyint DEFAULT NULL,
+  `status_type` int DEFAULT NULL,
   `option1` varchar(599) DEFAULT NULL,
   `option2` varchar(599) DEFAULT NULL,
   `option3` varchar(599) DEFAULT NULL,
@@ -164,9 +179,10 @@ CREATE TABLE `bankapplylink` (
   `option5` varchar(599) DEFAULT NULL,
   `title` varchar(256) NOT NULL,
   `applyurl` varchar(256) NOT NULL,
-  `is_recommended` tinyint(4) NOT NULL DEFAULT 0 COMMENT '0=false,1=true',
-  `isDelete` tinyint(4) NOT NULL DEFAULT 0 COMMENT '0=No, 1=Yes'
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+  `is_recommended` tinyint NOT NULL DEFAULT '0' COMMENT '0=false,1=true',
+  `isDelete` tinyint NOT NULL DEFAULT '0' COMMENT '0=No, 1=Yes',
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=33 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
 --
 -- Dumping data for table `bankapplylink`
@@ -212,15 +228,17 @@ INSERT INTO `bankapplylink` (`id`, `rec_date`, `bankid`, `roi`, `tenures`, `stat
 -- Table structure for table `banks`
 --
 
-CREATE TABLE `banks` (
-  `id` int(11) NOT NULL,
-  `rec_date` datetime NOT NULL DEFAULT current_timestamp(),
+DROP TABLE IF EXISTS `banks`;
+CREATE TABLE IF NOT EXISTS `banks` (
+  `id` int NOT NULL AUTO_INCREMENT,
+  `rec_date` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP,
   `bank_name` varchar(100) NOT NULL,
   `bank_image` varchar(255) NOT NULL,
-  `order_no` int(11) NOT NULL DEFAULT 0,
-  `isActive` int(11) NOT NULL DEFAULT 1,
-  `isDelete` int(11) NOT NULL DEFAULT 0 COMMENT '0=No, 1=Yes'
-) ENGINE=MyISAM DEFAULT CHARSET=utf8mb3 COLLATE=utf8mb3_general_ci;
+  `order_no` int NOT NULL DEFAULT '0',
+  `isActive` int NOT NULL DEFAULT '1',
+  `isDelete` int NOT NULL DEFAULT '0' COMMENT '0=No, 1=Yes',
+  PRIMARY KEY (`id`)
+) ENGINE=MyISAM AUTO_INCREMENT=47 DEFAULT CHARSET=utf8mb3;
 
 --
 -- Dumping data for table `banks`
@@ -279,14 +297,16 @@ INSERT INTO `banks` (`id`, `rec_date`, `bank_name`, `bank_image`, `order_no`, `i
 -- Table structure for table `bulksms`
 --
 
-CREATE TABLE `bulksms` (
-  `id` int(11) NOT NULL,
-  `rec_date` datetime NOT NULL DEFAULT current_timestamp(),
+DROP TABLE IF EXISTS `bulksms`;
+CREATE TABLE IF NOT EXISTS `bulksms` (
+  `id` int NOT NULL AUTO_INCREMENT,
+  `rec_date` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP,
   `fullname` varchar(250) NOT NULL,
   `mobile` varchar(80) NOT NULL,
   `email` varchar(80) DEFAULT NULL,
-  `isDnd` tinyint(4) NOT NULL DEFAULT 0 COMMENT '0=no dnd, 1 = dnd',
-  `isDelete` tinyint(4) NOT NULL DEFAULT 0 COMMENT '0=not delete, 1 = delete'
+  `isDnd` tinyint NOT NULL DEFAULT '0' COMMENT '0=no dnd, 1 = dnd',
+  `isDelete` tinyint NOT NULL DEFAULT '0' COMMENT '0=not delete, 1 = delete',
+  PRIMARY KEY (`id`)
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
 -- --------------------------------------------------------
@@ -295,10 +315,12 @@ CREATE TABLE `bulksms` (
 -- Table structure for table `cache`
 --
 
-CREATE TABLE `cache` (
-  `key` varchar(191) NOT NULL,
-  `value` mediumtext NOT NULL,
-  `expiration` int(11) NOT NULL
+DROP TABLE IF EXISTS `cache`;
+CREATE TABLE IF NOT EXISTS `cache` (
+  `key` varchar(191) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `value` mediumtext COLLATE utf8mb4_unicode_ci NOT NULL,
+  `expiration` int NOT NULL,
+  PRIMARY KEY (`key`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 -- --------------------------------------------------------
@@ -307,10 +329,12 @@ CREATE TABLE `cache` (
 -- Table structure for table `cache_locks`
 --
 
-CREATE TABLE `cache_locks` (
-  `key` varchar(191) NOT NULL,
-  `owner` varchar(191) NOT NULL,
-  `expiration` int(11) NOT NULL
+DROP TABLE IF EXISTS `cache_locks`;
+CREATE TABLE IF NOT EXISTS `cache_locks` (
+  `key` varchar(191) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `owner` varchar(191) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `expiration` int NOT NULL,
+  PRIMARY KEY (`key`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 -- --------------------------------------------------------
@@ -319,11 +343,12 @@ CREATE TABLE `cache_locks` (
 -- Table structure for table `cardoffer`
 --
 
-CREATE TABLE `cardoffer` (
-  `id` int(11) NOT NULL,
-  `rec_date` datetime NOT NULL DEFAULT current_timestamp(),
-  `user_id` int(11) NOT NULL DEFAULT 0,
-  `offerpage` int(11) NOT NULL DEFAULT 1 COMMENT '1 - la offer 1,\r\n2 - la offer 2,\r\n3 - la offer 3,\r\n4 - sa offer 1,\r\n5 - sa offer 2,\r\n6 - sa offer 3,\r\n7 - sa offer 4,\r\n8 - la offer 4,\r\n9 - sa offer 5,\r\n10 - la offer 5',
+DROP TABLE IF EXISTS `cardoffer`;
+CREATE TABLE IF NOT EXISTS `cardoffer` (
+  `id` int NOT NULL AUTO_INCREMENT,
+  `rec_date` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  `user_id` int NOT NULL DEFAULT '0',
+  `offerpage` int NOT NULL DEFAULT '1' COMMENT '1 - la offer 1,\r\n2 - la offer 2,\r\n3 - la offer 3,\r\n4 - sa offer 1,\r\n5 - sa offer 2,\r\n6 - sa offer 3,\r\n7 - sa offer 4,\r\n8 - la offer 4,\r\n9 - sa offer 5,\r\n10 - la offer 5',
   `first_name` varchar(55) NOT NULL,
   `last_name` varchar(55) NOT NULL,
   `mobile` varchar(256) NOT NULL,
@@ -333,9 +358,10 @@ CREATE TABLE `cardoffer` (
   `expiry_date` date DEFAULT NULL,
   `amount` float(11,2) NOT NULL,
   `paymentid` varchar(50) DEFAULT NULL,
-  `isCustomer` int(11) NOT NULL DEFAULT 0 COMMENT '0=No, 1=Yes',
-  `isActive` int(11) NOT NULL DEFAULT 0 COMMENT '0=No, 1=Yes',
-  `isDelete` int(11) NOT NULL DEFAULT 0 COMMENT '0=No. 1=Yes'
+  `isCustomer` int NOT NULL DEFAULT '0' COMMENT '0=No, 1=Yes',
+  `isActive` int NOT NULL DEFAULT '0' COMMENT '0=No, 1=Yes',
+  `isDelete` int NOT NULL DEFAULT '0' COMMENT '0=No. 1=Yes',
+  PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
 -- --------------------------------------------------------
@@ -344,14 +370,16 @@ CREATE TABLE `cardoffer` (
 -- Table structure for table `careers`
 --
 
-CREATE TABLE `careers` (
-  `id` int(11) NOT NULL,
-  `rec_date` datetime NOT NULL DEFAULT current_timestamp(),
+DROP TABLE IF EXISTS `careers`;
+CREATE TABLE IF NOT EXISTS `careers` (
+  `id` int NOT NULL AUTO_INCREMENT,
+  `rec_date` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP,
   `slug` varchar(225) NOT NULL,
   `title` varchar(225) NOT NULL,
   `descriptions` longtext NOT NULL,
-  `isActive` int(11) NOT NULL DEFAULT 1,
-  `isDelete` int(11) NOT NULL DEFAULT 0
+  `isActive` int NOT NULL DEFAULT '1',
+  `isDelete` int NOT NULL DEFAULT '0',
+  PRIMARY KEY (`id`)
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
 -- --------------------------------------------------------
@@ -360,9 +388,10 @@ CREATE TABLE `careers` (
 -- Table structure for table `career_enquiries`
 --
 
-CREATE TABLE `career_enquiries` (
-  `id` int(11) NOT NULL,
-  `rec_date` datetime NOT NULL DEFAULT current_timestamp(),
+DROP TABLE IF EXISTS `career_enquiries`;
+CREATE TABLE IF NOT EXISTS `career_enquiries` (
+  `id` int NOT NULL AUTO_INCREMENT,
+  `rec_date` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP,
   `firstname` varchar(100) NOT NULL,
   `lastname` varchar(100) NOT NULL,
   `email` varchar(100) NOT NULL,
@@ -374,7 +403,8 @@ CREATE TABLE `career_enquiries` (
   `keyskills` longtext NOT NULL,
   `city` varchar(256) DEFAULT NULL,
   `server_ip` varchar(256) DEFAULT NULL,
-  `isDelete` int(11) NOT NULL DEFAULT 0
+  `isDelete` int NOT NULL DEFAULT '0',
+  PRIMARY KEY (`id`)
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
 -- --------------------------------------------------------
@@ -383,17 +413,19 @@ CREATE TABLE `career_enquiries` (
 -- Table structure for table `cashfree_entry`
 --
 
-CREATE TABLE `cashfree_entry` (
-  `id` int(11) NOT NULL,
-  `rec_date` datetime NOT NULL DEFAULT current_timestamp(),
-  `entryfor` int(11) NOT NULL DEFAULT 0 COMMENT '1=Customer,2=Channel,11=SelfApply,12=Loan Agent, 3=LA_Offer_1,4=LA_Offer_2,5=LA_Offer_3,6=SA_Offer_1,7=SA_Offer_2,8=SA_Offer_3,9=SA_Offer_4,10=LA_Offer_4,21=SA_Offer_5,22=LA_Offer_5,31=SA_OFFER_6,32=LA_OFFER_6,41=SA_OFFER_7,42=LA_OFFER_7	',
-  `userid` int(11) NOT NULL,
+DROP TABLE IF EXISTS `cashfree_entry`;
+CREATE TABLE IF NOT EXISTS `cashfree_entry` (
+  `id` int NOT NULL AUTO_INCREMENT,
+  `rec_date` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  `entryfor` int NOT NULL DEFAULT '0' COMMENT '1=Customer,2=Channel,11=SelfApply,12=Loan Agent, 3=LA_Offer_1,4=LA_Offer_2,5=LA_Offer_3,6=SA_Offer_1,7=SA_Offer_2,8=SA_Offer_3,9=SA_Offer_4,10=LA_Offer_4,21=SA_Offer_5,22=LA_Offer_5,31=SA_OFFER_6,32=LA_OFFER_6,41=SA_OFFER_7,42=LA_OFFER_7	',
+  `userid` int NOT NULL,
   `orderid` varchar(50) NOT NULL,
   `orderamount` float(11,2) NOT NULL,
   `ordernote` varchar(256) DEFAULT NULL,
   `referenceid` varchar(256) DEFAULT NULL,
   `txstatus` varchar(256) DEFAULT NULL,
-  `paymentmode` varchar(256) DEFAULT NULL
+  `paymentmode` varchar(256) DEFAULT NULL,
+  PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
 -- --------------------------------------------------------
@@ -402,8 +434,9 @@ CREATE TABLE `cashfree_entry` (
 -- Table structure for table `channel_partners`
 --
 
-CREATE TABLE `channel_partners` (
-  `id` int(11) NOT NULL,
+DROP TABLE IF EXISTS `channel_partners`;
+CREATE TABLE IF NOT EXISTS `channel_partners` (
+  `id` int NOT NULL AUTO_INCREMENT,
   `rec_date` datetime DEFAULT NULL,
   `first_name` varchar(155) NOT NULL,
   `last_name` varchar(155) NOT NULL,
@@ -415,13 +448,14 @@ CREATE TABLE `channel_partners` (
   `vat_gst_no` varchar(99) DEFAULT NULL,
   `phone` varchar(99) NOT NULL,
   `website` varchar(155) NOT NULL,
-  `address` longtext DEFAULT NULL,
+  `address` longtext,
   `city` varchar(99) DEFAULT NULL,
   `state` varchar(99) DEFAULT NULL,
   `pincode` varchar(99) DEFAULT NULL,
   `country` varchar(99) NOT NULL DEFAULT 'IN',
-  `isActive` tinyint(4) NOT NULL DEFAULT 1 COMMENT '1=active,0=deactive',
-  `isDelete` tinyint(4) NOT NULL DEFAULT 0 COMMENT '0=no, 1=yes'
+  `isActive` tinyint NOT NULL DEFAULT '1' COMMENT '1=active,0=deactive',
+  `isDelete` tinyint NOT NULL DEFAULT '0' COMMENT '0=no, 1=yes',
+  PRIMARY KEY (`id`)
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
 -- --------------------------------------------------------
@@ -430,17 +464,19 @@ CREATE TABLE `channel_partners` (
 -- Table structure for table `cipherpayentry`
 --
 
-CREATE TABLE `cipherpayentry` (
-  `id` int(11) NOT NULL,
-  `rec_date` datetime NOT NULL DEFAULT current_timestamp(),
-  `entryfor` int(11) NOT NULL COMMENT '1=Customer,2=Channel,11=SelfApply,12=Loan Agent, 3=LA_Offer_1,4=LA_Offer_2,5=LA_Offer_3,6=SA_Offer_1,7=SA_Offer_2,8=SA_Offer_3,9=SA_Offer_4,10=LA_Offer_4',
-  `userid` int(11) NOT NULL,
-  `orderid` varchar(99) NOT NULL,
+DROP TABLE IF EXISTS `cipherpayentry`;
+CREATE TABLE IF NOT EXISTS `cipherpayentry` (
+  `id` int NOT NULL AUTO_INCREMENT,
+  `rec_date` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  `entryfor` int NOT NULL COMMENT '1=Customer,2=Channel,11=SelfApply,12=Loan Agent, 3=LA_Offer_1,4=LA_Offer_2,5=LA_Offer_3,6=SA_Offer_1,7=SA_Offer_2,8=SA_Offer_3,9=SA_Offer_4,10=LA_Offer_4',
+  `userid` int NOT NULL,
+  `orderid` varchar(99) COLLATE utf8mb3_unicode_ci NOT NULL,
   `orderamount` float(11,2) NOT NULL,
-  `ordernote` varchar(256) DEFAULT NULL,
-  `referenceid` varchar(256) DEFAULT NULL,
-  `txstatus` varchar(99) DEFAULT NULL,
-  `paymentmode` varchar(99) DEFAULT NULL
+  `ordernote` varchar(256) COLLATE utf8mb3_unicode_ci DEFAULT NULL,
+  `referenceid` varchar(256) COLLATE utf8mb3_unicode_ci DEFAULT NULL,
+  `txstatus` varchar(99) COLLATE utf8mb3_unicode_ci DEFAULT NULL,
+  `paymentmode` varchar(99) COLLATE utf8mb3_unicode_ci DEFAULT NULL,
+  PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb3 COLLATE=utf8mb3_unicode_ci;
 
 -- --------------------------------------------------------
@@ -449,12 +485,14 @@ CREATE TABLE `cipherpayentry` (
 -- Table structure for table `click_counts`
 --
 
-CREATE TABLE `click_counts` (
-  `id` int(11) NOT NULL,
-  `rec_date` datetime NOT NULL DEFAULT current_timestamp(),
-  `user_id` int(11) NOT NULL,
-  `applylink_id` int(11) NOT NULL,
-  `counts` int(11) NOT NULL DEFAULT 0
+DROP TABLE IF EXISTS `click_counts`;
+CREATE TABLE IF NOT EXISTS `click_counts` (
+  `id` int NOT NULL AUTO_INCREMENT,
+  `rec_date` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  `user_id` int NOT NULL,
+  `applylink_id` int NOT NULL,
+  `counts` int NOT NULL DEFAULT '0',
+  PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 -- --------------------------------------------------------
@@ -463,15 +501,17 @@ CREATE TABLE `click_counts` (
 -- Table structure for table `contact_enquiry`
 --
 
-CREATE TABLE `contact_enquiry` (
-  `id` int(11) NOT NULL,
-  `rec_date` datetime NOT NULL DEFAULT current_timestamp(),
+DROP TABLE IF EXISTS `contact_enquiry`;
+CREATE TABLE IF NOT EXISTS `contact_enquiry` (
+  `id` int NOT NULL AUTO_INCREMENT,
+  `rec_date` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP,
   `fullname` varchar(225) NOT NULL,
   `email` varchar(100) NOT NULL,
   `mobile` varchar(100) NOT NULL,
   `subject` varchar(255) NOT NULL,
   `message` longtext NOT NULL,
-  `server_ip` varchar(256) DEFAULT NULL
+  `server_ip` varchar(256) DEFAULT NULL,
+  PRIMARY KEY (`id`)
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
 -- --------------------------------------------------------
@@ -480,12 +520,14 @@ CREATE TABLE `contact_enquiry` (
 -- Table structure for table `criteria_list`
 --
 
-CREATE TABLE `criteria_list` (
-  `id` int(11) NOT NULL,
-  `rec_date` datetime NOT NULL DEFAULT current_timestamp(),
+DROP TABLE IF EXISTS `criteria_list`;
+CREATE TABLE IF NOT EXISTS `criteria_list` (
+  `id` int NOT NULL AUTO_INCREMENT,
+  `rec_date` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP,
   `criteria` varchar(99) NOT NULL,
-  `isDelete` tinyint(4) NOT NULL DEFAULT 0,
-  `isActive` tinyint(4) NOT NULL DEFAULT 1
+  `isDelete` tinyint NOT NULL DEFAULT '0',
+  `isActive` tinyint NOT NULL DEFAULT '1',
+  PRIMARY KEY (`id`)
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
 -- --------------------------------------------------------
@@ -494,14 +536,17 @@ CREATE TABLE `criteria_list` (
 -- Table structure for table `enroll_services`
 --
 
-CREATE TABLE `enroll_services` (
-  `id` int(11) NOT NULL,
+DROP TABLE IF EXISTS `enroll_services`;
+CREATE TABLE IF NOT EXISTS `enroll_services` (
+  `id` int NOT NULL AUTO_INCREMENT,
   `rec_date` datetime NOT NULL,
-  `serviceid` int(11) NOT NULL,
+  `serviceid` int NOT NULL,
   `purchase_date` date NOT NULL,
   `valid_upto` date NOT NULL,
-  `amount` double NOT NULL DEFAULT 0,
-  `paymentid` varchar(255) DEFAULT NULL
+  `amount` double NOT NULL DEFAULT '0',
+  `paymentid` varchar(255) DEFAULT NULL,
+  PRIMARY KEY (`id`),
+  KEY `serviceid` (`serviceid`)
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
 -- --------------------------------------------------------
@@ -510,14 +555,17 @@ CREATE TABLE `enroll_services` (
 -- Table structure for table `failed_jobs`
 --
 
-CREATE TABLE `failed_jobs` (
-  `id` bigint(20) UNSIGNED NOT NULL,
-  `uuid` varchar(191) NOT NULL,
-  `connection` text NOT NULL,
-  `queue` text NOT NULL,
-  `payload` longtext NOT NULL,
-  `exception` longtext NOT NULL,
-  `failed_at` timestamp NOT NULL DEFAULT current_timestamp()
+DROP TABLE IF EXISTS `failed_jobs`;
+CREATE TABLE IF NOT EXISTS `failed_jobs` (
+  `id` bigint UNSIGNED NOT NULL AUTO_INCREMENT,
+  `uuid` varchar(191) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `connection` text COLLATE utf8mb4_unicode_ci NOT NULL,
+  `queue` text COLLATE utf8mb4_unicode_ci NOT NULL,
+  `payload` longtext COLLATE utf8mb4_unicode_ci NOT NULL,
+  `exception` longtext COLLATE utf8mb4_unicode_ci NOT NULL,
+  `failed_at` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  PRIMARY KEY (`id`),
+  UNIQUE KEY `failed_jobs_uuid_unique` (`uuid`)
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 -- --------------------------------------------------------
@@ -526,13 +574,16 @@ CREATE TABLE `failed_jobs` (
 -- Table structure for table `fb_ads_entry`
 --
 
-CREATE TABLE `fb_ads_entry` (
-  `id` int(11) NOT NULL,
-  `rec_date` datetime NOT NULL DEFAULT current_timestamp(),
-  `userid` int(11) DEFAULT NULL,
-  `fbclid` varchar(299) DEFAULT NULL,
-  `send_data` longtext DEFAULT NULL,
-  `received_data` longtext DEFAULT NULL
+DROP TABLE IF EXISTS `fb_ads_entry`;
+CREATE TABLE IF NOT EXISTS `fb_ads_entry` (
+  `id` int NOT NULL AUTO_INCREMENT,
+  `rec_date` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  `userid` int DEFAULT NULL,
+  `fbclid` varchar(299) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `send_data` longtext COLLATE utf8mb4_unicode_ci,
+  `received_data` longtext COLLATE utf8mb4_unicode_ci,
+  PRIMARY KEY (`id`),
+  KEY `userid` (`userid`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 -- --------------------------------------------------------
@@ -541,14 +592,16 @@ CREATE TABLE `fb_ads_entry` (
 -- Table structure for table `important_update`
 --
 
-CREATE TABLE `important_update` (
-  `id` int(11) NOT NULL,
-  `rec_date` datetime NOT NULL DEFAULT current_timestamp(),
+DROP TABLE IF EXISTS `important_update`;
+CREATE TABLE IF NOT EXISTS `important_update` (
+  `id` int NOT NULL AUTO_INCREMENT,
+  `rec_date` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP,
   `tags` varchar(256) NOT NULL,
   `descriptions` longtext NOT NULL,
-  `isActive` int(11) NOT NULL DEFAULT 0 COMMENT '0=No, 1=Yes',
-  `isDelete` int(11) NOT NULL DEFAULT 0 COMMENT '0=No, 1=Yes'
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+  `isActive` int NOT NULL DEFAULT '0' COMMENT '0=No, 1=Yes',
+  `isDelete` int NOT NULL DEFAULT '0' COMMENT '0=No, 1=Yes',
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
 --
 -- Dumping data for table `important_update`
@@ -564,13 +617,15 @@ INSERT INTO `important_update` (`id`, `rec_date`, `tags`, `descriptions`, `isAct
 -- Table structure for table `info_pages`
 --
 
-CREATE TABLE `info_pages` (
-  `id` int(11) NOT NULL,
+DROP TABLE IF EXISTS `info_pages`;
+CREATE TABLE IF NOT EXISTS `info_pages` (
+  `id` int NOT NULL AUTO_INCREMENT,
   `slug` varchar(255) NOT NULL,
-  `content` longtext DEFAULT NULL,
+  `content` longtext,
   `rec_date` datetime NOT NULL,
-  `status` tinyint(1) NOT NULL DEFAULT 1
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+  `status` tinyint(1) NOT NULL DEFAULT '1',
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=44 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
 --
 -- Dumping data for table `info_pages`
@@ -624,15 +679,17 @@ INSERT INTO `info_pages` (`id`, `slug`, `content`, `rec_date`, `status`) VALUES
 -- Table structure for table `interakt_settings`
 --
 
-CREATE TABLE `interakt_settings` (
-  `id` int(11) NOT NULL,
-  `rec_date` datetime NOT NULL DEFAULT current_timestamp(),
-  `product` varchar(255) NOT NULL COMMENT 'SA, LA',
-  `type` varchar(199) NOT NULL COMMENT 'remarketing, getoffer, pgsuccess,pgfailed',
-  `template_name` varchar(255) DEFAULT NULL,
-  `img_url` text DEFAULT NULL,
-  `api_key` text NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+DROP TABLE IF EXISTS `interakt_settings`;
+CREATE TABLE IF NOT EXISTS `interakt_settings` (
+  `id` int NOT NULL AUTO_INCREMENT,
+  `rec_date` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  `product` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL COMMENT 'SA, LA',
+  `type` varchar(199) COLLATE utf8mb4_unicode_ci NOT NULL COMMENT 'remarketing, getoffer, pgsuccess,pgfailed',
+  `template_name` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `img_url` text COLLATE utf8mb4_unicode_ci,
+  `api_key` text COLLATE utf8mb4_unicode_ci NOT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=8 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 --
 -- Dumping data for table `interakt_settings`
@@ -653,22 +710,24 @@ INSERT INTO `interakt_settings` (`id`, `rec_date`, `product`, `type`, `template_
 -- Table structure for table `invoices`
 --
 
-CREATE TABLE `invoices` (
-  `id` int(11) NOT NULL,
+DROP TABLE IF EXISTS `invoices`;
+CREATE TABLE IF NOT EXISTS `invoices` (
+  `id` int NOT NULL AUTO_INCREMENT,
   `rec_date` datetime NOT NULL,
-  `userid` int(11) NOT NULL,
-  `cardid` int(11) NOT NULL,
+  `userid` int NOT NULL,
+  `cardid` int NOT NULL,
   `inv_prefix` varchar(55) DEFAULT NULL,
-  `inv_number` int(11) DEFAULT NULL,
+  `inv_number` int DEFAULT NULL,
   `inv_date` date NOT NULL,
-  `inv_price` double NOT NULL DEFAULT 0,
-  `inv_cgst` double NOT NULL DEFAULT 0,
-  `inv_sgst` double NOT NULL DEFAULT 0,
-  `inv_igst` double NOT NULL DEFAULT 0,
-  `inv_grandtotal` double NOT NULL DEFAULT 0,
-  `remarks` longtext DEFAULT NULL,
-  `is_refund` tinyint(4) NOT NULL DEFAULT 0 COMMENT '0=not, 1=refund',
-  `isdelete` tinyint(4) NOT NULL DEFAULT 0 COMMENT '0=active,1=delete'
+  `inv_price` double NOT NULL DEFAULT '0',
+  `inv_cgst` double NOT NULL DEFAULT '0',
+  `inv_sgst` double NOT NULL DEFAULT '0',
+  `inv_igst` double NOT NULL DEFAULT '0',
+  `inv_grandtotal` double NOT NULL DEFAULT '0',
+  `remarks` longtext,
+  `is_refund` tinyint NOT NULL DEFAULT '0' COMMENT '0=not, 1=refund',
+  `isdelete` tinyint NOT NULL DEFAULT '0' COMMENT '0=active,1=delete',
+  PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
 -- --------------------------------------------------------
@@ -677,14 +736,17 @@ CREATE TABLE `invoices` (
 -- Table structure for table `jobs`
 --
 
-CREATE TABLE `jobs` (
-  `id` bigint(20) UNSIGNED NOT NULL,
-  `queue` varchar(191) NOT NULL,
-  `payload` longtext NOT NULL,
-  `attempts` tinyint(3) UNSIGNED NOT NULL,
-  `reserved_at` int(10) UNSIGNED DEFAULT NULL,
-  `available_at` int(10) UNSIGNED NOT NULL,
-  `created_at` int(10) UNSIGNED NOT NULL
+DROP TABLE IF EXISTS `jobs`;
+CREATE TABLE IF NOT EXISTS `jobs` (
+  `id` bigint UNSIGNED NOT NULL AUTO_INCREMENT,
+  `queue` varchar(191) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `payload` longtext COLLATE utf8mb4_unicode_ci NOT NULL,
+  `attempts` tinyint UNSIGNED NOT NULL,
+  `reserved_at` int UNSIGNED DEFAULT NULL,
+  `available_at` int UNSIGNED NOT NULL,
+  `created_at` int UNSIGNED NOT NULL,
+  PRIMARY KEY (`id`),
+  KEY `jobs_queue_index` (`queue`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 -- --------------------------------------------------------
@@ -693,14 +755,16 @@ CREATE TABLE `jobs` (
 -- Table structure for table `loanstatus`
 --
 
-CREATE TABLE `loanstatus` (
-  `id` int(11) NOT NULL,
-  `rec_date` datetime NOT NULL DEFAULT current_timestamp(),
+DROP TABLE IF EXISTS `loanstatus`;
+CREATE TABLE IF NOT EXISTS `loanstatus` (
+  `id` int NOT NULL AUTO_INCREMENT,
+  `rec_date` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP,
   `statusname` varchar(256) NOT NULL,
-  `priorityno` int(11) NOT NULL DEFAULT 1,
+  `priorityno` int NOT NULL DEFAULT '1',
   `colorclass` varchar(50) NOT NULL,
-  `isDelete` int(11) NOT NULL DEFAULT 0 COMMENT '0=No, 1=Yes'
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+  `isDelete` int NOT NULL DEFAULT '0' COMMENT '0=No, 1=Yes',
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=12 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
 --
 -- Dumping data for table `loanstatus`
@@ -725,13 +789,15 @@ INSERT INTO `loanstatus` (`id`, `rec_date`, `statusname`, `priorityno`, `colorcl
 -- Table structure for table `loanstatus_remarks`
 --
 
-CREATE TABLE `loanstatus_remarks` (
-  `id` int(11) NOT NULL,
-  `rec_date` datetime NOT NULL DEFAULT current_timestamp(),
+DROP TABLE IF EXISTS `loanstatus_remarks`;
+CREATE TABLE IF NOT EXISTS `loanstatus_remarks` (
+  `id` int NOT NULL AUTO_INCREMENT,
+  `rec_date` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP,
   `title` varchar(256) NOT NULL,
   `remarks` longtext NOT NULL,
-  `statusid` int(11) NOT NULL DEFAULT 0,
-  `isDelete` tinyint(4) NOT NULL DEFAULT 0
+  `statusid` int NOT NULL DEFAULT '0',
+  `isDelete` tinyint NOT NULL DEFAULT '0',
+  PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
 -- --------------------------------------------------------
@@ -740,22 +806,25 @@ CREATE TABLE `loanstatus_remarks` (
 -- Table structure for table `loan_applications`
 --
 
-CREATE TABLE `loan_applications` (
-  `id` int(11) NOT NULL,
+DROP TABLE IF EXISTS `loan_applications`;
+CREATE TABLE IF NOT EXISTS `loan_applications` (
+  `id` int NOT NULL AUTO_INCREMENT,
   `rec_date` datetime NOT NULL,
-  `userid` int(11) NOT NULL DEFAULT 0,
-  `loan_amount` bigint(20) NOT NULL DEFAULT 0,
-  `user_type` tinyint(4) NOT NULL DEFAULT 0 COMMENT '0=none, 1=salaried, 2=selfemployed',
-  `loan_type` tinyint(4) NOT NULL DEFAULT 1 COMMENT '1 = personal loan, 2 = business loan',
+  `userid` int NOT NULL DEFAULT '0',
+  `loan_amount` bigint NOT NULL DEFAULT '0',
+  `user_type` tinyint NOT NULL DEFAULT '0' COMMENT '0=none, 1=salaried, 2=selfemployed',
+  `loan_type` tinyint NOT NULL DEFAULT '1' COMMENT '1 = personal loan, 2 = business loan',
   `monthly_income` varchar(255) NOT NULL DEFAULT '0',
-  `cibilscore` int(11) NOT NULL DEFAULT 0,
+  `cibilscore` int NOT NULL DEFAULT '0',
   `loan_purpose` varchar(255) NOT NULL DEFAULT 'Personal Use',
-  `currentemi` bigint(20) NOT NULL DEFAULT 0,
-  `emibounce` tinyint(4) NOT NULL DEFAULT 0 COMMENT '0=no, 1=yes',
+  `currentemi` bigint NOT NULL DEFAULT '0',
+  `emibounce` tinyint NOT NULL DEFAULT '0' COMMENT '0=no, 1=yes',
   `application_number` varchar(99) DEFAULT NULL,
-  `loantenure` int(11) NOT NULL DEFAULT 0,
-  `status` tinyint(4) NOT NULL DEFAULT 1 COMMENT '1=New, 2=Approve, 3=Reject',
-  `isDelete` tinyint(4) NOT NULL DEFAULT 0 COMMENT '0=active, 1=delete'
+  `loantenure` int NOT NULL DEFAULT '0',
+  `status` tinyint NOT NULL DEFAULT '1' COMMENT '1=New, 2=Approve, 3=Reject',
+  `isDelete` tinyint NOT NULL DEFAULT '0' COMMENT '0=active, 1=delete',
+  PRIMARY KEY (`id`),
+  KEY `userid` (`userid`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
 -- --------------------------------------------------------
@@ -764,23 +833,25 @@ CREATE TABLE `loan_applications` (
 -- Table structure for table `loan_application_status`
 --
 
-CREATE TABLE `loan_application_status` (
-  `id` int(11) NOT NULL,
-  `rec_date` datetime NOT NULL DEFAULT current_timestamp(),
-  `applicationid` int(11) NOT NULL,
-  `statusid` int(11) NOT NULL,
+DROP TABLE IF EXISTS `loan_application_status`;
+CREATE TABLE IF NOT EXISTS `loan_application_status` (
+  `id` int NOT NULL AUTO_INCREMENT,
+  `rec_date` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  `applicationid` int NOT NULL,
+  `statusid` int NOT NULL,
   `statusdate` date DEFAULT NULL,
-  `bankid` int(11) NOT NULL,
-  `loanamount` int(11) DEFAULT NULL,
+  `bankid` int NOT NULL,
+  `loanamount` int DEFAULT NULL,
   `loanroi` varchar(256) DEFAULT NULL,
   `loanterms` varchar(256) DEFAULT NULL,
-  `processfees` int(11) DEFAULT NULL,
+  `processfees` int DEFAULT NULL,
   `insurance` varchar(256) DEFAULT NULL,
-  `monthlyemi` int(11) DEFAULT NULL,
+  `monthlyemi` int DEFAULT NULL,
   `remarks` longtext NOT NULL,
-  `sanction_letter` longtext DEFAULT NULL,
-  `staffid` int(11) NOT NULL,
-  `isDelete` int(11) NOT NULL DEFAULT 0 COMMENT '0=No, 1=Yes'
+  `sanction_letter` longtext,
+  `staffid` int NOT NULL,
+  `isDelete` int NOT NULL DEFAULT '0' COMMENT '0=No, 1=Yes',
+  PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
 -- --------------------------------------------------------
@@ -789,16 +860,18 @@ CREATE TABLE `loan_application_status` (
 -- Table structure for table `loan_applied_history`
 --
 
-CREATE TABLE `loan_applied_history` (
-  `id` int(11) NOT NULL,
+DROP TABLE IF EXISTS `loan_applied_history`;
+CREATE TABLE IF NOT EXISTS `loan_applied_history` (
+  `id` int NOT NULL AUTO_INCREMENT,
   `rec_date` datetime NOT NULL,
-  `userid` int(11) NOT NULL,
-  `bankid` int(11) NOT NULL,
+  `userid` int NOT NULL,
+  `bankid` int NOT NULL,
   `loan_amount` varchar(299) NOT NULL,
   `loan_tenure` varchar(255) NOT NULL,
   `loan_rate` varchar(255) NOT NULL,
   `loan_emi` varchar(255) NOT NULL,
-  `isDelete` tinyint(4) NOT NULL DEFAULT 0
+  `isDelete` tinyint NOT NULL DEFAULT '0',
+  PRIMARY KEY (`id`)
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
 -- --------------------------------------------------------
@@ -807,17 +880,19 @@ CREATE TABLE `loan_applied_history` (
 -- Table structure for table `lyra_entry`
 --
 
-CREATE TABLE `lyra_entry` (
-  `id` int(11) NOT NULL,
-  `rec_date` datetime NOT NULL DEFAULT current_timestamp(),
-  `entryfor` int(11) NOT NULL DEFAULT 0 COMMENT '1=Customer,2=Channel,11=SelfApply,12=Loan Agent, 3=LA_Offer_1,4=LA_Offer_2,5=LA_Offer_3,6=SA_Offer_1,7=SA_Offer_2,8=SA_Offer_3,9=SA_Offer_4,10=LA_Offer_4',
-  `userid` int(11) NOT NULL,
+DROP TABLE IF EXISTS `lyra_entry`;
+CREATE TABLE IF NOT EXISTS `lyra_entry` (
+  `id` int NOT NULL AUTO_INCREMENT,
+  `rec_date` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  `entryfor` int NOT NULL DEFAULT '0' COMMENT '1=Customer,2=Channel,11=SelfApply,12=Loan Agent, 3=LA_Offer_1,4=LA_Offer_2,5=LA_Offer_3,6=SA_Offer_1,7=SA_Offer_2,8=SA_Offer_3,9=SA_Offer_4,10=LA_Offer_4',
+  `userid` int NOT NULL,
   `orderid` varchar(50) NOT NULL,
   `orderamount` float(11,2) NOT NULL,
   `ordernote` varchar(256) DEFAULT NULL,
   `transactionid` varchar(256) DEFAULT NULL,
   `statuscode` varchar(256) DEFAULT NULL,
-  `paymentmode` varchar(256) DEFAULT NULL
+  `paymentmode` varchar(256) DEFAULT NULL,
+  PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
 -- --------------------------------------------------------
@@ -826,17 +901,19 @@ CREATE TABLE `lyra_entry` (
 -- Table structure for table `membership_orders`
 --
 
-CREATE TABLE `membership_orders` (
-  `id` int(11) NOT NULL,
-  `rec_date` datetime NOT NULL DEFAULT current_timestamp(),
-  `userid` int(11) NOT NULL,
+DROP TABLE IF EXISTS `membership_orders`;
+CREATE TABLE IF NOT EXISTS `membership_orders` (
+  `id` int NOT NULL AUTO_INCREMENT,
+  `rec_date` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  `userid` int NOT NULL,
   `registration_date` date DEFAULT NULL,
   `expiry_date` date DEFAULT NULL,
   `card_number` varchar(256) NOT NULL,
   `amount` float(11,2) NOT NULL,
   `paymentid` varchar(256) NOT NULL,
-  `isActive` int(11) NOT NULL DEFAULT 1,
-  `isDelete` int(11) NOT NULL DEFAULT 0
+  `isActive` int NOT NULL DEFAULT '1',
+  `isDelete` int NOT NULL DEFAULT '0',
+  PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
 -- --------------------------------------------------------
@@ -845,10 +922,12 @@ CREATE TABLE `membership_orders` (
 -- Table structure for table `migrations`
 --
 
-CREATE TABLE `migrations` (
-  `id` int(10) UNSIGNED NOT NULL,
-  `migration` varchar(191) NOT NULL,
-  `batch` int(11) NOT NULL
+DROP TABLE IF EXISTS `migrations`;
+CREATE TABLE IF NOT EXISTS `migrations` (
+  `id` int UNSIGNED NOT NULL AUTO_INCREMENT,
+  `migration` varchar(191) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `batch` int NOT NULL,
+  PRIMARY KEY (`id`)
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 -- --------------------------------------------------------
@@ -857,13 +936,15 @@ CREATE TABLE `migrations` (
 -- Table structure for table `otp_verifications`
 --
 
-CREATE TABLE `otp_verifications` (
-  `id` int(11) NOT NULL,
+DROP TABLE IF EXISTS `otp_verifications`;
+CREATE TABLE IF NOT EXISTS `otp_verifications` (
+  `id` int NOT NULL AUTO_INCREMENT,
   `rec_date` date NOT NULL,
   `mobile` varchar(99) NOT NULL,
   `email` varchar(99) DEFAULT NULL,
-  `otp` mediumint(9) NOT NULL,
-  `acc_type` tinyint(4) NOT NULL DEFAULT 0 COMMENT '0=none, 1=selfapply, 2=loanagent\r\n'
+  `otp` mediumint NOT NULL,
+  `acc_type` tinyint NOT NULL DEFAULT '0' COMMENT '0=none, 1=selfapply, 2=loanagent\r\n',
+  PRIMARY KEY (`id`)
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
 -- --------------------------------------------------------
@@ -872,10 +953,11 @@ CREATE TABLE `otp_verifications` (
 -- Table structure for table `partner_tasks`
 --
 
-CREATE TABLE `partner_tasks` (
-  `id` int(11) NOT NULL,
-  `rec_date` datetime NOT NULL DEFAULT current_timestamp(),
-  `assignees` int(11) NOT NULL,
+DROP TABLE IF EXISTS `partner_tasks`;
+CREATE TABLE IF NOT EXISTS `partner_tasks` (
+  `id` int NOT NULL AUTO_INCREMENT,
+  `rec_date` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  `assignees` int NOT NULL,
   `assign_to` varchar(199) NOT NULL,
   `task_title` varchar(199) NOT NULL,
   `task_desc` longtext NOT NULL,
@@ -884,10 +966,11 @@ CREATE TABLE `partner_tasks` (
   `task_module` varchar(255) NOT NULL,
   `task_status` varchar(55) NOT NULL DEFAULT 'Open',
   `completion_date` datetime DEFAULT NULL,
-  `remarks` text DEFAULT NULL,
+  `remarks` text,
   `project_name` varchar(255) NOT NULL,
-  `isActive` tinyint(4) NOT NULL DEFAULT 1 COMMENT '1=active,0=deactive',
-  `isDelete` tinyint(4) NOT NULL DEFAULT 0 COMMENT '0=no,1=yes'
+  `isActive` tinyint NOT NULL DEFAULT '1' COMMENT '1=active,0=deactive',
+  `isDelete` tinyint NOT NULL DEFAULT '0' COMMENT '0=no,1=yes',
+  PRIMARY KEY (`id`)
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
 -- --------------------------------------------------------
@@ -896,17 +979,19 @@ CREATE TABLE `partner_tasks` (
 -- Table structure for table `paygic_entry`
 --
 
-CREATE TABLE `paygic_entry` (
-  `id` int(11) NOT NULL,
-  `rec_date` datetime NOT NULL DEFAULT current_timestamp(),
-  `entryfor` int(11) NOT NULL DEFAULT 0 COMMENT '3 - la offer 1\r\n4 - la offer 2\r\n5 - la offer 3\r\n6 - sa offer 1\r\n7 - sa offer 2\r\n8 - sa offer 3\r\n9 - sa offer 4\r\n10 - la offer 4',
-  `userid` int(11) NOT NULL,
-  `orderid` varchar(50) NOT NULL,
+DROP TABLE IF EXISTS `paygic_entry`;
+CREATE TABLE IF NOT EXISTS `paygic_entry` (
+  `id` int NOT NULL AUTO_INCREMENT,
+  `rec_date` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  `entryfor` int NOT NULL DEFAULT '0' COMMENT '3 - la offer 1\r\n4 - la offer 2\r\n5 - la offer 3\r\n6 - sa offer 1\r\n7 - sa offer 2\r\n8 - sa offer 3\r\n9 - sa offer 4\r\n10 - la offer 4',
+  `userid` int NOT NULL,
+  `orderid` varchar(50) COLLATE utf8mb4_general_ci NOT NULL,
   `orderamount` float(11,2) NOT NULL,
-  `ordernote` varchar(256) DEFAULT NULL,
-  `referenceid` varchar(256) DEFAULT NULL,
-  `txstatus` varchar(256) DEFAULT NULL,
-  `paymentmode` varchar(256) DEFAULT NULL
+  `ordernote` varchar(256) COLLATE utf8mb4_general_ci DEFAULT NULL,
+  `referenceid` varchar(256) COLLATE utf8mb4_general_ci DEFAULT NULL,
+  `txstatus` varchar(256) COLLATE utf8mb4_general_ci DEFAULT NULL,
+  `paymentmode` varchar(256) COLLATE utf8mb4_general_ci DEFAULT NULL,
+  PRIMARY KEY (`id`)
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 -- --------------------------------------------------------
@@ -915,17 +1000,21 @@ CREATE TABLE `paygic_entry` (
 -- Table structure for table `personal_access_tokens`
 --
 
-CREATE TABLE `personal_access_tokens` (
-  `id` bigint(20) UNSIGNED NOT NULL,
-  `tokenable_type` varchar(191) NOT NULL,
-  `tokenable_id` bigint(20) UNSIGNED NOT NULL,
-  `name` varchar(191) NOT NULL,
-  `token` varchar(64) NOT NULL,
-  `abilities` text DEFAULT NULL,
+DROP TABLE IF EXISTS `personal_access_tokens`;
+CREATE TABLE IF NOT EXISTS `personal_access_tokens` (
+  `id` bigint UNSIGNED NOT NULL AUTO_INCREMENT,
+  `tokenable_type` varchar(191) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `tokenable_id` bigint UNSIGNED NOT NULL,
+  `name` varchar(191) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `token` varchar(64) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `abilities` text COLLATE utf8mb4_unicode_ci,
   `last_used_at` timestamp NULL DEFAULT NULL,
   `expires_at` timestamp NULL DEFAULT NULL,
   `created_at` timestamp NULL DEFAULT NULL,
-  `updated_at` timestamp NULL DEFAULT NULL
+  `updated_at` timestamp NULL DEFAULT NULL,
+  PRIMARY KEY (`id`),
+  UNIQUE KEY `personal_access_tokens_token_unique` (`token`),
+  KEY `personal_access_tokens_tokenable_type_tokenable_id_index` (`tokenable_type`,`tokenable_id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 -- --------------------------------------------------------
@@ -934,17 +1023,19 @@ CREATE TABLE `personal_access_tokens` (
 -- Table structure for table `phonepe_entry`
 --
 
-CREATE TABLE `phonepe_entry` (
-  `id` int(11) NOT NULL,
-  `rec_date` datetime NOT NULL DEFAULT current_timestamp(),
-  `entryfor` int(11) NOT NULL DEFAULT 0 COMMENT '3 - la offer 1\r\n4 - la offer 2\r\n5 - la offer 3\r\n6 - sa offer 1\r\n7 - sa offer 2\r\n8 - sa offer 3\r\n9 - sa offer 4\r\n10 - la offer 4',
-  `userid` int(11) NOT NULL,
+DROP TABLE IF EXISTS `phonepe_entry`;
+CREATE TABLE IF NOT EXISTS `phonepe_entry` (
+  `id` int NOT NULL AUTO_INCREMENT,
+  `rec_date` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  `entryfor` int NOT NULL DEFAULT '0' COMMENT '3 - la offer 1\r\n4 - la offer 2\r\n5 - la offer 3\r\n6 - sa offer 1\r\n7 - sa offer 2\r\n8 - sa offer 3\r\n9 - sa offer 4\r\n10 - la offer 4',
+  `userid` int NOT NULL,
   `orderid` varchar(50) NOT NULL,
   `orderamount` float(11,2) NOT NULL,
   `ordernote` varchar(256) DEFAULT NULL,
   `referenceid` varchar(256) DEFAULT NULL,
   `txstatus` varchar(256) DEFAULT NULL,
-  `paymentmode` varchar(256) DEFAULT NULL
+  `paymentmode` varchar(256) DEFAULT NULL,
+  PRIMARY KEY (`id`)
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
 -- --------------------------------------------------------
@@ -953,15 +1044,17 @@ CREATE TABLE `phonepe_entry` (
 -- Table structure for table `products`
 --
 
-CREATE TABLE `products` (
-  `id` int(11) NOT NULL,
-  `rec_date` datetime NOT NULL DEFAULT current_timestamp(),
+DROP TABLE IF EXISTS `products`;
+CREATE TABLE IF NOT EXISTS `products` (
+  `id` int NOT NULL AUTO_INCREMENT,
+  `rec_date` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP,
   `productname` varchar(256) NOT NULL,
   `productslug` varchar(256) NOT NULL,
   `amount` float(11,2) NOT NULL,
   `offeramount` float(11,2) NOT NULL,
-  `inOffer` tinyint(4) NOT NULL DEFAULT 0 COMMENT '0=No, 1=Yes'
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+  `inOffer` tinyint NOT NULL DEFAULT '0' COMMENT '0=No, 1=Yes',
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=20 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
 --
 -- Dumping data for table `products`
@@ -994,17 +1087,19 @@ INSERT INTO `products` (`id`, `rec_date`, `productname`, `productslug`, `amount`
 -- Table structure for table `razorpayentry`
 --
 
-CREATE TABLE `razorpayentry` (
-  `id` int(11) NOT NULL,
-  `rec_date` datetime NOT NULL DEFAULT current_timestamp(),
-  `entryfor` int(11) NOT NULL DEFAULT 0,
-  `userid` int(11) NOT NULL,
+DROP TABLE IF EXISTS `razorpayentry`;
+CREATE TABLE IF NOT EXISTS `razorpayentry` (
+  `id` int NOT NULL AUTO_INCREMENT,
+  `rec_date` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  `entryfor` int NOT NULL DEFAULT '0',
+  `userid` int NOT NULL,
   `orderid` varchar(50) NOT NULL,
   `orderamount` float(11,2) NOT NULL,
   `ordernote` varchar(256) DEFAULT NULL,
   `referenceid` varchar(256) DEFAULT NULL,
   `txstatus` varchar(256) DEFAULT NULL,
-  `paymentmode` varchar(256) DEFAULT NULL
+  `paymentmode` varchar(256) DEFAULT NULL,
+  PRIMARY KEY (`id`)
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
 -- --------------------------------------------------------
@@ -1013,11 +1108,12 @@ CREATE TABLE `razorpayentry` (
 -- Table structure for table `refunds`
 --
 
-CREATE TABLE `refunds` (
-  `id` int(11) NOT NULL,
-  `rec_date` timestamp NOT NULL DEFAULT current_timestamp(),
-  `userid` int(11) NOT NULL,
-  `invoiceid` int(11) NOT NULL,
+DROP TABLE IF EXISTS `refunds`;
+CREATE TABLE IF NOT EXISTS `refunds` (
+  `id` int NOT NULL AUTO_INCREMENT,
+  `rec_date` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  `userid` int NOT NULL,
+  `invoiceid` int NOT NULL,
   `ref_date` date DEFAULT NULL,
   `ref_number` varchar(256) NOT NULL,
   `ref_price` float(11,2) NOT NULL,
@@ -1027,7 +1123,8 @@ CREATE TABLE `refunds` (
   `ref_grandtotal` float(11,2) NOT NULL,
   `paymentid` varchar(256) DEFAULT NULL,
   `remarks` varchar(256) DEFAULT NULL,
-  `isDelete` int(11) NOT NULL DEFAULT 0 COMMENT '0=No, 1=Yes'
+  `isDelete` int NOT NULL DEFAULT '0' COMMENT '0=No, 1=Yes',
+  PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
 -- --------------------------------------------------------
@@ -1036,16 +1133,18 @@ CREATE TABLE `refunds` (
 -- Table structure for table `roipackages`
 --
 
-CREATE TABLE `roipackages` (
-  `id` int(11) NOT NULL,
-  `rec_date` datetime NOT NULL DEFAULT current_timestamp(),
-  `bankid` int(11) NOT NULL,
+DROP TABLE IF EXISTS `roipackages`;
+CREATE TABLE IF NOT EXISTS `roipackages` (
+  `id` int NOT NULL AUTO_INCREMENT,
+  `rec_date` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  `bankid` int NOT NULL,
   `roi` float(11,2) NOT NULL,
   `termsyears` float(11,2) NOT NULL,
-  `termsmonths` int(11) NOT NULL,
-  `isDelete` int(11) NOT NULL DEFAULT 0,
-  `created_at` datetime NOT NULL DEFAULT current_timestamp(),
-  `updated_at` datetime NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp()
+  `termsmonths` int NOT NULL,
+  `isDelete` int NOT NULL DEFAULT '0',
+  `created_at` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  `updated_at` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
+  PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
 -- --------------------------------------------------------
@@ -1054,12 +1153,14 @@ CREATE TABLE `roipackages` (
 -- Table structure for table `services`
 --
 
-CREATE TABLE `services` (
-  `id` int(11) NOT NULL,
+DROP TABLE IF EXISTS `services`;
+CREATE TABLE IF NOT EXISTS `services` (
+  `id` int NOT NULL AUTO_INCREMENT,
   `rec_date` datetime NOT NULL,
   `services_name` varchar(255) NOT NULL,
-  `isActive` tinyint(4) NOT NULL DEFAULT 1 COMMENT '1 = active, 0 = no active',
-  `isDelete` tinyint(4) NOT NULL DEFAULT 0 COMMENT '0 = active, 1 = delete'
+  `isActive` tinyint NOT NULL DEFAULT '1' COMMENT '1 = active, 0 = no active',
+  `isDelete` tinyint NOT NULL DEFAULT '0' COMMENT '0 = active, 1 = delete',
+  PRIMARY KEY (`id`)
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
 -- --------------------------------------------------------
@@ -1068,13 +1169,17 @@ CREATE TABLE `services` (
 -- Table structure for table `sessions`
 --
 
-CREATE TABLE `sessions` (
-  `id` varchar(191) NOT NULL,
-  `user_id` bigint(20) UNSIGNED DEFAULT NULL,
-  `ip_address` varchar(45) DEFAULT NULL,
-  `user_agent` text DEFAULT NULL,
-  `payload` longtext NOT NULL,
-  `last_activity` int(11) NOT NULL
+DROP TABLE IF EXISTS `sessions`;
+CREATE TABLE IF NOT EXISTS `sessions` (
+  `id` varchar(191) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `user_id` bigint UNSIGNED DEFAULT NULL,
+  `ip_address` varchar(45) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `user_agent` text COLLATE utf8mb4_unicode_ci,
+  `payload` longtext COLLATE utf8mb4_unicode_ci NOT NULL,
+  `last_activity` int NOT NULL,
+  PRIMARY KEY (`id`),
+  KEY `sessions_user_id_index` (`user_id`),
+  KEY `sessions_last_activity_index` (`last_activity`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 --
@@ -1082,12 +1187,9 @@ CREATE TABLE `sessions` (
 --
 
 INSERT INTO `sessions` (`id`, `user_id`, `ip_address`, `user_agent`, `payload`, `last_activity`) VALUES
-('4WsNljkBZvNOBTAmlEdlYCSRWTxTcVMbRzcXMujz', NULL, '116.74.76.52', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/147.0.0.0 Safari/537.36', 'YTozOntzOjY6Il90b2tlbiI7czo0MDoicUg1Ym01WXh4aGVXUnI4N0hpaFpuZTNMNEU0YTJFSHExN1hTSGQ2ZiI7czo5OiJfcHJldmlvdXMiO2E6MTp7czozOiJ1cmwiO3M6MjM6Imh0dHBzOi8vYXBsb2FubndhbGEuY29tIjt9czo2OiJfZmxhc2giO2E6Mjp7czozOiJvbGQiO2E6MDp7fXM6MzoibmV3IjthOjA6e319fQ==', 1777005028),
-('5zLKDdw37s1RQNgqEx0Q3ojkJeeFBe75Mo2fp4di', NULL, '52.167.144.23', 'Mozilla/5.0 AppleWebKit/537.36 (KHTML, like Gecko; compatible; bingbot/2.0; +http://www.bing.com/bingbot.htm) Chrome/116.0.1938.76 Safari/537.36', 'YTozOntzOjY6Il90b2tlbiI7czo0MDoia2U4TUpVU29PRTZEd3liNHBWVHRrSjBpRUVwSjdIdnVnS2NwOExRTSI7czo5OiJfcHJldmlvdXMiO2E6MTp7czozOiJ1cmwiO3M6MjM6Imh0dHBzOi8vYXBsb2FubndhbGEuY29tIjt9czo2OiJfZmxhc2giO2E6Mjp7czozOiJvbGQiO2E6MDp7fXM6MzoibmV3IjthOjA6e319fQ==', 1777006113),
-('ttGTzdNTz8xpSt5XCgCL3IOrlEENm8dbbENXJcii', 1, '116.74.76.52', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/147.0.0.0 Safari/537.36', 'YTo0OntzOjY6Il90b2tlbiI7czo0MDoiNVRpNTVralJGNzIxN0dnRHB5SXlzMzYzc0dKazhjME5ZZE9SeU5BUiI7czo5OiJfcHJldmlvdXMiO2E6MTp7czozOiJ1cmwiO3M6NTA6Imh0dHBzOi8vbWFuYWdlLmFwbG9hbm53YWxhLmNvbS9sb2FuYWdlbnQvY3VzdG9tZXJzIjt9czo2OiJfZmxhc2giO2E6Mjp7czozOiJvbGQiO2E6MDp7fXM6MzoibmV3IjthOjA6e319czo1MDoibG9naW5fd2ViXzU5YmEzNmFkZGMyYjJmOTQwMTU4MGYwMTRjN2Y1OGVhNGUzMDk4OWQiO2k6MTt9', 1777005546),
-('vqhddnKCibi3cG2qYRv7xbbdrfAsTsrN3U3j2FOI', NULL, '51.161.65.221', 'Mozilla/5.0 (compatible; AhrefsBot/7.0; +http://ahrefs.com/robot/)', 'YTozOntzOjY6Il90b2tlbiI7czo0MDoiUjA4VnFGMUpYcVNYNFBYYUM2UWtJTEh3REhMMm95Sjh4cnFlUDM1YiI7czo5OiJfcHJldmlvdXMiO2E6MTp7czozOiJ1cmwiO3M6MzA6Imh0dHBzOi8vYXBsb2FubndhbGEuY29tL2NhcmVlciI7fXM6NjoiX2ZsYXNoIjthOjI6e3M6Mzoib2xkIjthOjA6e31zOjM6Im5ldyI7YTowOnt9fX0=', 1777005444),
-('ZBCsyoUJsB70yogoplElDFbAwxFSyyhyoDpiOm68', NULL, '216.244.66.242', 'Mozilla/5.0 (compatible; DotBot/1.2; +https://opensiteexplorer.org/dotbot; help@moz.com)', 'YTozOntzOjY6Il90b2tlbiI7czo0MDoiUFA2NEI5UGlLek1WaTdKcjlENFZKdmdRTTZneVh2UlYwVzVRRm4xYiI7czo5OiJfcHJldmlvdXMiO2E6MTp7czozOiJ1cmwiO3M6NDc6Imh0dHA6Ly9hcGxvYW5ud2FsYS5jb20vY3VzdG9tZXIvZm9yZ2V0LXBhc3N3b3JkIjt9czo2OiJfZmxhc2giO2E6Mjp7czozOiJvbGQiO2E6MDp7fXM6MzoibmV3IjthOjA6e319fQ==', 1777001408),
-('ZplRYUhsWGvEBDAPLRxx1XZ0nt7jOTW1kkX2O4pF', NULL, '116.74.76.52', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/147.0.0.0 Safari/537.36 Edg/147.0.0.0', 'YTozOntzOjY6Il90b2tlbiI7czo0MDoiaG13c3JnTTRuRU13dWFHZWVqWW1LNktnVml6QjR5ZFpYb2ZsaVdqbiI7czo5OiJfcHJldmlvdXMiO2E6MTp7czozOiJ1cmwiO3M6MjM6Imh0dHBzOi8vYXBsb2FubndhbGEuY29tIjt9czo2OiJfZmxhc2giO2E6Mjp7czozOiJvbGQiO2E6MDp7fXM6MzoibmV3IjthOjA6e319fQ==', 1777005751);
+('0LgXSHgeDtFLW2vOX4MJioSbXXkOffBniZrLAigX', NULL, '127.0.0.1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/149.0.0.0 Safari/537.36', 'YTozOntzOjY6Il90b2tlbiI7czo0MDoiMUNUbFZwczhMaEtpY0hRd0hkY0Z0emdCMjZqM1pWWE9mWmw0dVlSQiI7czo5OiJfcHJldmlvdXMiO2E6MTp7czozOiJ1cmwiO3M6MzI6Imh0dHA6Ly8xMjcuMC4wLjE6ODAwMC9zZWxmLWFwcGx5Ijt9czo2OiJfZmxhc2giO2E6Mjp7czozOiJvbGQiO2E6MDp7fXM6MzoibmV3IjthOjA6e319fQ==', 1783314035),
+('45rxMGTobnloQffqkwAAAdM26zaCPCOx8iMOiNVX', NULL, '127.0.0.1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/149.0.0.0 Safari/537.36', 'YTozOntzOjY6Il90b2tlbiI7czo0MDoiQUJXQ09DalFSOHRpWXNTRTFvMGF4SlBjRzY5emRraWJZUGhVY2FwbiI7czo5OiJfcHJldmlvdXMiO2E6MTp7czozOiJ1cmwiO3M6MjE6Imh0dHA6Ly8xMjcuMC4wLjE6ODAwMCI7fXM6NjoiX2ZsYXNoIjthOjI6e3M6Mzoib2xkIjthOjA6e31zOjM6Im5ldyI7YTowOnt9fX0=', 1783337021),
+('et1GzHaRLDVnLBgtsvHrUNKAonI9k3iABrnIDfTV', NULL, '::1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/149.0.0.0 Safari/537.36', 'YTozOntzOjY6Il90b2tlbiI7czo0MDoiRGVUb1RqUFhwajdtNXdRWndGVElwck55TnRpdnJScnhlWkJpY0JlVSI7czo5OiJfcHJldmlvdXMiO2E6MTp7czozOiJ1cmwiO3M6MzU6Imh0dHA6Ly9sb2NhbGhvc3Qva3JlZGl0c2F0aGkvcHVibGljIjt9czo2OiJfZmxhc2giO2E6Mjp7czozOiJvbGQiO2E6MDp7fXM6MzoibmV3IjthOjA6e319fQ==', 1783337063);
 
 -- --------------------------------------------------------
 
@@ -1095,12 +1197,14 @@ INSERT INTO `sessions` (`id`, `user_id`, `ip_address`, `user_agent`, `payload`, 
 -- Table structure for table `site_options`
 --
 
-CREATE TABLE `site_options` (
-  `id` int(11) NOT NULL,
+DROP TABLE IF EXISTS `site_options`;
+CREATE TABLE IF NOT EXISTS `site_options` (
+  `id` int NOT NULL AUTO_INCREMENT,
   `rec_date` datetime NOT NULL,
   `option_key` varchar(255) NOT NULL,
-  `option_value` longtext NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+  `option_value` longtext NOT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=14 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
 --
 -- Dumping data for table `site_options`
@@ -1127,15 +1231,17 @@ INSERT INTO `site_options` (`id`, `rec_date`, `option_key`, `option_value`) VALU
 -- Table structure for table `sms_list`
 --
 
-CREATE TABLE `sms_list` (
-  `id` int(11) NOT NULL,
-  `rec_date` datetime NOT NULL DEFAULT current_timestamp(),
-  `type` tinyint(4) NOT NULL,
+DROP TABLE IF EXISTS `sms_list`;
+CREATE TABLE IF NOT EXISTS `sms_list` (
+  `id` int NOT NULL AUTO_INCREMENT,
+  `rec_date` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  `type` tinyint NOT NULL,
   `slug` varchar(55) DEFAULT NULL,
   `title` varchar(256) NOT NULL,
   `message` mediumtext NOT NULL,
-  `isActive` tinyint(4) NOT NULL COMMENT '1=active, 0=not active'
-) ENGINE=MyISAM DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+  `isActive` tinyint NOT NULL COMMENT '1=active, 0=not active',
+  PRIMARY KEY (`id`)
+) ENGINE=MyISAM AUTO_INCREMENT=32 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
 --
 -- Dumping data for table `sms_list`
@@ -1179,14 +1285,16 @@ INSERT INTO `sms_list` (`id`, `rec_date`, `type`, `slug`, `title`, `message`, `i
 -- Table structure for table `sms_log`
 --
 
-CREATE TABLE `sms_log` (
-  `id` int(11) NOT NULL,
-  `rec_date` datetime NOT NULL DEFAULT current_timestamp(),
+DROP TABLE IF EXISTS `sms_log`;
+CREATE TABLE IF NOT EXISTS `sms_log` (
+  `id` int NOT NULL AUTO_INCREMENT,
+  `rec_date` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP,
   `crontype` varchar(50) NOT NULL,
-  `parentid` int(11) NOT NULL,
+  `parentid` int NOT NULL,
   `cronname` varchar(255) NOT NULL,
-  `msgcount` int(11) NOT NULL,
-  `msgresponse` longtext NOT NULL
+  `msgcount` int NOT NULL,
+  `msgresponse` longtext NOT NULL,
+  PRIMARY KEY (`id`)
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
 -- --------------------------------------------------------
@@ -1195,17 +1303,19 @@ CREATE TABLE `sms_log` (
 -- Table structure for table `source_entry`
 --
 
-CREATE TABLE `source_entry` (
-  `id` int(11) NOT NULL,
-  `rec_date` datetime NOT NULL DEFAULT current_timestamp(),
-  `user_id` int(11) DEFAULT NULL,
+DROP TABLE IF EXISTS `source_entry`;
+CREATE TABLE IF NOT EXISTS `source_entry` (
+  `id` int NOT NULL AUTO_INCREMENT,
+  `rec_date` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  `user_id` int DEFAULT NULL,
   `utm_source` varchar(125) DEFAULT NULL,
   `utm_campaign` varchar(255) DEFAULT NULL,
   `utm_medium` varchar(125) DEFAULT NULL,
   `source_id` varchar(299) DEFAULT NULL,
   `utm_referral` varchar(99) DEFAULT NULL,
-  `client_ip` varchar(55) DEFAULT NULL
-) ENGINE=MyISAM DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+  `client_ip` varchar(55) DEFAULT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=MyISAM AUTO_INCREMENT=8 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
 --
 -- Dumping data for table `source_entry`
@@ -1226,11 +1336,12 @@ INSERT INTO `source_entry` (`id`, `rec_date`, `user_id`, `utm_source`, `utm_camp
 -- Table structure for table `staff_tasks`
 --
 
-CREATE TABLE `staff_tasks` (
-  `id` int(11) NOT NULL,
-  `rec_date` datetime NOT NULL DEFAULT current_timestamp(),
-  `assignee_id` int(11) NOT NULL,
-  `follower_id` int(11) NOT NULL,
+DROP TABLE IF EXISTS `staff_tasks`;
+CREATE TABLE IF NOT EXISTS `staff_tasks` (
+  `id` int NOT NULL AUTO_INCREMENT,
+  `rec_date` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  `assignee_id` int NOT NULL,
+  `follower_id` int NOT NULL,
   `task_title` varchar(299) NOT NULL,
   `task_desc` longtext NOT NULL,
   `attachment` varchar(299) DEFAULT NULL,
@@ -1238,11 +1349,12 @@ CREATE TABLE `staff_tasks` (
   `task_module` varchar(199) NOT NULL,
   `task_status` varchar(55) NOT NULL,
   `completion_date` datetime DEFAULT NULL,
-  `remarks` text DEFAULT NULL,
+  `remarks` text,
   `projects` varchar(299) NOT NULL,
   `task_goal` varchar(55) NOT NULL,
-  `isActive` tinyint(4) NOT NULL DEFAULT 1 COMMENT '1 = active, 0= deactive',
-  `isDelete` tinyint(4) NOT NULL DEFAULT 0 COMMENT '0= no, 1= yes'
+  `isActive` tinyint NOT NULL DEFAULT '1' COMMENT '1 = active, 0= deactive',
+  `isDelete` tinyint NOT NULL DEFAULT '0' COMMENT '0= no, 1= yes',
+  PRIMARY KEY (`id`)
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
 -- --------------------------------------------------------
@@ -1251,17 +1363,19 @@ CREATE TABLE `staff_tasks` (
 -- Table structure for table `subpaisa_entry`
 --
 
-CREATE TABLE `subpaisa_entry` (
-  `id` int(11) NOT NULL,
-  `rec_date` datetime NOT NULL DEFAULT current_timestamp(),
-  `entryfor` int(11) NOT NULL DEFAULT 0 COMMENT '1=Customer,2=Channel,11=SelfApply,12=Loan Agent, 3=LA_Offer_1,4=LA_Offer_2,5=LA_Offer_3,6=SA_Offer_1,7=SA_Offer_2,8=SA_Offer_3,9=SA_Offer_4,10=LA_Offer_4',
-  `userid` int(11) NOT NULL,
+DROP TABLE IF EXISTS `subpaisa_entry`;
+CREATE TABLE IF NOT EXISTS `subpaisa_entry` (
+  `id` int NOT NULL AUTO_INCREMENT,
+  `rec_date` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  `entryfor` int NOT NULL DEFAULT '0' COMMENT '1=Customer,2=Channel,11=SelfApply,12=Loan Agent, 3=LA_Offer_1,4=LA_Offer_2,5=LA_Offer_3,6=SA_Offer_1,7=SA_Offer_2,8=SA_Offer_3,9=SA_Offer_4,10=LA_Offer_4',
+  `userid` int NOT NULL,
   `orderid` varchar(50) NOT NULL,
   `orderamount` float(11,2) NOT NULL,
   `ordernote` varchar(256) DEFAULT NULL,
   `referenceid` varchar(256) DEFAULT NULL,
   `txstatus` varchar(256) DEFAULT NULL,
-  `paymentmode` varchar(256) DEFAULT NULL
+  `paymentmode` varchar(256) DEFAULT NULL,
+  PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
 -- --------------------------------------------------------
@@ -1270,11 +1384,12 @@ CREATE TABLE `subpaisa_entry` (
 -- Table structure for table `support_requests`
 --
 
-CREATE TABLE `support_requests` (
-  `id` int(11) NOT NULL,
+DROP TABLE IF EXISTS `support_requests`;
+CREATE TABLE IF NOT EXISTS `support_requests` (
+  `id` int NOT NULL AUTO_INCREMENT,
   `rec_date` datetime NOT NULL,
   `ticketno` varchar(50) NOT NULL,
-  `usertype` int(11) NOT NULL DEFAULT 1 COMMENT '1 = selfapply, 2 = guest user, 3 = loan agent',
+  `usertype` int NOT NULL DEFAULT '1' COMMENT '1 = selfapply, 2 = guest user, 3 = loan agent',
   `firstname` varchar(125) NOT NULL,
   `lastname` varchar(125) NOT NULL,
   `mobile` varchar(99) NOT NULL,
@@ -1282,9 +1397,10 @@ CREATE TABLE `support_requests` (
   `issuetype` varchar(255) NOT NULL,
   `cardnumber` varchar(255) DEFAULT NULL,
   `message` longtext NOT NULL,
-  `status` int(11) NOT NULL DEFAULT 1 COMMENT '0=No,1=Yes',
+  `status` int NOT NULL DEFAULT '1' COMMENT '0=No,1=Yes',
   `serverip` varchar(99) DEFAULT NULL,
-  `isDelete` int(11) NOT NULL DEFAULT 0 COMMENT '0=No,1=Yes'
+  `isDelete` int NOT NULL DEFAULT '0' COMMENT '0=No,1=Yes',
+  PRIMARY KEY (`id`)
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
 -- --------------------------------------------------------
@@ -1293,13 +1409,15 @@ CREATE TABLE `support_requests` (
 -- Table structure for table `support_request_chat`
 --
 
-CREATE TABLE `support_request_chat` (
-  `id` int(11) NOT NULL,
-  `rec_date` datetime NOT NULL DEFAULT current_timestamp(),
-  `requestid` int(11) NOT NULL,
+DROP TABLE IF EXISTS `support_request_chat`;
+CREATE TABLE IF NOT EXISTS `support_request_chat` (
+  `id` int NOT NULL AUTO_INCREMENT,
+  `rec_date` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  `requestid` int NOT NULL,
   `remarks` longtext NOT NULL,
-  `staffid` int(11) NOT NULL,
-  `isDelete` int(11) NOT NULL DEFAULT 0
+  `staffid` int NOT NULL,
+  `isDelete` int NOT NULL DEFAULT '0',
+  PRIMARY KEY (`id`)
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
 -- --------------------------------------------------------
@@ -1308,10 +1426,11 @@ CREATE TABLE `support_request_chat` (
 -- Table structure for table `user_documents`
 --
 
-CREATE TABLE `user_documents` (
-  `id` int(11) NOT NULL,
-  `rec_date` timestamp NOT NULL DEFAULT current_timestamp(),
-  `userid` int(11) NOT NULL,
+DROP TABLE IF EXISTS `user_documents`;
+CREATE TABLE IF NOT EXISTS `user_documents` (
+  `id` int NOT NULL AUTO_INCREMENT,
+  `rec_date` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  `userid` int NOT NULL,
   `profilephoto` varchar(256) DEFAULT NULL,
   `aadharcard` varchar(256) DEFAULT NULL,
   `aadharcard_number` varchar(256) DEFAULT NULL,
@@ -1325,7 +1444,8 @@ CREATE TABLE `user_documents` (
   `businessproof` varchar(256) DEFAULT NULL,
   `itreturn` varchar(256) DEFAULT NULL,
   `remarks` varchar(256) DEFAULT NULL,
-  `isVerified` tinyint(4) NOT NULL DEFAULT 0 COMMENT '0=No, 1=Yes'
+  `isVerified` tinyint NOT NULL DEFAULT '0' COMMENT '0=No, 1=Yes',
+  PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
 -- --------------------------------------------------------
@@ -1334,11 +1454,13 @@ CREATE TABLE `user_documents` (
 -- Table structure for table `user_offers`
 --
 
-CREATE TABLE `user_offers` (
-  `id` int(11) NOT NULL,
-  `rec_date` datetime NOT NULL DEFAULT current_timestamp(),
-  `userid` int(11) NOT NULL,
-  `offerdata` longtext CHARACTER SET utf8mb4 COLLATE utf8mb4_bin NOT NULL
+DROP TABLE IF EXISTS `user_offers`;
+CREATE TABLE IF NOT EXISTS `user_offers` (
+  `id` int NOT NULL AUTO_INCREMENT,
+  `rec_date` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  `userid` int NOT NULL,
+  `offerdata` longtext CHARACTER SET utf8mb4 COLLATE utf8mb4_bin NOT NULL,
+  PRIMARY KEY (`id`)
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
 -- --------------------------------------------------------
@@ -1347,10 +1469,11 @@ CREATE TABLE `user_offers` (
 -- Table structure for table `user_payout_documents`
 --
 
-CREATE TABLE `user_payout_documents` (
-  `id` int(11) NOT NULL,
-  `rec_date` timestamp NOT NULL DEFAULT current_timestamp(),
-  `userid` int(11) NOT NULL,
+DROP TABLE IF EXISTS `user_payout_documents`;
+CREATE TABLE IF NOT EXISTS `user_payout_documents` (
+  `id` int NOT NULL AUTO_INCREMENT,
+  `rec_date` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  `userid` int NOT NULL,
   `gstdoc` varchar(256) DEFAULT NULL,
   `gstdoc_number` varchar(256) DEFAULT NULL,
   `aadharcard` varchar(256) DEFAULT NULL,
@@ -1359,7 +1482,8 @@ CREATE TABLE `user_payout_documents` (
   `pancard_number` varchar(256) DEFAULT NULL,
   `cancelcheque` varchar(256) DEFAULT NULL,
   `remarks` varchar(256) NOT NULL,
-  `isVerified` tinyint(4) NOT NULL DEFAULT 0 COMMENT '0=No, 1=Yes'
+  `isVerified` tinyint NOT NULL DEFAULT '0' COMMENT '0=No, 1=Yes',
+  PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
 -- --------------------------------------------------------
@@ -1368,10 +1492,11 @@ CREATE TABLE `user_payout_documents` (
 -- Table structure for table `user_registrations`
 --
 
-CREATE TABLE `user_registrations` (
-  `id` int(11) NOT NULL,
-  `staff_id` int(11) DEFAULT NULL,
-  `offerpage` tinyint(1) NOT NULL DEFAULT 0 COMMENT '0 = none, 1 = la offer 1, 2 = la offer 2, 3 = la offer 3, 4 = sa offer 1, 5 = sa offer 2, 6 = sa offer 3, 7 = sa offer 4, 8 = la offer 4, 9 = sa offer 5, 10 = la offer 5',
+DROP TABLE IF EXISTS `user_registrations`;
+CREATE TABLE IF NOT EXISTS `user_registrations` (
+  `id` int NOT NULL AUTO_INCREMENT,
+  `staff_id` int DEFAULT NULL,
+  `offerpage` tinyint(1) NOT NULL DEFAULT '0' COMMENT '0 = none, 1 = la offer 1, 2 = la offer 2, 3 = la offer 3, 4 = sa offer 1, 5 = sa offer 2, 6 = sa offer 3, 7 = sa offer 4, 8 = la offer 4, 9 = sa offer 5, 10 = la offer 5',
   `rec_date` datetime NOT NULL,
   `update_date` datetime NOT NULL,
   `first_name` varchar(255) DEFAULT NULL,
@@ -1384,17 +1509,19 @@ CREATE TABLE `user_registrations` (
   `pincode` varchar(55) DEFAULT NULL,
   `city` varchar(255) DEFAULT NULL,
   `state` varchar(115) DEFAULT NULL,
-  `process_step` tinyint(4) NOT NULL DEFAULT 0,
+  `process_step` tinyint NOT NULL DEFAULT '0',
   `refcode` varchar(55) DEFAULT NULL,
-  `acc_type` tinyint(4) NOT NULL DEFAULT 0 COMMENT '0=none, 1=selfapply, 2=loan-agent, 3=loan assistant',
+  `acc_type` tinyint NOT NULL DEFAULT '0' COMMENT '0=none, 1=selfapply, 2=loan-agent, 3=loan assistant',
   `company_name` varchar(99) DEFAULT NULL,
   `company_gst` varchar(99) DEFAULT NULL,
-  `isUser` tinyint(4) NOT NULL DEFAULT 1 COMMENT '\r\n1=steps,2=register',
-  `iAgree` tinyint(4) NOT NULL DEFAULT 1 COMMENT '0=checked,1=unchecked',
-  `isDnd` tinyint(4) NOT NULL DEFAULT 0 COMMENT '0=no, 1=yes',
-  `isVerified` tinyint(4) NOT NULL DEFAULT 0 COMMENT '0=no, 1=yes',
-  `isDelete` tinyint(4) NOT NULL DEFAULT 0 COMMENT '0=active, 1=delete',
-  `isActive` tinyint(4) NOT NULL DEFAULT 1 COMMENT '1= active, 0=noactive'
+  `isUser` tinyint NOT NULL DEFAULT '1' COMMENT '\r\n1=steps,2=register',
+  `iAgree` tinyint NOT NULL DEFAULT '1' COMMENT '0=checked,1=unchecked',
+  `isDnd` tinyint NOT NULL DEFAULT '0' COMMENT '0=no, 1=yes',
+  `isVerified` tinyint NOT NULL DEFAULT '0' COMMENT '0=no, 1=yes',
+  `isDelete` tinyint NOT NULL DEFAULT '0' COMMENT '0=active, 1=delete',
+  `isActive` tinyint NOT NULL DEFAULT '1' COMMENT '1= active, 0=noactive',
+  PRIMARY KEY (`id`),
+  KEY `mobile` (`mobile`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
 -- --------------------------------------------------------
@@ -1403,16 +1530,18 @@ CREATE TABLE `user_registrations` (
 -- Table structure for table `user_tree`
 --
 
-CREATE TABLE `user_tree` (
-  `id` int(11) NOT NULL,
-  `rec_date` datetime NOT NULL DEFAULT current_timestamp(),
-  `refferaltype` int(11) NOT NULL DEFAULT 1 COMMENT '1=Customer, 2=Channel',
-  `refferaluserid` int(11) NOT NULL,
-  `subuserid` int(11) NOT NULL,
-  `payout` int(11) NOT NULL DEFAULT 0 COMMENT '0=No, 1=Yes',
+DROP TABLE IF EXISTS `user_tree`;
+CREATE TABLE IF NOT EXISTS `user_tree` (
+  `id` int NOT NULL AUTO_INCREMENT,
+  `rec_date` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  `refferaltype` int NOT NULL DEFAULT '1' COMMENT '1=Customer, 2=Channel',
+  `refferaluserid` int NOT NULL,
+  `subuserid` int NOT NULL,
+  `payout` int NOT NULL DEFAULT '0' COMMENT '0=No, 1=Yes',
   `payout_date` date DEFAULT NULL,
-  `payout_amount` float(11,2) NOT NULL DEFAULT 0.00,
-  `order_amount` float(11,2) NOT NULL DEFAULT 0.00
+  `payout_amount` float(11,2) NOT NULL DEFAULT '0.00',
+  `order_amount` float(11,2) NOT NULL DEFAULT '0.00',
+  PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
 -- --------------------------------------------------------
@@ -1421,17 +1550,19 @@ CREATE TABLE `user_tree` (
 -- Table structure for table `vegaah_entry`
 --
 
-CREATE TABLE `vegaah_entry` (
-  `id` int(11) NOT NULL,
-  `rec_date` datetime NOT NULL DEFAULT current_timestamp(),
-  `entryfor` int(11) NOT NULL DEFAULT 0 COMMENT '11=SelfApply,12=Loan Agent,3=LA_Offer_1,4=LA_Offer_2,5=LA_Offer_3,6=SA_Offer_1,7=SA_Offer_2,8=SA_Offer_3,9=SA_Offer_4,10=LA_Offer_4	',
-  `userid` int(11) NOT NULL,
+DROP TABLE IF EXISTS `vegaah_entry`;
+CREATE TABLE IF NOT EXISTS `vegaah_entry` (
+  `id` int NOT NULL AUTO_INCREMENT,
+  `rec_date` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  `entryfor` int NOT NULL DEFAULT '0' COMMENT '11=SelfApply,12=Loan Agent,3=LA_Offer_1,4=LA_Offer_2,5=LA_Offer_3,6=SA_Offer_1,7=SA_Offer_2,8=SA_Offer_3,9=SA_Offer_4,10=LA_Offer_4	',
+  `userid` int NOT NULL,
   `orderid` varchar(50) NOT NULL,
   `orderamount` float(11,2) NOT NULL,
   `ordernote` varchar(256) DEFAULT NULL,
   `referenceid` varchar(256) DEFAULT NULL,
   `txstatus` varchar(256) DEFAULT NULL,
-  `paymentmode` varchar(256) DEFAULT NULL
+  `paymentmode` varchar(256) DEFAULT NULL,
+  PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
 -- --------------------------------------------------------
@@ -1440,17 +1571,19 @@ CREATE TABLE `vegaah_entry` (
 -- Table structure for table `zaakpay_entry`
 --
 
-CREATE TABLE `zaakpay_entry` (
-  `id` int(11) NOT NULL,
-  `rec_date` datetime NOT NULL DEFAULT current_timestamp(),
-  `entryfor` int(11) NOT NULL DEFAULT 0 COMMENT '11=SelfApply,12=Loan Agent,3=LA_Offer_1,4=LA_Offer_2,5=LA_Offer_3,6=SA_Offer_1,7=SA_Offer_2,8=SA_Offer_3,9=SA_Offer_4,10=LA_Offer_4',
-  `userid` int(11) NOT NULL,
+DROP TABLE IF EXISTS `zaakpay_entry`;
+CREATE TABLE IF NOT EXISTS `zaakpay_entry` (
+  `id` int NOT NULL AUTO_INCREMENT,
+  `rec_date` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  `entryfor` int NOT NULL DEFAULT '0' COMMENT '11=SelfApply,12=Loan Agent,3=LA_Offer_1,4=LA_Offer_2,5=LA_Offer_3,6=SA_Offer_1,7=SA_Offer_2,8=SA_Offer_3,9=SA_Offer_4,10=LA_Offer_4',
+  `userid` int NOT NULL,
   `orderid` varchar(50) NOT NULL,
   `orderamount` float(11,2) NOT NULL,
   `ordernote` varchar(256) DEFAULT NULL,
   `statuscode` varchar(256) DEFAULT NULL,
   `transactionid` varchar(256) DEFAULT NULL,
-  `paymentmode` varchar(256) DEFAULT NULL
+  `paymentmode` varchar(256) DEFAULT NULL,
+  PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
 -- --------------------------------------------------------
@@ -1459,776 +1592,20 @@ CREATE TABLE `zaakpay_entry` (
 -- Table structure for table `zwitch_entry`
 --
 
-CREATE TABLE `zwitch_entry` (
-  `id` int(11) NOT NULL,
+DROP TABLE IF EXISTS `zwitch_entry`;
+CREATE TABLE IF NOT EXISTS `zwitch_entry` (
+  `id` int NOT NULL AUTO_INCREMENT,
   `rec_date` datetime NOT NULL,
-  `entryfor` int(11) NOT NULL DEFAULT 0,
-  `userid` int(11) NOT NULL,
-  `orderid` varchar(50) NOT NULL,
+  `entryfor` int NOT NULL DEFAULT '0',
+  `userid` int NOT NULL,
+  `orderid` varchar(50) COLLATE utf8mb4_unicode_ci NOT NULL,
   `orderamount` float(11,2) NOT NULL,
-  `ordernote` varchar(256) DEFAULT NULL,
-  `referenceid` varchar(256) DEFAULT NULL,
-  `txstatus` varchar(256) DEFAULT NULL,
-  `paymentmode` varchar(256) DEFAULT NULL
+  `ordernote` varchar(256) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `referenceid` varchar(256) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `txstatus` varchar(256) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `paymentmode` varchar(256) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
-
---
--- Indexes for dumped tables
---
-
---
--- Indexes for table `administrations`
---
-ALTER TABLE `administrations`
-  ADD PRIMARY KEY (`id`);
-
---
--- Indexes for table `adscontent`
---
-ALTER TABLE `adscontent`
-  ADD PRIMARY KEY (`id`);
-
---
--- Indexes for table `airpay_entry`
---
-ALTER TABLE `airpay_entry`
-  ADD PRIMARY KEY (`id`);
-
---
--- Indexes for table `aisensy_settings`
---
-ALTER TABLE `aisensy_settings`
-  ADD PRIMARY KEY (`id`);
-
---
--- Indexes for table `application_remarks`
---
-ALTER TABLE `application_remarks`
-  ADD PRIMARY KEY (`id`),
-  ADD KEY `loan_application_id` (`application_id`),
-  ADD KEY `administration_id` (`staff_id`);
-
---
--- Indexes for table `applylink_criteria`
---
-ALTER TABLE `applylink_criteria`
-  ADD PRIMARY KEY (`id`);
-
---
--- Indexes for table `bankapplylink`
---
-ALTER TABLE `bankapplylink`
-  ADD PRIMARY KEY (`id`);
-
---
--- Indexes for table `banks`
---
-ALTER TABLE `banks`
-  ADD PRIMARY KEY (`id`);
-
---
--- Indexes for table `bulksms`
---
-ALTER TABLE `bulksms`
-  ADD PRIMARY KEY (`id`);
-
---
--- Indexes for table `cache`
---
-ALTER TABLE `cache`
-  ADD PRIMARY KEY (`key`);
-
---
--- Indexes for table `cache_locks`
---
-ALTER TABLE `cache_locks`
-  ADD PRIMARY KEY (`key`);
-
---
--- Indexes for table `cardoffer`
---
-ALTER TABLE `cardoffer`
-  ADD PRIMARY KEY (`id`);
-
---
--- Indexes for table `careers`
---
-ALTER TABLE `careers`
-  ADD PRIMARY KEY (`id`);
-
---
--- Indexes for table `career_enquiries`
---
-ALTER TABLE `career_enquiries`
-  ADD PRIMARY KEY (`id`);
-
---
--- Indexes for table `cashfree_entry`
---
-ALTER TABLE `cashfree_entry`
-  ADD PRIMARY KEY (`id`);
-
---
--- Indexes for table `channel_partners`
---
-ALTER TABLE `channel_partners`
-  ADD PRIMARY KEY (`id`);
-
---
--- Indexes for table `cipherpayentry`
---
-ALTER TABLE `cipherpayentry`
-  ADD PRIMARY KEY (`id`);
-
---
--- Indexes for table `click_counts`
---
-ALTER TABLE `click_counts`
-  ADD PRIMARY KEY (`id`);
-
---
--- Indexes for table `contact_enquiry`
---
-ALTER TABLE `contact_enquiry`
-  ADD PRIMARY KEY (`id`);
-
---
--- Indexes for table `criteria_list`
---
-ALTER TABLE `criteria_list`
-  ADD PRIMARY KEY (`id`);
-
---
--- Indexes for table `enroll_services`
---
-ALTER TABLE `enroll_services`
-  ADD PRIMARY KEY (`id`),
-  ADD KEY `serviceid` (`serviceid`);
-
---
--- Indexes for table `failed_jobs`
---
-ALTER TABLE `failed_jobs`
-  ADD PRIMARY KEY (`id`),
-  ADD UNIQUE KEY `failed_jobs_uuid_unique` (`uuid`);
-
---
--- Indexes for table `fb_ads_entry`
---
-ALTER TABLE `fb_ads_entry`
-  ADD PRIMARY KEY (`id`),
-  ADD KEY `userid` (`userid`);
-
---
--- Indexes for table `important_update`
---
-ALTER TABLE `important_update`
-  ADD PRIMARY KEY (`id`);
-
---
--- Indexes for table `info_pages`
---
-ALTER TABLE `info_pages`
-  ADD PRIMARY KEY (`id`);
-
---
--- Indexes for table `interakt_settings`
---
-ALTER TABLE `interakt_settings`
-  ADD PRIMARY KEY (`id`);
-
---
--- Indexes for table `invoices`
---
-ALTER TABLE `invoices`
-  ADD PRIMARY KEY (`id`);
-
---
--- Indexes for table `jobs`
---
-ALTER TABLE `jobs`
-  ADD PRIMARY KEY (`id`),
-  ADD KEY `jobs_queue_index` (`queue`);
-
---
--- Indexes for table `loanstatus`
---
-ALTER TABLE `loanstatus`
-  ADD PRIMARY KEY (`id`);
-
---
--- Indexes for table `loanstatus_remarks`
---
-ALTER TABLE `loanstatus_remarks`
-  ADD PRIMARY KEY (`id`);
-
---
--- Indexes for table `loan_applications`
---
-ALTER TABLE `loan_applications`
-  ADD PRIMARY KEY (`id`),
-  ADD KEY `userid` (`userid`);
-
---
--- Indexes for table `loan_application_status`
---
-ALTER TABLE `loan_application_status`
-  ADD PRIMARY KEY (`id`);
-
---
--- Indexes for table `loan_applied_history`
---
-ALTER TABLE `loan_applied_history`
-  ADD PRIMARY KEY (`id`);
-
---
--- Indexes for table `lyra_entry`
---
-ALTER TABLE `lyra_entry`
-  ADD PRIMARY KEY (`id`);
-
---
--- Indexes for table `membership_orders`
---
-ALTER TABLE `membership_orders`
-  ADD PRIMARY KEY (`id`);
-
---
--- Indexes for table `migrations`
---
-ALTER TABLE `migrations`
-  ADD PRIMARY KEY (`id`);
-
---
--- Indexes for table `otp_verifications`
---
-ALTER TABLE `otp_verifications`
-  ADD PRIMARY KEY (`id`);
-
---
--- Indexes for table `partner_tasks`
---
-ALTER TABLE `partner_tasks`
-  ADD PRIMARY KEY (`id`);
-
---
--- Indexes for table `paygic_entry`
---
-ALTER TABLE `paygic_entry`
-  ADD PRIMARY KEY (`id`);
-
---
--- Indexes for table `personal_access_tokens`
---
-ALTER TABLE `personal_access_tokens`
-  ADD PRIMARY KEY (`id`),
-  ADD UNIQUE KEY `personal_access_tokens_token_unique` (`token`),
-  ADD KEY `personal_access_tokens_tokenable_type_tokenable_id_index` (`tokenable_type`,`tokenable_id`);
-
---
--- Indexes for table `phonepe_entry`
---
-ALTER TABLE `phonepe_entry`
-  ADD PRIMARY KEY (`id`);
-
---
--- Indexes for table `products`
---
-ALTER TABLE `products`
-  ADD PRIMARY KEY (`id`);
-
---
--- Indexes for table `razorpayentry`
---
-ALTER TABLE `razorpayentry`
-  ADD PRIMARY KEY (`id`);
-
---
--- Indexes for table `refunds`
---
-ALTER TABLE `refunds`
-  ADD PRIMARY KEY (`id`);
-
---
--- Indexes for table `roipackages`
---
-ALTER TABLE `roipackages`
-  ADD PRIMARY KEY (`id`);
-
---
--- Indexes for table `services`
---
-ALTER TABLE `services`
-  ADD PRIMARY KEY (`id`);
-
---
--- Indexes for table `sessions`
---
-ALTER TABLE `sessions`
-  ADD PRIMARY KEY (`id`),
-  ADD KEY `sessions_user_id_index` (`user_id`),
-  ADD KEY `sessions_last_activity_index` (`last_activity`);
-
---
--- Indexes for table `site_options`
---
-ALTER TABLE `site_options`
-  ADD PRIMARY KEY (`id`);
-
---
--- Indexes for table `sms_list`
---
-ALTER TABLE `sms_list`
-  ADD PRIMARY KEY (`id`);
-
---
--- Indexes for table `sms_log`
---
-ALTER TABLE `sms_log`
-  ADD PRIMARY KEY (`id`);
-
---
--- Indexes for table `source_entry`
---
-ALTER TABLE `source_entry`
-  ADD PRIMARY KEY (`id`);
-
---
--- Indexes for table `staff_tasks`
---
-ALTER TABLE `staff_tasks`
-  ADD PRIMARY KEY (`id`);
-
---
--- Indexes for table `subpaisa_entry`
---
-ALTER TABLE `subpaisa_entry`
-  ADD PRIMARY KEY (`id`);
-
---
--- Indexes for table `support_requests`
---
-ALTER TABLE `support_requests`
-  ADD PRIMARY KEY (`id`);
-
---
--- Indexes for table `support_request_chat`
---
-ALTER TABLE `support_request_chat`
-  ADD PRIMARY KEY (`id`);
-
---
--- Indexes for table `user_documents`
---
-ALTER TABLE `user_documents`
-  ADD PRIMARY KEY (`id`);
-
---
--- Indexes for table `user_offers`
---
-ALTER TABLE `user_offers`
-  ADD PRIMARY KEY (`id`);
-
---
--- Indexes for table `user_payout_documents`
---
-ALTER TABLE `user_payout_documents`
-  ADD PRIMARY KEY (`id`);
-
---
--- Indexes for table `user_registrations`
---
-ALTER TABLE `user_registrations`
-  ADD PRIMARY KEY (`id`),
-  ADD KEY `mobile` (`mobile`);
-
---
--- Indexes for table `user_tree`
---
-ALTER TABLE `user_tree`
-  ADD PRIMARY KEY (`id`);
-
---
--- Indexes for table `vegaah_entry`
---
-ALTER TABLE `vegaah_entry`
-  ADD PRIMARY KEY (`id`);
-
---
--- Indexes for table `zaakpay_entry`
---
-ALTER TABLE `zaakpay_entry`
-  ADD PRIMARY KEY (`id`);
-
---
--- Indexes for table `zwitch_entry`
---
-ALTER TABLE `zwitch_entry`
-  ADD PRIMARY KEY (`id`);
-
---
--- AUTO_INCREMENT for dumped tables
---
-
---
--- AUTO_INCREMENT for table `administrations`
---
-ALTER TABLE `administrations`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
-
---
--- AUTO_INCREMENT for table `adscontent`
---
-ALTER TABLE `adscontent`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
-
---
--- AUTO_INCREMENT for table `airpay_entry`
---
-ALTER TABLE `airpay_entry`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
-
---
--- AUTO_INCREMENT for table `aisensy_settings`
---
-ALTER TABLE `aisensy_settings`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
-
---
--- AUTO_INCREMENT for table `application_remarks`
---
-ALTER TABLE `application_remarks`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
-
---
--- AUTO_INCREMENT for table `applylink_criteria`
---
-ALTER TABLE `applylink_criteria`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
-
---
--- AUTO_INCREMENT for table `bankapplylink`
---
-ALTER TABLE `bankapplylink`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=33;
-
---
--- AUTO_INCREMENT for table `banks`
---
-ALTER TABLE `banks`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=47;
-
---
--- AUTO_INCREMENT for table `bulksms`
---
-ALTER TABLE `bulksms`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
-
---
--- AUTO_INCREMENT for table `cardoffer`
---
-ALTER TABLE `cardoffer`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
-
---
--- AUTO_INCREMENT for table `careers`
---
-ALTER TABLE `careers`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
-
---
--- AUTO_INCREMENT for table `career_enquiries`
---
-ALTER TABLE `career_enquiries`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
-
---
--- AUTO_INCREMENT for table `cashfree_entry`
---
-ALTER TABLE `cashfree_entry`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
-
---
--- AUTO_INCREMENT for table `channel_partners`
---
-ALTER TABLE `channel_partners`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
-
---
--- AUTO_INCREMENT for table `cipherpayentry`
---
-ALTER TABLE `cipherpayentry`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
-
---
--- AUTO_INCREMENT for table `click_counts`
---
-ALTER TABLE `click_counts`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
-
---
--- AUTO_INCREMENT for table `contact_enquiry`
---
-ALTER TABLE `contact_enquiry`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
-
---
--- AUTO_INCREMENT for table `criteria_list`
---
-ALTER TABLE `criteria_list`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
-
---
--- AUTO_INCREMENT for table `enroll_services`
---
-ALTER TABLE `enroll_services`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
-
---
--- AUTO_INCREMENT for table `failed_jobs`
---
-ALTER TABLE `failed_jobs`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT;
-
---
--- AUTO_INCREMENT for table `fb_ads_entry`
---
-ALTER TABLE `fb_ads_entry`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
-
---
--- AUTO_INCREMENT for table `important_update`
---
-ALTER TABLE `important_update`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
-
---
--- AUTO_INCREMENT for table `info_pages`
---
-ALTER TABLE `info_pages`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=44;
-
---
--- AUTO_INCREMENT for table `interakt_settings`
---
-ALTER TABLE `interakt_settings`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
-
---
--- AUTO_INCREMENT for table `invoices`
---
-ALTER TABLE `invoices`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
-
---
--- AUTO_INCREMENT for table `jobs`
---
-ALTER TABLE `jobs`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT;
-
---
--- AUTO_INCREMENT for table `loanstatus`
---
-ALTER TABLE `loanstatus`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=12;
-
---
--- AUTO_INCREMENT for table `loanstatus_remarks`
---
-ALTER TABLE `loanstatus_remarks`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
-
---
--- AUTO_INCREMENT for table `loan_applications`
---
-ALTER TABLE `loan_applications`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
-
---
--- AUTO_INCREMENT for table `loan_application_status`
---
-ALTER TABLE `loan_application_status`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
-
---
--- AUTO_INCREMENT for table `loan_applied_history`
---
-ALTER TABLE `loan_applied_history`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
-
---
--- AUTO_INCREMENT for table `lyra_entry`
---
-ALTER TABLE `lyra_entry`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
-
---
--- AUTO_INCREMENT for table `membership_orders`
---
-ALTER TABLE `membership_orders`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
-
---
--- AUTO_INCREMENT for table `migrations`
---
-ALTER TABLE `migrations`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT;
-
---
--- AUTO_INCREMENT for table `otp_verifications`
---
-ALTER TABLE `otp_verifications`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
-
---
--- AUTO_INCREMENT for table `partner_tasks`
---
-ALTER TABLE `partner_tasks`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
-
---
--- AUTO_INCREMENT for table `paygic_entry`
---
-ALTER TABLE `paygic_entry`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
-
---
--- AUTO_INCREMENT for table `personal_access_tokens`
---
-ALTER TABLE `personal_access_tokens`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT;
-
---
--- AUTO_INCREMENT for table `phonepe_entry`
---
-ALTER TABLE `phonepe_entry`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
-
---
--- AUTO_INCREMENT for table `products`
---
-ALTER TABLE `products`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=20;
-
---
--- AUTO_INCREMENT for table `razorpayentry`
---
-ALTER TABLE `razorpayentry`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
-
---
--- AUTO_INCREMENT for table `refunds`
---
-ALTER TABLE `refunds`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
-
---
--- AUTO_INCREMENT for table `roipackages`
---
-ALTER TABLE `roipackages`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
-
---
--- AUTO_INCREMENT for table `services`
---
-ALTER TABLE `services`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
-
---
--- AUTO_INCREMENT for table `site_options`
---
-ALTER TABLE `site_options`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=14;
-
---
--- AUTO_INCREMENT for table `sms_list`
---
-ALTER TABLE `sms_list`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=32;
-
---
--- AUTO_INCREMENT for table `sms_log`
---
-ALTER TABLE `sms_log`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
-
---
--- AUTO_INCREMENT for table `source_entry`
---
-ALTER TABLE `source_entry`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
-
---
--- AUTO_INCREMENT for table `staff_tasks`
---
-ALTER TABLE `staff_tasks`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
-
---
--- AUTO_INCREMENT for table `subpaisa_entry`
---
-ALTER TABLE `subpaisa_entry`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
-
---
--- AUTO_INCREMENT for table `support_requests`
---
-ALTER TABLE `support_requests`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
-
---
--- AUTO_INCREMENT for table `support_request_chat`
---
-ALTER TABLE `support_request_chat`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
-
---
--- AUTO_INCREMENT for table `user_documents`
---
-ALTER TABLE `user_documents`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
-
---
--- AUTO_INCREMENT for table `user_offers`
---
-ALTER TABLE `user_offers`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
-
---
--- AUTO_INCREMENT for table `user_payout_documents`
---
-ALTER TABLE `user_payout_documents`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
-
---
--- AUTO_INCREMENT for table `user_registrations`
---
-ALTER TABLE `user_registrations`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
-
---
--- AUTO_INCREMENT for table `user_tree`
---
-ALTER TABLE `user_tree`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
-
---
--- AUTO_INCREMENT for table `vegaah_entry`
---
-ALTER TABLE `vegaah_entry`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
-
---
--- AUTO_INCREMENT for table `zaakpay_entry`
---
-ALTER TABLE `zaakpay_entry`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
-
---
--- AUTO_INCREMENT for table `zwitch_entry`
---
-ALTER TABLE `zwitch_entry`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;

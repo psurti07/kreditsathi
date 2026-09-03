@@ -38,8 +38,6 @@ $(document).ready(function(){
 
     /* when click on edit button in modal tha perform */
     $(".edit-phoneNumber").on('click', function(){
-        $('#checkmodal').html('Apply Now');
-        $('#checkmodal').attr('disabled', false);
         $('#exampleModal').modal('hide');
         let mobileField = document.getElementById('mobile');
         if(mobileField.value == '' || mobileField.value == null){
@@ -66,10 +64,6 @@ $(document).ready(function(){
                 data: data,
                 processData: false,
                 contentType: false,
-                beforeSend: function () {
-                    $('#checkmodal').html('<span class="spinner-border spinner-border-sm"></span> Process Now');
-                    $('#checkmodal').attr('disabled', true);
-                },
                 /* success function handle */
                 success: function (result) {
                     $(this).attr("disabled", false);
@@ -119,8 +113,6 @@ $(document).ready(function(){
                     } else {
                         toastr.error(result.message);
                         $('#usererrormsg').html(result.message);
-                        $('#checkmodal').html('Apply Now');
-                        $('#checkmodal').attr('disabled', false);
                     }
                 },
                 /* error function handle */
@@ -131,8 +123,6 @@ $(document).ready(function(){
                         errorsHtml = '<strong>' + value[0] + '</strong>';
                         $('.' + key).html(errorsHtml);
                     });
-                    $('#checkmodal').html('Process Now');
-                    $('#checkmodal').attr('disabled', false);
                 }
             });
             /* ajax ends */
@@ -158,10 +148,6 @@ $(document).ready(function(){
                 data: data,
                 processData: false,
                 contentType: false,
-                beforeSend: function() {
-                    $('#otpBtn').html('<span class="spinner-border spinner-border-sm"></span> Validating...');
-                    $('#otpBtn').attr('disabled', true);
-                },
                 /* success function handle */
                 success: function (result) {
                     $(this).attr("disabled", false);
@@ -195,8 +181,8 @@ $(document).ready(function(){
                     } else {
                         /* failed response */
                         $("#invalidOtp").text(result.message);
-                        $('#otpBtn').html('Verify &amp; Proceed');
-                        $('#otpBtn').attr('disabled', false);
+                        // $('#otpBtn').html('Verify &amp; Proceed');
+                        // $('#otpBtn').attr('disabled', false);
                     }
                 },
                 /* error function handle */
@@ -207,8 +193,8 @@ $(document).ready(function(){
                         errorsHtml = '<strong>' + value[0] + '</strong>';
                         $('.' + key).html(errorsHtml);
                     });
-                    $('#otpBtn').html('Verify &amp; Proceed');
-                    $('#otpBtn').attr('disabled', false);
+                    // $('#otpBtn').html('Verify &amp; Proceed');
+                    // $('#otpBtn').attr('disabled', false);
                 }
             })
             /* ajax ends */
@@ -267,12 +253,14 @@ $(document).ready(function(){
         let allow_sms = $("input[name='allow_sms']:checked").val();
         let accept_tnc = $("input[name='accept_tnc']:checked").val();
         let acc_type = $("input[name='acc_type']").val();
+        let loan_type = $("input[name='loan_type']").val();
         var formData = new FormData();
         formData.append('mobile', mobile);
         formData.append('user_type', user_type);
         formData.append('allow_sms', allow_sms);
         formData.append('accept_tnc', accept_tnc);
         formData.append('acc_type', acc_type);
+        formData.append('loan_type', loan_type);
         /* ajax start */
         $.ajax({
             url: sendOtpUrl,

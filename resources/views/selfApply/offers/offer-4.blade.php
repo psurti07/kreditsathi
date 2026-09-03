@@ -14,7 +14,7 @@
         <div class="row d-flex align-items-center justify-content-center">
             <div class="col-md-12 col-lg-6 order-2 order-md-2 order-lg-1 m-auto">
                 <div class="img-block">
-                    <img src="{{ asset('front/images/offer/self-apply-star-offer.jpg') }}" alt="selfapply nbfc list"
+                    <img src="{{ asset('front/images/offer/self-apply-star-offer.png') }}" alt="selfapply nbfc list"
                         class="img-fluid rounded-3 w-100">
                 </div>
             </div>
@@ -81,9 +81,9 @@
                             </div>
                             <div class="col-md-12">
                                 <div class="input-group">
-                                    <div class="input-group-prepend">
+                                    <!-- <div class="input-group-prepend">
                                         <i class="fa fa-envelope"></i>
-                                    </div>
+                                    </div> -->
                                     <input type="email" name="email" id="email" class="form-control"
                                         placeholder="Email*" autocomplete="off" value="{{ old('email') }}">
                                 </div>

@@ -4,40 +4,177 @@
 <link rel="stylesheet" href="{{ asset('front/calc/emicalculator.css') }}">
 <link rel="stylesheet" href="{{ asset('front/calc/calcstyle.css') }}">
 <link rel="stylesheet" href="{{ asset('front/css/custom.css') }}">
+
+<style>
+    @media screen and (min-width:768px) {
+        #product-banner {
+            position: relative;
+            width: 100%;
+            min-height: 620px;
+            display: flex;
+            align-items: flex-end;
+            background: url('{{ asset("front/images/products_image.png") }}') no-repeat;
+            background-size: cover;
+            overflow: hidden;
+        }
+
+        .banner-image-section .banner-content {
+            position: absolute;
+            bottom: 0;
+            transform: translateX(0%);
+        }
+    }
+
+    @media screen and (min-width:768px) and (max-width:991px) {
+        .banner-image-section .banner-content {
+            position: absolute;
+            bottom: 0;
+            transform: translateX(0%);
+            right: 20px;
+        }
+    }
+
+
+    #product-banner .container {
+        position: relative;
+        z-index: 2;
+    }
+
+    .banner-content {
+        color: #fff;
+        padding: 70px 0;
+        max-width: 640px;
+    }
+
+    .banner-title {
+        font-weight: 700;
+        line-height: 1.15;
+        margin-bottom: 1rem;
+        color: #fff;
+    }
+
+    .banner-subtitle {
+        font-size: clamp(1rem, 1.6vw, 1.25rem);
+        line-height: 1.7;
+        margin-bottom: 2rem;
+        color: rgba(255, 255, 255, 0.92);
+    }
+
+    /* Tablet */
+    @media (max-width: 767px) {
+        #product-banner {
+            min-height: 250px;
+        }
+
+        .banner-content {
+            text-align: center;
+            margin: 0 auto;
+            padding: 50px 0 0px;
+        }
+    }
+
+    /* Mobile */
+    @media (max-width: 575.98px) {
+        #product-banner {
+            min-height: 325px;
+            margin-bottom: 50px;
+        }
+
+        .banner-content {
+            padding: 40px 0 0px;
+        }
+
+        #product-banner .custom-btn {
+            width: 60% !important;
+            margin: auto;
+        }
+    }
+
+    #hero-7 {
+        background-color: #f5f9fc;
+    }
+</style>
 @endpush
 @push('style-css')
 
 @endpush
 @section('content')
-<!-- main section starts -->
-<section id="hero-7" class="hero-section bg--green-100 bg--scroll">
-    <!-- <div class="hero-overlay"> -->
+
+<section id="hero-7" class="hero-section bg--scroll pb-0">
     <div class="container">
-        <div class="row d-flex align-items-center">
-            <div class="col-md-6 col-lg-6 col-12 order-lg-1 order-2">
-                <div class="hero-7-img d-flex justify-content-center align-items-start mb-md-0 mb-15">
-                    <img src="{{ asset('front/images/hero-1-img.png') }}" alt="kreditsathi" class="img-fluid p-0 w-75">
+        <div class="row">
+            <div class="col-md-7 col-lg-7 col-12 m-auto">
+                <div class="hero-7-txt pb-3">
+                    <div class="text-start">
+                        <h1 class="s-40 w-700">Personal Loan Ki Har Raah Mein, Aapka Sathi</h1>
+                        <p class="mb-20">Get Personalized Financial Consultation and Services for Your Specific Needs</p>
+                        <a href="{{ route('self.apply.main') }}" class="custom-btn w-auto">
+                                <span class="btn-text pe-2">Self Apply</span>
+                                <span class="btn-icon"> → </span>
+                        </a>
+                        <a href="{{ route('loan.agent.main') }}" class="custom-btn w-auto">
+                                <span class="btn-text pe-2">Hire an Agent</span>
+                                <span class="btn-icon"> → </span>
+                        </a>
+                    </div>
                 </div>
             </div>
-            <div class="col-md-6 col-lg-6 col-12 order-lg-2 order-1">
-                <div class="hero-7-txt">
-                    <h1 class="s-40 w-700">Expert-Led Guidance For <span class="color--green-500">Smarter Financial
-                            Decisions</span></h1>
-                    <p class="mb-20">We help you move closer to your dreams with premier financial consultation and
-                        services from some of the industry’s brilliant minds. </p>
-                    <a href="{{ route('self.apply.main') }}" class="btn r-04 btn--theme hover--tra-black last-link">Self
-                        Apply</a>
-                    <a href="{{ route('loan.agent.main') }}" class="btn r-04 btn--theme hover--tra-black last-link">Hire
-                        an Agent</a>
+            <div class="col-md-5 col-lg-5 col-12 m-auto mt-md-5">
+                <div class="hero-7-img ps-0 text-center align-item-center justify-content-center m-auto">
+                    <div class="owl-carousel owl-theme main-wrapper-new">
+                        <div class="slide-box border-bottom border-3 border-primary">
+                            <img src="{{ asset('front/images/home/home-1.png') }}" class="img-fluid w-100">
+                        </div>
+                        <div class="slide-box border-bottom border-3 border-primary">
+                            <img src="{{ asset('front/images/home/home-2.png') }}" class="img-fluid w-100">
+                        </div>
+                        <div class="slide-box border-bottom border-3 border-primary">
+                            <img src="{{ asset('front/images/home/home-3.png') }}" class="img-fluid w-100">
+                        </div>
+                        <div class="slide-box border-bottom border-3 border-primary">
+                            <img src="{{ asset('front/images/home/home-4.png') }}" class="img-fluid w-100">
+                        </div>
+                        <div class="slide-box border-bottom border-3 border-primary">
+                            <img src="{{ asset('front/images/home/home-5.png') }}" class="img-fluid w-100">
+                        </div>
+                        <div class="slide-box border-bottom border-3 border-primary">
+                            <img src="{{ asset('front/images/home/home-6.png') }}" class="img-fluid w-100">
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>
     </div>
-    <!-- </div> -->
 </section>
+
+<!-- main section starts -->
+<section id="hero-7" class="hero-section position-relative pb-0">
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col p-0">
+                <div class="owl-carousel owl-theme reviews-1-wrapper-new">
+                    <div class="slide-box">
+                        <img src="{{ asset('front/images/Home-main-1.jpg') }}" class="img-fluid w-100">
+                    </div>
+                    <div class="slide-box">
+                        <img src="{{ asset('front/images/Homepage-2.jpg') }}" class="img-fluid w-100">
+                    </div>
+                    <div class="slide-box">
+                        <img src="{{ asset('front/images/Homepage-3.jpg') }}" class="img-fluid w-100">
+                    </div>
+                    <div class="slide-box">
+                        <img src="{{ asset('front/images/Homepage-4.jpg') }}" class="img-fluid w-100">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</section>
+@if(false)
 <!-- main section ends -->
 <!-- Trust Badges Section starts -->
-<section id="statistic-1" class=" ct-03 py-0 statistic-section division">
+<!-- <section id="statistic-1" class=" ct-03 py-0 statistic-section division">
     <div class="container">
         <div class="statistic-5-wrapper r-12">
             <div class="row row-cols-2 row-cols-md-4">
@@ -60,7 +197,7 @@
                         <div class="statistic-block">
                             <div class="statistic-digit">
                                 <h2 class="s-30 w-700 mb-10 text-white">
-                                    <span class="count-element">5</span>Cr+
+                                    <span class="count-element">1.5</span>Cr+
                                 </h2>
                             </div>
                             <div class="statistic-txt">
@@ -100,37 +237,41 @@
             </div>
         </div>
     </div>
-</section>
+</section> -->
 <!-- Trust Badges Section ends -->
+@endif
 
 <section class="py-80 ct-02 content-section division" id="company">
     <div class="container">
         <div class="row justify-content-center">
             <div class="col-md-10 col-lg-9">
                 <div class="section-title mb-40">
-                    <h2 class="s-28 mb-5">About <span class="color--green-500">kreditsathi</span></h2>
-                    <p class="s-16 color--grey mt-0">Making Your Financial Journey Simpler With Reliable Support.</p>
+                    <h2 class="s-28 mb-5">About <span class="color--green-500">Us!</span></h2>
+                    <p class="s-16 color--grey mt-0">Financial Guidance That Puts You First</p>
                 </div>
             </div>
         </div>
         <div class="row align-items-center justify-content-center">
             <div class="col-lg-7 col-md-6 col-12">
                 <div class="txt-block">
-                    <p class="">Kreditsathi is designed for those who value time and clarity. We offer trusted financial
-                        solutions that make it easy for you to move forward without unnecessary delay. With our network
-                        of reputable NBFC partners, you'll always have access to a diverse range of financial services.
+                    <p class="">KreditSathi is a financial consultation and service platform created to simplify the loan application journey. Through our digital platform and network of lending partners, we help customers explore suitable financial options based on their requirements and eligibility profile.
                     </p>
-                    <p class="">We keep things simple so you can focus on what matters. From understanding your
-                        requirements to helping you move forward, the process is smooth and straightforward. You get the
-                        support you need without the usual back and forth or confusion.</p>
-                    <p class="">At Kreditsathi, it is about making financial decisions feel easier and more in control.
-                        Whether it is something planned or urgent, you can rely on a faster, more comfortable way to
-                        access the right solutions and move ahead with confidence.</p>
+                    <p class="">We understand that applying for financial support can sometimes feel confusing. That is why we focus on providing clear information, step-by-step assistance, and a smooth online experience. </p>
+
+                    <p class="w-700">Your Financial Success Is Our Purpose!</p>
+                    <ul class="simple-list">
+                        <li class="list-item">
+                            <p>We believe every financial journey is unique. That’s why we take the time to understand your goals and provide solutions tailored to your needs.</p>
+                        </li>
+                        <li class="list-item">
+                            <p class="mb-0">Your goals inspire our commitment, and we're here to help you move forward with trusted guidance and complete peace of mind.</p>
+                        </li>
+                    </ul>
                 </div>
 
             </div>
             <div class="col-lg-5 col-md-6 col-12 text-center ">
-                <img src="{{ asset('front/images/Compny-page-1.png') }}" alt="kreditsathi" class="img-fluid p-0">
+                <img src="{{ asset('front/images/about-img.png') }}" alt="kreditsathi" class="img-fluid p-0">
             </div>
         </div>
     </div>
@@ -143,8 +284,8 @@
             <div class="row justify-content-center">
                 <div class="col-md-10 col-lg-10">
                     <div class="section-title mb-40">
-                        <h2 class="s-28 mb-5">Our <span class="color--green-500">NBFC Partners </span></h2>
-                        <p class="s-16 color--grey mt-0">We work with the best to bring you the best.</p>
+                        <h2 class="s-28 mb-5">Trusted by <span class="color--green-500">NBFC Partners </span></h2>
+                        <p class="s-16 color--grey mt-0">Working with leading NBFCs to deliver reliable financial solutions for our customers.</p>
                     </div>
                 </div>
             </div>
@@ -164,79 +305,199 @@
         </div>
     </div>
 </section>
-<!-- Our Partners section end  -->
 
-
-
-
-
-<!-- why kreditsathi section starts -->
 <section id="features-6" class="py-80 features-section division">
     <div class="container">
         <div class="row justify-content-center">
             <div class="col-md-10 col-lg-9">
                 <div class="section-title mb-40">
-                    <h2 class="s-28 mb-5">Why <span class="color--green-500">Choose Us</span></h2>
-                    <p class="s-16 color--grey mt-0">Our Customer-First Approach Makes Us Your Preferred Choice.</p>
+                    <h2 class="s-28 mb-5">Why <span class="color--green-500">KreditSathi?</span></h2>
+                    <p class="s-16 color--grey mt-0">Reliable Support at Every Step</p>
                 </div>
             </div>
         </div>
         <div class="fbox-wrapper text-center">
-            <div class="row gx-3 gy-2 row-cols-1 row-cols-md-2 row-cols-lg-4">
-                <div class="col mb-lg-0 mb-2">
-                    <div class="fbox-8 fb-1 r-12 border-success h-100">
-                        <div class="fbox-txt text-start mb-3 pb-md-0 pb-5">
-                            <h4 class="s-18 w-700">Easy Access to Top NBFCs</h4>
-                            <p>Get access to several industry-leading NBFCs – All from the comfort of your home.</p>
-                        </div>
-                        <div class="fbox-ico ico-50 text-end mb-0">
+            <div class="row gx-5 gy-2 row-cols-1 row-cols-md-3 row-cols-lg-4">
+                <div class="col">
+                    <div class="fbox-8 fbox--hover fb-1 r-12 border shadow mb-md-0 mb-2 h-100">
+                        <div class="fbox-ico ico-50 mb-4">
                             <div class="shape-ico color--theme">
                                 <img class="img-fluid" src="{{ asset('front/images/Easy-Access-to-Top-NBFC.png') }}"
                                     alt="feature-image">
                             </div>
                         </div>
+                        <div class="fbox-txt">
+                            <h4 class="s-18 w-700 mb-4">Enriching Collaboration</h4>
+                            <p>Explore a wide range of financial services powered by our trusted network of leading NBFC partners.</p>
+                        </div>
                     </div>
                 </div>
-                <div class="col mb-lg-0 mb-2">
-                    <div class="fbox-8 fb-2 r-12 border-success h-100">
-                        <div class="fbox-txt text-start mb-3 pb-md-0 pb-5">
-                            <h4 class="s-18 w-700">100% Online Process</h4>
-                            <p>Experience premium financial services through an easy, streamlined online portal.</p>
-                        </div>
-                        <div class="fbox-ico ico-50 text-end mb-0">
+                <div class="col">
+                    <div class="fbox-8 fbox--hover fb-2 r-12 border shadow mb-md-0 mb-2 h-100">
+                        <div class="fbox-ico ico-50 mb-4">
                             <div class="shape-ico color--theme">
                                 <img class="img-fluid" src="{{ asset('front/images/100_-Online-Process.png') }}"
                                     alt="feature-image">
                             </div>
                         </div>
+                        <div class="fbox-txt">
+                            <h4 class="s-18 w-700 mb-4">100% Online Process</h4>
+                            <p>Experience seamless digital financial solutions from the comfort of your home.</p>
+                        </div>
                     </div>
                 </div>
-                <div class="col mb-lg-0 mb-2">
-                    <div class="fbox-8 fb-2 r-12 border-success h-100">
-                        <div class="fbox-txt text-start mb-3 pb-md-0 pb-5">
-                            <h4 class="s-18 w-700">Expert Financial Consultation</h4>
-                            <p>Make your financial journey easier with the guidance of our experienced professionals.
-                            </p>
-                        </div>
-                        <div class="fbox-ico ico-50 text-end mb-0">
+                <div class="col">
+                    <div class="fbox-8 fbox--hover fb-2 r-12 border shadow mb-md-0 mb-2 h-100">
+                        <div class="fbox-ico ico-50 mb-4">
                             <div class="shape-ico color--theme">
-                                <img class="img-fluid"
-                                    src="{{ asset('front/images/Expert-Financial-Consultation.png') }}"
+                                <img class="img-fluid" src="{{ asset('front/images/Expert-Financial-Consultation.png') }}"
                                     alt="feature-image">
                             </div>
                         </div>
+                        <div class="fbox-txt">
+                            <h4 class="s-18 w-700 mb-4">Self-Apply Feature</h4>
+                            <p>Take control of your finances with solutions designed to help you succeed.</p>
+                        </div>
                     </div>
                 </div>
-                <div class="col mb-lg-0 mb-2">
-                    <div class="fbox-8 fb-3 r-12 border-success h-100">
-                        <div class="fbox-txt text-start mb-3 pb-md-0 pb-5">
-                            <h4 class="s-18 w-700">Your Way, Your Choice </h4>
-                            <p>Apply yourself or hire a loan agent – Move forward in a way that suits you best.</p>
-                        </div>
-                        <div class="fbox-ico ico-50 text-end mb-0">
+                <div class="col">
+                    <div class="fbox-8 fbox--hover fb-3 r-12 border shadow mb-md-0 mb-2 h-100">
+                        <div class="fbox-ico ico-50 mb-4">
                             <div class="shape-ico color--theme">
                                 <img class="img-fluid" src="{{ asset('front/images/Your-Way-Your-Choice.png') }}"
                                     alt="feature-image">
+                            </div>
+                        </div>
+                        <div class="fbox-txt">
+                            <h4 class="s-18 w-700 mb-4">Hire Loan Agent</h4>
+                            <p>Increase your chances of loan approval with expert guidance and personalized support.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Products Intro section starts -->
+@if(false)
+<section id="products" class="pt-0  pb-80 features-section division">
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-md-10 col-lg-10">
+                <div class="section-title mb-40">
+                    <h2 class="s-28 mb-5">Smart Financial Solutions for <span class="color--green-500">Every Need</span>
+                    </h2>
+                    <p class="s-16 color--grey mt-0">Choose the financial solution that best aligns with your goals and needs.</p>
+                </div>
+            </div>
+        </div>
+        <div class="row align-items-center">
+            <div class="col-12 col-lg-6 d-md-block d-none mb-3">
+                <div class="img-block right-column text-center">
+                    <img class="img-fluid light-theme-img w-100 rounded-3"
+                        src="{{ asset('front/images/product-img.jpg') }}" alt="feature-image">
+                </div>
+            </div>
+            <div class="col-12 col-lg-6 align-items-center m-auto mt-0">
+                <div class="row fbox-wrapper
+                     mb-0 fbox-8 fb-1 p-0 border-0">
+                    <div class="col-12 col-lg-12">
+                        <div class="txt-block right-column card-left p-4 r-12 mb-md-3 mb-0">
+                            <div class="d-flex align-items-center mb-3">
+                                <div class="fbox-ico ico-50 text-end mb-0">
+                                    <div class="shape-ico color--theme">
+                                        <img class="img-fluid" src="{{ asset('front/images/Quick-Self-Apply.png') }}"
+                                            alt="feature-image">
+                                    </div>
+                                </div>
+                                <h3 class="s-22 w-700 ms-3 mb-0">
+                                    Quick Self-Apply </h3>
+                            </div>
+                            <p class="mb-2">
+                                Let our experienced loan specialists handle every step of your loan application, providing expert support from start to finish.
+                            </p>
+                            <h3 class="mb-0">
+                                @if(isset($products['self-apply']))
+                                <del>₹{{ $products['self-apply']->amount }}</del>
+                                <span class="color--green-500">
+                                    ₹{{ $products['self-apply']->offeramount }}/- Only
+                                </span>
+                                @endif
+                            </h3>
+                            <!-- <a href="{{ route('self.apply.main') }}" class="btn r-04 btn--theme hover--tra-black">
+                                Apply Now
+                            </a> -->
+                            <a href="{{ route('self.apply.main') }}" class="custom-btn">
+                                <span class="btn-text">Apply Now</span>
+                                <span class="btn-icon"> → </span>
+                            </a>
+                        </div>
+                    </div>
+                    <div class="col-12 col-lg-12">
+                        <div class="left-column card-left p-4 r-12">
+                            <div class="d-flex align-items-center mb-0">
+                                <div class="fbox-ico ico-50 text-end mb-0">
+                                    <div class="shape-ico color--theme">
+                                        <img class="img-fluid" src="{{ asset('front/images/Hire-Loan-Agent.png') }}"
+                                            alt="feature-image">
+                                    </div>
+                                </div>
+                                <h3 class="s-22 w-700 ms-3 mb-0">Hire Loan Agent</h3>
+                            </div>
+
+                            <p class="mb-2">
+                                Receive dedicated assistance from an experienced loan agent who can guide you throughout the process and help you understand the required steps.
+                            </p>
+                            <h3 class="mb-0">
+                                @if(isset($products['hire-loan-agent']))
+                                <del>₹{{ $products['hire-loan-agent']->amount }}</del>
+                                <span class="color--green-500">
+                                    ₹{{ $products['hire-loan-agent']->offeramount }}/- Only
+                                </span>
+                                @endif
+                            </h3>
+                            <!-- <a href="{{ route('loan.agent.main') }}" class="btn r-04 btn--theme hover--tra-black">
+                                Apply Now
+                            </a> -->
+                            <a href="{{ route('loan.agent.main') }}" class="custom-btn">
+                                <span class="btn-text">Apply Now</span>
+                                <span class="btn-icon"> → </span>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    </div>
+</section>
+@endif
+
+<section class="pt-50 ct-02 content-section division bg--blue-500">
+    <div class="container">
+        <div class="row align-items-center justify-content-center m-auto">
+            <div class="col-lg-5 col-md-6 col-12 text-center order-2 order-md-1">
+                <img src="{{ asset('front/images/product-image.png') }}" alt="kreditsathi" class="img-fluid p-0">
+            </div>
+            <div class="col-lg-7 col-md-6 col-12 order-1 order-md-2">
+                <div class="banner-content">
+                    <h2 class="banner-title">Get Personal Loan Approval in Minutes</h2>
+                    <p class="banner-subtitle">Quick approval. Minimal paperwork. Funds in your account.</p>
+                    <div class="col-lg-12 col-md-12 col-7 align-items-center justify-content-center m-auto">
+                        <div class="row pb-3">
+                            <div class="col-lg-4 col-md-6 col-sm-6 col-12">
+                                <a href="{{ route('self.apply.main') }}" class="custom-btn text-center w-100 mb-sm-0 mb-3">
+                                    <span class="btn-text">Self Apply</span>
+                                    <span class="btn-icon">→</span>
+                                </a>
+                            </div>
+                            <div class="col-lg-4 col-md-6 col-sm-6 col-12">
+                                <a href="{{ route('loan.agent.main') }}" class="custom-btn text-center w-100">
+                                    <span class="btn-text">Hire an Agent</span>
+                                    <span class="btn-icon">→</span>
+                                </a>
                             </div>
                         </div>
                     </div>
@@ -245,52 +506,9 @@
         </div>
     </div>
 </section>
-<!-- why kreditsathi section ends -->
 
-<!-- <section class="simple-process-section py-80">
-    <div class="container">
-        <div class="row justify-content-center">
-            <div class="col-md-12 col-lg-12">
-                <div class="section-title mb-40">
-                    <h2 class="s-28 mb-5">Let’s <span class="color--green-500">Connect</span></h2>
-                    <p class="description mt-0 s-16 color--grey">Send us a message, and our team will contact you
-                        shortly.</p>
-                </div>
-            </div>
-        </div>
 
-        <div class="process-wrapper">
-            <div class="process-step">
-                <div class="step-circle">01</div>
-                <h4 class="color--green-500">Loan Details</h4>
-                <p class="color--grey">Choose your loan amount and requirements.</p>
-            </div>
-            <div class="process-step active">
-                <div class="step-circle">02</div>
-                <h4 class="color--green-500">Personal Info</h4>
-                <p class="color--grey">Fill in your secure personal information.</p>
-            </div>
-            <div class="process-step">
-                <div class="step-circle">03</div>
-                <h4 class="color--green-500">Unlock Offers</h4>
-                <p class=" color--grey">Get the best loan offers instantly.</p>
-            </div>
-            <div class="process-step active">
-                <div class="step-circle">04</div>
-                <h4 class="color--green-500">Choose Plan</h4>
-                <p class="color--grey">Select a repayment option that suits you.</p>
-            </div>
-            <div class="process-step">
-                <div class="step-circle">05</div>
-                <h4 class="color--green-500">Get Approved</h4>
-                <p class="color--grey">Receive approval and funds quickly.</p>
-            </div>
-        </div>
-    </div>
-</section> -->
-
-<!-- eligibility calculator starts -->
-<section id="features-21" class="pt-0 pb-80 features-section division">
+<section id="features-21" class="pt-80 pb-80 features-section division">
     <div class="container">
         <div class="row justify-content-center">
             <div class="col-md-10 col-lg-10">
@@ -535,8 +753,12 @@
                                     <span class="s-16">Total amount</span>
                                     <span id="emitotalamount">₹<span>10,000</span></span>
                                 </div>
-                                <a href="{{ route('loan.agent.main') }}"
-                                    class="btn btn--green-400 hover--tra-black w-100">Apply for loan</a>
+                                <div class="text-center align-items-center justify-content-center m-auto">
+                                    <a href="{{ route('loan.agent.main') }}" class="custom-btn">
+                                        <span class="btn-text">Apply Now</span>
+                                        <span class="btn-icon"> → </span>
+                                    </a>
+                                </div>
                             </div>
                         </div>
                     </div>
@@ -549,177 +771,93 @@
 <!-- eligibility calculator ends -->
 {{--<hr class="divider">--}}
 
-<!-- Products Intro section starts -->
-<section id="products" class="pt-0  pb-80 features-section division">
-    <div class="container">
-        <div class="row justify-content-center">
-            <div class="col-md-10 col-lg-10">
-                <div class="section-title mb-40">
-                    <h2 class="s-28 mb-5">Move Towards Your <span class="color--green-500">Financial Goals
-                            Smartly</span>
-                    </h2>
-                    <p class="s-16 color--grey mt-0">Choose The Option That Suits Your Needs</p>
-                </div>
-            </div>
-        </div>
-        <div class="row align-items-center">
-            <div class="col-12 col-lg-6 d-md-block d-none mb-3">
-                <div class="img-block right-column text-center">
-                    <img class="img-fluid light-theme-img w-100 rounded-3"
-                        src="{{ asset('front/images/product-img.jpg') }}" alt="feature-image">
-                </div>
-            </div>
-            <div class="col-12 col-lg-6 align-items-center m-auto mt-0">
-                <div class="row fbox-wrapper
-                     mb-0 fbox-8 fb-1 p-0 border-0">
-                    <div class="col-12 col-lg-12">
-                        <div class="txt-block right-column card-left p-4 r-12 mb-md-3 mb-0">
-                            <div class="d-flex align-items-center mb-3">
-                                <div class="fbox-ico ico-50 text-end mb-0">
-                                    <div class="shape-ico color--theme">
-                                        <img class="img-fluid" src="{{ asset('front/images/Quick-Self-Apply.png') }}"
-                                            alt="feature-image">
-                                    </div>
-                                </div>
-                                <h3 class="s-22 w-700 ms-3 mb-0">
-                                    Quick Self-Apply </h3>
-                            </div>
-                            <p class="mb-2">
-                                Get quick access to a seamless online process, simple login links, and customized offers
-                                from our reliable NBFC partners.
-                            </p>
-                            <a href="{{ route('self.apply.main') }}" class="btn r-04 btn--theme hover--tra-black">
-                                Apply Now
-                            </a>
-                        </div>
-                    </div>
-                    <div class="col-12 col-lg-12">
-                        <div class="left-column card-left p-4 r-12">
-                            <div class="d-flex align-items-center mb-0">
-                                <div class="fbox-ico ico-50 text-end mb-0">
-                                    <div class="shape-ico color--theme">
-                                        <img class="img-fluid" src="{{ asset('front/images/Hire-Loan-Agent.png') }}"
-                                            alt="feature-image">
-                                    </div>
-                                </div>
-                                <h3 class="s-22 w-700 ms-3 mb-0">Hire Loan Agent</h3>
-                            </div>
-
-                            <p class="mb-2">
-                                Allow our experienced professionals to handle the process for you, so you can move
-                                forward with ease and without hassle.
-                            </p>
-                            <a href="{{ route('loan.agent.main') }}" class="btn r-04 btn--theme hover--tra-black">
-                                Apply Now
-                            </a>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-    </div>
-</section>
-<!-- Products Intro section ends -->
-
 <!-- Quick and swift steps section starts -->
-<section id="features-2" class="pt-0 pb-80 features-section division">
+<section id="features-6" class="py-80 features-section division">
     <div class="container">
         <div class="row justify-content-center">
             <div class="col-md-10 col-lg-9">
                 <div class="section-title mb-40">
-                    <h2 class="s-28 mb-5">How it <span class="color--green-500">works!</span></h2>
-                    <p class="s-16 color--grey mt-0">6 Simple Steps To Get Started </p>
+                    <h2 class="s-28 mb-5">How it <span class="color--green-500">KreditSathi Works</span></h2>
+                    <p class="s-16 color--grey mt-0">Get Started in Six Simple Steps</p>
                 </div>
             </div>
         </div>
-
         <div class="fbox-wrapper text-center">
             <div class="row g-4 row-cols-1 row-cols-md-2 row-cols-lg-3">
                 <div class="col">
-                    <div
-                        class="fb-1 r-12 px-4 py-3 d-block text-start bg--white-100 block-shadow r-08 features-card h-100">
-                        <div class="fbox-ico ico-40 mb-md-3 mb-3">
+                    <div class="fbox-8 fbox--hover fb-1 r-12 border shadow mb-md-0 mb-2 h-100">
+                        <div class="fbox-ico ico-50 mb-4">
                             <div class="shape-ico color--theme">
                                 <span class="flaticon-mobile-search"></span>
                             </div>
                         </div>
                         <div class="fbox-txt">
-                            <p class="mt-0">Begin your process by entering your registered mobile number, full name, and
-                                other required information.</p>
+                            <p>Enter your name, registered mobile number, and other necessary information.</p>
                         </div>
                     </div>
                 </div>
                 <div class="col">
-                    <div
-                        class="fb-1 r-12 px-4 py-3 d-block text-start bg--white-100 block-shadow r-08 features-card h-100">
-                        <div class="fbox-ico ico-40 mb-md-3 mb-3">
+                    <div class="fbox-8 fbox--hover fb-2 r-12 border shadow mb-md-0 mb-2 h-100">
+                        <div class="fbox-ico ico-50 mb-4">
                             <div class="shape-ico color--theme">
                                 <span class="flaticon-computer"></span>
                             </div>
                         </div>
                         <div class="fbox-txt">
-                            <p class="mt-0">Our system will determine your eligibility and display pre-approved
-                                offer(s). This is not a final offer. </p>
+                            <p>Complete the remaining details to check your eligibility and view your pre-qualified loan offer(s). This is not the final offer.</p>
                         </div>
                     </div>
                 </div>
                 <div class="col">
-                    <div
-                        class="fb-1 r-12 px-4 py-3 d-block text-start bg--white-100 block-shadow r-08 features-card h-100">
-                        <div class="fbox-ico ico-40 mb-md-3 mb-3">
+                    <div class="fbox-8 fbox--hover fb-2 r-12 border shadow mb-md-0 mb-2 h-100">
+                        <div class="fbox-ico ico-50 mb-4">
                             <div class="shape-ico color--theme">
                                 <span class="flaticon-credit-card"></span>
                             </div>
                         </div>
                         <div class="fbox-txt">
-                            <p class="mt-0">Purchase the plan that best fits your requirements to access the displayed
-                                pre-approved offer(s) </p>
+                            <p>Choose a subscription plan to view and access your available pre-qualified loan offers.</p>
                         </div>
                     </div>
                 </div>
                 <div class="col">
-                    <div
-                        class="fb-1 r-12 px-4 py-3 d-block text-start bg--white-100 block-shadow r-08 features-card h-100">
-                        <div class="fbox-ico ico-40 mb-md-3 mb-3">
+                    <div class="fbox-8 fbox--hover fb-3 r-12 border shadow mb-md-0 mb-2 h-100">
+                        <div class="fbox-ico ico-50 mb-4">
                             <div class="shape-ico color--theme">
                                 <span class="flaticon-time"></span>
                             </div>
                         </div>
                         <div class="fbox-txt">
-                            <p class="mt-0">Our team will contact you within 24-48 hours for verification and guide you
-                                through the next steps.</p>
+                            <p>Our verification team will contact you within 24–48 hours to verify your details and guide you through the document submission process.</p>
                         </div>
                     </div>
                 </div>
                 <div class="col">
-                    <div
-                        class="fb-1 r-12 px-4 py-3 d-block text-start bg--white-100 block-shadow r-08 features-card h-100">
-                        <div class="fbox-ico ico-40 mb-md-3 mb-3">
+                    <div class="fbox-8 fbox--hover fb-3 r-12 border shadow mb-md-0 mb-2 h-100">
+                        <div class="fbox-ico ico-50 mb-4">
                             <div class="shape-ico color--theme">
                                 <span class="flaticon-check-1"></span>
                             </div>
                         </div>
                         <div class="fbox-txt">
-                            <p class="mt-0">The NBFC will review your profile and documents in accordance with their
-                                policies and guidelines.</p>
+                            <p>Your documents and profile will be verified by the NBFC in accordance with its eligibility criteria and terms & conditions.
+                            </p>
                         </div>
                     </div>
                 </div>
                 <div class="col">
-                    <div
-                        class="fb-1 r-12 px-4 py-3 d-block text-start bg--white-100 block-shadow r-08 features-card h-100">
-                        <div class="fbox-ico ico-40 mb-md-3 mb-3">
+                    <div class="fbox-8 fbox--hover fb-3 r-12 border shadow mb-md-0 mb-2 h-100">
+                        <div class="fbox-ico ico-50 mb-4">
                             <div class="shape-ico color--theme">
                                 <span class="flaticon-profits"></span>
                             </div>
                         </div>
                         <div class="fbox-txt">
-                            <p class="mt-0">The NBFC will process the final approval, sanction, and disbursement in
-                                accordance with their terms. </p>
+                            <p>The NBFC will review your application and make the final decision on loan approval and disbursement based on its eligibility criteria and policies.</p>
                         </div>
                     </div>
                 </div>
+
             </div>
         </div>
     </div>
@@ -733,9 +871,9 @@
     <div class="container">
         <div class="row justify-content-center">
             <div class="col-md-12 col-lg-12">
-                <div class="section-title mb-40">
-                    <h2 class="s-28 mb-5">What Our <span class="color--green-500">Customers Say</span></h2>
-                    <p class="s-16 color--grey mt-0"> Hear it straight from the experiences.</p>
+                <div class="section-title mb-40 text-start">
+                    <h2 class="s-28 mb-5">See what our <span class="color--green-500">customers have to say</span></h2>
+                    <p class="s-16 color--grey mt-0"> Expert guidance at every step</p>
                 </div>
             </div>
         </div>
@@ -756,9 +894,8 @@
         <div class="row justify-content-center">
             <div class="col-md-12 col-lg-12">
                 <div class="section-title mb-40">
-                    <h2 class="s-28 mb-5">Let’s <span class="color--green-500">Connect</span></h2>
-                    <p class="description mt-0 s-16 color--grey">Send us a message, and our team will contact you
-                        shortly.</p>
+                    <h2 class="s-28 mb-5">Get in <span class="color--green-500">Touch</span></h2>
+                    <p class="description mt-0 s-16 color--grey">Fill in your details, and we'll contact you as soon as possible.</p>
                 </div>
             </div>
         </div>
@@ -826,7 +963,7 @@
                                     <div class="form-group form-floating">
                                         <input id="form_name" name="fullname" type="text" class="form-control name mb-0"
                                             placeholder="">
-                                        <label for="firstname">Full Name *</label>
+                                        <label for="firstname" class="pt-2">Full Name *</label>
                                     </div>
                                     @component('components.ajax-error',['field'=>'fullname'])@endcomponent
                                 </div>
@@ -835,7 +972,7 @@
                                         <input id="form_mobile" type="text" name="mobile"
                                             class="numeric-input mb-0 form-control mobile" placeholder="" minlength="10"
                                             maxlength="10" inputmode="numeric">
-                                        <label for="form_mobile">Mobile *</label>
+                                        <label for="form_mobile" class="pt-2">Mobile *</label>
                                     </div>
                                     @component('components.ajax-error',['field'=>'mobile'])@endcomponent
                                 </div>
@@ -843,7 +980,7 @@
                                     <div class="form-group form-floating">
                                         <input id="form_email" type="email" name="email" class="mb-0 form-control email"
                                             placeholder="">
-                                        <label for="form_email">Email *</label>
+                                        <label for="form_email" class="pt-2">Email *</label>
                                     </div>
                                     @component('components.ajax-error',['field'=>'email'])@endcomponent
                                 </div>
@@ -851,7 +988,7 @@
                                     <div class="form-group form-floating">
                                         <input id="form_subject" type="text" name="subject"
                                             class="mb-0 form-control subject" placeholder="">
-                                        <label for="form_subject">Subject *</label>
+                                        <label for="form_subject" class="pt-2">Subject *</label>
                                     </div>
                                     @component('components.ajax-error',['field'=>'subject'])@endcomponent
                                 </div>
@@ -859,13 +996,15 @@
                                     <div class="form-group form-floating">
                                         <textarea id="form_message" name="desc" class="mb-0 form-control message"
                                             placeholder="" style="height: 150px"></textarea>
-                                        <label for="form_message">Message *</label>
+                                        <label for="form_message" class="pt-2">Message *</label>
                                     </div>
                                     @component('components.ajax-error',['field'=>'desc'])@endcomponent
                                 </div>
                                 <div class="col-12 text-start">
-                                    <button type="submit" class="s-14 btn btn--green-400 hover--tra-black submit"
-                                        id="submit-btn">Submit Request</button>
+                                    <button type="submit" class="custom-btn text-center submit" id="submit-btn">
+                                        <span class="btn-text fw-semibold">Submit</span>
+                                        <span class="btn-icon"> → </span>
+                                    </button>
                                 </div>
                             </div>
                         </form>
@@ -909,115 +1048,171 @@
 <script src="{{ asset('front/js/home.js') }}" type="text/javascript"></script>
 @if($msg->status == 1)
 <script>
-$(document).ready(function() {
-    setTimeout(function() {
-        $(".myModal:not(.auto-off)").modal("show");
-    }, 3600);
-})
+    $(document).ready(function() {
+        setTimeout(function() {
+            $(".myModal:not(.auto-off)").modal("show");
+        }, 3600);
+    })
 </script>
 @endif
 
 <script>
-const routes = {
-    'selfapply': "{{ route('self.apply.send.otp') }}",
-    'loan-agent': "{{ route('loan.agent.send.otp') }}"
-};
+    const routes = {
+        'selfapply': "{{ route('self.apply.send.otp') }}",
+        'loanagent': "{{ route('loan.agent.send.otp') }}",
+    };
 
-document.addEventListener('DOMContentLoaded', () => {
-    const faqs = document.querySelectorAll('#faq-container li');
-    const loadMoreButton = document.getElementById('load-more-faq');
-    const viewLessButton = document.getElementById('view-less-faq');
-    let visibleCount = 5; // Number of FAQs initially shown
-    const batchSize = 5; // Number of FAQs to show on each click
+    document.addEventListener('DOMContentLoaded', () => {
+        const faqs = document.querySelectorAll('#faq-container li');
+        const loadMoreButton = document.getElementById('load-more-faq');
+        const viewLessButton = document.getElementById('view-less-faq');
+        let visibleCount = 5; // Number of FAQs initially shown
+        const batchSize = 5; // Number of FAQs to show on each click
 
-    // Initial setup: Show the first 7 FAQs
-    faqs.forEach((faq, index) => {
-        if (index >= visibleCount) {
-            faq.style.display = 'none';
-        }
-    });
-
-    // Event listener for Load More button
-    loadMoreButton.addEventListener('click', () => {
-        const hiddenFaqs = Array.from(faqs).filter(faq => faq.style.display === 'none');
-        for (let i = 0; i < batchSize && i < hiddenFaqs.length; i++) {
-            hiddenFaqs[i].style.display = 'list-item';
-        }
-
-        // Show the "View Less" button once more items are displayed
-        if (hiddenFaqs.length > 0) {
-            viewLessButton.style.display = 'inline-block';
-        }
-
-        // Hide the "Load More" button if no more FAQs to show
-        if (hiddenFaqs.length <= batchSize) {
-            loadMoreButton.style.display = 'none';
-        }
-    });
-
-    // Event listener for View Less button
-    viewLessButton.addEventListener('click', () => {
+        // Initial setup: Show the first 7 FAQs
         faqs.forEach((faq, index) => {
             if (index >= visibleCount) {
                 faq.style.display = 'none';
             }
         });
 
-        // Reset button visibility
-        loadMoreButton.style.display = 'inline-block';
-        viewLessButton.style.display = 'none';
-    });
-});
+        // Event listener for Load More button
+        loadMoreButton.addEventListener('click', () => {
+            const hiddenFaqs = Array.from(faqs).filter(faq => faq.style.display === 'none');
+            for (let i = 0; i < batchSize && i < hiddenFaqs.length; i++) {
+                hiddenFaqs[i].style.display = 'list-item';
+            }
 
-$(document).ready(function() {
-    $(".contact-form").submit(function(e) {
-        let status = document.activeElement.innerHTML;
-        e.preventDefault();
-        if (status) {
-            $('.ajax-error').html('');
-            let data = new FormData(this);
-            $.ajax({
-                url: $(this).attr("action"),
-                headers: {
-                    'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
-                },
-                type: 'POST',
-                data: data,
-                processData: false,
-                contentType: false,
-                beforeSend: function() {
-                    $("#submit-btn").html(
-                        '<span class="spinner-border spinner-border-sm"></span> Submit Request '
-                    )
-                    $("#submit-btn").attr('disabled', true);
-                },
-                success: function(result) {
-                    $(this).attr("disabled", false);
-                    if (result.type === 'SUCCESS') {
-                        toastr.success(result.message);
-                        setTimeout(function() {
-                            location.reload();
-                        }, 3000);
-                    } else {
-                        toastr.error(result.message);
+            // Show the "View Less" button once more items are displayed
+            if (hiddenFaqs.length > 0) {
+                viewLessButton.style.display = 'inline-block';
+            }
+
+            // Hide the "Load More" button if no more FAQs to show
+            if (hiddenFaqs.length <= batchSize) {
+                loadMoreButton.style.display = 'none';
+            }
+        });
+
+        // Event listener for View Less button
+        viewLessButton.addEventListener('click', () => {
+            faqs.forEach((faq, index) => {
+                if (index >= visibleCount) {
+                    faq.style.display = 'none';
+                }
+            });
+
+            // Reset button visibility
+            loadMoreButton.style.display = 'inline-block';
+            viewLessButton.style.display = 'none';
+        });
+    });
+
+    $(document).ready(function() {
+        $(".contact-form").submit(function(e) {
+            let status = document.activeElement.innerHTML;
+            e.preventDefault();
+            if (status) {
+                $('.ajax-error').html('');
+                let data = new FormData(this);
+                $.ajax({
+                    url: $(this).attr("action"),
+                    headers: {
+                        'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+                    },
+                    type: 'POST',
+                    data: data,
+                    processData: false,
+                    contentType: false,
+                    beforeSend: function() {
+                        $("#submit-btn").html(
+                            '<span class="spinner-border spinner-border-sm"></span> Submit Request '
+                        )
+                        $("#submit-btn").attr('disabled', true);
+                    },
+                    success: function(result) {
+                        $(this).attr("disabled", false);
+                        if (result.type === 'SUCCESS') {
+                            toastr.success(result.message);
+                            setTimeout(function() {
+                                location.reload();
+                            }, 3000);
+                        } else {
+                            toastr.error(result.message);
+                            $('#submit-btn').html('Submit Request');
+                            $('#submit-btn').attr('disabled', false);
+                        }
+                    },
+                    error: function(error) {
+                        $(this).attr("disabled", false);
+                        let errors = error.responseJSON.errors,
+                            errorsHtml = '';
+                        $.each(errors, function(key, value) {
+                            errorsHtml = '<strong>' + value[0] + '</strong>';
+                            $('.' + key).html(errorsHtml);
+                        });
                         $('#submit-btn').html('Submit Request');
                         $('#submit-btn').attr('disabled', false);
                     }
-                },
-                error: function(error) {
-                    $(this).attr("disabled", false);
-                    let errors = error.responseJSON.errors,
-                        errorsHtml = '';
-                    $.each(errors, function(key, value) {
-                        errorsHtml = '<strong>' + value[0] + '</strong>';
-                        $('.' + key).html(errorsHtml);
-                    });
-                    $('#submit-btn').html('Submit Request');
-                    $('#submit-btn').attr('disabled', false);
-                }
-            });
+                });
+            }
+        });
+    });
+
+    var owl = $('.reviews-1-wrapper-new');
+    owl.owlCarousel({
+        items: 1,
+        loop: true,
+        autoplay: true,
+        navBy: 1,
+        autoplayTimeout: 4500,
+        autoplayHoverPause: true,
+        smartSpeed: 1500,
+        responsive: {
+            0: {
+                items: 1
+            },
+            767: {
+                items: 1
+            },
+            768: {
+                items: 1
+            },
+            991: {
+                items: 1
+            },
+            1000: {
+                items: 1
+            }
         }
     });
-});
+
+    var owl = $('.main-wrapper-new');
+    owl.owlCarousel({
+        items: 1,
+        loop: true,
+        autoplay: true,
+        navBy: 1,
+        autoplayTimeout: 3000,
+        autoplayHoverPause: true,
+        smartSpeed: 1000,
+        responsive: {
+            0: {
+                items: 1
+            },
+            767: {
+                items: 1
+            },
+            768: {
+                items: 1
+            },
+            991: {
+                items: 1
+            },
+            1000: {
+                items: 1
+            }
+        }
+    });
 </script>
 @endpush

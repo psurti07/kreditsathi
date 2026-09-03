@@ -9,9 +9,10 @@
     <div class="container">
         <div class="row">
             <div class="col-md-7 col-lg-7 col-12 m-auto">
-                <div class="card">
+               <div class="r-24 bg-white p-4">
                     <div class="card-body">
                         <div class="text-center mb-20">
+                            <i class="far fa-check-circle color--green-300 display-3"></i>
                             <h4 class="fw-bolder text-success mb-15">Congratulations!!! </h4>
                             <p>Your Loan Application Was Successfully Submitted.</p>
                             <p>Please sign in to the customer portal with the credentials sent to your registered email address and upload the necessary documents.</p>
@@ -22,21 +23,21 @@
                         <div class="text-center mb-20">
                             <div class="row gy-2 gx-2">
                                 <div class="col-lg-4 col-md-4 col-12">
-                                    <div class="border rounded-3 p-2 bg--green-200">
+                                    <div class="rounded-3 p-2 bg--green-200">
                                         <p class="fw-bold mb-2">Customer Portal</p>
                                         <p>Your service is active. Log in to the portal.</p>
                                     </div>
                                 </div>
 
                                 <div class="col-lg-4 col-md-4 col-12">
-                                    <div class="border rounded-3 p-2 bg--green-200">
+                                    <div class="rounded-3 p-2 bg--green-200">
                                         <p class="fw-bold mb-2">Invoice</p>
                                         <p>Invoice is available for download in portal.</p>
                                     </div>
                                 </div>
 
                                 <div class="col-lg-4 col-md-4 col-12">
-                                    <div class="border rounded-3 p-2 bg--green-200">
+                                    <div class="rounded-3 p-2 bg--green-200">
                                         <p class="fw-bold mb-2">Consultant</p>
                                         <p>Our team will contact you within 24 hrs.</p>
                                     </div>
@@ -47,10 +48,10 @@
                         <hr class="divider my-3" />
 
                         <div class="text-center">
-                            <a href="{{ route('customer.authenticate2') }}"
-                                class="btn btn-xs r-06 btn--theme hover--tra-black px-3 py-3">Access Pre-Approved
-                                Offers!</a>
-
+                            <a href="{{ route('customer.authenticate2') }}" class="custom-btn w-auto">
+                                <span class="btn-text me-3">Access Pre-Approved Offers!</span>
+                                <span class="btn-icon"> → </span>
+                            </a>
                             <p class="text-center mt-20">For any further queries, raise a request here : <a
                                     href="{{ route('front.raise.request') }}" class="text-success">Click Here</a></p>
                         </div>

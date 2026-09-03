@@ -186,7 +186,7 @@
                                                                             </a>
                                                                             <a href="javascript:;" class="d-flex align-items-center text-gray-700 text-hover-success mb-2">
                                                                                 <i class="ki-duotone ki-sms fs-4 me-1"><span class="path1"></span><span class="path2"></span></i>
-                                                                                {{ $agent->emailid ?? 'info@ailoans.com' }}
+                                                                                {{ $agent->emailid ?? 'info@kreditsathi.com' }}
                                                                             </a>
                                                                         </div>
                                                                     </div>
@@ -200,8 +200,7 @@
                                     </div>
                                 </div>
                             @else
-                                <div class="card" data-bs-theme="light" style="    background: linear-gradient(112.14deg, #689b99 0%, #689b99 100%);;
-">
+                                <div class="card" data-bs-theme="light" style="    background: linear-gradient(112.14deg, #689b99 0%, #689b99 100%);">
                                     <div class="card-body">
                                         <div class="row align-items-center h-100">
                                             <div class="col-12">

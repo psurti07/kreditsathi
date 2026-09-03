@@ -149,7 +149,10 @@
                                         @component('components.ajax-error',['field'=>'message'])@endcomponent
                                     </div>
                                     <div class="col-lg-12 form-btn text-right">
-                                        <button type="submit" class="apply-btn s-15 btn-sm btn btn--theme hover--theme submit">Submit Request</button>
+                                        <button type="submit" class="custom-btn w-50 text-center submit" id="submit-btn">
+                                                    <span class="btn-text fw-semibold">Submit Request</span>
+                                                    <span class="btn-icon"> → </span>
+                                                </button>
                                     </div>
                                 </div>
                             </form>

@@ -81,7 +81,7 @@
                                 </div>
                             </div>
                             <div class="cbox-12-txt">
-                                <p class="s-11 w-600">Loan Details</p>
+                                <p class="s-11 w-600">Income Details</p>
                             </div>
                         </div>
                         <div class="cbox-12 process-step">

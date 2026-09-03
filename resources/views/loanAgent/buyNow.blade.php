@@ -72,7 +72,7 @@
                                         </div>
                                         <div
                                             class="d-flex justify-content-between  details-main px-3 py-3 bg--white-300 r-14 border">
-                                            <p class="s-12 text-grey m-0">Loan Amount :</p>
+                                            <p class="s-12 text-grey m-0">Amount :</p>
                                             <p class="s-14 text-black m-0">
                                                 &#8377;{{ formatePriceIndia(Cookie::get('loan_amount')) }}</p>
                                         </div>
@@ -93,7 +93,7 @@
                                     </div>
                                 </div>
                                 <div class="cbox-12-txt">
-                                    <p class="s-11 w-600">Loan Details</p>
+                                    <p class="s-11 w-600">Income Details</p>
                                 </div>
                             </div>
                             <div class="cbox-12 process-step">
@@ -170,7 +170,7 @@
                                                     OFF
                                                 </p>
                                                 <div class="p-4 plan-details-card">
-                                                    <h5 class="fw-bolder s-16 plan-type mb-10">Hire Loan Agent Plan</h5>
+                                                    <h5 class="fw-bolder s-16 plan-type mb-10">Hire Agent Plan</h5>
                                                     <div class="price my-2">
                                                         <!-- Monthly Price -->
                                                         <div class="price2">

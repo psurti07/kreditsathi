@@ -14,7 +14,7 @@
                         <div class="text-center mb-20">
                             <i class="far fa-check-circle color--green-300 display-3"></i>
                             <h4 class="fw-bolder text-success mb-15">Congratulations!!! </h4>
-                            <p>Your Loan Application Was Successfully Submitted.</p>
+                            <p>Your Application Was Successfully Submitted.</p>
                             <p>Please sign in to the customer portal with the credentials sent to your registered email address and upload the necessary documents.</p>
                         </div>
 

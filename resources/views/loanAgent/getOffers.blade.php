@@ -55,7 +55,7 @@
                                         </div>
                                         <div
                                             class="d-flex justify-content-between  details-main px-3 py-3 bg--white-300 r-14 border">
-                                            <p class="s-12 text-grey m-0">Loan Amount :</p>
+                                            <p class="s-12 text-grey m-0">Amount :</p>
                                             <p class="s-14 text-black m-0">
                                                 &#8377;{{ formatePriceIndia(Cookie::get('loan_amount')) }}</p>
                                         </div>
@@ -74,7 +74,7 @@
                                     </div>
                                 </div>
                                 <div class="cbox-12-txt">
-                                    <p class="s-11 w-600">Loan Details</p>
+                                    <p class="s-11 w-600">Income Details</p>
                                 </div>
                             </div>
                             <div class="cbox-12 process-step">
@@ -160,7 +160,7 @@
 
                                                 <!-- Text -->
                                                 <div class="fbox-txt">
-                                                    <h6 class="s-12">Loan Amount</h6>
+                                                    <h6 class="s-12">Amount</h6>
                                                     <p class="s-14 text-black">&#8377;
                                                         {{ formatePriceIndia($offersData[0]['loanAmount']) }}</p>
                                                     <hr class="custm-HR" />

@@ -513,7 +513,7 @@ class LoanAgentController extends Controller
                 "filename" => $aisensy->media_filename
             ),
             "userName" => Cookie::get('fullname'),
-            "tags" => array("Hire_RM"),
+            "tags" => array("Hire Get Offer"),
             "attributes" => array(
                 "EligibleAmount" => strval($eligibilityAmt)
             ),

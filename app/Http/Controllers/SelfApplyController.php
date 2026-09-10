@@ -499,7 +499,7 @@ class SelfApplyController extends Controller
     }
 
     /* checkout the data */
-    public function checkout_razorpay(Request $request)
+    public function checkout(Request $request)
     {
         try {
             $inputs = $request->all();
@@ -561,7 +561,7 @@ class SelfApplyController extends Controller
         }
     }
 
-    public function checkout(Request $request)
+    public function checkout_subpaisa(Request $request)
     {
         try {
             $inputs = $request->all();
@@ -651,7 +651,7 @@ class SelfApplyController extends Controller
         dd('Callback function call.Go Back and make furthur process');
     }
 
-    public function buyDigitalPlan_razorpay(Request $request)
+    public function buyDigitalPlan(Request $request)
     {
         try {
             $grandtotal = $netamount = $cgstamount = $sgstamount = $igstamount = 0;
@@ -894,7 +894,7 @@ class SelfApplyController extends Controller
         }
     }
 
-    public function buyDigitalPlan(Request $request)
+    public function buyDigitalPlan_subpaisa(Request $request)
     {
         Log::info("self apply buyDigitalPlan start");
         Log::info('SabPaisa Callback Response', $request->all());
@@ -1163,7 +1163,7 @@ class SelfApplyController extends Controller
                 $lastname = strtolower($userData->last_name);
                 $city = strtolower(preg_replace("/[^a-zA-Z]+/", "", $userData->city));
                 $state = strtolower(getStateAbbreviation($userData->state));
-                $orderData = orderdata($orderId, 'subpaisa_entry');
+                $orderData = orderdata($orderId, 'razorpayentry');
 
                 UserRegistration::where('id', $userData->userid)->update(['process_step' => 5]);
 

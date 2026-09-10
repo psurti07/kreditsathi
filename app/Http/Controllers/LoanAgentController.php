@@ -532,7 +532,7 @@ class LoanAgentController extends Controller
     }
 
     /* checkout the data */
-    public function checkout_razorpay(Request $request)
+    public function checkout(Request $request)
     {
         try {
             $inputs = $request->all();
@@ -595,7 +595,7 @@ class LoanAgentController extends Controller
         }
     }
 
-    public function checkout(Request $request)
+    public function checkout__subpaisa(Request $request)
     {
         try {
             $inputs = $request->all();
@@ -933,7 +933,7 @@ class LoanAgentController extends Controller
     }
 
     /* buyDigitalPlan function handle */
-    public function buyDigitalPlan_razorpay(Request $request)
+    public function buyDigitalPlan(Request $request)
     {
         try {
             $grandtotal = $netamount = $cgstamount = $sgstamount = $igstamount = 0;
@@ -1200,7 +1200,7 @@ class LoanAgentController extends Controller
         }
     }
 
-    public function buyDigitalPlan(Request $request)
+    public function buyDigitalPlan_subpaisa(Request $request)
     {
         Log::info("Loan agent buyDigitalPlan start");
         Log::info('SabPaisa Callback Response', $request->all());
@@ -1494,7 +1494,7 @@ class LoanAgentController extends Controller
                 $city = strtolower(preg_replace("/[^a-zA-Z]+/", "", $userData->city));
                 $state = strtolower(getStateAbbreviation($userData->state));
                 //$orderData = orderdata($orderId,'phonepe_entry');
-                $orderData = orderdata($orderId, 'subpaisa_entry');
+                $orderData = orderdata($orderId, 'razorpayentry');
 
                 $staff = Administrations::where('id', $userData->staff_id)->first();
 

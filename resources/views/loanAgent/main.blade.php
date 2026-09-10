@@ -76,7 +76,7 @@
                         class="request-form save-form-1 needs-validation" novalidate>
                         <div class="row g-2">
                             <input type="hidden" name="loan_type" value="1">
-                            <input type="hidden" name="acc_type" value="1" id="acc_type">
+                            <input type="hidden" name="acc_type" value="2" id="acc_type">
                             <input type="hidden" name="user_type" value="1">
                            {{-- <div class="col-md-12">
                                 <div class="form-check ps-0">

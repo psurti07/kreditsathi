@@ -122,16 +122,17 @@ class SelfApplyController extends Controller
                         'utm_campaign' => Cookie::get('utm_campaign'),
                         'utm_medium' => Cookie::get('utm_medium'),
                         'utm_referral' => Cookie::get('utm_referral'),
-                        'source_id' => Cookie::get('sourceId'),
+                        'source_id' => session('sourceId'),
                         'client_ip' => $request->ip()
                     ]);
 
                     // Facebook ads entry if applicable
                     if (Cookie::has('utm_source') && in_array(Cookie::get('utm_source'), ['facebook', 'instagram', 'ig', 'fb', 'meta', 'facebook_instagram', 'facebookads', 'instagramads'])) {
+                        $fbclid = session('sourceId');
                         DB::table('fb_ads_entry')->insertGetId([
                             'rec_date' => now(),
                             'userid' => $user->id,
-                            'fbclid' => Cookie::get('sourceId')
+                            'fbclid' => $fbclid
                         ]);
                     }
 
@@ -256,15 +257,16 @@ class SelfApplyController extends Controller
                     'utm_campaign' => Cookie::get('utm_campaign'),
                     'utm_medium' => Cookie::get('utm_medium'),
                     'utm_referral' => Cookie::get('utm_referral'),
-                    'source_id' => Cookie::get('sourceId'),
+                    'source_id' => session('sourceId'),
                     'client_ip' => $request->ip()
                 ]);
 
                 //  fb code starts 
+                $fbclid = session('sourceId');
                 $fbid = DB::table('fb_ads_entry')->insertGetId([
                     'rec_date' => now(),
                     'userid' => $userid,
-                    'fbclid' => Cookie::get('sourceId')
+                    'fbclid' => $fbclid
                 ]);
                 // fb ends code
 

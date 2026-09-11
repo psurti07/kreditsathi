@@ -4819,8 +4819,8 @@
   .hero-8-txt .hero-digits { padding: 0 3%; }
 
   #hero-8-form { padding: 30px 20px; margin: 0px 4% 40px; border-radius: 10px; }
-  #hero-8-form h4 { margin-bottom: 15px; }
-  #hero-8-form p { font-size: 1.0625rem; margin-bottom: 16px; }
+  #hero-8-form h4 { margin-bottom: 15px; font-size: 30px; }
+  #hero-8-form p {  margin-bottom: 16px; }
   #hero-8-form p.p-sm { font-size: 1rem; padding: 0 2%!important; }
 
   /* HERO-9 */
@@ -5994,8 +5994,8 @@
   .hero-8-txt .hero-digits { padding: 0; }
 
   #hero-8-form { padding: 30px 18px; margin: 0px 2% 0; border-radius: 10px; }
-  #hero-8-form h4 { margin-bottom: 15px; }
-  #hero-8-form p { font-size: 1.0625rem; margin-bottom: 16px; }
+  #hero-8-form h4 { margin-bottom: 15px; font-size: 30px;}
+  #hero-8-form p { margin-bottom: 16px; }
   #hero-8-form p.p-sm { font-size: 1rem; padding: 0!important; }
 
   /* HERO-9 */
@@ -7186,8 +7186,8 @@
   .hero-8-txt .hero-digits { padding: 0; }
 
   #hero-8-form { padding: 26px 15px; margin: 0px 2% 0; border-radius: 10px; }
-  #hero-8-form h4 { margin-bottom: 15px; }
-  #hero-8-form p { font-size: 1rem; margin-bottom: 20px; }
+  #hero-8-form h4 { margin-bottom: 15px; font-size: 30px; }
+  #hero-8-form p {margin-bottom: 20px; }
   #hero-8-form p.p-sm { font-size: 0.8rem; padding: 0!important; }
 
   /* HERO-9 */
@@ -8423,8 +8423,8 @@
   .hero-8-txt .hero-digits { padding: 0; }
 
   #hero-8-form { padding: 26px 12px; margin: 0px 2% 0; border-radius: 10px; }
-  #hero-8-form h4 { margin-bottom: 12px; }
-  #hero-8-form p { font-size: 1rem; margin-bottom: 15px; }
+  #hero-8-form h4 { margin-bottom: 12px; font-size: 30px;}
+  #hero-8-form p { margin-bottom: 15px; }
   #hero-8-form p.p-sm { font-size: 0.9375rem; padding: 0!important; }
 
   /* HERO-9 */

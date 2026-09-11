@@ -67,8 +67,8 @@
 
                     <div class="d-flex justify-content-between align-items-center mb-20">
                         <div>
-                            <h3 class="s-32 w-700 mb-0">Find the Right Loan</h3>
-                            <p class="s-16 m-0">Compare available financing options with ease.</p>
+                            <h3 class="s-32 w-700 mb-0">Personal loans that's made for you</h3>
+                            <p class="s-16 m-0">Get up to ₹5 lakhs instantly!</p>
                         </div>
                     </div>
 

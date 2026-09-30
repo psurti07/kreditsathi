@@ -2264,7 +2264,7 @@ class SelfApplyController extends Controller
     }
 
 
-    public function getOffer4(Request $request)
+    public function getOffer4_razorpay(Request $request)
     {
         try {
             $inputs = $request->all();
@@ -2360,7 +2360,7 @@ class SelfApplyController extends Controller
         }
     }
 
-    public function offer4Response(Request $request)
+    public function offer4Response_razorpay(Request $request)
     {
         try {
 
@@ -2468,7 +2468,7 @@ class SelfApplyController extends Controller
     }
 
 
-    public function getOffer4_subpaisa(Request $request)
+    public function getOffer4(Request $request)
     {
         try {
             $inputs = $request->all();
@@ -2582,7 +2582,7 @@ class SelfApplyController extends Controller
         }
     }
 
-    public function offer4Response_subpaisa(Request $request)
+    public function offer4Response(Request $request)
     {
         try {
             Log::info('offer2Response request data - ' . json_encode($request->all()));

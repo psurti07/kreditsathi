@@ -471,7 +471,7 @@ class SelfApplyController extends Controller
 
         /* interakt code ends here */
         /* aisensy code starts */
-        /* $aisensy = DB::table('aisensy_settings')->where('type','getoffer')->where('product','SA')->first();
+        $aisensy = DB::table('aisensy_settings')->where('type','getoffer')->where('product','SA')->first();
             
         $data1 = array(
 			"apiKey" => $aisensy->api_key,
@@ -488,7 +488,7 @@ class SelfApplyController extends Controller
 			),
 			"templateParams" => array('$Name', '$EligibleAmount'),
 		);
-		$response = aisensy_track($data1); */
+		$response = aisensy_track($data1); 
         /* aisensy code ends */
         $record = DB::table('user_offers')->where('userid', Cookie::get('userid'))->first();
         $offersData = $record ? $record->offerdata : null;
